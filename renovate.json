@@ -1,0 +1,12 @@
+{
+	"$schema": "https://docs.renovatebot.com/renovate-schema.json",
+	"extends": ["config:base", ":semanticCommitTypeAll(chore)", ":semanticCommitScopeDisabled"],
+	"packageRules": [
+		{
+			"updateTypes": ["minor", "patch"],
+			"automerge": true
+		}
+	],
+	"ignoreDeps": ["chalk"],
+	"commitMessageAction": "🤖 Update"
+}

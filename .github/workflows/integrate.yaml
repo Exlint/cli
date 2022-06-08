@@ -1,0 +1,42 @@
+name: Integration
+
+on:
+    pull_request:
+        branches: [main]
+
+jobs:
+    test_pull_request:
+        name: Testing & Checking the code
+        runs-on: ubuntu-latest
+
+        steps:
+            - name: Checkout
+              uses: actions/checkout@v3
+
+            - name: Setup Node.js
+              uses: actions/setup-node@v3
+              with:
+                  node-version: 16
+
+            - name: Install pnpm
+              uses: pnpm/action-setup@v2
+              with:
+                  version: 7.1.0
+
+            - name: Installing dependencies
+              run: pnpm install
+
+            - name: Check unused dependencies
+              run: pnpm depcheck
+
+            - name: Check Files and Directories Linter
+              run: pnpm inflint
+
+            - name: Check Typescript
+              run: pnpm type-check
+
+            - name: Check ESLint
+              run: pnpm lint
+
+            - name: Check build command
+              run: pnpm build

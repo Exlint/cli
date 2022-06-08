@@ -1,0 +1,33 @@
+{
+	"editor.formatOnSave": true,
+	"editor.defaultFormatter": "esbenp.prettier-vscode",
+	"search.exclude": {
+		"**/node_modules": true
+	},
+	"files.associations": {
+		"commit-msg": "shellscript"
+	},
+	// Copy all below to your user settings to get nice visual
+	"material-icon-theme.activeIconPack": "nest",
+	"material-icon-theme.files.associations": {
+		".inflintignore": "crystal",
+		"inflint.config.ts": "crystal",
+		"czvinyl.config.ts": "ocaml",
+		".depcheckrc.json": "parcel",
+		".cz.json": "jinja",
+		"*.routes.ts": "routing",
+		"tsconfig.doc.json": "tsconfig",
+		"tsconfig.tsbuildinfo": "tsconfig",
+		".compodocrc.json": "mjml",
+		"*.strategy.ts": "nest-gateway"
+	},
+	"material-icon-theme.folders.associations": {
+		".volumes": "database",
+		"decorators": "meta",
+		"interceptors": "connection",
+		"strategies": "mappings",
+		"queries": "shader",
+		"secrets": "keys",
+		"user": "client"
+	}
+}
