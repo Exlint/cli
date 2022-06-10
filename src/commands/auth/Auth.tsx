@@ -1,0 +1,101 @@
+import http from 'http';
+import type { AddressInfo } from 'net';
+
+import React from 'react';
+import { render } from 'ink';
+import { Command, CommandRunner } from 'nest-commander';
+import keytar from 'keytar';
+import open from 'open';
+import express from 'express';
+
+import { ConfigService } from '@/modules/config/config.service';
+import { ConnectionService } from '@/modules/connection/connection.service';
+import Error from '@/ui/Error/Error';
+import NoInternet from '@/ui/NoInternet';
+import PendingAuth from '@/containers/Auth/PendingAuth';
+
+import type { IRedirectParams } from './interfaces/redirect-token';
+import { AUTHENTICATION_TIMEOUT } from './models/auth-timeout';
+
+@Command({ name: 'auth', description: 'Authenticate Exlint CLI with an Exlint account' })
+export class AuthCommand implements CommandRunner {
+	constructor(
+		private readonly configService: ConfigService,
+		private readonly connectionService: ConnectionService,
+	) {}
+
+	public async run() {
+		const hasConnection = await this.connectionService.checkConnection();
+
+		if (!hasConnection) {
+			render(<NoInternet />);
+
+			process.exit(1);
+		}
+
+		render(<PendingAuth />);
+
+		try {
+			// * https://stackoverflow.com/questions/20857865/okay-to-add-a-route-to-node-js-express-while-listening
+			const app = express();
+
+			app.use((_: express.Request, res: express.Response, next: express.NextFunction) => {
+				res.setHeader('Access-Control-Allow-Origin', 'http://localhost');
+				res.setHeader(
+					'Access-Control-Allow-Headers',
+					'Origin, X-Requested-With, Content-Type, Accept',
+				);
+				res.setHeader('Access-Control-Allow-Methods', 'OPTIONS, GET');
+
+				next();
+			});
+
+			const temporaryServer = http.createServer(app);
+
+			// * https://stackoverflow.com/a/28050404/9105207
+			temporaryServer.listen(0);
+
+			const apiUrl = this.configService.getValue('API_URL');
+			const serverAddress = temporaryServer.address() as AddressInfo;
+			const serverPort = serverAddress.port;
+
+			await open(`${apiUrl}/auth/${serverPort}`);
+
+			const [userToken, userEmail] = await new Promise<[string, string]>((resolve) => {
+				const authenticationTimeout = setTimeout(() => {
+					temporaryServer.close();
+
+					render(<Error message="Authentication expired, please try again" />);
+
+					process.exit(1);
+				}, AUTHENTICATION_TIMEOUT);
+
+				app.get('/:token/:email', (req: express.Request<IRedirectParams>, res: express.Response) => {
+					const { token, email } = req.params;
+
+					if (!token || !email) {
+						render(<Error />);
+
+						process.exit(1);
+					} else {
+						resolve([token, email]);
+
+						res.redirect(`${this.configService.getValue('API_URL')}/verification-completed`);
+					}
+
+					temporaryServer.close();
+
+					clearTimeout(authenticationTimeout);
+
+					return;
+				});
+			});
+
+			await keytar.setPassword('exlint', userEmail, userToken);
+		} catch {
+			render(<Error message="Failed to authenticate, please try again" />);
+
+			process.exit(1);
+		}
+	}
+}

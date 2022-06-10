@@ -1,0 +1,6 @@
+{
+	"$schema": "./node_modules/@compodoc/compodoc/src/config/schema.json",
+	"tsconfig": "./tsconfig.doc.json",
+	"silent": true,
+	"serve": false
+}

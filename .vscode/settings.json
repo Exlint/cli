@@ -8,7 +8,6 @@
 		"commit-msg": "shellscript"
 	},
 	// Copy all below to your user settings to get nice visual
-	"material-icon-theme.activeIconPack": "nest",
 	"material-icon-theme.files.associations": {
 		".inflintignore": "crystal",
 		"inflint.config.ts": "crystal",
@@ -17,6 +16,7 @@
 		".cz.json": "jinja",
 		"*.routes.ts": "routing",
 		"tsconfig.doc.json": "tsconfig",
+		"tsconfig.paths.json": "tsconfig",
 		"tsconfig.tsbuildinfo": "tsconfig",
 		".compodocrc.json": "mjml",
 		"*.strategy.ts": "nest-gateway"

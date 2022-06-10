@@ -1,11 +1,13 @@
 {
+	"extends": "./tsconfig.paths.json",
 	"compilerOptions": {
 		"target": "ES2017",
-		"module": "commonjs",
+		"module": "CommonJS",
 		"noEmit": true,
 		"baseUrl": "./",
 		"allowJs": false,
 		"skipLibCheck": true,
+		"jsx": "react",
 		"strict": true,
 		"forceConsistentCasingInFileNames": true,
 		"esModuleInterop": true,

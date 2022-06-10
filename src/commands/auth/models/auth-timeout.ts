@@ -1,0 +1,3 @@
+const MINUTE = 60 * 1000;
+
+export const AUTHENTICATION_TIMEOUT = MINUTE;
