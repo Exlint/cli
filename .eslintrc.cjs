@@ -160,7 +160,6 @@ module.exports = {
 		'react/jsx-curly-brace-presence': ['error', { props: 'never', children: 'never' }],
 		'react/button-has-type': 'error',
 		'react/destructuring-assignment': ['error', 'never'],
-		'react/display-name': ['error', { ignoreTranspilerName: true }],
 		'react/function-component-definition': [
 			'error',
 			{
@@ -236,6 +235,12 @@ module.exports = {
 			files: ['./scripts/onboarding.cjs'],
 			rules: {
 				'no-console': 'off',
+			},
+		},
+		{
+			files: ['./bin/exlint.js'],
+			rules: {
+				'node/no-sync': 'off',
 			},
 		},
 	],

@@ -3,7 +3,10 @@
 		"paths": {
 			"@/modules/*": ["src/modules/*"],
 			"@/ui/*": ["src/components/ui/*"],
-			"@/containers/*": ["src/components/containers/*"]
+			"@/containers/*": ["src/components/containers/*"],
+			"@/interfaces/*": ["src/interfaces/*"],
+			"@/utils/*": ["src/utils/*"],
+			"@/models/*": ["src/models/*"]
 		}
 	}
 }

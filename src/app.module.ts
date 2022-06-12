@@ -1,11 +1,14 @@
 import { Module } from '@nestjs/common';
 
 import { AuthCommand } from './commands/auth/Auth';
+import { UseCommand } from './commands/use/Use';
+import { ApiModule } from './modules/api/api.module';
 import { ConfigModule } from './modules/config/config.module';
 import { ConnectionModule } from './modules/connection/connection.module';
+import { ExlintConfigModule } from './modules/exlint-config/exlint-config.module';
 
 @Module({
-	imports: [ConfigModule, ConnectionModule],
-	providers: [AuthCommand],
+	imports: [ConfigModule, ConnectionModule, ApiModule, ExlintConfigModule],
+	providers: [AuthCommand, UseCommand],
 })
 export class AppModule {}

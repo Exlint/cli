@@ -33,8 +33,6 @@ export class AuthCommand implements CommandRunner {
 			process.exit(1);
 		}
 
-		render(<PendingAuth />);
-
 		try {
 			// * https://stackoverflow.com/questions/20857865/okay-to-add-a-route-to-node-js-express-while-listening
 			const app = express();
@@ -58,10 +56,13 @@ export class AuthCommand implements CommandRunner {
 			const apiUrl = this.configService.getValue('API_URL');
 			const serverAddress = temporaryServer.address() as AddressInfo;
 			const serverPort = serverAddress.port;
+			const authUrl = `${apiUrl}/auth/${serverPort}`;
 
-			await open(`${apiUrl}/auth/${serverPort}`);
+			render(<PendingAuth link={authUrl} />);
 
-			const [userToken, userEmail] = await new Promise<[string, string]>((resolve) => {
+			await open(authUrl);
+
+			const userToken = await new Promise<string>((resolve) => {
 				const authenticationTimeout = setTimeout(() => {
 					temporaryServer.close();
 
@@ -70,7 +71,7 @@ export class AuthCommand implements CommandRunner {
 					process.exit(1);
 				}, AUTHENTICATION_TIMEOUT);
 
-				app.get('/:token/:email', (req: express.Request<IRedirectParams>, res: express.Response) => {
+				app.get('/:token', (req: express.Request<IRedirectParams>, res: express.Response) => {
 					const { token, email } = req.params;
 
 					if (!token || !email) {
@@ -78,9 +79,9 @@ export class AuthCommand implements CommandRunner {
 
 						process.exit(1);
 					} else {
-						resolve([token, email]);
+						resolve(token);
 
-						res.redirect(`${this.configService.getValue('API_URL')}/verification-completed`);
+						res.redirect(`${this.configService.getValue('API_URL')}/authenticated`);
 					}
 
 					temporaryServer.close();
@@ -91,7 +92,7 @@ export class AuthCommand implements CommandRunner {
 				});
 			});
 
-			await keytar.setPassword('exlint', userEmail, userToken);
+			await keytar.setPassword('exlint', '', userToken);
 		} catch {
 			render(<Error message="Failed to authenticate, please try again" />);
 
