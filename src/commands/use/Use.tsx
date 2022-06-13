@@ -13,8 +13,18 @@ import { IUseTasks } from '@/interfaces/use-tasks';
 import UseTasks from '@/containers/Use/UseTasks';
 import { downloadLibraries } from '@/utils/download-library';
 import { ExlintConfigService } from '@/modules/exlint-config/exlint-config.service';
-import { ensureRequiredSoftware } from '@/utils/required-software';
+import { isVsCodeInstalled, ensureRequiredSoftware } from '@/utils/required-software';
 import { EXLINT_FOLDER_PATH } from '@/models/exlint-folder';
+import { setConfigLibrary } from '@/utils/config-library';
+import { ApiService } from '@/modules/api/api.service';
+import { adjustLocalToExtensions, installVsCodeExtensions } from '@/utils/vscode';
+
+import {
+	ADJUST_VSCODE_EXTENSIONS,
+	CREATE_CONFIGS_FILES,
+	DOWNLOADING_REQUIRED_PACKAGES,
+	DOWNLOADING_VSCODE_EXTENSIONS,
+} from './models/task';
 
 @Command({
 	name: 'use',
@@ -25,10 +35,11 @@ import { EXLINT_FOLDER_PATH } from '@/models/exlint-folder';
 export class UseCommand implements CommandRunner {
 	constructor(
 		private readonly connectionService: ConnectionService,
+		private readonly apiService: ApiService,
 		private readonly exlintConfigService: ExlintConfigService,
 	) {}
 
-	public async run() {
+	public async run([groupId]: [string]) {
 		const hasConnection = await this.connectionService.checkConnection();
 
 		if (!hasConnection) {
@@ -38,6 +49,12 @@ export class UseCommand implements CommandRunner {
 		}
 
 		try {
+			/**
+			 * First, try to fetch the group data.
+			 * If it failed, probably user's token is invalid
+			 */
+			const groupData = await this.apiService.getGroupData(groupId);
+
 			/**
 			 * Ensure required software is installed.
 			 * Currently, only NPM packages are supported, so only Node.js and NPM are required
@@ -50,6 +67,8 @@ export class UseCommand implements CommandRunner {
 				process.exit(1);
 			}
 
+			await this.exlintConfigService.init();
+
 			let projectId = this.exlintConfigService.getValue('projectId');
 
 			if (!projectId) {
@@ -58,34 +77,82 @@ export class UseCommand implements CommandRunner {
 
 			const projectFolderPath = path.join(EXLINT_FOLDER_PATH, projectId);
 
-			await Promise.all([
+			const [vsCodeInstalled] = await Promise.all([
+				isVsCodeInstalled(),
 				this.exlintConfigService.setValues({ projectId }),
 				fs.ensureDir(projectFolderPath),
 			]);
 
-			//const groupData = await this.apiService.getGroupData(groupId);
-			const groupData = await Promise.resolve({
-				policies: [
-					{ libraryName: 'eslint', configuration: { yazif: 'x' } },
-					{ libraryName: 'prettier', configuration: { yazif: 'x' } },
-					{ libraryName: 'stylelint', configuration: { yazif: 'x' } },
-				],
-			});
-
-			const requiredLibraries = groupData.policies.map((policy) => policy.libraryName.toLowerCase());
+			const requiredLibraries = groupData.policies
+				.filter((policy) => policy.configuration !== null)
+				.map((policy) => policy.libraryName);
 
 			const tasks: IUseTasks = {
-				'Downloading required packages': 'loading',
-				'Creating your linters configurations file': 'loading',
+				[DOWNLOADING_REQUIRED_PACKAGES]: 'loading',
+				[CREATE_CONFIGS_FILES]: 'loading',
 			};
 
+			if (vsCodeInstalled) {
+				tasks[DOWNLOADING_VSCODE_EXTENSIONS] = 'loading';
+				tasks[ADJUST_VSCODE_EXTENSIONS] = 'loading';
+			}
+
 			render(<UseTasks tasks={tasks} />);
 
-			await downloadLibraries(projectFolderPath, ...requiredLibraries);
+			const downloadLibrariesPromise = downloadLibraries(projectFolderPath, ...requiredLibraries)
+				.then(() => {
+					tasks[DOWNLOADING_REQUIRED_PACKAGES] = 'success';
+				})
+				.catch(() => {
+					tasks[DOWNLOADING_REQUIRED_PACKAGES] = 'error';
+				})
+				.finally(() => {
+					render(<UseTasks tasks={tasks} />);
+				});
 
-			tasks['Downloading required packages'] = 'success';
+			const setConfigLibrariesPromises = groupData.policies
+				.filter((policy) => policy.configuration !== null)
+				.map((policy) => setConfigLibrary(policy.libraryName, policy.configuration!));
 
-			render(<UseTasks tasks={tasks} />);
+			const setConfigLibrariesPromise = Promise.all(setConfigLibrariesPromises)
+				.then(() => {
+					tasks[CREATE_CONFIGS_FILES] = 'success';
+				})
+				.catch(() => {
+					tasks[CREATE_CONFIGS_FILES] = 'error';
+				})
+				.finally(() => {
+					render(<UseTasks tasks={tasks} />);
+				});
+
+			const tasksPromises = [downloadLibrariesPromise, setConfigLibrariesPromise];
+
+			if (vsCodeInstalled) {
+				tasksPromises.push(
+					installVsCodeExtensions(...requiredLibraries)
+						.then(() => {
+							tasks[DOWNLOADING_VSCODE_EXTENSIONS] = 'success';
+						})
+						.catch(() => {
+							tasks[DOWNLOADING_VSCODE_EXTENSIONS] = 'error';
+						})
+						.finally(() => {
+							render(<UseTasks tasks={tasks} />);
+						}),
+					adjustLocalToExtensions(projectId, ...requiredLibraries)
+						.then(() => {
+							tasks[ADJUST_VSCODE_EXTENSIONS] = 'success';
+						})
+						.catch(() => {
+							tasks[ADJUST_VSCODE_EXTENSIONS] = 'error';
+						})
+						.finally(() => {
+							render(<UseTasks tasks={tasks} />);
+						}),
+				);
+			}
+
+			await Promise.all(tasksPromises);
 		} catch {
 			render(<Error message="Failed to run Exlint, please try again." />);
 

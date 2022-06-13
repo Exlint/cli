@@ -21,8 +21,8 @@ module.exports = {
 	},
 	plugins: ['@typescript-eslint', 'unused-imports', 'import', 'node', 'react'],
 	rules: {
-		'max-lines': ['error', { max: 100, skipBlankLines: true, skipComments: true }],
-		'indent': ['error', 'tab'],
+		'max-lines': ['error', { max: 150, skipBlankLines: true, skipComments: true }],
+		'indent': ['error', 'tab', { SwitchCase: 1 }],
 		'quotes': ['error', 'single', { avoidEscape: true }],
 		'semi': ['error', 'always'],
 		'no-empty': [
@@ -215,6 +215,11 @@ module.exports = {
 		],
 
 		'node/no-sync': 'error',
+	},
+	settings: {
+		react: {
+			version: 'detect',
+		},
 	},
 	overrides: [
 		{

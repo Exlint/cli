@@ -3,12 +3,20 @@ import path from 'path';
 import { Injectable } from '@nestjs/common';
 import fs from 'fs-extra';
 
+import { EXLINT_FILE_NAME } from '@/models/exlint-folder';
+
 import { IExlintConfig } from './interfaces/exlint-config';
 
 @Injectable()
 export class ExlintConfigService {
-	private filePath = path.join(process.cwd(), '.exlint');
+	private filePath = path.join(process.cwd(), EXLINT_FILE_NAME);
 	private config: IExlintConfig = {};
+
+	public async init() {
+		const configFromFile = await fs.readJson(this.filePath);
+
+		this.config = configFromFile;
+	}
 
 	public async setValues(config: IExlintConfig) {
 		const newConfig = { ...this.config, config };

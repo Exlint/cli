@@ -6,9 +6,11 @@ export const ensureRequiredSoftware = async () => {
 		envinfo.helpers.getnpmInfo(),
 	]);
 
-	if (nodeInfo[2] === 'Not Found' || npmInfo[2] === 'Not Found') {
-		return false;
-	}
+	return nodeInfo[2] !== 'Not Found' && npmInfo[2] !== 'Not Found';
+};
 
-	return true;
+export const isVsCodeInstalled = async () => {
+	const vsCodeInfo = await envinfo.helpers.getVSCodeInfo();
+
+	return vsCodeInfo[2] !== 'Not Found';
 };
