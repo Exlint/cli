@@ -13,7 +13,7 @@ export class ExlintConfigService {
 	private config: IExlintConfig = {};
 
 	public async init() {
-		const configFromFile = await fs.readJson(this.filePath);
+		const configFromFile = await fs.readJson(this.filePath).catch(() => ({}));
 
 		this.config = configFromFile;
 	}

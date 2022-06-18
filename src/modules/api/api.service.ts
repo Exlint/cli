@@ -27,4 +27,14 @@ export class ApiService {
 
 		return groupDataResponse.data;
 	}
+
+	public async hasValidToken() {
+		try {
+			await axios.get('/verify-token');
+
+			return true;
+		} catch {
+			return false;
+		}
+	}
 }

@@ -3,71 +3,59 @@ import path from 'path';
 import fs from 'fs-extra';
 
 import { EXLINT_FOLDER_PATH } from '@/models/exlint-folder';
+import { ILibrary } from '@/interfaces/library';
 
 import { spawnLib } from './spawn-lib';
 
-export const getEslintOutput = async (projectId: string) => {
-	const eslintConfigPath = path.join(EXLINT_FOLDER_PATH, projectId, '.eslintrc.json');
-	const eslintPatternPath = path.join(EXLINT_FOLDER_PATH, projectId, '.exlint-eslint-pattern');
+const getDepcheckOutput = async (projectId: string) => {
+	const depcheckConfigFileName = '.depcheckrc.json';
+	const depcheckConfigPath = path.join(EXLINT_FOLDER_PATH, projectId, depcheckConfigFileName);
 
-	const [isEslintConfigured, eslintPattern] = await Promise.all([
-		fs.pathExists(eslintConfigPath),
-		fs.readFile(eslintPatternPath, { encoding: 'utf-8' }).catch(() => null),
-	]);
+	const isDepcheckConfigured = await fs.pathExists(depcheckConfigPath);
 
-	if (isEslintConfigured && eslintPattern) {
-		const eslintRunOutput = await spawnLib(projectId, 'eslint', [
+	if (isDepcheckConfigured) {
+		const depcheckRunOutput = await spawnLib(projectId, 'depcheck', [
 			'-c',
-			'./.eslintrc.json',
-			eslintPattern,
+			`./${depcheckConfigFileName}`,
 		]);
 
-		return eslintRunOutput;
+		return depcheckRunOutput;
 	}
 
 	return '';
 };
 
-export const getPrettierOutput = async (projectId: string) => {
-	const prettierConfigPath = path.join(EXLINT_FOLDER_PATH, projectId, '.prettierrc.json');
-	const prettierPatternPath = path.join(EXLINT_FOLDER_PATH, projectId, '.exlint-prettier-pattern');
+const getLibraryOutput = async (projectId: string, library: ILibrary) => {
+	const libraryConfigFileName = `.${library}rc.json`;
+	const libraryConfigPath = path.join(EXLINT_FOLDER_PATH, projectId, libraryConfigFileName);
+	const libraryPatternPath = path.join(EXLINT_FOLDER_PATH, projectId, `.exlint-${library}-pattern`);
 
-	const [isPrettierConfigured, prettierPattern] = await Promise.all([
-		fs.pathExists(prettierConfigPath),
-		fs.readFile(prettierPatternPath, { encoding: 'utf-8' }).catch(() => null),
+	const [isLibraryConfigured, libraryPattern] = await Promise.all([
+		fs.pathExists(libraryConfigPath),
+		fs.readFile(libraryPatternPath, { encoding: 'utf-8' }).catch(() => '**/*'),
 	]);
 
-	if (isPrettierConfigured && prettierPattern) {
-		const prettierRunOutput = await spawnLib(projectId, 'prettier', [
+	if (isLibraryConfigured) {
+		const libraryRunOutput = await spawnLib(projectId, library, [
 			'-c',
-			'./.prettierrc.json',
-			prettierPattern,
+			`./${libraryConfigFileName}`,
+			libraryPattern,
 		]);
 
-		return prettierRunOutput;
+		return libraryRunOutput;
 	}
 
 	return '';
 };
 
-export const getStylelintOutput = async (projectId: string) => {
-	const stylelintConfigPath = path.join(EXLINT_FOLDER_PATH, projectId, '.stylelintrc.json');
-	const stylelintPatternPath = path.join(EXLINT_FOLDER_PATH, projectId, '.stylelint-prettier-pattern');
-
-	const [isStylelintConfigured, stylelintPattern] = await Promise.all([
-		fs.pathExists(stylelintConfigPath),
-		fs.readFile(stylelintPatternPath, { encoding: 'utf-8' }).catch(() => null),
+export const getLibsOutput = async (projectId: string) => {
+	const librariesOutput = await Promise.all([
+		getDepcheckOutput(projectId),
+		getLibraryOutput(projectId, 'eslint'),
+		getLibraryOutput(projectId, 'inflint'),
+		getLibraryOutput(projectId, 'prettier'),
+		getLibraryOutput(projectId, 'stylelint'),
 	]);
 
-	if (isStylelintConfigured && stylelintPattern) {
-		const stylelintRunOutput = await spawnLib(projectId, 'stylelint', [
-			'-c',
-			'./.stylelintrc.json',
-			stylelintPattern,
-		]);
-
-		return stylelintRunOutput;
-	}
-
-	return '';
+	return librariesOutput.join('\n\n');
 };

@@ -14,7 +14,7 @@ export const installVsCodeExtensions = async (...libs: ILibrary[]) => {
 		return;
 	}
 
-	const matchingExtensions = libs.map((lib) => vsCodeExtensions[lib]);
+	const matchingExtensions = libs.map((lib) => vsCodeExtensions[lib]).filter(Boolean);
 
 	const cmdArgs = matchingExtensions
 		.map((extensionName) => `--install-extension ${extensionName}`)

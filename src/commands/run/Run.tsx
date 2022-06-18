@@ -4,10 +4,12 @@ import React from 'react';
 
 import { ConnectionService } from '@/modules/connection/connection.service';
 import { ExlintConfigService } from '@/modules/exlint-config/exlint-config.service';
+import { ApiService } from '@/modules/api/api.service';
 import NoInternet from '@/ui/NoInternet';
 import Error from '@/ui/Error/Error';
+import InvalidToken from '@/ui/InvalidToken';
 
-import { getEslintOutput, getPrettierOutput, getStylelintOutput } from './utils/libs-output';
+import { getLibsOutput } from './utils/libs-output';
 
 @Command({
 	name: 'run',
@@ -17,6 +19,7 @@ export class RunCommand implements CommandRunner {
 	constructor(
 		private readonly connectionService: ConnectionService,
 		private readonly exlintConfigService: ExlintConfigService,
+		private readonly apiService: ApiService,
 	) {}
 
 	public async run() {
@@ -24,6 +27,14 @@ export class RunCommand implements CommandRunner {
 
 		if (!hasConnection) {
 			render(<NoInternet />);
+
+			process.exit(1);
+		}
+
+		const hadValidToken = await this.apiService.hasValidToken();
+
+		if (!hadValidToken) {
+			render(<InvalidToken />);
 
 			process.exit(1);
 		}
@@ -39,13 +50,9 @@ export class RunCommand implements CommandRunner {
 				process.exit(1);
 			}
 
-			const libsRunOutputs = await Promise.all([
-				getEslintOutput(projectId),
-				getPrettierOutput(projectId),
-				getStylelintOutput(projectId),
-			]);
+			const libsRunOutputs = await getLibsOutput(projectId);
 
-			render(<Text>{libsRunOutputs.join('\n\n')}</Text>);
+			render(<Text>{libsRunOutputs}</Text>);
 		} catch {
 			render(<Error message="Failed to run Exlint, please try again." />);
 
