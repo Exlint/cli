@@ -4,7 +4,7 @@ export interface IGetGroupPoliciesResponse {
 	id: string;
 	policies: {
 		id: string;
-		libraryName: ILibrary;
+		library: ILibrary;
 		label: string;
 		configuration: Record<string, unknown> | null;
 	}[];

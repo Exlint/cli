@@ -23,14 +23,16 @@ export class ApiService {
 	private axiosInstance = axios.create({ baseURL: this.configService.getValue('API_URL') });
 
 	public async getGroupData(groupId: string) {
-		const groupDataResponse = await axios.get<IGetGroupPoliciesResponse>(`/groups/${groupId}`);
+		const groupDataResponse = await axios.get<IGetGroupPoliciesResponse>(
+			`/user/groups/get-group/${groupId}`,
+		);
 
 		return groupDataResponse.data;
 	}
 
 	public async hasValidToken() {
 		try {
-			await axios.get('/verify-token');
+			await axios.get('/user/auth/verify-token');
 
 			return true;
 		} catch {

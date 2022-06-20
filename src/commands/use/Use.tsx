@@ -85,7 +85,7 @@ export class UseCommand implements CommandRunner {
 
 			const requiredLibraries = groupData.policies
 				.filter((policy) => policy.configuration !== null)
-				.map((policy) => policy.libraryName);
+				.map((policy) => policy.library);
 
 			const tasks: IUseTasks = {
 				[DOWNLOADING_REQUIRED_PACKAGES]: 'loading',
@@ -112,7 +112,7 @@ export class UseCommand implements CommandRunner {
 
 			const setConfigLibrariesPromises = groupData.policies
 				.filter((policy) => policy.configuration !== null)
-				.map((policy) => setConfigLibrary(policy.libraryName, policy.configuration!));
+				.map((policy) => setConfigLibrary(policy.library, policy.configuration!));
 
 			const setConfigLibrariesPromise = Promise.all(setConfigLibrariesPromises)
 				.then(() => {
