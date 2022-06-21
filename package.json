@@ -59,6 +59,7 @@
 	"devDependencies": {
 		"@commitlint/cli": "17.0.2",
 		"@compodoc/compodoc": "1.1.19",
+		"@exlint.io/inflint": "1.2.7",
 		"@nestjs/cli": "^8.0.0",
 		"@nestjs/schematics": "^8.0.0",
 		"@types/envinfo": "7.8.1",
@@ -82,7 +83,6 @@
 		"eslint-plugin-unused-imports": "^2.0.0",
 		"figlet": "1.5.2",
 		"husky": "^8.0.1",
-		"inflint": "^1.2.2",
 		"is-ci": "3.0.1",
 		"lint-staged": "13.0.2",
 		"npm-run-all": "4.1.5",

@@ -56,7 +56,7 @@ export class AuthCommand implements CommandRunner {
 			const apiUrl = this.configService.getValue('API_URL');
 			const serverAddress = temporaryServer.address() as AddressInfo;
 			const serverPort = serverAddress.port;
-			const authUrl = `${apiUrl}/auth/${serverPort}`;
+			const authUrl = `${apiUrl}/user/auth/login?port=${serverPort}`;
 
 			render(<PendingAuth link={authUrl} />);
 

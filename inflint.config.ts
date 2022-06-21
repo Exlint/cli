@@ -1,4 +1,4 @@
-import { Config } from 'inflint';
+import { Config } from '@exlint.io/inflint';
 
 const inflintConfig: Config = {
 	rules: {
