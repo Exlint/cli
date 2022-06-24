@@ -54,7 +54,8 @@
 		"react": "18.2.0",
 		"reflect-metadata": "^0.1.13",
 		"rxjs": "7.5.5",
-		"v8-compile-cache": "2.3.0"
+		"v8-compile-cache": "2.3.0",
+		"xml2js": "0.4.23"
 	},
 	"devDependencies": {
 		"@commitlint/cli": "17.0.2",
@@ -68,6 +69,7 @@
 		"@types/inquirer": "8.2.1",
 		"@types/node": "^16.0.0",
 		"@types/react": "18.0.14",
+		"@types/xml2js": "0.4.11",
 		"@typescript-eslint/eslint-plugin": "^5.0.0",
 		"@typescript-eslint/parser": "^5.0.0",
 		"chalk": "4.1.2",

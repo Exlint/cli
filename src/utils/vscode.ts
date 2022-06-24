@@ -1,6 +1,7 @@
 import { exec } from 'child_process';
 import util from 'util';
 import path from 'path';
+
 import fs from 'fs-extra';
 
 import { ILibrary } from '@/interfaces/library';
@@ -37,7 +38,6 @@ export const adjustLocalToExtensions = async (projectId: string, ...libs: ILibra
 		.catch(() => ({}));
 
 	const projectPath = path.join(EXLINT_FOLDER_PATH, projectId);
-
 	const config: Record<string, unknown> = {};
 
 	if (libs.includes('eslint')) {

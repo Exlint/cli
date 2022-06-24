@@ -13,14 +13,16 @@ import { IUseTasks } from '@/interfaces/use-tasks';
 import UseTasks from '@/containers/Use/UseTasks';
 import { downloadLibraries } from '@/utils/download-library';
 import { ExlintConfigService } from '@/modules/exlint-config/exlint-config.service';
-import { isVsCodeInstalled, ensureRequiredSoftware } from '@/utils/required-software';
+import { isVsCodeInstalled, ensureRequiredSoftware, isWebstormInstalled } from '@/utils/required-software';
 import { EXLINT_FOLDER_PATH } from '@/models/exlint-folder';
 import { setConfigLibrary } from '@/utils/config-library';
 import { ApiService } from '@/modules/api/api.service';
 import { adjustLocalToExtensions, installVsCodeExtensions } from '@/utils/vscode';
+import { adjustLocalToPlugins } from '@/utils/webstorm';
 
 import {
 	ADJUST_VSCODE_EXTENSIONS,
+	ADJUST_WEBSTORM_PLUGINS,
 	CREATE_CONFIGS_FILES,
 	DOWNLOADING_REQUIRED_PACKAGES,
 	DOWNLOADING_VSCODE_EXTENSIONS,
@@ -77,8 +79,9 @@ export class UseCommand implements CommandRunner {
 
 			const projectFolderPath = path.join(EXLINT_FOLDER_PATH, projectId);
 
-			const [vsCodeInstalled] = await Promise.all([
+			const [vsCodeInstalled, webstormInstalled] = await Promise.all([
 				isVsCodeInstalled(),
+				isWebstormInstalled(),
 				this.exlintConfigService.setValues({ projectId }),
 				fs.ensureDir(projectFolderPath),
 			]);
@@ -95,6 +98,10 @@ export class UseCommand implements CommandRunner {
 			if (vsCodeInstalled) {
 				tasks[DOWNLOADING_VSCODE_EXTENSIONS] = 'loading';
 				tasks[ADJUST_VSCODE_EXTENSIONS] = 'loading';
+			}
+
+			if (webstormInstalled) {
+				tasks[ADJUST_WEBSTORM_PLUGINS] = 'loading';
 			}
 
 			render(<UseTasks tasks={tasks} />);
@@ -145,6 +152,21 @@ export class UseCommand implements CommandRunner {
 						})
 						.catch(() => {
 							tasks[ADJUST_VSCODE_EXTENSIONS] = 'error';
+						})
+						.finally(() => {
+							render(<UseTasks tasks={tasks} />);
+						}),
+				);
+			}
+
+			if (webstormInstalled) {
+				tasksPromises.push(
+					adjustLocalToPlugins(projectId, ...requiredLibraries)
+						.then(() => {
+							tasks[ADJUST_WEBSTORM_PLUGINS] = 'success';
+						})
+						.catch(() => {
+							tasks[ADJUST_WEBSTORM_PLUGINS] = 'error';
 						})
 						.finally(() => {
 							render(<UseTasks tasks={tasks} />);

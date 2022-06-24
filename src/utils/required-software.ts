@@ -14,3 +14,9 @@ export const isVsCodeInstalled = async () => {
 
 	return vsCodeInfo[2] !== 'Not Found';
 };
+
+export const isWebstormInstalled = async () => {
+	const webstormInfo = await envinfo.helpers.getWebStormInfo();
+
+	return webstormInfo[2] !== 'Not Found';
+};
