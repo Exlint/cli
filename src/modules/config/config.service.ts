@@ -3,11 +3,12 @@ import { IConfig } from './config.interface';
 
 @Injectable()
 export class ConfigService {
-	private _config: IConfig = {
-		API_URL: 'https://api.exlint.io',
+	private config: IConfig = {
+		API_URL: 'https://www.api.exlint.io',
+		DASHBOARD_URL: 'https://www.app.exlint.io',
 	};
 
 	public getValue(key: keyof IConfig) {
-		return this._config[key];
+		return this.config[key];
 	}
 }

@@ -53,10 +53,10 @@ export class AuthCommand implements CommandRunner {
 			// * https://stackoverflow.com/a/28050404/9105207
 			temporaryServer.listen(0);
 
-			const apiUrl = this.configService.getValue('API_URL');
+			const dashboardUrl = this.configService.getValue('DASHBOARD_URL');
 			const serverAddress = temporaryServer.address() as AddressInfo;
 			const serverPort = serverAddress.port;
-			const authUrl = `${apiUrl}/user/auth/login?port=${serverPort}`;
+			const authUrl = `${dashboardUrl}/cli-login?port=${serverPort}`;
 
 			render(<PendingAuth link={authUrl} />);
 
@@ -72,20 +72,19 @@ export class AuthCommand implements CommandRunner {
 				}, AUTHENTICATION_TIMEOUT);
 
 				app.get('/:token', (req: express.Request<IRedirectParams>, res: express.Response) => {
-					const { token, email } = req.params;
+					const { token } = req.params;
 
-					if (!token || !email) {
+					if (!token) {
 						render(<Error />);
 
 						process.exit(1);
 					} else {
 						resolve(token);
 
-						res.redirect(`${this.configService.getValue('API_URL')}/authenticated`);
+						res.redirect(`${this.configService.getValue('DASHBOARD_URL')}/cli-authenticated`);
 					}
 
 					temporaryServer.close();
-
 					clearTimeout(authenticationTimeout);
 
 					return;
