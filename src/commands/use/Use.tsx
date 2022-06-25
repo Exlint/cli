@@ -7,26 +7,27 @@ import { Command, CommandRunner } from 'nest-commander';
 import fs from 'fs-extra';
 
 import { ConnectionService } from '@/modules/connection/connection.service';
+import type { IUseTasks } from '@/interfaces/use-tasks';
+import { ExlintConfigService } from '@/modules/exlint-config/exlint-config.service';
+import { EXLINT_FOLDER_PATH } from '@/models/exlint-folder';
+import { ApiService } from '@/modules/api/api.service';
 import NoInternet from '@/ui/NoInternet';
 import Error from '@/ui/Error/Error';
-import { IUseTasks } from '@/interfaces/use-tasks';
+import Preparing from '@/ui/Preparing';
 import UseTasks from '@/containers/Use/UseTasks';
-import { downloadLibraries } from '@/utils/download-library';
-import { ExlintConfigService } from '@/modules/exlint-config/exlint-config.service';
-import { isVsCodeInstalled, ensureRequiredSoftware, isWebstormInstalled } from '@/utils/required-software';
-import { EXLINT_FOLDER_PATH } from '@/models/exlint-folder';
-import { setConfigLibrary } from '@/utils/config-library';
-import { ApiService } from '@/modules/api/api.service';
-import { adjustLocalToExtensions, installVsCodeExtensions } from '@/utils/vscode';
-import { adjustLocalToPlugins } from '@/utils/webstorm';
 
 import {
 	ADJUST_VSCODE_EXTENSIONS,
 	ADJUST_WEBSTORM_PLUGINS,
 	CREATE_CONFIGS_FILES,
-	DOWNLOADING_REQUIRED_PACKAGES,
+	INSTALLING_REQUIRED_PACKAGES,
 	DOWNLOADING_VSCODE_EXTENSIONS,
 } from './models/task';
+import { installLibraries } from './utils/install-library';
+import { isVsCodeInstalled, ensureRequiredSoftware, isWebstormInstalled } from './utils/required-software';
+import { resetConfigLibraries, setConfigLibrary } from './utils/configure-library';
+import { VsCodeLibrariesService } from './services/ide-libraries/vscode-libraries.service';
+import { WebstormLibrariesService } from './services/ide-libraries/webstorm-libraries.service';
 
 @Command({
 	name: 'use',
@@ -39,6 +40,8 @@ export class UseCommand implements CommandRunner {
 		private readonly connectionService: ConnectionService,
 		private readonly apiService: ApiService,
 		private readonly exlintConfigService: ExlintConfigService,
+		private readonly vsCodeLibrariesService: VsCodeLibrariesService,
+		private readonly webstormLibrariesService: WebstormLibrariesService,
 	) {}
 
 	public async run([groupId]: [string]) {
@@ -49,6 +52,8 @@ export class UseCommand implements CommandRunner {
 
 			process.exit(1);
 		}
+
+		render(<Preparing />);
 
 		try {
 			/**
@@ -64,7 +69,7 @@ export class UseCommand implements CommandRunner {
 			const isSoftwareInstalled = await ensureRequiredSoftware();
 
 			if (!isSoftwareInstalled) {
-				render(<Error message="Node and NPM must be installed" />);
+				render(<Error message="Node.js and NPM must be installed" />);
 
 				process.exit(1);
 			}
@@ -84,42 +89,47 @@ export class UseCommand implements CommandRunner {
 				isWebstormInstalled(),
 				this.exlintConfigService.setValues({ projectId }),
 				fs.ensureDir(projectFolderPath),
+				resetConfigLibraries(projectId),
 			]);
 
 			const requiredLibraries = groupData.policies
-				.filter((policy) => policy.configuration !== null)
+				.filter(
+					(policy) =>
+						policy.configuration !== null && Object.keys(policy.configuration).length !== 0,
+				)
 				.map((policy) => policy.library);
 
 			const tasks: IUseTasks = {
-				[DOWNLOADING_REQUIRED_PACKAGES]: 'loading',
+				[INSTALLING_REQUIRED_PACKAGES]: 'loading',
 				[CREATE_CONFIGS_FILES]: 'loading',
+				...(vsCodeInstalled && {
+					[DOWNLOADING_VSCODE_EXTENSIONS]: 'loading',
+					[ADJUST_VSCODE_EXTENSIONS]: 'loading',
+				}),
+				...(webstormInstalled && {
+					[ADJUST_WEBSTORM_PLUGINS]: 'loading',
+				}),
 			};
-
-			if (vsCodeInstalled) {
-				tasks[DOWNLOADING_VSCODE_EXTENSIONS] = 'loading';
-				tasks[ADJUST_VSCODE_EXTENSIONS] = 'loading';
-			}
-
-			if (webstormInstalled) {
-				tasks[ADJUST_WEBSTORM_PLUGINS] = 'loading';
-			}
 
 			render(<UseTasks tasks={tasks} />);
 
-			const downloadLibrariesPromise = downloadLibraries(projectFolderPath, ...requiredLibraries)
+			const downloadLibrariesPromise = installLibraries(projectFolderPath, requiredLibraries)
 				.then(() => {
-					tasks[DOWNLOADING_REQUIRED_PACKAGES] = 'success';
+					tasks[INSTALLING_REQUIRED_PACKAGES] = 'success';
 				})
 				.catch(() => {
-					tasks[DOWNLOADING_REQUIRED_PACKAGES] = 'error';
+					tasks[INSTALLING_REQUIRED_PACKAGES] = 'error';
 				})
 				.finally(() => {
 					render(<UseTasks tasks={tasks} />);
 				});
 
 			const setConfigLibrariesPromises = groupData.policies
-				.filter((policy) => policy.configuration !== null)
-				.map((policy) => setConfigLibrary(policy.library, policy.configuration!));
+				.filter(
+					(policy) =>
+						policy.configuration !== null && Object.keys(policy.configuration).length !== 0,
+				)
+				.map((policy) => setConfigLibrary(projectId!, policy.library, policy.configuration!));
 
 			const setConfigLibrariesPromise = Promise.all(setConfigLibrariesPromises)
 				.then(() => {
@@ -136,7 +146,8 @@ export class UseCommand implements CommandRunner {
 
 			if (vsCodeInstalled) {
 				tasksPromises.push(
-					installVsCodeExtensions(...requiredLibraries)
+					this.vsCodeLibrariesService
+						.installExtensions(requiredLibraries)
 						.then(() => {
 							tasks[DOWNLOADING_VSCODE_EXTENSIONS] = 'success';
 						})
@@ -146,7 +157,8 @@ export class UseCommand implements CommandRunner {
 						.finally(() => {
 							render(<UseTasks tasks={tasks} />);
 						}),
-					adjustLocalToExtensions(projectId, ...requiredLibraries)
+					this.vsCodeLibrariesService
+						.adjustLocal(projectId, requiredLibraries)
 						.then(() => {
 							tasks[ADJUST_VSCODE_EXTENSIONS] = 'success';
 						})
@@ -161,7 +173,8 @@ export class UseCommand implements CommandRunner {
 
 			if (webstormInstalled) {
 				tasksPromises.push(
-					adjustLocalToPlugins(projectId, ...requiredLibraries)
+					this.webstormLibrariesService
+						.adjustLocal(projectId, requiredLibraries)
 						.then(() => {
 							tasks[ADJUST_WEBSTORM_PLUGINS] = 'success';
 						})

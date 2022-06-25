@@ -1,4 +1,4 @@
-export const DOWNLOADING_REQUIRED_PACKAGES = 'Downloading required packages';
+export const INSTALLING_REQUIRED_PACKAGES = 'Installing required packages';
 
 export const CREATE_CONFIGS_FILES = 'Creating your linters configurations files';
 

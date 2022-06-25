@@ -1,4 +1,4 @@
-import { IUnknown } from './unknown';
+import { IUnknown } from '@/interfaces/unknown';
 
 interface IWorkspaceComponent extends IUnknown {
 	$?: {

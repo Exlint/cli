@@ -3,10 +3,12 @@ import axios from 'axios';
 import keytar from 'keytar';
 
 import { ConfigService } from '../config/config.service';
-import { IGetGroupPoliciesResponse } from './interfaces/responses';
+import type { IGetGroupPoliciesResponse } from './interfaces/responses';
 
 @Injectable()
 export class ApiService {
+	private axiosInstance = axios.create({ baseURL: this.configService.getValue('API_URL') });
+
 	constructor(private readonly configService: ConfigService) {
 		this.axiosInstance.interceptors.request.use(
 			async (request) => {
@@ -19,8 +21,6 @@ export class ApiService {
 			(error) => Promise.reject(error),
 		);
 	}
-
-	private axiosInstance = axios.create({ baseURL: this.configService.getValue('API_URL') });
 
 	public async getGroupData(groupId: string) {
 		const groupDataResponse = await axios.get<IGetGroupPoliciesResponse>(

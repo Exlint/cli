@@ -1,0 +1,3 @@
+const MINUTE = 1000 * 60;
+
+export const INSTALLATION_TIMEOUT = 2 * MINUTE;

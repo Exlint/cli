@@ -8,6 +8,7 @@ import { ApiService } from '@/modules/api/api.service';
 import NoInternet from '@/ui/NoInternet';
 import Error from '@/ui/Error/Error';
 import InvalidToken from '@/ui/InvalidToken';
+import Preparing from '@/ui/Preparing';
 
 import { getLibsOutput } from './utils/libs-output';
 
@@ -30,6 +31,8 @@ export class RunCommand implements CommandRunner {
 
 			process.exit(1);
 		}
+
+		render(<Preparing />);
 
 		const hadValidToken = await this.apiService.hasValidToken();
 
