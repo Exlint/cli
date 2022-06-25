@@ -58,7 +58,7 @@
 		"xml2js": "0.4.23"
 	},
 	"devDependencies": {
-		"@commitlint/cli": "17.0.2",
+		"@commitlint/cli": "17.0.3",
 		"@compodoc/compodoc": "1.1.19",
 		"@exlint.io/inflint": "1.2.7",
 		"@nestjs/cli": "8.2.8",
