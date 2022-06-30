@@ -92,12 +92,7 @@ export class UseCommand implements CommandRunner {
 				resetConfigLibraries(projectId),
 			]);
 
-			const requiredLibraries = groupData.policies
-				.filter(
-					(policy) =>
-						policy.configuration !== null && Object.keys(policy.configuration).length !== 0,
-				)
-				.map((policy) => policy.library);
+			const requiredLibraries = groupData.policies.map((policy) => policy.library);
 
 			const tasks: IUseTasks = {
 				[INSTALLING_REQUIRED_PACKAGES]: 'loading',

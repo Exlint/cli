@@ -13,16 +13,13 @@ const getDepcheckOutput = async (projectId: string) => {
 
 	const isDepcheckConfigured = await fs.pathExists(depcheckConfigPath);
 
-	if (isDepcheckConfigured) {
-		const depcheckRunOutput = await spawnLib(projectId, 'depcheck', [
-			'-c',
-			`./${depcheckConfigFileName}`,
-		]);
+	const depcheckRunOutput = await spawnLib(
+		projectId,
+		'depcheck',
+		isDepcheckConfigured ? ['-c', `./${depcheckConfigFileName}`] : [],
+	);
 
-		return depcheckRunOutput;
-	}
-
-	return '';
+	return depcheckRunOutput;
 };
 
 const getLibraryOutput = async (projectId: string, library: ILibrary) => {
