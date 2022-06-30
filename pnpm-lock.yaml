@@ -12,6 +12,7 @@ specifiers:
   '@types/express': 4.17.13
   '@types/fs-extra': 9.0.13
   '@types/inquirer': 8.2.1
+  '@types/is-ci': 3.0.0
   '@types/node': 16.11.42
   '@types/react': 18.0.14
   '@types/xml2js': 0.4.11
@@ -68,6 +69,7 @@ dependencies:
   ink: 3.2.0_luyos4mouogwq6z3wafb3re4ce
   ink-spinner: 4.0.3_ink@3.2.0+react@18.2.0
   ink-task-list: 2.0.0_ink@3.2.0+react@18.2.0
+  is-ci: 3.0.1
   keytar: 7.9.0
   nest-commander: 2.5.0_6hgukcp32yahm4txjzqbizeppq
   open: 8.4.0
@@ -87,6 +89,7 @@ devDependencies:
   '@types/express': 4.17.13
   '@types/fs-extra': 9.0.13
   '@types/inquirer': 8.2.1
+  '@types/is-ci': 3.0.0
   '@types/node': 16.11.42
   '@types/react': 18.0.14
   '@types/xml2js': 0.4.11
@@ -105,7 +108,6 @@ devDependencies:
   eslint-plugin-unused-imports: 2.0.0_d2leuykf3ze5gm7f5c7krdewoi
   figlet: 1.5.2
   husky: 8.0.1
-  is-ci: 3.0.1
   lint-staged: 13.0.3
   npm-run-all: 4.1.5
   open-cli: 7.0.1
@@ -2029,6 +2031,12 @@ packages:
       '@types/through': 0.0.30
       rxjs: 7.5.5
 
+  /@types/is-ci/3.0.0:
+    resolution: {integrity: sha512-Q0Op0hdWbYd1iahB+IFNQcWXFq4O0Q5MwQP7uN0souuQ4rPg1vEYcnIOfr1gY+M+6rc8FGoRaBO1mOOvL29sEQ==}
+    dependencies:
+      ci-info: 3.3.2
+    dev: true
+
   /@types/json-schema/7.0.11:
     resolution: {integrity: sha512-wOuvG1SN4Us4rez+tylwwwCV1psiNVOkJeM3AUWUNWg/jDQY2+HE/444y5gc+jBmRqASOm2Oeh5c1axHobwRKQ==}
     dev: true
@@ -3029,9 +3037,8 @@ packages:
     resolution: {integrity: sha512-5tK7EtrZ0N+OLFMthtqOj4fI2Jeb88C4CAZPu25LDVUgXJ0A3Js4PMGqrn0JU1W0Mh1/Z8wZzYPxqUrXeBboCQ==}
     dev: false
 
-  /ci-info/3.3.1:
-    resolution: {integrity: sha512-SXgeMX9VwDe7iFFaEWkA5AstuER9YKqy4EhHqr4DVqkwmD9rpVimkMKWHdjn30Ja45txyjhSn63lVX69eVCckg==}
-    dev: true
+  /ci-info/3.3.2:
+    resolution: {integrity: sha512-xmDt/QIAdeZ9+nfdPsaBCpMvHNLFiLdjj59qjqn+6iPe6YmHGQ35sBnQ8uslRBXFmXkiZQOJRjvQeoGppoTjjg==}
 
   /clean-stack/2.2.0:
     resolution: {integrity: sha512-4diC9HaTE+KRAMWhDhrGOECgWZxoevMc5TlkObMqNSsVU62PYzXZ/SMTjzyGAFF1YusgxGcSWTEXBhp0CPwQ1A==}
@@ -5374,8 +5381,8 @@ packages:
     resolution: {integrity: sha512-ZYvCgrefwqoQ6yTyYUbQu64HsITZ3NfKX1lzaEYdkTDcfKzzCI/wthRRYKkdjHKFVgNiXKAKm65Zo1pk2as/QQ==}
     hasBin: true
     dependencies:
-      ci-info: 3.3.1
-    dev: true
+      ci-info: 3.3.2
+    dev: false
 
   /is-core-module/2.9.0:
     resolution: {integrity: sha512-+5FPy5PnwmO3lvfMb0AsoPaBG+5KHUI0wYFXOtYPnVVVspTFUuMZNfNaNVRt3FZadstu2c8x23vykRW/NBoU6A==}

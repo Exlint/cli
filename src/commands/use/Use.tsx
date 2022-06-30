@@ -5,6 +5,7 @@ import React from 'react';
 import { render } from 'ink';
 import { Command, CommandRunner } from 'nest-commander';
 import fs from 'fs-extra';
+import isCI from 'is-ci';
 
 import { ConnectionService } from '@/modules/connection/connection.service';
 import type { IUseTasks } from '@/interfaces/use-tasks';
@@ -85,8 +86,8 @@ export class UseCommand implements CommandRunner {
 			const projectFolderPath = path.join(EXLINT_FOLDER_PATH, projectId);
 
 			const [vsCodeInstalled, webstormInstalled] = await Promise.all([
-				isVsCodeInstalled(),
-				isWebstormInstalled(),
+				isCI ? Promise.resolve(false) : isVsCodeInstalled(),
+				isCI ? Promise.resolve(false) : isWebstormInstalled(),
 				this.exlintConfigService.setValues({ projectId }),
 				fs.ensureDir(projectFolderPath),
 				resetConfigLibraries(projectId),
