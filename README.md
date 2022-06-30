@@ -37,12 +37,9 @@
 -   [CI Workflows](#ci-workflows)
 -   [Documentation](#documentation)
 -   [Contributing](#contributing)
+
     -   [Code of Conduct](#code-of-conduct)
-    -   [Contributing Guide](#contributing-guide)
-    -   [Good First Issues](#good-first-issues)
--   [Credits](#credits)
-    -   [Backers](#backers)
-    -   [Sponsors](#sponsors)
+
 -   [License](#license)
 
 ## Getting Started
