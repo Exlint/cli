@@ -19,7 +19,7 @@ export class ExlintConfigService {
 	}
 
 	public async setValues(config: IExlintConfig) {
-		const newConfig = { ...this.config, config };
+		const newConfig = { ...this.config, ...config };
 
 		await fs.outputJson(this.filePath, newConfig);
 	}
