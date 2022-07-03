@@ -30,15 +30,15 @@ export const setConfigLibrary = async (
 
 export const resetConfigLibraries = async (projectId: string) => {
 	const libraries = ['eslint', 'prettier', 'depcheck', 'inflint', 'stylelint'];
-	const withFilesPatternLibraries = ['eslint', 'prettier', 'inflint', 'stylelint'];
 	const projectFolderPath = path.join(EXLINT_FOLDER_PATH, projectId);
 
-	const removeFilesPromises = [
-		...libraries.map((library) => fs.remove(path.join(projectFolderPath, `.${library}rc.json`))),
-		...withFilesPatternLibraries.map((library) =>
+	const removeFilesPromises = libraries.reduce<Promise<void>[]>((final, library) => {
+		return [
+			...final,
+			fs.remove(path.join(projectFolderPath, `.${library}rc.json`)),
 			fs.remove(path.join(projectFolderPath, `.exlint-${library}-pattern`)),
-		),
-	];
+		];
+	}, []);
 
 	await Promise.all(removeFilesPromises);
 };

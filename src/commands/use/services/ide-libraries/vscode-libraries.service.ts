@@ -15,25 +15,31 @@ const asyncExec = util.promisify(exec);
 
 @Injectable()
 export class VsCodeLibrariesService extends IdeLibrares {
-	protected async adjustLocalImpl(projectId: string, libs: ILibrary[]) {
+	public async adjustLocal(projectId: string, libs: ILibrary[]) {
+		const projectPath = path.join(EXLINT_FOLDER_PATH, projectId);
 		const vsCodeSettingsFilePath = path.join(process.cwd(), '.vscode', 'settings.json');
 
 		const currentVsCodeSettingsContent: Record<string, unknown> = await fs
 			.readJson(vsCodeSettingsFilePath)
 			.catch(() => ({}));
 
-		const projectPath = path.join(EXLINT_FOLDER_PATH, projectId);
-
 		const config = {
 			...currentVsCodeSettingsContent,
 			...(libs.includes('eslint') && {
-				'eslint.workingDirectories': [projectPath],
+				'eslint.options': {
+					overrideConfigFile: path.join(projectPath, '.eslintrc.json'),
+				},
+				'eslint.nodePath': path.join(projectPath, 'node_modules'),
 			}),
 			...(libs.includes('prettier') && {
-				'prettier.configPath': path.join(EXLINT_FOLDER_PATH, projectId, '.prettierrc.json'),
+				'prettier.configPath': path.join(projectPath, '.prettierrc.json'),
+				'prettier.prettierPath': path.join(projectPath, 'node_modules', 'prettier'),
+				'editor.formatOnSave': true,
+				'editor.defaultFormatter': 'esbenp.prettier-vscode',
 			}),
 			...(libs.includes('stylelint') && {
-				'stylelint.configFile': path.join(EXLINT_FOLDER_PATH, projectId, '.stylelintrc.json'),
+				'stylelint.configFile': path.join(projectPath, '.stylelintrc.json'),
+				'stylelint.stylelintPath': path.join(projectPath, 'node_modules', 'stylelint'),
 			}),
 		};
 
@@ -41,10 +47,6 @@ export class VsCodeLibrariesService extends IdeLibrares {
 	}
 
 	public async installExtensions(libs: ILibrary[]) {
-		if (libs.length === 0) {
-			return;
-		}
-
 		const matchingExtensions = libs.map((lib) => vsCodeExtensions[lib]).filter(Boolean);
 
 		const cmdArgs = matchingExtensions

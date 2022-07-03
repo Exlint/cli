@@ -2,7 +2,7 @@ import http from 'http';
 import type { AddressInfo } from 'net';
 
 import React from 'react';
-import { render } from 'ink';
+import { Newline, render, Text } from 'ink';
 import { Command, CommandRunner } from 'nest-commander';
 import keytar from 'keytar';
 import open from 'open';
@@ -91,9 +91,19 @@ export class AuthCommand implements CommandRunner {
 				});
 			});
 
-			await keytar.setPassword('exlint', '', userToken);
+			await keytar.setPassword('exlint', 'exlint', userToken);
+
+			render(
+				<Text>
+					<Newline />
+					Your account has been authenticated. Exlint is now ready to use. 🚀🚀
+					<Newline />
+				</Text>,
+			);
+
+			process.exit(0);
 		} catch {
-			render(<Error message="Failed to authenticate, please try again" />);
+			render(<Error message="Failed to authenticate, please try again." />);
 
 			process.exit(1);
 		}

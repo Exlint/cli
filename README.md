@@ -44,6 +44,9 @@
 
 ## Getting Started
 
+To use Exlint, you first need to configure an account with groups and policies.
+Please visit [Exlint](https://www.app.exlint.io) before using the CLI.
+
 We recommend install Exlint CLI globally using [`npm`](https://npmjs.com):
 
 ```bash

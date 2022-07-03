@@ -1,5 +1,5 @@
 import { Command, CommandRunner } from 'nest-commander';
-import { render, Text } from 'ink';
+import { Newline, render, Text } from 'ink';
 import React from 'react';
 
 import { ConnectionService } from '@/modules/connection/connection.service';
@@ -55,7 +55,13 @@ export class RunCommand implements CommandRunner {
 
 			const libsRunOutputs = await getLibsOutput(projectId);
 
-			render(<Text>{libsRunOutputs}</Text>);
+			render(
+				<Text>
+					<Newline />
+					{libsRunOutputs}
+					<Newline />
+				</Text>,
+			);
 		} catch {
 			render(<Error message="Failed to run Exlint, please try again." />);
 
