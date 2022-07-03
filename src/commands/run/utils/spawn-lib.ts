@@ -1,15 +1,14 @@
 import { spawn } from 'child_process';
 
-import { ILibrary } from '@/interfaces/library';
-
 import { ISpawnResult } from '../interfaces/spawn-result';
 
-export const spawnLib = async (libraryName: ILibrary, args: string[]) => {
+export const spawnLib = async (libraryName: string, args: string[]) => {
 	const commandOutput = await new Promise<ISpawnResult>((resolve) => {
 		let output = '';
 
-		const spawner = spawn('npx', [libraryName, ...args], {
+		const spawner = spawn('npx', [libraryName, ...args, '--color'], {
 			cwd: process.cwd(),
+			windowsHide: true,
 		});
 
 		spawner.stdout?.on('data', (data) => {

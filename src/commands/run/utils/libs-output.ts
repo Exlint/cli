@@ -4,7 +4,6 @@ import fs from 'fs-extra';
 import chalk from 'chalk';
 
 import { EXLINT_FOLDER_PATH } from '@/models/exlint-folder';
-import { ILibrary } from '@/interfaces/library';
 
 import { spawnLib } from './spawn-lib';
 
@@ -63,7 +62,29 @@ const getPrettierOutput = async (projectId: string) => {
 	};
 };
 
-const getLibraryOutput = async (projectId: string, library: ILibrary) => {
+const getInflintOutput = async (projectId: string) => {
+	const libraryConfigFileName = '.inflintrc.json';
+	const libraryConfigPath = path.join(EXLINT_FOLDER_PATH, projectId, libraryConfigFileName);
+	const isLibraryConfigured = await fs.pathExists(libraryConfigPath);
+
+	if (isLibraryConfigured) {
+		const libraryRunOutput = await spawnLib('@exlint.io/inflint', ['--config', libraryConfigPath]);
+
+		return {
+			output: `${chalk[libraryRunOutput.success ? 'greenBright' : 'red'].bold(
+				'--- Inflint output ---',
+			)}\n\n${libraryRunOutput.output}`,
+			success: libraryRunOutput.success,
+		};
+	}
+
+	return {
+		output: '',
+		success: true,
+	};
+};
+
+const getLibraryOutput = async (projectId: string, library: 'eslint' | 'stylelint') => {
 	const libraryConfigFileName = `.${library}rc.json`;
 	const libraryConfigPath = path.join(EXLINT_FOLDER_PATH, projectId, libraryConfigFileName);
 	const libraryPatternPath = path.join(EXLINT_FOLDER_PATH, projectId, `.exlint-${library}-pattern`);
@@ -76,9 +97,11 @@ const getLibraryOutput = async (projectId: string, library: ILibrary) => {
 
 		const libraryRunOutput = await spawnLib(library, ['--config', libraryConfigPath, libraryPattern]);
 
+		const libraryBrand = library === 'eslint' ? 'ESLint' : 'Stylelint';
+
 		return {
 			output: `${chalk[libraryRunOutput.success ? 'greenBright' : 'red'].bold(
-				`--- ${library[0]!.toUpperCase() + library.substring(1)} output ---`,
+				`--- ${libraryBrand} output ---`,
 			)}\n\n${libraryRunOutput.output}`,
 			success: libraryRunOutput.success,
 		};
@@ -94,8 +117,8 @@ export const getLibsOutput = async (projectId: string) => {
 	const librariesResult = await Promise.all([
 		getDepcheckOutput(projectId),
 		getPrettierOutput(projectId),
+		getInflintOutput(projectId),
 		getLibraryOutput(projectId, 'eslint'),
-		getLibraryOutput(projectId, 'inflint'),
 		getLibraryOutput(projectId, 'stylelint'),
 	]);
 

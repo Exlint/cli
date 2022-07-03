@@ -109,11 +109,11 @@ export class UseCommand implements CommandRunner {
 				[INSTALLING_REQUIRED_PACKAGES]: 'loading',
 				[CREATE_CONFIGS_FILES]: 'loading',
 				...(shouldAdjustToVsCode && {
-					[DOWNLOADING_VSCODE_EXTENSIONS]: 'loading',
-					[ADJUST_VSCODE_EXTENSIONS]: 'loading',
+					[DOWNLOADING_VSCODE_EXTENSIONS]: 'pending',
+					[ADJUST_VSCODE_EXTENSIONS]: 'pending',
 				}),
 				...(shouldAdjustToWebstorm && {
-					[ADJUST_WEBSTORM_PLUGINS]: 'loading',
+					[ADJUST_WEBSTORM_PLUGINS]: 'pending',
 				}),
 			};
 
@@ -145,10 +145,15 @@ export class UseCommand implements CommandRunner {
 					render(<UseTasks tasks={tasks} />);
 				});
 
-			const tasksPromises = [downloadLibrariesPromise, setConfigLibrariesPromise];
+			await Promise.all([downloadLibrariesPromise, setConfigLibrariesPromise]);
+
+			const editorsPromises: Promise<void>[] = [];
 
 			if (shouldAdjustToVsCode) {
-				tasksPromises.push(
+				tasks[DOWNLOADING_VSCODE_EXTENSIONS] = 'loading';
+				tasks[ADJUST_VSCODE_EXTENSIONS] = 'loading';
+
+				editorsPromises.push(
 					this.vsCodeLibrariesService
 						.installExtensions(requiredLibraries)
 						.then(() => {
@@ -175,7 +180,9 @@ export class UseCommand implements CommandRunner {
 			}
 
 			if (shouldAdjustToWebstorm) {
-				tasksPromises.push(
+				tasks[ADJUST_WEBSTORM_PLUGINS] = 'loading';
+
+				editorsPromises.push(
 					this.webstormLibrariesService
 						.adjustLocal(projectId, requiredLibraries)
 						.then(() => {
@@ -190,7 +197,7 @@ export class UseCommand implements CommandRunner {
 				);
 			}
 
-			await Promise.all(tasksPromises);
+			await Promise.all(editorsPromises);
 		} catch {
 			render(<Error message="Failed to run Exlint, please try again." />);
 
