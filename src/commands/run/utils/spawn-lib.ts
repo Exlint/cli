@@ -1,23 +1,26 @@
 import { spawn } from 'child_process';
-import path from 'path';
 
 import { ILibrary } from '@/interfaces/library';
-import { EXLINT_FOLDER_PATH } from '@/models/exlint-folder';
 
-export const spawnLib = async (projectId: string, libraryName: ILibrary, args: string[]) => {
-	const projectPath = path.join(EXLINT_FOLDER_PATH, projectId);
+import { ISpawnResult } from '../interfaces/spawn-result';
 
-	const commandOutput = await new Promise<string>((resolve) => {
+export const spawnLib = async (libraryName: ILibrary, args: string[]) => {
+	const commandOutput = await new Promise<ISpawnResult>((resolve) => {
 		let output = '';
 
-		spawn('npx', [libraryName, ...args], {
-			stdio: 'inherit',
-			cwd: projectPath,
-		})
-			.stdout?.on('data', (data) => {
-				output += data;
-			})
-			.on('close', () => resolve(output));
+		const spawner = spawn('npx', [libraryName, ...args], {
+			cwd: process.cwd(),
+		});
+
+		spawner.stdout?.on('data', (data) => {
+			output += data;
+		});
+		spawner.stderr?.on('data', (data) => {
+			output += data;
+		});
+		spawner.on('close', (exitCode: number) =>
+			resolve({ output: output.trim(), success: exitCode === 0 }),
+		);
 	});
 
 	return commandOutput;

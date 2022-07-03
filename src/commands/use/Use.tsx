@@ -5,6 +5,7 @@ import React from 'react';
 import { render } from 'ink';
 import { Command, CommandRunner } from 'nest-commander';
 import fs from 'fs-extra';
+import isCI from 'is-ci';
 
 import { ConnectionService } from '@/modules/connection/connection.service';
 import type { IUseTasks } from '@/interfaces/use-tasks';
@@ -15,6 +16,7 @@ import NoInternet from '@/ui/NoInternet';
 import Error from '@/ui/Error/Error';
 import Preparing from '@/ui/Preparing';
 import UseTasks from '@/containers/Use/UseTasks';
+import { intersection } from '@/utils/intersection';
 
 import {
 	ADJUST_VSCODE_EXTENSIONS,
@@ -62,6 +64,14 @@ export class UseCommand implements CommandRunner {
 			 */
 			const groupData = await this.apiService.getGroupData(groupId);
 
+			if (groupData.policies.length === 0) {
+				render(<Error message="No policies were configured in this group. Exiting." />);
+
+				process.exit(0);
+			}
+
+			const requiredLibraries = groupData.policies.map((policy) => policy.library);
+
 			/**
 			 * Ensure required software is installed.
 			 * Currently, only NPM packages are supported, so only Node.js and NPM are required
@@ -84,24 +94,25 @@ export class UseCommand implements CommandRunner {
 
 			const projectFolderPath = path.join(EXLINT_FOLDER_PATH, projectId);
 
-			const [vsCodeInstalled, webstormInstalled] = await Promise.all([
-				isVsCodeInstalled(),
-				isWebstormInstalled(),
+			const shouldAdjustToIde =
+				!isCI && intersection(requiredLibraries, ['eslint', 'prettier', 'stylelint']).length > 0;
+
+			const [shouldAdjustToVsCode, shouldAdjustToWebstorm] = await Promise.all([
+				shouldAdjustToIde && isVsCodeInstalled(),
+				shouldAdjustToIde && isWebstormInstalled(),
 				this.exlintConfigService.setValues({ projectId }),
 				fs.ensureDir(projectFolderPath),
 				resetConfigLibraries(projectId),
 			]);
 
-			const requiredLibraries = groupData.policies.map((policy) => policy.library);
-
 			const tasks: IUseTasks = {
 				[INSTALLING_REQUIRED_PACKAGES]: 'loading',
 				[CREATE_CONFIGS_FILES]: 'loading',
-				...(vsCodeInstalled && {
+				...(shouldAdjustToVsCode && {
 					[DOWNLOADING_VSCODE_EXTENSIONS]: 'loading',
 					[ADJUST_VSCODE_EXTENSIONS]: 'loading',
 				}),
-				...(webstormInstalled && {
+				...(shouldAdjustToWebstorm && {
 					[ADJUST_WEBSTORM_PLUGINS]: 'loading',
 				}),
 			};
@@ -119,12 +130,9 @@ export class UseCommand implements CommandRunner {
 					render(<UseTasks tasks={tasks} />);
 				});
 
-			const setConfigLibrariesPromises = groupData.policies
-				.filter(
-					(policy) =>
-						policy.configuration !== null && Object.keys(policy.configuration).length !== 0,
-				)
-				.map((policy) => setConfigLibrary(projectId!, policy.library, policy.configuration!));
+			const setConfigLibrariesPromises = groupData.policies.map((policy) =>
+				setConfigLibrary(projectId!, policy.library, policy.configuration!),
+			);
 
 			const setConfigLibrariesPromise = Promise.all(setConfigLibrariesPromises)
 				.then(() => {
@@ -139,7 +147,7 @@ export class UseCommand implements CommandRunner {
 
 			const tasksPromises = [downloadLibrariesPromise, setConfigLibrariesPromise];
 
-			if (vsCodeInstalled) {
+			if (shouldAdjustToVsCode) {
 				tasksPromises.push(
 					this.vsCodeLibrariesService
 						.installExtensions(requiredLibraries)
@@ -166,7 +174,7 @@ export class UseCommand implements CommandRunner {
 				);
 			}
 
-			if (webstormInstalled) {
+			if (shouldAdjustToWebstorm) {
 				tasksPromises.push(
 					this.webstormLibrariesService
 						.adjustLocal(projectId, requiredLibraries)

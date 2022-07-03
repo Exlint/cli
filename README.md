@@ -1,73 +1,116 @@
 <p align="center">
-  <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="200" alt="Nest Logo" /></a>
+	<a href="https://github.com/Exlint/cli">
+    	<img src="https://img.shields.io/github/workflow/status/Exlint/cli/Integration" alt="build status">
+  	</a>
+	<a href="https://www.npmjs.com/package/@exlint.io/cli">
+    	<img src="https://img.shields.io/npm/dw/@exlint.io/cli" alt="npm downloads">
+  	</a>
+	<a href="https://github.com/Exlint/cli">
+    	<img src="https://img.shields.io/npm/l/@exlint.io/cli" alt="npm license">
+  	</a>
+	<a href="https://github.com/Exlint/cli">
+    	<img src="https://img.shields.io/npm/v/@exlint.io/cli" alt="npm version">
+  	</a>
+	<a href="https://github.com/Exlint/cli">
+    	<img src="https://img.shields.io/github/commit-activity/m/Exlint/cli" alt="commits">
+  	</a>
 </p>
 
-[circleci-image]: https://img.shields.io/circleci/build/github/nestjs/nest/master?token=abc123def456
-[circleci-url]: https://circleci.com/gh/nestjs/nest
+<p>&nbsp;</p>
 
-  <p align="center">A progressive <a href="http://nodejs.org" target="_blank">Node.js</a> framework for building efficient and scalable server-side applications.</p>
-    <p align="center">
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/v/@nestjs/core.svg" alt="NPM Version" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/l/@nestjs/core.svg" alt="Package License" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/dm/@nestjs/common.svg" alt="NPM Downloads" /></a>
-<a href="https://circleci.com/gh/nestjs/nest" target="_blank"><img src="https://img.shields.io/circleci/build/github/nestjs/nest/master" alt="CircleCI" /></a>
-<a href="https://coveralls.io/github/nestjs/nest?branch=master" target="_blank"><img src="https://coveralls.io/repos/github/nestjs/nest/badge.svg?branch=master#9" alt="Coverage" /></a>
-<a href="https://discord.gg/G7Qnnhy" target="_blank"><img src="https://img.shields.io/badge/discord-online-brightgreen.svg" alt="Discord"/></a>
-<a href="https://opencollective.com/nest#backer" target="_blank"><img src="https://opencollective.com/nest/backers/badge.svg" alt="Backers on Open Collective" /></a>
-<a href="https://opencollective.com/nest#sponsor" target="_blank"><img src="https://opencollective.com/nest/sponsors/badge.svg" alt="Sponsors on Open Collective" /></a>
-  <a href="https://paypal.me/kamilmysliwiec" target="_blank"><img src="https://img.shields.io/badge/Donate-PayPal-ff3f59.svg"/></a>
-    <a href="https://opencollective.com/nest#sponsor"  target="_blank"><img src="https://img.shields.io/badge/Support%20us-Open%20Collective-41B883.svg" alt="Support us"></a>
-  <a href="https://twitter.com/nestframework" target="_blank"><img src="https://img.shields.io/twitter/follow/nestframework.svg?style=social&label=Follow"></a>
-</p>
-  <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
-  [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
+<p align="center"><img src="./assets/brand.png" width="80%"/></p>
 
-## Description
+<h2 align="center">Exlint CLI</h2>
 
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
+**👩🏻‍💻 Developement and Code Standard**: Keep your code clean with Exlint over multiple repositories.
 
-## Installation
+**🚀 CI Workflow**: Integrate Exlint into your workflow to continuously prevent coding bad practices.
 
-```bash
-$ npm install
-```
+**📦️ Sharable Code Conventions**: Share, use and run your code conventions over any chosen repositories.
 
-## Running the app
+<p align="right"><em>See more on <a href="https://exlint.io">exlint.io</a></em></p>
 
-```bash
-# development
-$ npm run start
+## Table of Contents
 
-# watch mode
-$ npm run start:dev
+-   [Getting Started](#getting-started)
+-   [Running from command line](#running-from-command-line)
+-   [CI Workflows](#ci-workflows)
+-   [Documentation](#documentation)
+-   [Contributing](#contributing)
 
-# production mode
-$ npm run start:prod
-```
+    -   [Code of Conduct](#code-of-conduct)
 
-## Test
+-   [License](#license)
+
+## Getting Started
+
+To use Exlint, you first need to configure an account with groups and policies.
+Please visit [Exlint](https://www.app.exlint.io) before using the CLI.
+
+We recommend install Exlint CLI globally using [`npm`](https://npmjs.com):
 
 ```bash
-# unit tests
-$ npm run test
-
-# e2e tests
-$ npm run test:e2e
-
-# test coverage
-$ npm run test:cov
+npm install --global @exlint.io/cli
 ```
 
-## Support
+You can also install it locally:
 
-Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
+```bash
+npm install --save-dev @exlint.io/cli
+```
 
-## Stay in touch
+## Running from command line
 
-- Author - [Kamil Myśliwiec](https://kamilmysliwiec.com)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
+You can run Exlint directly from the CLI (if it's globally available in your `PATH`, e.g. by `npm install --global @exlint.io/cli`) with a variety of useful commands.
+If you haven't installed Exlint CLI globally, but locally, you can use it in the CLI by using `npx`.
+
+### Auth Command
+
+```bash
+exlint auth
+```
+
+Exlint requires you to authenticate. This will allow you to use your configured groups and policies in the CLI.
+First you should make sure you have created an account and configured your group.
+When running the command, you will be prompted to your browser to authenticate yourself.
+After doing so, you can return back to the CLI and start using Exlint!
+
+### Use Command
+
+```bash
+exlint use <group_id>
+```
+
+When you want to use a group you have created in the dashboard, you copy its identifier and use it with the `use` command.
+Exlint will adjust your IDE (if using VSCode or Webstorm), install required extensions and libraries.
+You can easily switch group by using the command again!
+
+### Run Command
+
+```bash
+exlint run
+```
+
+After running the `use` command, you can run your group over your code to get CLI results.
+Exlint will run your configured libraries against your code and report upon success or failure run.
+If your code fails to match the configured code standard, Exlint will report the issues in the CLI.
+
+## CI Workflows
+
+You can run Exlint also in CI. If you want to integrate an Exlint step in your workflow, you can use the [GitHub Action](https://github.com/Exlint/github-action)
+
+## Documentation
+
+Learn more about using [Exlint on the official docs site!](https://docs.exlint.io)
+
+## Contributing
+
+Development of Exlint CLI happens in the open on GitHub, and we are grateful to the community for contributing bugfixes and improvements. Read below to learn how you can take part in improving Jest.
+
+### [Code of Conduct](CODE_OF_CONDUCT.md)
+
+Exlint has adopted a Code of Conduct that we expect project participants to adhere to.
 
 ## License
 
-Nest is [MIT licensed](LICENSE).
+Exlint is [Apache 2.0 Licensed](./LICENSE).
