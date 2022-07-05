@@ -1,4 +1,4 @@
-import { Command, CommandRunner } from 'nest-commander';
+import { Command, CommandRunner, Option } from 'nest-commander';
 import { Newline, render, Text } from 'ink';
 import React from 'react';
 
@@ -11,6 +11,7 @@ import InvalidToken from '@/ui/InvalidToken';
 import Preparing from '@/ui/Preparing';
 
 import { getLibsOutput } from './utils/libs-output';
+import { ICommandOptions } from './interfaces/options';
 
 @Command({
 	name: 'run',
@@ -23,7 +24,7 @@ export class RunCommand implements CommandRunner {
 		private readonly apiService: ApiService,
 	) {}
 
-	public async run() {
+	public async run(_: string[], options: ICommandOptions) {
 		const hasConnection = await this.connectionService.checkConnection();
 
 		if (!hasConnection) {
@@ -53,7 +54,7 @@ export class RunCommand implements CommandRunner {
 				process.exit(1);
 			}
 
-			const libsRunOutputs = await getLibsOutput(projectId);
+			const libsRunOutputs = await getLibsOutput(projectId, options.fix);
 
 			render(
 				<Text>
@@ -67,5 +68,15 @@ export class RunCommand implements CommandRunner {
 
 			process.exit(1);
 		}
+	}
+
+	@Option({
+		flags: '-f, --fix [runWithFix]',
+		name: 'withFix',
+		description: 'Exlint will try to automatically fix issues if exist',
+		defaultValue: false,
+	})
+	public runWithFix() {
+		return;
 	}
 }

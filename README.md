@@ -88,12 +88,17 @@ You can easily switch group by using the command again!
 ### Run Command
 
 ```bash
-exlint run
+exlint run [options]
 ```
 
 After running the `use` command, you can run your group over your code to get CLI results.
 Exlint will run your configured libraries against your code and report upon success or failure run.
 If your code fails to match the configured code standard, Exlint will report the issues in the CLI.
+
+#### Options
+
+You can also run the command with `--fix` or `-f` option.
+Provided this options, Exlint will try to automatically fix your code issues.
 
 ## CI Workflows
 

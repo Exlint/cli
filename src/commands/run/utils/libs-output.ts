@@ -29,7 +29,7 @@ const getDepcheckOutput = async (projectId: string) => {
 	};
 };
 
-const getPrettierOutput = async (projectId: string) => {
+const getPrettierOutput = async (projectId: string, withFix: boolean) => {
 	const libraryConfigFileName = '.prettierrc.json';
 	const libraryConfigPath = path.join(EXLINT_FOLDER_PATH, projectId, libraryConfigFileName);
 	const libraryPatternPath = path.join(EXLINT_FOLDER_PATH, projectId, '.exlint-prettier-pattern');
@@ -46,6 +46,7 @@ const getPrettierOutput = async (projectId: string) => {
 			libraryPattern,
 			'--check',
 			'--ignore-unknown',
+			...(withFix ? ['--write'] : []),
 		]);
 
 		return {
@@ -84,7 +85,7 @@ const getInflintOutput = async (projectId: string) => {
 	};
 };
 
-const getLibraryOutput = async (projectId: string, library: 'eslint' | 'stylelint') => {
+const getLibraryOutput = async (projectId: string, library: 'eslint' | 'stylelint', withFix: boolean) => {
 	const libraryConfigFileName = `.${library}rc.json`;
 	const libraryConfigPath = path.join(EXLINT_FOLDER_PATH, projectId, libraryConfigFileName);
 	const libraryPatternPath = path.join(EXLINT_FOLDER_PATH, projectId, `.exlint-${library}-pattern`);
@@ -95,7 +96,12 @@ const getLibraryOutput = async (projectId: string, library: 'eslint' | 'stylelin
 			.readFile(libraryPatternPath, { encoding: 'utf-8' })
 			.catch(() => '**/*');
 
-		const libraryRunOutput = await spawnLib(library, ['--config', libraryConfigPath, libraryPattern]);
+		const libraryRunOutput = await spawnLib(library, [
+			'--config',
+			libraryConfigPath,
+			libraryPattern,
+			...(withFix ? ['--fix'] : []),
+		]);
 
 		const libraryBrand = library === 'eslint' ? 'ESLint' : 'Stylelint';
 
@@ -113,13 +119,13 @@ const getLibraryOutput = async (projectId: string, library: 'eslint' | 'stylelin
 	};
 };
 
-export const getLibsOutput = async (projectId: string) => {
+export const getLibsOutput = async (projectId: string, withFix: boolean) => {
 	const librariesResult = await Promise.all([
 		getDepcheckOutput(projectId),
-		getPrettierOutput(projectId),
+		getPrettierOutput(projectId, withFix),
 		getInflintOutput(projectId),
-		getLibraryOutput(projectId, 'eslint'),
-		getLibraryOutput(projectId, 'stylelint'),
+		getLibraryOutput(projectId, 'eslint', withFix),
+		getLibraryOutput(projectId, 'stylelint', withFix),
 	]);
 
 	const relevantLibrariesResult = librariesResult.filter((libResult) => Boolean(libResult.output));
