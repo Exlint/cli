@@ -2,7 +2,7 @@ import crypto from 'crypto';
 import path from 'path';
 
 import React from 'react';
-import { render } from 'ink';
+import { render, Text } from 'ink';
 import { Command, CommandRunner } from 'nest-commander';
 import fs from 'fs-extra';
 import isCI from 'is-ci';
@@ -30,6 +30,7 @@ import { isVsCodeInstalled, ensureRequiredSoftware, isWebstormInstalled } from '
 import { resetConfigLibraries, setConfigLibrary } from './utils/configure-library';
 import { VsCodeLibrariesService } from './services/ide-libraries/vscode-libraries.service';
 import { WebstormLibrariesService } from './services/ide-libraries/webstorm-libraries.service';
+// import { IPolicyFilesPattern } from './interfaces/file-pattern';
 
 @Command({
 	name: 'use',
@@ -65,7 +66,11 @@ export class UseCommand implements CommandRunner {
 			const groupData = await this.apiService.getGroupData(groupId);
 
 			if (groupData.policies.length === 0) {
-				render(<Error message="No policies were configured in this group. Exiting." />);
+				render(
+					<Text bold color="magenta">
+						No policies were configured in this group.
+					</Text>,
+				);
 
 				process.exit(0);
 			}
@@ -131,7 +136,7 @@ export class UseCommand implements CommandRunner {
 				});
 
 			const setConfigLibrariesPromises = groupData.policies.map((policy) =>
-				setConfigLibrary(projectId!, policy.library, policy.configuration!),
+				setConfigLibrary(projectId!, policy.library, policy.configuration),
 			);
 
 			const setConfigLibrariesPromise = Promise.all(setConfigLibrariesPromises)
@@ -149,52 +154,64 @@ export class UseCommand implements CommandRunner {
 
 			const editorsPromises: Promise<void>[] = [];
 
-			if (shouldAdjustToVsCode) {
-				tasks[DOWNLOADING_VSCODE_EXTENSIONS] = 'loading';
-				tasks[ADJUST_VSCODE_EXTENSIONS] = 'loading';
+			if (shouldAdjustToIde || shouldAdjustToWebstorm) {
+				/* const policiesFilesPattern = groupData.policies.reduce<IPolicyFilesPattern>(
+					(final, policy) => {
+						return {
+							...final,
+							[policy.library]: policy.configuration?.__EXLINT_FILES_PATTERN__,
+						};
+					},
+					{},
+				); */
 
-				editorsPromises.push(
-					this.vsCodeLibrariesService
-						.installExtensions(requiredLibraries)
-						.then(() => {
-							tasks[DOWNLOADING_VSCODE_EXTENSIONS] = 'success';
-						})
-						.catch(() => {
-							tasks[DOWNLOADING_VSCODE_EXTENSIONS] = 'error';
-						})
-						.finally(() => {
-							render(<UseTasks tasks={tasks} />);
-						}),
-					this.vsCodeLibrariesService
-						.adjustLocal(projectId, requiredLibraries)
-						.then(() => {
-							tasks[ADJUST_VSCODE_EXTENSIONS] = 'success';
-						})
-						.catch(() => {
-							tasks[ADJUST_VSCODE_EXTENSIONS] = 'error';
-						})
-						.finally(() => {
-							render(<UseTasks tasks={tasks} />);
-						}),
-				);
-			}
+				if (shouldAdjustToVsCode) {
+					tasks[DOWNLOADING_VSCODE_EXTENSIONS] = 'loading';
+					tasks[ADJUST_VSCODE_EXTENSIONS] = 'loading';
 
-			if (shouldAdjustToWebstorm) {
-				tasks[ADJUST_WEBSTORM_PLUGINS] = 'loading';
+					editorsPromises.push(
+						this.vsCodeLibrariesService
+							.installExtensions(requiredLibraries)
+							.then(() => {
+								tasks[DOWNLOADING_VSCODE_EXTENSIONS] = 'success';
+							})
+							.catch(() => {
+								tasks[DOWNLOADING_VSCODE_EXTENSIONS] = 'error';
+							})
+							.finally(() => {
+								render(<UseTasks tasks={tasks} />);
+							}),
+						this.vsCodeLibrariesService
+							.adjustLocal(projectId, requiredLibraries)
+							.then(() => {
+								tasks[ADJUST_VSCODE_EXTENSIONS] = 'success';
+							})
+							.catch(() => {
+								tasks[ADJUST_VSCODE_EXTENSIONS] = 'error';
+							})
+							.finally(() => {
+								render(<UseTasks tasks={tasks} />);
+							}),
+					);
+				}
 
-				editorsPromises.push(
-					this.webstormLibrariesService
-						.adjustLocal(projectId, requiredLibraries)
-						.then(() => {
-							tasks[ADJUST_WEBSTORM_PLUGINS] = 'success';
-						})
-						.catch(() => {
-							tasks[ADJUST_WEBSTORM_PLUGINS] = 'error';
-						})
-						.finally(() => {
-							render(<UseTasks tasks={tasks} />);
-						}),
-				);
+				if (shouldAdjustToWebstorm) {
+					tasks[ADJUST_WEBSTORM_PLUGINS] = 'loading';
+
+					editorsPromises.push(
+						this.webstormLibrariesService
+							.adjustLocal(projectId, requiredLibraries)
+							.then(() => {
+								tasks[ADJUST_WEBSTORM_PLUGINS] = 'success';
+							})
+							.catch(() => {
+								tasks[ADJUST_WEBSTORM_PLUGINS] = 'error';
+							})
+							.finally(() => {
+								render(<UseTasks tasks={tasks} />);
+							}),
+					);
+				}
 			}
 
 			await Promise.all(editorsPromises);

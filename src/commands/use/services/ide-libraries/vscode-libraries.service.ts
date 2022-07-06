@@ -26,18 +26,25 @@ export class VsCodeLibrariesService extends IdeLibrares {
 		const config = {
 			...currentVsCodeSettingsContent,
 			...(libs.includes('eslint') && {
+				'eslint.enable': true,
 				'eslint.options': {
 					overrideConfigFile: path.join(projectPath, '.eslintrc.json'),
+					ignorePath: path.join(projectPath, '.eslintignore'),
 				},
 				'eslint.nodePath': path.join(projectPath, 'node_modules'),
 			}),
 			...(libs.includes('prettier') && {
+				'prettier.enable': true,
+				// TODO: Remove when EditorConfig is public on Exlint
+				'prettier.useEditorConfig': false,
 				'prettier.configPath': path.join(projectPath, '.prettierrc.json'),
+				'prettier.ignorePath': path.join(projectPath, '.prettierignore'),
 				'prettier.prettierPath': path.join(projectPath, 'node_modules', 'prettier'),
 				'editor.formatOnSave': true,
 				'editor.defaultFormatter': 'esbenp.prettier-vscode',
 			}),
 			...(libs.includes('stylelint') && {
+				'stylelint.enable': true,
 				'stylelint.configFile': path.join(projectPath, '.stylelintrc.json'),
 				'stylelint.stylelintPath': path.join(projectPath, 'node_modules', 'stylelint'),
 			}),

@@ -9,11 +9,16 @@ import { EXLINT_FOLDER_PATH } from '@/models/exlint-folder';
 import { IUnknown } from '@/interfaces/unknown';
 
 import { IWorkspace } from '../../interfaces/webstorm';
+// import { IPolicyFilesPattern } from '../../interfaces/file-pattern';
 import IdeLibrares from './ide-libraries';
 
 @Injectable()
 export class WebstormLibrariesService extends IdeLibrares {
-	public async adjustLocal(projectId: string, libs: ILibrary[]) {
+	public async adjustLocal(
+		projectId: string,
+		libs: ILibrary[],
+		// policiesFilesPattern?: IPolicyFilesPattern,
+	) {
 		const workspaceXmlFilePath = path.join(process.cwd(), '.idea', 'workspace.xml');
 		const workspaceContent = await fs.readFile(workspaceXmlFilePath, 'utf-8').catch(() => '');
 
@@ -71,8 +76,8 @@ export class WebstormLibrariesService extends IdeLibrares {
 
 			writePluginsConfigurationsPromises.push(fs.outputFile(eslintXmlFilePath, eslintXmlFileContent));
 
-			workspacePropertiesObject.keyToString['js.linters.configure.manually.selectedeslint'] = true;
-			workspacePropertiesObject.keyToString['node.js.detected.package.eslint'] = true;
+			workspacePropertiesObject.keyToString['js.linters.configure.manually.selectedeslint'] = 'true';
+			workspacePropertiesObject.keyToString['node.js.detected.package.eslint'] = 'true';
 			workspacePropertiesObject.keyToString['node.js.selected.package.eslint'] = path.join(
 				projectPath,
 				'node_modules',
@@ -147,7 +152,7 @@ export class WebstormLibrariesService extends IdeLibrares {
 				fs.outputFile(stylelintXmlFilePath, stylelintXmlFileContent),
 			);
 
-			workspacePropertiesObject.keyToString['node.js.detected.package.stylelint'] = true;
+			workspacePropertiesObject.keyToString['node.js.detected.package.stylelint'] = 'true';
 			workspacePropertiesObject.keyToString['node.js.selected.package.stylelint'] = path.join(
 				projectPath,
 				'node_modules',

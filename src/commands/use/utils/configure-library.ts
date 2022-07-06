@@ -4,25 +4,41 @@ import fs from 'fs-extra';
 
 import { ILibrary } from '@/interfaces/library';
 import { EXLINT_FOLDER_PATH } from '@/models/exlint-folder';
+import { IPolicyConfiguration } from '@/interfaces/policy-configuration';
 
 export const setConfigLibrary = async (
 	projectId: string,
 	libraryName: ILibrary,
-	configuration: Record<string, unknown>,
+	configuration: IPolicyConfiguration,
 ) => {
-	const fileName = `.${libraryName}rc.json`;
-	const configFilePath = path.join(EXLINT_FOLDER_PATH, projectId, fileName);
-	const configContent = { ...configuration, __EXLINT_FILES_PATTERN__: undefined };
+	const configurationFileName = `.${libraryName}rc.json`;
+	const ignoreFileName = `.${libraryName}ignore`;
+	const configFilePath = path.join(EXLINT_FOLDER_PATH, projectId, configurationFileName);
+	const libFilesPatternFilePath = path.join(EXLINT_FOLDER_PATH, projectId, ignoreFileName);
+
+	// Ensure the Exlint pre-configured valus are not written to configuration files (otherwise an exception will be thrown)
+	const configContent = {
+		...configuration,
+		__EXLINT_FILES_PATTERN__: undefined,
+		__EXLINT_IGNORE_FILE__: undefined,
+	};
+
 	const writePromises = [fs.outputJson(configFilePath, configContent)];
 
-	if ('__EXLINT_FILES_PATTERN__' in configuration) {
+	if (libraryName !== 'depcheck' && libraryName !== 'stylelint') {
+		writePromises.push(
+			fs.outputFile(libFilesPatternFilePath, (configuration?.__EXLINT_IGNORE_FILE__ ?? []).join('\n')),
+		);
+	}
+
+	if (configuration && configuration.__EXLINT_FILES_PATTERN__) {
 		const libFilesPatternFilePath = path.join(
 			EXLINT_FOLDER_PATH,
 			projectId,
 			`.exlint-${libraryName}-pattern`,
 		);
 
-		writePromises.push(fs.outputFile(libFilesPatternFilePath, configuration['__EXLINT_FILES_PATTERN__']));
+		writePromises.push(fs.outputFile(libFilesPatternFilePath, configuration.__EXLINT_FILES_PATTERN__));
 	}
 
 	await Promise.all(writePromises);
@@ -37,6 +53,9 @@ export const resetConfigLibraries = async (projectId: string) => {
 			...final,
 			fs.remove(path.join(projectFolderPath, `.${library}rc.json`)),
 			fs.remove(path.join(projectFolderPath, `.exlint-${library}-pattern`)),
+			...(library !== 'depcheck' && library !== 'stylelint'
+				? [fs.remove(path.join(projectFolderPath, `.${library}ignore`))]
+				: []),
 		];
 	}, []);
 
