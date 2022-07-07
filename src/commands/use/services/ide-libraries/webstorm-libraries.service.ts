@@ -9,7 +9,7 @@ import { EXLINT_FOLDER_PATH } from '@/models/exlint-folder';
 import { IUnknown } from '@/interfaces/unknown';
 
 import { IWorkspace } from '../../interfaces/webstorm';
-// import { IPolicyFilesPattern } from '../../interfaces/file-pattern';
+import { IPolicyFilesPattern } from '../../interfaces/file-pattern';
 import IdeLibrares from './ide-libraries';
 
 @Injectable()
@@ -17,7 +17,7 @@ export class WebstormLibrariesService extends IdeLibrares {
 	public async adjustLocal(
 		projectId: string,
 		libs: ILibrary[],
-		// policiesFilesPattern?: IPolicyFilesPattern,
+		policiesFilesPattern?: IPolicyFilesPattern,
 	) {
 		const workspaceXmlFilePath = path.join(process.cwd(), '.idea', 'workspace.xml');
 		const workspaceContent = await fs.readFile(workspaceXmlFilePath, 'utf-8').catch(() => '');
@@ -63,6 +63,11 @@ export class WebstormLibrariesService extends IdeLibrares {
 						'custom-configuration-file': {
 							$: { used: true, path: path.join(projectPath, '.eslintrc.json') },
 						},
+						...(policiesFilesPattern?.eslint && {
+							'files-pattern': {
+								$: { value: policiesFilesPattern?.eslint },
+							},
+						}),
 					},
 				},
 			};
@@ -78,11 +83,15 @@ export class WebstormLibrariesService extends IdeLibrares {
 
 			workspacePropertiesObject.keyToString['js.linters.configure.manually.selectedeslint'] = 'true';
 			workspacePropertiesObject.keyToString['node.js.detected.package.eslint'] = 'true';
+			workspacePropertiesObject.keyToString['node.js.detected.package.standard'] = 'true';
 			workspacePropertiesObject.keyToString['node.js.selected.package.eslint'] = path.join(
-				projectPath,
+				EXLINT_FOLDER_PATH,
 				'node_modules',
 				'eslint',
 			);
+			workspacePropertiesObject.keyToString['node.js.selected.package.standard'] = '';
+			workspacePropertiesObject.keyToString['settings.editor.selected.configurable'] =
+				'settings.javascript.linters.eslint';
 
 			shouldOverridePlugins = true;
 		}
@@ -115,7 +124,7 @@ export class WebstormLibrariesService extends IdeLibrares {
 			);
 
 			workspacePropertiesObject.keyToString['prettierjs.PrettierConfiguration.Package'] = path.join(
-				projectPath,
+				EXLINT_FOLDER_PATH,
 				'node_modules',
 				'prettier',
 			);
@@ -154,7 +163,7 @@ export class WebstormLibrariesService extends IdeLibrares {
 
 			workspacePropertiesObject.keyToString['node.js.detected.package.stylelint'] = 'true';
 			workspacePropertiesObject.keyToString['node.js.selected.package.stylelint'] = path.join(
-				projectPath,
+				EXLINT_FOLDER_PATH,
 				'node_modules',
 				'stylelint',
 			);

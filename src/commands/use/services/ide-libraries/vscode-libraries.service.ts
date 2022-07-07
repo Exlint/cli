@@ -31,7 +31,7 @@ export class VsCodeLibrariesService extends IdeLibrares {
 					overrideConfigFile: path.join(projectPath, '.eslintrc.json'),
 					ignorePath: path.join(projectPath, '.eslintignore'),
 				},
-				'eslint.nodePath': path.join(projectPath, 'node_modules'),
+				'eslint.nodePath': path.join(EXLINT_FOLDER_PATH, 'node_modules'),
 			}),
 			...(libs.includes('prettier') && {
 				'prettier.enable': true,
@@ -39,14 +39,14 @@ export class VsCodeLibrariesService extends IdeLibrares {
 				'prettier.useEditorConfig': false,
 				'prettier.configPath': path.join(projectPath, '.prettierrc.json'),
 				'prettier.ignorePath': path.join(projectPath, '.prettierignore'),
-				'prettier.prettierPath': path.join(projectPath, 'node_modules', 'prettier'),
+				'prettier.prettierPath': path.join(EXLINT_FOLDER_PATH, 'node_modules', 'prettier'),
 				'editor.formatOnSave': true,
 				'editor.defaultFormatter': 'esbenp.prettier-vscode',
 			}),
 			...(libs.includes('stylelint') && {
 				'stylelint.enable': true,
 				'stylelint.configFile': path.join(projectPath, '.stylelintrc.json'),
-				'stylelint.stylelintPath': path.join(projectPath, 'node_modules', 'stylelint'),
+				'stylelint.stylelintPath': path.join(EXLINT_FOLDER_PATH, 'node_modules', 'stylelint'),
 			}),
 		};
 

@@ -124,7 +124,7 @@ export class UseCommand implements CommandRunner {
 
 			render(<UseTasks tasks={tasks} />);
 
-			const downloadLibrariesPromise = installLibraries(projectFolderPath, requiredLibraries)
+			const downloadLibrariesPromise = installLibraries(requiredLibraries)
 				.then(() => {
 					tasks[INSTALLING_REQUIRED_PACKAGES] = 'success';
 				})
