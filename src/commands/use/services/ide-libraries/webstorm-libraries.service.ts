@@ -72,14 +72,50 @@ export class WebstormLibrariesService extends IdeLibrares {
 				},
 			};
 
-			const builder = new xml2js.Builder({
+			const projectDefaultXmlFilePath = path.join(
+				process.cwd(),
+				'.idea',
+				'inspectionProfiles',
+				'Project_Default.xml',
+			);
+
+			const projectDefaultXmlConfig = {
+				component: {
+					$: { name: 'InspectionProjectProfileManager' },
+					profile: {
+						$: { version: '1.0' },
+						option: { $: { name: 'myName', value: 'Project Default' } },
+						inspection_tool: {
+							$: {
+								class: 'Eslint',
+								enabled: true,
+								level: 'WARNING',
+								enabled_by_default: true,
+							},
+						},
+					},
+				},
+			};
+
+			const eslintXmlBuilder = new xml2js.Builder({
 				xmldec: { version: '1.0', encoding: 'UTF-8' },
 				cdata: true,
 			});
 
-			const eslintXmlFileContent = builder.buildObject(eslintXmlConfig);
+			const projectDefaultXmlBuilder = new xml2js.Builder({
+				headless: true,
+				cdata: true,
+			});
 
-			writePluginsConfigurationsPromises.push(fs.outputFile(eslintXmlFilePath, eslintXmlFileContent));
+			const eslintXmlFileContent = eslintXmlBuilder.buildObject(eslintXmlConfig);
+
+			const projectDefaultXmlFileContent =
+				projectDefaultXmlBuilder.buildObject(projectDefaultXmlConfig);
+
+			writePluginsConfigurationsPromises.push(
+				fs.outputFile(eslintXmlFilePath, eslintXmlFileContent),
+				fs.outputFile(projectDefaultXmlFilePath, projectDefaultXmlFileContent),
+			);
 
 			workspacePropertiesObject.keyToString['js.linters.configure.manually.selectedeslint'] = 'true';
 			workspacePropertiesObject.keyToString['node.js.detected.package.eslint'] = 'true';
