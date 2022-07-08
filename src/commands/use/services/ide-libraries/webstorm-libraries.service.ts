@@ -8,7 +8,7 @@ import { ILibrary } from '@/interfaces/library';
 import { EXLINT_FOLDER_PATH } from '@/models/exlint-folder';
 import { IUnknown } from '@/interfaces/unknown';
 
-import { IWorkspace } from '../../interfaces/webstorm';
+import { IProjectDefault, IWorkspace } from '../../interfaces/webstorm';
 import { IPolicyFilesPattern } from '../../interfaces/file-pattern';
 import IdeLibrares from './ide-libraries';
 
@@ -19,14 +19,30 @@ export class WebstormLibrariesService extends IdeLibrares {
 		libs: ILibrary[],
 		policiesFilesPattern?: IPolicyFilesPattern,
 	) {
-		const workspaceXmlFilePath = path.join(process.cwd(), '.idea', 'workspace.xml');
+		const ideaFolderPath = path.join(process.cwd(), '.idea');
+		const workspaceXmlFilePath = path.join(ideaFolderPath, 'workspace.xml');
 		const workspaceContent = await fs.readFile(workspaceXmlFilePath, 'utf-8').catch(() => '');
+
+		const projectDefaultXmlFilePath = path.join(
+			ideaFolderPath,
+			'inspectionProfiles',
+			'Project_Default.xml',
+		);
+
+		const projectDefaultContent = await fs.readFile(projectDefaultXmlFilePath, 'utf-8').catch(() => '');
 
 		const parsedWorkspaceContent = (await xml2js.parseStringPromise(
 			workspaceContent,
 		)) as IWorkspace | null;
 
+		const parsedProjectDefaultContent = (await xml2js.parseStringPromise(
+			projectDefaultContent,
+		)) as IProjectDefault | null;
+
 		const workspaceComponents = parsedWorkspaceContent?.project?.component ?? [];
+
+		let projectDefaultInspectionTools =
+			parsedProjectDefaultContent?.component?.profile?.[0].inspection_tool ?? [];
 
 		const workspacePropertiesIndex = workspaceComponents.findIndex(
 			(component) => component.$?.name === 'PropertiesComponent',
@@ -52,7 +68,21 @@ export class WebstormLibrariesService extends IdeLibrares {
 		let shouldOverridePlugins = false;
 
 		if (libs.includes('eslint')) {
-			const eslintXmlFilePath = path.join(process.cwd(), '.idea', 'jsLinters', 'eslint.xml');
+			projectDefaultInspectionTools = [
+				...projectDefaultInspectionTools.filter(
+					(inspectionTool) => inspectionTool?.$?.class !== 'Eslint',
+				),
+				{
+					$: {
+						class: 'Eslint',
+						enabled: true,
+						level: 'WARNING',
+						enabled_by_default: true,
+					},
+				},
+			];
+
+			const eslintXmlFilePath = path.join(ideaFolderPath, 'jsLinters', 'eslint.xml');
 
 			const eslintXmlConfig = {
 				project: {
@@ -65,34 +95,9 @@ export class WebstormLibrariesService extends IdeLibrares {
 						},
 						...(policiesFilesPattern?.eslint && {
 							'files-pattern': {
-								$: { value: policiesFilesPattern?.eslint },
+								$: { value: policiesFilesPattern.eslint },
 							},
 						}),
-					},
-				},
-			};
-
-			const projectDefaultXmlFilePath = path.join(
-				process.cwd(),
-				'.idea',
-				'inspectionProfiles',
-				'Project_Default.xml',
-			);
-
-			const projectDefaultXmlConfig = {
-				component: {
-					$: { name: 'InspectionProjectProfileManager' },
-					profile: {
-						$: { version: '1.0' },
-						option: { $: { name: 'myName', value: 'Project Default' } },
-						inspection_tool: {
-							$: {
-								class: 'Eslint',
-								enabled: true,
-								level: 'WARNING',
-								enabled_by_default: true,
-							},
-						},
 					},
 				},
 			};
@@ -102,38 +107,23 @@ export class WebstormLibrariesService extends IdeLibrares {
 				cdata: true,
 			});
 
-			const projectDefaultXmlBuilder = new xml2js.Builder({
-				headless: true,
-				cdata: true,
-			});
-
 			const eslintXmlFileContent = eslintXmlBuilder.buildObject(eslintXmlConfig);
 
-			const projectDefaultXmlFileContent =
-				projectDefaultXmlBuilder.buildObject(projectDefaultXmlConfig);
-
-			writePluginsConfigurationsPromises.push(
-				fs.outputFile(eslintXmlFilePath, eslintXmlFileContent),
-				fs.outputFile(projectDefaultXmlFilePath, projectDefaultXmlFileContent),
-			);
+			writePluginsConfigurationsPromises.push(fs.outputFile(eslintXmlFilePath, eslintXmlFileContent));
 
 			workspacePropertiesObject.keyToString['js.linters.configure.manually.selectedeslint'] = 'true';
 			workspacePropertiesObject.keyToString['node.js.detected.package.eslint'] = 'true';
-			workspacePropertiesObject.keyToString['node.js.detected.package.standard'] = 'true';
 			workspacePropertiesObject.keyToString['node.js.selected.package.eslint'] = path.join(
 				EXLINT_FOLDER_PATH,
 				'node_modules',
 				'eslint',
 			);
-			workspacePropertiesObject.keyToString['node.js.selected.package.standard'] = '';
-			workspacePropertiesObject.keyToString['settings.editor.selected.configurable'] =
-				'settings.javascript.linters.eslint';
 
 			shouldOverridePlugins = true;
 		}
 
 		if (libs.includes('prettier')) {
-			const prettierXmlFilePath = path.join(process.cwd(), '.idea', 'prettier.xml');
+			const prettierXmlFilePath = path.join(ideaFolderPath, 'prettier.xml');
 
 			const prettierXmlConfig = {
 				project: {
@@ -143,6 +133,9 @@ export class WebstormLibrariesService extends IdeLibrares {
 						option: [
 							{ $: { name: 'myRunOnSave', value: 'true' } },
 							{ $: { name: 'myRunOnReformat', value: 'true' } },
+							...(policiesFilesPattern?.prettier
+								? [{ $: { name: 'myFilesPattern', value: policiesFilesPattern.prettier } }]
+								: []),
 						],
 					},
 				},
@@ -169,12 +162,21 @@ export class WebstormLibrariesService extends IdeLibrares {
 		}
 
 		if (libs.includes('stylelint')) {
-			const stylelintXmlFilePath = path.join(
-				process.cwd(),
-				'.idea',
-				'stylesheetLinters',
-				'stylelint.xml',
-			);
+			projectDefaultInspectionTools = [
+				...projectDefaultInspectionTools.filter(
+					(inspectionTool) => inspectionTool?.$?.class !== 'Stylelint',
+				),
+				{
+					$: {
+						class: 'Stylelint',
+						enabled: true,
+						level: 'ERROR',
+						enabled_by_default: true,
+					},
+				},
+			];
+
+			const stylelintXmlFilePath = path.join(ideaFolderPath, 'stylesheetLinters', 'stylelint.xml');
 
 			const stylelintXmlConfig = {
 				project: {
@@ -182,6 +184,11 @@ export class WebstormLibrariesService extends IdeLibrares {
 					component: {
 						'$': { name: 'StylelintConfiguration' },
 						'config-file': { $: { value: path.join(projectPath, '.stylelintrc.json') } },
+						...(policiesFilesPattern?.stylelint && {
+							'files-patterns': {
+								$: { value: policiesFilesPattern.stylelint },
+							},
+						}),
 					},
 				},
 			};
@@ -237,8 +244,33 @@ export class WebstormLibrariesService extends IdeLibrares {
 
 			const workspaceXmlFileContent = builder.buildObject(newWorkspace);
 
+			const projectDefaultXmlConfig = {
+				...(parsedProjectDefaultContent ?? {}),
+				component: {
+					...(parsedProjectDefaultContent?.component ?? {}),
+					$: { name: 'InspectionProjectProfileManager' },
+					profile: [
+						{
+							...(parsedProjectDefaultContent?.component?.profile?.[0] ?? {}),
+							$: { version: '1.0' },
+							option: { $: { name: 'myName', value: 'Project Default' } },
+							inspection_tool: projectDefaultInspectionTools,
+						},
+					],
+				},
+			};
+
+			const projectDefaultXmlBuilder = new xml2js.Builder({
+				headless: true,
+				cdata: true,
+			});
+
+			const projectDefaultXmlFileContent =
+				projectDefaultXmlBuilder.buildObject(projectDefaultXmlConfig);
+
 			writePluginsConfigurationsPromises.push(
 				fs.outputFile(workspaceXmlFilePath, workspaceXmlFileContent),
+				fs.outputFile(projectDefaultXmlFilePath, projectDefaultXmlFileContent),
 			);
 		}
 
