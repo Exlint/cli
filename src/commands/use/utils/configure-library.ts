@@ -19,12 +19,20 @@ export const setConfigLibrary = async (
 	// Ensure the Exlint pre-configured valus are not written to configuration files (otherwise an exception will be thrown)
 	const configContent = {
 		...configuration,
+		...(libraryName === 'stylelint' && {
+			ignoreFiles: [
+				...(configuration?.ignoreFiles ? configuration.ignoreFiles : []),
+				...(configuration?.__EXLINT_IGNORE_FILE__ ? configuration.__EXLINT_IGNORE_FILE__ : []),
+			],
+		}),
 		__EXLINT_FILES_PATTERN__: undefined,
 		__EXLINT_IGNORE_FILE__: undefined,
 	};
 
 	const writePromises = [fs.outputJson(configFilePath, configContent)];
 
+	// * VSCode Stylelint extension has issues with repsecting ".stylelintignore" file:
+	// * https://stackoverflow.com/questions/42070748/vs-code-style-lint-ignore-directories
 	if (libraryName !== 'depcheck' && libraryName !== 'stylelint') {
 		writePromises.push(
 			fs.outputFile(libFilesPatternFilePath, (configuration?.__EXLINT_IGNORE_FILE__ ?? []).join('\n')),

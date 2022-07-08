@@ -1,4 +1,5 @@
 interface IExlintPolicyConfiguration {
+	ignoreFiles?: string[];
 	__EXLINT_FILES_PATTERN__?: string;
 	__EXLINT_IGNORE_FILE__?: string[];
 }
