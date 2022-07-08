@@ -98,7 +98,7 @@ If your code fails to match the configured code standard, Exlint will report the
 #### Options
 
 You can also run the command with `--fix` or `-f` option.
-Provided this options, Exlint will try to automatically fix your code issues.
+Providinig this option will make Exlint to try automatically fix your code issues.
 
 ## CI Workflows
 
