@@ -24,9 +24,9 @@
 
 **👩🏻‍💻 Developement and Code Standard**: Keep your code clean with Exlint over multiple repositories.
 
-**🚀 CI Workflow**: Integrate Exlint into your workflow to continuously prevent coding bad practices.
-
 **📦️ Sharable Code Conventions**: Share, use and run your code conventions over any chosen repositories.
+
+**🚀 CI Workflow**: Integrate Exlint into your workflow to continuously prevent coding bad practices.
 
 <p align="right"><em>See more on <a href="https://exlint.io">exlint.io</a></em></p>
 
@@ -35,7 +35,7 @@
 -   [Getting Started](#getting-started)
 -   [Running from command line](#running-from-command-line)
 -   [CI Workflows](#ci-workflows)
--   [Documentation](#documentation)
+-   [Support](#support)
 -   [Contributing](#contributing)
 
     -   [Code of Conduct](#code-of-conduct)
@@ -45,9 +45,9 @@
 ## Getting Started
 
 To use Exlint, you first need to configure an account with groups and policies.
-Please visit [Exlint](https://www.app.exlint.io) before using the CLI.
+Please visit [Exlint.io](https://app.exlint.io) before using the CLI.
 
-We recommend install Exlint CLI globally using [`npm`](https://npmjs.com):
+We recommend installing Exlint CLI globally using [`npm`](https://npmjs.com):
 
 ```bash
 npm install --global @exlint.io/cli
@@ -104,17 +104,17 @@ Provided this options, Exlint will try to automatically fix your code issues.
 
 You can run Exlint also in CI. If you want to integrate an Exlint step in your workflow, you can use the [GitHub Action](https://github.com/Exlint/github-action)
 
-## Documentation
+## Support
 
-Learn more about using [Exlint on the official docs site!](https://docs.exlint.io)
+Currently we offer support through Discussions and Issues, but you can always reach out on contact@exlint.io.
 
 ## Contributing
 
-Development of Exlint CLI happens in the open on GitHub, and we are grateful to the community for contributing bugfixes and improvements. Read below to learn how you can take part in improving Jest.
+Development of Exlint CLI happens in the open on GitHub, and we are grateful to the community for contributing bugfixes and improvements.
 
-### [Code of Conduct](CODE_OF_CONDUCT.md)
+### Code of Conduct
 
-Exlint has adopted a Code of Conduct that we expect project participants to adhere to.
+Exlint has adopted a [Code of Conduct](CODE_OF_CONDUCT.md) that we expect project participants to adhere to.
 
 ## License
 
