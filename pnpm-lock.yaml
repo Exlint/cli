@@ -3,7 +3,7 @@ lockfileVersion: 5.4
 specifiers:
   '@commitlint/cli': 17.0.3
   '@compodoc/compodoc': 1.1.19
-  '@exlint.io/inflint': 1.2.8
+  '@exlint.io/inflint': 1.2.9
   '@nestjs/cli': 9.0.0
   '@nestjs/common': ^9.0.0
   '@nestjs/core': ^9.0.0
@@ -83,7 +83,7 @@ dependencies:
 devDependencies:
   '@commitlint/cli': 17.0.3
   '@compodoc/compodoc': 1.1.19
-  '@exlint.io/inflint': 1.2.8_5qlmdbhxrylc4rhzh7wamif4di
+  '@exlint.io/inflint': 1.2.9_5qlmdbhxrylc4rhzh7wamif4di
   '@nestjs/cli': 9.0.0
   '@nestjs/schematics': 8.0.11_typescript@4.7.4
   '@types/envinfo': 7.8.1
@@ -1645,8 +1645,8 @@ packages:
       - supports-color
     dev: true
 
-  /@exlint.io/inflint/1.2.8_5qlmdbhxrylc4rhzh7wamif4di:
-    resolution: {integrity: sha512-v728Y9MRubuWsUIzB2BZ4C3R91wl2VJjNYlTd0WdFxs7WiAgPSkCzspLM6KE1EVGQM/wUynChoTxSorRPrl0uA==}
+  /@exlint.io/inflint/1.2.9_5qlmdbhxrylc4rhzh7wamif4di:
+    resolution: {integrity: sha512-jvRQ/sJhNZHK+Ir+7zFWiQieWoSgS79zOmPZidCrS9o8NajjkTQ9+fAxIIQF5rUTNZOSzjTYr0Q12Q/qpzJTTQ==}
     hasBin: true
     dependencies:
       '@expo/spawn-async': 1.6.0
