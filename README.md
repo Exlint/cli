@@ -109,6 +109,7 @@ You can run Exlint also in CI. If you want to integrate an Exlint step in your w
 ## Support
 
 Currently we offer support through Discussions and Issues, but you can always reach out on contact@exlint.io.
+You can also feel free to join the discussions and ask questions in our [Discord Server](https://discord.com/invite/sqtbwvgzek).
 
 ## Contributing
 
