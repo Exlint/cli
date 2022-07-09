@@ -61,7 +61,7 @@ npm install --save-dev @exlint.io/cli
 
 ## Running from command line
 
-![Exlint](./assets/demo.gif)
+<p align="center">![Exlint](./assets/demo.gif)</p>
 
 You can run Exlint directly from the CLI (if it's globally available in your `PATH`, e.g. by `npm install --global @exlint.io/cli`) with a variety of useful commands.
 If you haven't installed Exlint CLI globally, but locally, you can use it in the CLI by using `npx`.
