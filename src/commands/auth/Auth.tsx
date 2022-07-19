@@ -77,17 +77,22 @@ export class AuthCommand implements CommandRunner {
 					if (!token) {
 						render(<Error />);
 
+						res.status(400).send();
+
+						temporaryServer.close();
+						clearTimeout(authenticationTimeout);
+
 						process.exit(1);
 					} else {
 						resolve(token);
 
-						res.redirect(`${dashboardUrl}/cli-authenticated`);
+						res.status(200).send();
+
+						temporaryServer.close();
+						clearTimeout(authenticationTimeout);
+
+						return;
 					}
-
-					temporaryServer.close();
-					clearTimeout(authenticationTimeout);
-
-					return;
 				});
 			});
 
