@@ -38,10 +38,10 @@ export class AuthCommand implements CommandRunner {
 			const app = express();
 
 			app.use((_: express.Request, res: express.Response, next: express.NextFunction) => {
-				res.setHeader('Access-Control-Allow-Origin', 'http://localhost');
+				res.setHeader('Access-Control-Allow-Origin', '*');
 				res.setHeader(
 					'Access-Control-Allow-Headers',
-					'Origin, X-Requested-With, Content-Type, Accept',
+					'Origin, X-Requested-With, Content-Type, Accept, Authorization',
 				);
 				res.setHeader('Access-Control-Allow-Methods', 'OPTIONS, GET');
 
@@ -81,7 +81,7 @@ export class AuthCommand implements CommandRunner {
 					} else {
 						resolve(token);
 
-						res.redirect(`${this.configService.getValue('DASHBOARD_URL')}/cli-authenticated`);
+						res.redirect(`${dashboardUrl}/cli-authenticated`);
 					}
 
 					temporaryServer.close();

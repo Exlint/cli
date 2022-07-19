@@ -4,8 +4,8 @@ import { IConfig } from './config.interface';
 @Injectable()
 export class ConfigService {
 	private config: IConfig = {
-		API_URL: 'https://www.api.exlint.io',
-		DASHBOARD_URL: 'https://www.app.exlint.io',
+		API_URL: 'http://localhost:5000',
+		DASHBOARD_URL: 'http://localhost:8080',
 	};
 
 	public getValue(key: keyof IConfig) {
