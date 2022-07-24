@@ -4,9 +4,9 @@ import type { AddressInfo } from 'net';
 import React from 'react';
 import { Newline, render, Text } from 'ink';
 import { Command, CommandRunner } from 'nest-commander';
-import keytar from 'keytar';
 import open from 'open';
 import express from 'express';
+import { Netrc } from 'netrc-parser';
 
 import { ConfigService } from '@/modules/config/config.service';
 import { ConnectionService } from '@/modules/connection/connection.service';
@@ -62,7 +62,7 @@ export class AuthCommand implements CommandRunner {
 
 			await open(authUrl);
 
-			const userToken = await new Promise<string>((resolve) => {
+			const { token, email } = await new Promise<IRedirectParams>((resolve) => {
 				const authenticationTimeout = setTimeout(() => {
 					temporaryServer.close();
 
@@ -71,10 +71,10 @@ export class AuthCommand implements CommandRunner {
 					process.exit(1);
 				}, AUTHENTICATION_TIMEOUT);
 
-				app.get('/:token', (req: express.Request<IRedirectParams>, res: express.Response) => {
-					const { token } = req.params;
+				app.get('/:token/:email', (req: express.Request<IRedirectParams>, res: express.Response) => {
+					const { token, email } = req.params;
 
-					if (!token) {
+					if (!token || !email) {
 						render(<Error />);
 
 						res.status(400).send();
@@ -84,7 +84,7 @@ export class AuthCommand implements CommandRunner {
 
 						process.exit(1);
 					} else {
-						resolve(token);
+						resolve({ token, email });
 
 						res.status(200).send();
 
@@ -96,7 +96,21 @@ export class AuthCommand implements CommandRunner {
 				});
 			});
 
-			await keytar.setPassword('exlint', 'exlint', userToken);
+			const netrc = new Netrc();
+
+			await netrc.load();
+
+			const newMachines = {
+				...netrc.machines,
+				[__CLI_API_DOMAIN__]: {
+					login: email,
+					password: token,
+				},
+			};
+
+			netrc.machines = newMachines;
+
+			await netrc.save();
 
 			render(
 				<Text>

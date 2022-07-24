@@ -1,6 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import axios from 'axios';
-import keytar from 'keytar';
+import { Netrc } from 'netrc-parser';
 
 import { ConfigService } from '../config/config.service';
 import type { IGetGroupPoliciesResponse } from './interfaces/responses';
@@ -12,9 +12,17 @@ export class ApiService {
 	constructor(private readonly configService: ConfigService) {
 		this.axiosInstance.interceptors.request.use(
 			async (request) => {
-				const userToken = await keytar.findPassword('exlint');
+				const netrc = new Netrc();
 
-				request.headers!['Authorization'] = `Bearer ${userToken}`;
+				await netrc.load();
+
+				const cliToken = netrc.machines[__CLI_API_DOMAIN__]?.password;
+
+				if (!cliToken) {
+					throw new Error('Missing CLI token');
+				}
+
+				request.headers!['Authorization'] = `Bearer ${cliToken}`;
 
 				return request;
 			},
@@ -23,7 +31,7 @@ export class ApiService {
 	}
 
 	public async getGroupData(groupId: string) {
-		const groupDataResponse = await axios.get<IGetGroupPoliciesResponse>(
+		const groupDataResponse = await this.axiosInstance.get<IGetGroupPoliciesResponse>(
 			`/user/groups/get-group/${groupId}`,
 		);
 
@@ -32,7 +40,7 @@ export class ApiService {
 
 	public async hasValidToken() {
 		try {
-			await axios.get('/user/auth/verify-token');
+			await this.axiosInstance.get('/user/auth/verify-token');
 
 			return true;
 		} catch {
