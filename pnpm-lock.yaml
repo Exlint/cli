@@ -11,7 +11,7 @@ specifiers:
   '@types/envinfo': 7.8.1
   '@types/express': 4.17.13
   '@types/fs-extra': 9.0.13
-  '@types/inquirer': 8.2.1
+  '@types/inquirer': 8.2.2
   '@types/is-ci': 3.0.0
   '@types/node': 16.11.47
   '@types/react': 18.0.15
@@ -72,7 +72,7 @@ dependencies:
   ink-spinner: 4.0.3_ink@3.2.0+react@18.2.0
   ink-task-list: 2.0.0_ink@3.2.0+react@18.2.0
   is-ci: 3.0.1
-  nest-commander: 2.5.0_63c6s7eqyoevv3wdvt6m73kd7q
+  nest-commander: 2.5.0_5zrfb3fn2oj7pklrx5whjinwum
   netrc-parser: 3.1.6
   open: 8.4.0
   react: 18.2.0
@@ -90,7 +90,7 @@ devDependencies:
   '@types/envinfo': 7.8.1
   '@types/express': 4.17.13
   '@types/fs-extra': 9.0.13
-  '@types/inquirer': 8.2.1
+  '@types/inquirer': 8.2.2
   '@types/is-ci': 3.0.0
   '@types/node': 16.11.47
   '@types/react': 18.0.15
@@ -2026,11 +2026,10 @@ packages:
       '@types/node': 16.11.47
     dev: true
 
-  /@types/inquirer/8.2.1:
-    resolution: {integrity: sha512-wKW3SKIUMmltbykg4I5JzCVzUhkuD9trD6efAmYgN2MrSntY0SMRQzEnD3mkyJ/rv9NLbTC7g3hKKE86YwEDLw==}
+  /@types/inquirer/8.2.2:
+    resolution: {integrity: sha512-HXoFOl+KS4yvmUjisi83VpuSBOeeXIzdJfoT/v2pUruqybpHy0Dz1DyXy3E2jNH0cSVKJZV92VOnFBwJR6k83A==}
     dependencies:
       '@types/through': 0.0.30
-      rxjs: 7.5.6
 
   /@types/is-ci/3.0.0:
     resolution: {integrity: sha512-Q0Op0hdWbYd1iahB+IFNQcWXFq4O0Q5MwQP7uN0souuQ4rPg1vEYcnIOfr1gY+M+6rc8FGoRaBO1mOOvL29sEQ==}
@@ -6046,7 +6045,7 @@ packages:
     resolution: {integrity: sha512-Yd3UES5mWCSqR+qNT93S3UoYUkqAZ9lLg8a7g9rimsWmYGK8cVToA4/sF3RrshdyV3sAGMXVUmpMYOw+dLpOuw==}
     dev: true
 
-  /nest-commander/2.5.0_63c6s7eqyoevv3wdvt6m73kd7q:
+  /nest-commander/2.5.0_5zrfb3fn2oj7pklrx5whjinwum:
     resolution: {integrity: sha512-wJG3UFt8fUAMvAD9NZOW0BIF8XirYwkw6lwwW03xrT0cUtB5fxD4roCAKZbW8pGOdp5EMISq08WgDmmVpQqfkA==}
     peerDependencies:
       '@nestjs/common': ^8.0.0
@@ -6056,7 +6055,7 @@ packages:
       '@golevelup/nestjs-discovery': 3.0.0
       '@nestjs/common': 9.0.1_j5hagqx4mwzscud4kyjdvubauy
       '@nestjs/core': 9.0.1_su52fuhlovpk5zkrgbgpjiwog4
-      '@types/inquirer': 8.2.1
+      '@types/inquirer': 8.2.2
       commander: 8.3.0
       cosmiconfig: 7.0.1
       inquirer: 8.2.2
