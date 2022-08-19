@@ -68,7 +68,7 @@
 		"@types/fs-extra": "9.0.13",
 		"@types/inquirer": "8.2.3",
 		"@types/is-ci": "3.0.0",
-		"@types/node": "16.11.49",
+		"@types/node": "16.11.50",
 		"@types/react": "18.0.17",
 		"@types/xml2js": "0.4.11",
 		"@typescript-eslint/eslint-plugin": "5.33.1",
