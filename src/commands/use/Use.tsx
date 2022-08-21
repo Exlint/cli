@@ -6,6 +6,7 @@ import { render, Text } from 'ink';
 import { Command, CommandRunner } from 'nest-commander';
 import fs from 'fs-extra';
 import isCI from 'is-ci';
+import { AxiosError } from 'axios';
 
 import { ConnectionService } from '@/modules/connection/connection.service';
 import type { IUseTasks } from '@/interfaces/use-tasks';
@@ -63,9 +64,17 @@ export class UseCommand implements CommandRunner {
 			 * First, try to fetch the group data.
 			 * If it failed, probably user's token is invalid
 			 */
-			const groupData = await this.apiService.getGroupData(groupId);
+			const groupData = await this.apiService.getGroupData(groupId).catch((e: AxiosError) => {
+				if (e.code === '401') {
+					render(<Error message="Please authenticate" />);
 
-			if (groupData.policies.length === 0) {
+					process.exit(1);
+				}
+
+				throw e;
+			});
+
+			if (groupData.inlinePolicies.length === 0) {
 				render(
 					<Text bold color="magenta">
 						No policies were configured in this group.
@@ -75,7 +84,7 @@ export class UseCommand implements CommandRunner {
 				process.exit(0);
 			}
 
-			const requiredLibraries = groupData.policies.map((policy) => policy.library);
+			const requiredLibraries = groupData.inlinePolicies.map((policy) => policy.library);
 
 			/**
 			 * Ensure required software is installed.
@@ -135,7 +144,7 @@ export class UseCommand implements CommandRunner {
 					render(<UseTasks tasks={tasks} />);
 				});
 
-			const setConfigLibrariesPromises = groupData.policies.map((policy) =>
+			const setConfigLibrariesPromises = groupData.inlinePolicies.map((policy) =>
 				setConfigLibrary(projectId!, policy.library, policy.configuration),
 			);
 
@@ -185,7 +194,7 @@ export class UseCommand implements CommandRunner {
 			}
 
 			if (shouldAdjustToWebstorm) {
-				const policiesFilesPattern = groupData.policies.reduce<IPolicyFilesPattern>(
+				const policiesFilesPattern = groupData.inlinePolicies.reduce<IPolicyFilesPattern>(
 					(final, policy) => {
 						return {
 							...final,

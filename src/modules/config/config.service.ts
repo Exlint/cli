@@ -4,8 +4,8 @@ import { IConfig } from './config.interface';
 @Injectable()
 export class ConfigService {
 	private config: IConfig = {
-		API_URL: 'http://localhost:5000',
-		DASHBOARD_URL: 'http://localhost:8080',
+		API_URL: __CLI_API_URL__,
+		DASHBOARD_URL: __DASHBOARD_URL__,
 	};
 
 	public getValue(key: keyof IConfig) {

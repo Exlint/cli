@@ -100,15 +100,10 @@ export class AuthCommand implements CommandRunner {
 
 			await netrc.load();
 
-			const newMachines = {
-				...netrc.machines,
-				[__CLI_API_DOMAIN__]: {
-					login: email,
-					password: token,
-				},
+			netrc.machines['localhost'] = {
+				login: email,
+				password: token,
 			};
-
-			netrc.machines = newMachines;
 
 			await netrc.save();
 

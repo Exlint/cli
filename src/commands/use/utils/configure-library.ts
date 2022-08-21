@@ -1,4 +1,5 @@
 import path from 'path';
+import os from 'os';
 
 import fs from 'fs-extra';
 
@@ -35,7 +36,10 @@ export const setConfigLibrary = async (
 	// * https://stackoverflow.com/questions/42070748/vs-code-style-lint-ignore-directories
 	if (libraryName !== 'depcheck' && libraryName !== 'stylelint') {
 		writePromises.push(
-			fs.outputFile(libFilesPatternFilePath, (configuration?.__EXLINT_IGNORE_FILE__ ?? []).join('\n')),
+			fs.outputFile(
+				libFilesPatternFilePath,
+				(configuration?.__EXLINT_IGNORE_FILE__ ?? []).join(os.EOL),
+			),
 		);
 	}
 
@@ -46,7 +50,9 @@ export const setConfigLibrary = async (
 			`.exlint-${libraryName}-pattern`,
 		);
 
-		writePromises.push(fs.outputFile(libFilesPatternFilePath, configuration.__EXLINT_FILES_PATTERN__));
+		writePromises.push(
+			fs.outputFile(libFilesPatternFilePath, configuration.__EXLINT_FILES_PATTERN__.join(os.EOL)),
+		);
 	}
 
 	await Promise.all(writePromises);

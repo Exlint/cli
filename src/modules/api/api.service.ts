@@ -1,5 +1,5 @@
 import { Injectable } from '@nestjs/common';
-import axios from 'axios';
+import axios, { AxiosError } from 'axios';
 import { Netrc } from 'netrc-parser';
 
 import { ConfigService } from '../config/config.service';
@@ -19,7 +19,7 @@ export class ApiService {
 				const cliToken = netrc.machines[__CLI_API_DOMAIN__]?.password;
 
 				if (!cliToken) {
-					throw new Error('Missing CLI token');
+					throw new AxiosError('Missing CLI token', '401');
 				}
 
 				request.headers!['Authorization'] = `Bearer ${cliToken}`;
@@ -32,7 +32,7 @@ export class ApiService {
 
 	public async getGroupData(groupId: string) {
 		const groupDataResponse = await this.axiosInstance.get<IGetGroupPoliciesResponse>(
-			`/user/groups/get-group/${groupId}`,
+			`/user/groups/${groupId}`,
 		);
 
 		return groupDataResponse.data as IGetGroupPoliciesResponse;

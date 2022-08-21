@@ -9,7 +9,6 @@
 		"figlet",
 		"lint-staged",
 		"prettier",
-		"rimraf",
 		"ts-loader"
 	]
 }

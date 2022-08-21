@@ -3,10 +3,9 @@ import { IPolicyConfiguration } from '@/interfaces/policy-configuration';
 
 export interface IGetGroupPoliciesResponse {
 	id: string;
-	policies: {
+	inlinePolicies: {
 		id: string;
 		library: ILibrary;
-		label: string;
 		configuration: IPolicyConfiguration;
 	}[];
 }
