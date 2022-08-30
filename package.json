@@ -68,7 +68,7 @@
 		"@types/inquirer": "9.0.1",
 		"@types/is-ci": "3.0.0",
 		"@types/node": "16.11.56",
-		"@types/react": "18.0.17",
+		"@types/react": "18.0.18",
 		"@types/xml2js": "0.4.11",
 		"@typescript-eslint/eslint-plugin": "5.35.1",
 		"@typescript-eslint/parser": "5.35.1",
