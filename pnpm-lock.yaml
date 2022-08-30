@@ -14,7 +14,7 @@ specifiers:
   '@types/inquirer': 9.0.1
   '@types/is-ci': 3.0.0
   '@types/node': 16.11.56
-  '@types/react': 18.0.17
+  '@types/react': 18.0.18
   '@types/xml2js': 0.4.11
   '@typescript-eslint/eslint-plugin': 5.35.1
   '@typescript-eslint/parser': 5.35.1
@@ -67,7 +67,7 @@ dependencies:
   envinfo: 7.8.1
   express: 4.18.1
   fs-extra: 10.1.0
-  ink: 3.2.0_ug65io7jkbhmo4fihdmbrh3ina
+  ink: 3.2.0_7v64pk2mkrohwh22gx7lrz5ive
   ink-spinner: 4.0.3_ink@3.2.0+react@18.2.0
   ink-task-list: 2.0.0_ink@3.2.0+react@18.2.0
   is-ci: 3.0.1
@@ -92,7 +92,7 @@ devDependencies:
   '@types/inquirer': 9.0.1
   '@types/is-ci': 3.0.0
   '@types/node': 16.11.56
-  '@types/react': 18.0.17
+  '@types/react': 18.0.18
   '@types/xml2js': 0.4.11
   '@typescript-eslint/eslint-plugin': 5.35.1_t3qvqq7ugt4jqnoquow4ze3psy
   '@typescript-eslint/parser': 5.35.1_sorwav4hsh5vncerguqybud76i
@@ -2118,8 +2118,8 @@ packages:
     resolution: {integrity: sha512-EEhsLsD6UsDM1yFhAvy0Cjr6VwmpMWqFBCb9w07wVugF7w9nfajxLuVmngTIpgS6svCnm6Vaw+MZhoDCKnOfsw==}
     dev: true
 
-  /@types/react/18.0.17:
-    resolution: {integrity: sha512-38ETy4tL+rn4uQQi7mB81G7V1g0u2ryquNmsVIOKUAEIDK+3CUjZ6rSRpdvS99dNBnkLFL83qfmtLacGOTIhwQ==}
+  /@types/react/18.0.18:
+    resolution: {integrity: sha512-6hI08umYs6NaiHFEEGioXnxJ+oEhY3eRz8VCUaudZmGdtvPviCJB8mgaMxaDWAdPSYd4eFavrPk2QIolwbLYrg==}
     dependencies:
       '@types/prop-types': 15.7.5
       '@types/scheduler': 0.16.2
@@ -5157,7 +5157,7 @@ packages:
       react: '>=16.8.2'
     dependencies:
       cli-spinners: 2.7.0
-      ink: 3.2.0_ug65io7jkbhmo4fihdmbrh3ina
+      ink: 3.2.0_7v64pk2mkrohwh22gx7lrz5ive
       react: 18.2.0
     dev: false
 
@@ -5167,11 +5167,11 @@ packages:
       ink: '>=3.0.0'
       react: '>=16.8.0'
     dependencies:
-      ink: 3.2.0_ug65io7jkbhmo4fihdmbrh3ina
+      ink: 3.2.0_7v64pk2mkrohwh22gx7lrz5ive
       react: 18.2.0
     dev: false
 
-  /ink/3.2.0_ug65io7jkbhmo4fihdmbrh3ina:
+  /ink/3.2.0_7v64pk2mkrohwh22gx7lrz5ive:
     resolution: {integrity: sha512-firNp1q3xxTzoItj/eOOSZQnYSlyrWks5llCTVX37nJ59K3eXbQ8PtzCguqo8YI19EELo5QxaKnJd4VxzhU8tg==}
     engines: {node: '>=10'}
     peerDependencies:
@@ -5181,7 +5181,7 @@ packages:
       '@types/react':
         optional: true
     dependencies:
-      '@types/react': 18.0.17
+      '@types/react': 18.0.18
       ansi-escapes: 4.3.2
       auto-bind: 4.0.0
       chalk: 4.1.2
