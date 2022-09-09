@@ -31,7 +31,7 @@ specifiers:
   eslint-plugin-import: 2.26.0
   eslint-plugin-node: 11.1.0
   eslint-plugin-prettier: 4.2.1
-  eslint-plugin-react: 7.31.7
+  eslint-plugin-react: 7.31.8
   eslint-plugin-unused-imports: 2.0.0
   express: 4.18.1
   figlet: 1.5.2
@@ -105,7 +105,7 @@ devDependencies:
   eslint-plugin-import: 2.26.0_iepzrjnvahcxaf6zc7cutko6om
   eslint-plugin-node: 11.1.0_eslint@8.23.0
   eslint-plugin-prettier: 4.2.1_tgumt6uwl2md3n6uqnggd6wvce
-  eslint-plugin-react: 7.31.7_eslint@8.23.0
+  eslint-plugin-react: 7.31.8_eslint@8.23.0
   eslint-plugin-unused-imports: 2.0.0_zko7vy5ljylfnjbd43q67qnl6a
   figlet: 1.5.2
   husky: 8.0.1
@@ -4074,8 +4074,8 @@ packages:
       prettier-linter-helpers: 1.0.0
     dev: true
 
-  /eslint-plugin-react/7.31.7_eslint@8.23.0:
-    resolution: {integrity: sha512-8NldBTeYp/kQoTV1uT0XF6HcmDqbgZ0lNPkN0wlRw8DJKXEnaWu+oh/6gt3xIhzvQ35wB2Y545fJhIbJSZ2NNw==}
+  /eslint-plugin-react/7.31.8_eslint@8.23.0:
+    resolution: {integrity: sha512-5lBTZmgQmARLLSYiwI71tiGVTLUuqXantZM6vlSY39OaDSV0M7+32K5DnLkmFrwTe+Ksz0ffuLUC91RUviVZfw==}
     engines: {node: '>=4'}
     peerDependencies:
       eslint: ^3 || ^4 || ^5 || ^6 || ^7 || ^8
