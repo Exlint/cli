@@ -51,7 +51,7 @@ specifiers:
   react: 18.2.0
   reflect-metadata: ^0.1.13
   rxjs: 7.5.6
-  ts-loader: 9.4.0
+  ts-loader: 9.4.1
   typescript: 4.8.3
   v8-compile-cache: 2.3.0
   webpack: 5.74.0
@@ -113,7 +113,7 @@ devDependencies:
   npm-run-all: 4.1.5
   open-cli: 7.0.1
   prettier: 2.7.1
-  ts-loader: 9.4.0_kb3egcnme7w23lfa5xodfjfhge
+  ts-loader: 9.4.1_kb3egcnme7w23lfa5xodfjfhge
   typescript: 4.8.3
   webpack: 5.74.0
   webpack-merge: 5.8.0
@@ -7811,8 +7811,8 @@ packages:
     engines: {node: '>=12'}
     dev: true
 
-  /ts-loader/9.4.0_kb3egcnme7w23lfa5xodfjfhge:
-    resolution: {integrity: sha512-0G3UMhk1bjgsgiwF4rnZRAeTi69j9XMDtmDDMghGSqlWESIAS3LFgJe//GYfE4vcjbyzuURLB9Us2RZIWp2clQ==}
+  /ts-loader/9.4.1_kb3egcnme7w23lfa5xodfjfhge:
+    resolution: {integrity: sha512-384TYAqGs70rn9F0VBnh6BPTfhga7yFNdC5gXbQpDrBj9/KsT4iRkGqKXhziofHOlE2j6YEaiTYVGKKvPhGWvw==}
     engines: {node: '>=12.0.0'}
     peerDependencies:
       typescript: '*'
