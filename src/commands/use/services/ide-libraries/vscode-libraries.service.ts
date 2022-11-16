@@ -60,7 +60,27 @@ export class VsCodeLibrariesService extends IdeLibrares {
 			.map((extensionName) => `--install-extension ${extensionName}`)
 			.join(' ');
 
-		const cmd = `code ${cmdArgs} --force`;
+		let vsCodeCliCommandPath = 'code';
+
+		if (process.platform === 'darwin') {
+			const detectVsCodeFolderCommand = 'mdfind kMDItemCFBundleIdentifier = "com.microsoft.VSCode"';
+			const vsCodeFolderOutput = await asyncExec(detectVsCodeFolderCommand);
+
+			if (vsCodeFolderOutput.stderr) {
+				throw new Error('Failed to locate VSCode path');
+			}
+
+			vsCodeCliCommandPath = path.join(
+				path.resolve(vsCodeFolderOutput.stdout),
+				'Contents',
+				'Resources',
+				'app',
+				'bin',
+				'code',
+			);
+		}
+
+		const cmd = `${vsCodeCliCommandPath} ${cmdArgs} --force`;
 
 		await asyncExec(cmd);
 	}
