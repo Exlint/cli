@@ -100,7 +100,7 @@ export class AuthCommand implements CommandRunner {
 
 			await netrc.load();
 
-			netrc.machines['localhost'] = {
+			netrc.machines[__CLI_API_DOMAIN__] = {
 				login: email,
 				password: token,
 			};
