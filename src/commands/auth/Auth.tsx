@@ -18,11 +18,13 @@ import type { IRedirectParams } from './interfaces/redirect-token';
 import { AUTHENTICATION_TIMEOUT } from './models/auth-timeout';
 
 @Command({ name: 'auth', description: 'Authenticate Exlint CLI with an Exlint account' })
-export class AuthCommand implements CommandRunner {
+export class AuthCommand extends CommandRunner {
 	constructor(
 		private readonly configService: ConfigService,
 		private readonly connectionService: ConnectionService,
-	) {}
+	) {
+		super();
+	}
 
 	public async run() {
 		const hasConnection = await this.connectionService.checkConnection();

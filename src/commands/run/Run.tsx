@@ -17,12 +17,14 @@ import { ICommandOptions } from './interfaces/options';
 	name: 'run',
 	description: 'Run a group policies over your project',
 })
-export class RunCommand implements CommandRunner {
+export class RunCommand extends CommandRunner {
 	constructor(
 		private readonly connectionService: ConnectionService,
 		private readonly exlintConfigService: ExlintConfigService,
 		private readonly apiService: ApiService,
-	) {}
+	) {
+		super();
+	}
 
 	public async run(_: string[], options: ICommandOptions) {
 		const hasConnection = await this.connectionService.checkConnection();

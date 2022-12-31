@@ -38,14 +38,16 @@ import { WebstormLibrariesService } from './services/ide-libraries/webstorm-libr
 	arguments: '<group_id>',
 	argsDescription: { group_id: 'The identifer of the group to use' },
 })
-export class UseCommand implements CommandRunner {
+export class UseCommand extends CommandRunner {
 	constructor(
 		private readonly connectionService: ConnectionService,
 		private readonly apiService: ApiService,
 		private readonly exlintConfigService: ExlintConfigService,
 		private readonly vsCodeLibrariesService: VsCodeLibrariesService,
 		private readonly webstormLibrariesService: WebstormLibrariesService,
-	) {}
+	) {
+		super();
+	}
 
 	public async run([groupId]: [string]) {
 		const hasConnection = await this.connectionService.checkConnection();
