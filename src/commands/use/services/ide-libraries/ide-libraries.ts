@@ -1,13 +1,7 @@
-import { ILibrary } from '@/interfaces/library';
-
-import { IPolicyFilesPattern } from '../../interfaces/file-pattern';
+import { IPolicyServer } from '@/interfaces/policy';
 
 abstract class IdeLibrares {
-	protected abstract adjustLocal(
-		projectId: string,
-		libs: ILibrary[],
-		policiesFilesPattern: IPolicyFilesPattern,
-	): Promise<void>;
+	protected abstract adjustLocal(projectId: string, policies: IPolicyServer[]): Promise<void>;
 }
 
 export default IdeLibrares;

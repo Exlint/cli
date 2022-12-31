@@ -4,12 +4,25 @@ import fs from 'fs-extra';
 import chalk from 'chalk';
 
 import { EXLINT_FOLDER_PATH } from '@/models/exlint-folder';
+import { findConfigFileName } from '@/utils/config-file-name';
 
 import { spawnLib } from './spawn-lib';
 
 export const getStylelintOutput = async (projectId: string, withFix: boolean) => {
-	const libraryConfigPath = path.join(EXLINT_FOLDER_PATH, projectId, '.stylelintrc.json');
-	const libraryPatternPath = path.join(EXLINT_FOLDER_PATH, projectId, '.exlint-stylelint-pattern');
+	const projectPath = path.join(EXLINT_FOLDER_PATH, projectId);
+	const projectFolderFiles = await fs.readdir(projectPath);
+	let libraryConfigPath: string;
+
+	try {
+		libraryConfigPath = path.join(projectPath, findConfigFileName(projectFolderFiles, 'stylelint'));
+	} catch {
+		return {
+			output: '',
+			success: true,
+		};
+	}
+
+	const libraryPatternPath = path.join(projectPath, '.exlint-stylelint-pattern');
 	const isLibraryConfigured = await fs.pathExists(libraryConfigPath);
 
 	if (isLibraryConfigured) {

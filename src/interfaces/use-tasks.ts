@@ -1,3 +1,3 @@
-import { ITaskStatus } from './task-status';
+import type { ITaskStatus } from './task-status';
 
 export type IUseTasks = Record<string, ITaskStatus>;

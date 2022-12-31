@@ -4,13 +4,26 @@ import fs from 'fs-extra';
 import chalk from 'chalk';
 
 import { EXLINT_FOLDER_PATH } from '@/models/exlint-folder';
+import { findConfigFileName } from '@/utils/config-file-name';
 
 import { spawnLib } from './spawn-lib';
 
 export const getPrettierOutput = async (projectId: string, withFix: boolean) => {
-	const libraryConfigPath = path.join(EXLINT_FOLDER_PATH, projectId, '.prettierrc.json');
-	const libraryPatternPath = path.join(EXLINT_FOLDER_PATH, projectId, '.exlint-prettier-pattern');
-	const libraryIgnorePath = path.join(EXLINT_FOLDER_PATH, projectId, '.prettierignore');
+	const projectPath = path.join(EXLINT_FOLDER_PATH, projectId);
+	const projectFolderFiles = await fs.readdir(projectPath);
+	let libraryConfigPath: string;
+
+	try {
+		libraryConfigPath = path.join(projectPath, findConfigFileName(projectFolderFiles, 'prettier'));
+	} catch {
+		return {
+			output: '',
+			success: true,
+		};
+	}
+
+	const libraryPatternPath = path.join(projectPath, '.exlint-prettier-pattern');
+	const libraryIgnorePath = path.join(projectPath, '.prettierignore');
 	const isLibraryConfigured = await fs.pathExists(libraryConfigPath);
 
 	if (isLibraryConfigured) {

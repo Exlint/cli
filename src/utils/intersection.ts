@@ -1,21 +1,27 @@
 /**
  * The function returns the intersection of two arrays in O(n+m) complexity
- * @param input1 an array of numbers or string
- * @param input2 an array of numbers or string
+ * @param input1 an array of string
+ * @param input2 an array of string
  * @returns the intersection result
  * @author Tal Rofe
  */
-export const intersection = (input1: (string | number)[], input2: (string | number)[]) => {
-	const intersectObject: Record<string | number, 0 | 1> = {};
+export const intersection = (input1: string[], input2: string[], caseSensetive: boolean) => {
+	const intersectObject: Record<string, 0 | 1> = {};
 
-	input1.forEach((value) => (intersectObject[value] = 0));
+	input1.forEach((value) => {
+		const key = caseSensetive ? value : value.toLowerCase();
+
+		intersectObject[key] = 0;
+	});
 	input2.forEach((value) => {
-		if (intersectObject[value] === 0) {
-			intersectObject[value] = 1;
+		const key = caseSensetive ? value : value.toLowerCase();
+
+		if (intersectObject[key] === 0) {
+			intersectObject[key] = 1;
 		}
 	});
 
-	return Object.keys(intersectObject).reduce<(string | number)[]>((final, key) => {
+	return Object.keys(intersectObject).reduce<string[]>((final, key) => {
 		if (intersectObject[key] === 1) {
 			return [...final, key];
 		}
