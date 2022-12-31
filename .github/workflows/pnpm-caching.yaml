@@ -1,0 +1,23 @@
+name: Reusable pnpm caching workflow
+
+on:
+    workflow_call:
+        inputs:
+            runner:
+                required: true
+                type: string
+
+jobs:
+    install_dependencies:
+        name: Install dependencies and caching
+        permissions:
+            contents: read
+
+        runs-on: ${{ inputs.runner }}
+        steps:
+            - name: Setup Node environment
+              uses: Exlint/node-environment@v1.0.4
+              with:
+                  node-version: 18.12.1
+                  package-manager: pnpm
+                  package-manager-version: 7.19.0

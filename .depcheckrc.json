@@ -1,14 +1,11 @@
 {
 	"ignores": [
 		"@commitlint/cli",
-		"@nestjs/schematics",
-		"@types/node",
 		"chalk",
 		"commitizen",
 		"eslint-plugin-prettier",
 		"figlet",
 		"lint-staged",
-		"prettier",
 		"ts-loader"
 	]
 }

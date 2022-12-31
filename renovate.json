@@ -8,5 +8,6 @@
 		}
 	],
 	"ignoreDeps": ["chalk"],
-	"commitMessageAction": "🤖 Update"
+	"commitMessageAction": "🤖 Update",
+	"stabilityDays": 7
 }
