@@ -3,7 +3,7 @@ import axios, { AxiosError } from 'axios';
 import { Netrc } from 'netrc-parser';
 
 import { ConfigService } from '../config/config.service';
-import type { IGetGroupPoliciesResponse } from './interfaces/responses';
+import type { IGetGroupResponseData } from './interfaces/responses';
 
 @Injectable()
 export class ApiService {
@@ -31,11 +31,11 @@ export class ApiService {
 	}
 
 	public async getGroupData(groupId: string) {
-		const groupDataResponse = await this.axiosInstance.get<IGetGroupPoliciesResponse>(
+		const groupDataResponse = await this.axiosInstance.get<IGetGroupResponseData>(
 			`/user/groups/${groupId}`,
 		);
 
-		return groupDataResponse.data as IGetGroupPoliciesResponse;
+		return groupDataResponse.data;
 	}
 
 	public async hasValidToken() {

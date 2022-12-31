@@ -5,7 +5,7 @@ import fs from 'fs-extra';
 
 import { EXLINT_FILE_NAME } from '@/models/exlint-folder';
 
-import { IExlintConfig } from './interfaces/exlint-config';
+import type { IExlintConfig } from './interfaces/exlint-config';
 
 @Injectable()
 export class ExlintConfigService {

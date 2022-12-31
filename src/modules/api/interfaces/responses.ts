@@ -1,11 +1,3 @@
-import { ILibrary } from '@/interfaces/library';
-import { IPolicyConfiguration } from '@/interfaces/policy-configuration';
+import { IPolicyServer } from '@/interfaces/policy';
 
-export interface IGetGroupPoliciesResponse {
-	id: string;
-	inlinePolicies: {
-		id: string;
-		library: ILibrary;
-		configuration: IPolicyConfiguration;
-	}[];
-}
+export type IGetGroupResponseData = IPolicyServer[];

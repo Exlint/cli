@@ -4,21 +4,17 @@ import fs from 'fs-extra';
 import xml2js from 'xml2js';
 import { Injectable } from '@nestjs/common';
 
-import { ILibrary } from '@/interfaces/library';
 import { EXLINT_FOLDER_PATH } from '@/models/exlint-folder';
-import { IUnknown } from '@/interfaces/unknown';
+import type { IUnknown } from '@/interfaces/unknown';
+import type { IPolicyServer } from '@/interfaces/policy';
+import { getFileNameExtension } from '@/utils/file-name-extension';
 
-import { IProjectDefault, IWorkspace } from '../../interfaces/webstorm';
-import { IPolicyFilesPattern } from '../../interfaces/file-pattern';
+import type { IProjectDefault, IWorkspace } from '../../interfaces/webstorm';
 import IdeLibrares from './ide-libraries';
 
 @Injectable()
 export class WebstormLibrariesService extends IdeLibrares {
-	public async adjustLocal(
-		projectId: string,
-		libs: ILibrary[],
-		policiesFilesPattern?: IPolicyFilesPattern,
-	) {
+	public async adjustLocal(projectId: string, policies: IPolicyServer[]) {
 		const ideaFolderPath = path.join(process.cwd(), '.idea');
 		const workspaceXmlFilePath = path.join(ideaFolderPath, 'workspace.xml');
 		const workspaceContent = await fs.readFile(workspaceXmlFilePath, 'utf-8').catch(() => '');
@@ -66,8 +62,9 @@ export class WebstormLibrariesService extends IdeLibrares {
 		const projectPath = path.join(EXLINT_FOLDER_PATH, projectId);
 		const writePluginsConfigurationsPromises = [];
 		let shouldOverridePlugins = false;
+		const libraries = policies.map((policy) => policy.library.toLowerCase());
 
-		if (libs.includes('eslint')) {
+		if (libraries.includes('eslint')) {
 			projectDefaultInspectionTools = [
 				...projectDefaultInspectionTools.filter(
 					(inspectionTool) => inspectionTool?.$?.class !== 'Eslint',
@@ -83,6 +80,12 @@ export class WebstormLibrariesService extends IdeLibrares {
 			];
 
 			const eslintXmlFilePath = path.join(ideaFolderPath, 'jsLinters', 'eslint.xml');
+			const policyData = policies.find((policy) => policy.library === 'ESLint')!;
+
+			const fileNameExtension = getFileNameExtension(
+				policyData.isFormConfiguration,
+				policyData.codeType,
+			);
 
 			const eslintXmlConfig = {
 				project: {
@@ -91,11 +94,11 @@ export class WebstormLibrariesService extends IdeLibrares {
 						'$': { name: 'EslintConfiguration' },
 						'work-dir-patterns': { $: { value: process.cwd() } },
 						'custom-configuration-file': {
-							$: { used: true, path: path.join(projectPath, '.eslintrc.json') },
+							$: { used: true, path: path.join(projectPath, `.eslintrc.${fileNameExtension}`) },
 						},
-						...(policiesFilesPattern?.eslint && {
+						...(policyData.lintedList.length > 0 && {
 							'files-pattern': {
-								$: { value: policiesFilesPattern.eslint },
+								$: { value: policyData.lintedList.join(' ') },
 							},
 						}),
 					},
@@ -122,8 +125,9 @@ export class WebstormLibrariesService extends IdeLibrares {
 			shouldOverridePlugins = true;
 		}
 
-		if (libs.includes('prettier')) {
+		if (libraries.includes('prettier')) {
 			const prettierXmlFilePath = path.join(ideaFolderPath, 'prettier.xml');
+			const policyData = policies.find((policy) => policy.library === 'Prettier')!;
 
 			const prettierXmlConfig = {
 				project: {
@@ -133,8 +137,8 @@ export class WebstormLibrariesService extends IdeLibrares {
 						option: [
 							{ $: { name: 'myRunOnSave', value: 'true' } },
 							{ $: { name: 'myRunOnReformat', value: 'true' } },
-							...(policiesFilesPattern?.prettier
-								? [{ $: { name: 'myFilesPattern', value: policiesFilesPattern.prettier } }]
+							...(policyData.lintedList.length > 0
+								? [{ $: { name: 'myFilesPattern', value: policyData.lintedList.join(' ') } }]
 								: []),
 						],
 					},
@@ -161,7 +165,7 @@ export class WebstormLibrariesService extends IdeLibrares {
 			shouldOverridePlugins = true;
 		}
 
-		if (libs.includes('stylelint')) {
+		if (libraries.includes('stylelint')) {
 			projectDefaultInspectionTools = [
 				...projectDefaultInspectionTools.filter(
 					(inspectionTool) => inspectionTool?.$?.class !== 'Stylelint',
@@ -177,16 +181,24 @@ export class WebstormLibrariesService extends IdeLibrares {
 			];
 
 			const stylelintXmlFilePath = path.join(ideaFolderPath, 'stylesheetLinters', 'stylelint.xml');
+			const policyData = policies.find((policy) => policy.library === 'Prettier')!;
+
+			const fileNameExtension = getFileNameExtension(
+				policyData.isFormConfiguration,
+				policyData.codeType,
+			);
 
 			const stylelintXmlConfig = {
 				project: {
 					$: { version: '4' },
 					component: {
 						'$': { name: 'StylelintConfiguration' },
-						'config-file': { $: { value: path.join(projectPath, '.stylelintrc.json') } },
-						...(policiesFilesPattern?.stylelint && {
+						'config-file': {
+							$: { value: path.join(projectPath, `.stylelintrc.${fileNameExtension}`) },
+						},
+						...(policyData.lintedList.length > 0 && {
 							'files-patterns': {
-								$: { value: policiesFilesPattern.stylelint },
+								$: { value: policyData.lintedList.join(' ') },
 							},
 						}),
 					},

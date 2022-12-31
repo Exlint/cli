@@ -4,12 +4,25 @@ import fs from 'fs-extra';
 import chalk from 'chalk';
 
 import { EXLINT_FOLDER_PATH } from '@/models/exlint-folder';
+import { findConfigFileName } from '@/utils/config-file-name';
 
 import { spawnLib } from './spawn-lib';
 
 export const getInflintOutput = async (projectId: string) => {
-	const libraryConfigPath = path.join(EXLINT_FOLDER_PATH, projectId, '.inflintrc.json');
-	const libraryIgnorePath = path.join(EXLINT_FOLDER_PATH, projectId, '.inflintignore');
+	const projectPath = path.join(EXLINT_FOLDER_PATH, projectId);
+	const projectFolderFiles = await fs.readdir(projectPath);
+	let libraryConfigPath: string;
+
+	try {
+		libraryConfigPath = path.join(projectPath, findConfigFileName(projectFolderFiles, 'inflint'));
+	} catch {
+		return {
+			output: '',
+			success: true,
+		};
+	}
+
+	const libraryIgnorePath = path.join(projectPath, '.inflintignore');
 	const isLibraryConfigured = await fs.pathExists(libraryConfigPath);
 
 	if (isLibraryConfigured) {

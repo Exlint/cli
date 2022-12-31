@@ -28,10 +28,9 @@ import {
 } from './models/task';
 import { installLibraries } from './utils/install-library';
 import { isVsCodeInstalled, ensureRequiredSoftware, isWebstormInstalled } from './utils/required-software';
-import { resetConfigLibraries, setConfigLibrary } from './utils/configure-library';
+import { setConfigLibrary } from './utils/configure-library';
 import { VsCodeLibrariesService } from './services/ide-libraries/vscode-libraries.service';
 import { WebstormLibrariesService } from './services/ide-libraries/webstorm-libraries.service';
-import { IPolicyFilesPattern } from './interfaces/file-pattern';
 
 @Command({
 	name: 'use',
@@ -74,7 +73,7 @@ export class UseCommand implements CommandRunner {
 				throw e;
 			});
 
-			if (groupData.inlinePolicies.length === 0) {
+			if (groupData.length === 0) {
 				render(
 					<Text bold color="magenta">
 						No policies were configured in this group.
@@ -84,7 +83,7 @@ export class UseCommand implements CommandRunner {
 				process.exit(0);
 			}
 
-			const requiredLibraries = groupData.inlinePolicies.map((policy) => policy.library);
+			const requiredLibraries = groupData.map((policy) => policy.library);
 
 			/**
 			 * Ensure required software is installed.
@@ -100,23 +99,19 @@ export class UseCommand implements CommandRunner {
 
 			await this.exlintConfigService.init();
 
-			let projectId = this.exlintConfigService.getValue('projectId');
-
-			if (!projectId) {
-				projectId = crypto.randomUUID();
-			}
-
+			const projectId = this.exlintConfigService.getValue('projectId') ?? crypto.randomUUID();
 			const projectFolderPath = path.join(EXLINT_FOLDER_PATH, projectId);
 
 			const shouldAdjustToIde =
-				!isCI && intersection(requiredLibraries, ['eslint', 'prettier', 'stylelint']).length > 0;
+				!isCI &&
+				intersection(requiredLibraries, ['eslint', 'prettier', 'stylelint'], false).length > 0;
 
 			const [shouldAdjustToVsCode, shouldAdjustToWebstorm] = await Promise.all([
 				shouldAdjustToIde && isVsCodeInstalled(),
 				shouldAdjustToIde && isWebstormInstalled(),
 				this.exlintConfigService.setValues({ projectId }),
-				fs.ensureDir(projectFolderPath),
-				resetConfigLibraries(projectId),
+				// Note that "emptyDir" - "If the directory does not exist, it is created."
+				fs.emptyDir(projectFolderPath),
 			]);
 
 			const tasks: IUseTasks = {
@@ -144,9 +139,7 @@ export class UseCommand implements CommandRunner {
 					render(<UseTasks tasks={tasks} />);
 				});
 
-			const setConfigLibrariesPromises = groupData.inlinePolicies.map((policy) =>
-				setConfigLibrary(projectId!, policy.library, policy.configuration),
-			);
+			const setConfigLibrariesPromises = groupData.map((policy) => setConfigLibrary(projectId, policy));
 
 			const setConfigLibrariesPromise = Promise.all(setConfigLibrariesPromises)
 				.then(() => {
@@ -180,7 +173,7 @@ export class UseCommand implements CommandRunner {
 							render(<UseTasks tasks={tasks} />);
 						}),
 					this.vsCodeLibrariesService
-						.adjustLocal(projectId, requiredLibraries)
+						.adjustLocal(projectId, groupData)
 						.then(() => {
 							tasks[ADJUST_VSCODE_EXTENSIONS] = 'success';
 						})
@@ -194,21 +187,11 @@ export class UseCommand implements CommandRunner {
 			}
 
 			if (shouldAdjustToWebstorm) {
-				const policiesFilesPattern = groupData.inlinePolicies.reduce<IPolicyFilesPattern>(
-					(final, policy) => {
-						return {
-							...final,
-							[policy.library]: policy.configuration?.__EXLINT_FILES_PATTERN__,
-						};
-					},
-					{},
-				);
-
 				tasks[ADJUST_WEBSTORM_PLUGINS] = 'loading';
 
 				editorsPromises.push(
 					this.webstormLibrariesService
-						.adjustLocal(projectId, requiredLibraries, policiesFilesPattern)
+						.adjustLocal(projectId, groupData)
 						.then(() => {
 							tasks[ADJUST_WEBSTORM_PLUGINS] = 'success';
 						})
