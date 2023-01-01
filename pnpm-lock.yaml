@@ -10,7 +10,7 @@ specifiers:
   '@types/envinfo': 7.8.1
   '@types/express': 4.17.15
   '@types/fs-extra': 9.0.13
-  '@types/inquirer': 9.0.2
+  '@types/inquirer': 9.0.3
   '@types/is-ci': 3.0.0
   '@types/node': 16.18.2
   '@types/react': 18.0.24
@@ -69,7 +69,7 @@ dependencies:
   ink-spinner: 4.0.3_ink@3.2.0+react@18.2.0
   ink-task-list: 2.0.0_ink@3.2.0+react@18.2.0
   is-ci: 3.0.1
-  nest-commander: 3.4.0_ipl3vvq6yjhhdwse5a5f7vvmha
+  nest-commander: 3.4.0_f7vrhdn5rskjlk4v2s4p4jmroi
   netrc-parser: 3.1.6
   open: 8.4.0
   react: 18.2.0
@@ -86,7 +86,7 @@ devDependencies:
   '@types/envinfo': 7.8.1
   '@types/express': 4.17.15
   '@types/fs-extra': 9.0.13
-  '@types/inquirer': 9.0.2
+  '@types/inquirer': 9.0.3
   '@types/is-ci': 3.0.0
   '@types/node': 16.18.2
   '@types/react': 18.0.24
@@ -2009,8 +2009,8 @@ packages:
       '@types/node': 16.18.2
     dev: true
 
-  /@types/inquirer/9.0.2:
-    resolution: {integrity: sha512-MQc3adiIh/rDxLkjnvL03rSvuHg+/dKif4dn/MRsnE+oU1bAdyuDbW0w+ewR1M/M/u/Z0YAbw7NZYCpgQ5SW8A==}
+  /@types/inquirer/9.0.3:
+    resolution: {integrity: sha512-CzNkWqQftcmk2jaCWdBTf9Sm7xSw4rkI1zpU/Udw3HX5//adEZUIm9STtoRP1qgWj0CWQtJ9UTvqmO2NNjhMJw==}
     dependencies:
       '@types/through': 0.0.30
       rxjs: 7.5.7
@@ -6007,7 +6007,7 @@ packages:
     resolution: {integrity: sha512-Yd3UES5mWCSqR+qNT93S3UoYUkqAZ9lLg8a7g9rimsWmYGK8cVToA4/sF3RrshdyV3sAGMXVUmpMYOw+dLpOuw==}
     dev: true
 
-  /nest-commander/3.4.0_ipl3vvq6yjhhdwse5a5f7vvmha:
+  /nest-commander/3.4.0_f7vrhdn5rskjlk4v2s4p4jmroi:
     resolution: {integrity: sha512-HeOkubQdY2/lfh6tbVHlgtr6EgwUeRYYQREDrgIMJZ7Ufb8EJh+NLwVyNKkB0CUHdBxt3ZYRhIFOXKXJcUnvQQ==}
     peerDependencies:
       '@nestjs/common': ^8.0.0 || ^9.0.0
@@ -6017,7 +6017,7 @@ packages:
       '@golevelup/nestjs-discovery': 3.0.0
       '@nestjs/common': 9.0.1_yzt46al3aifnexifjjdb4dxxja
       '@nestjs/core': 9.0.1_oatl7pud7pxgoqt5eajo45up5i
-      '@types/inquirer': 9.0.2
+      '@types/inquirer': 9.0.3
       commander: 9.4.1
       cosmiconfig: 8.0.0
       inquirer: 8.2.4
