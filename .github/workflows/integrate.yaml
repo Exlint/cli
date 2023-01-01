@@ -14,8 +14,6 @@ jobs:
         uses: ./.github/workflows/pnpm-caching.yaml
         with:
             runner: self-hosted
-            node-version: 18
-            pnpm-version: 7.19.0
 
     test_depcheck:
         needs: call_pnpm_caching_workflow
