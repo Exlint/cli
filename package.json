@@ -65,7 +65,7 @@
 		"@types/envinfo": "7.8.1",
 		"@types/express": "4.17.15",
 		"@types/fs-extra": "9.0.13",
-		"@types/inquirer": "9.0.2",
+		"@types/inquirer": "9.0.3",
 		"@types/is-ci": "3.0.0",
 		"@types/node": "16.18.2",
 		"@types/react": "18.0.24",
@@ -94,6 +94,6 @@
 		"webpack-merge": "5.8.0"
 	},
 	"peerDependencies": {
-		"@types/inquirer": "9.0.2"
+		"@types/inquirer": "9.0.3"
 	}
 }
