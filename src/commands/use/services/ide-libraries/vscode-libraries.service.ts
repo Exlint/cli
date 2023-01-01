@@ -1,6 +1,6 @@
-import path from 'path';
-import util from 'util';
-import { exec, execFile } from 'child_process';
+import path from 'node:path';
+import util from 'node:util';
+import { execFile } from 'node:child_process';
 
 import fs from 'fs-extra';
 import { Injectable } from '@nestjs/common';
@@ -14,7 +14,6 @@ import { vsCodeExtensions } from '../../models/vscode-extensions';
 import IdeLibrares from './ide-libraries';
 
 const asyncExecFile = util.promisify(execFile);
-const asyncExec = util.promisify(exec);
 
 @Injectable()
 export class VsCodeLibrariesService extends IdeLibrares {
@@ -75,10 +74,9 @@ export class VsCodeLibrariesService extends IdeLibrares {
 		let vsCodeCliCommandPath = 'code';
 
 		if (process.platform === 'darwin') {
-			const detectVsCodeFolderCommand =
-				'/usr/bin/mdfind kMDItemCFBundleIdentifier = "com.microsoft.VSCode"';
-
-			const vsCodeFolderOutput = await asyncExec(detectVsCodeFolderCommand);
+			const vsCodeFolderOutput = await asyncExecFile('/usr/bin/mdfind', [
+				'kMDItemCFBundleIdentifier = "com.microsoft.VSCode"',
+			]);
 
 			if (vsCodeFolderOutput.stderr) {
 				throw new Error('Failed to get VSCode path');

@@ -1,5 +1,5 @@
-import http from 'http';
-import type { AddressInfo } from 'net';
+import http from 'node:http';
+import type { AddressInfo } from 'node:net';
 
 import React from 'react';
 import { Newline, render, Text } from 'ink';
@@ -10,7 +10,7 @@ import { Netrc } from 'netrc-parser';
 
 import { ConfigService } from '@/modules/config/config.service';
 import { ConnectionService } from '@/modules/connection/connection.service';
-import Error from '@/ui/Error/Error';
+import Error from '@/ui/Error';
 import NoInternet from '@/ui/NoInternet';
 import PendingAuth from '@/containers/Auth/PendingAuth';
 

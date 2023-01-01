@@ -16,6 +16,9 @@ const configuration = (options) =>
 				__DASHBOARD_URL__: JSON.stringify(dashboardUrl),
 			}),
 		],
+		experiments: {
+			topLevelAwait: true,
+		},
 	});
 
 module.exports = configuration;

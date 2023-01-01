@@ -6,7 +6,7 @@ import { ConnectionService } from '@/modules/connection/connection.service';
 import { ExlintConfigService } from '@/modules/exlint-config/exlint-config.service';
 import { ApiService } from '@/modules/api/api.service';
 import NoInternet from '@/ui/NoInternet';
-import Error from '@/ui/Error/Error';
+import Error from '@/ui/Error';
 import InvalidToken from '@/ui/InvalidToken';
 import Preparing from '@/ui/Preparing';
 

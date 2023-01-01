@@ -3,9 +3,10 @@
 		"@commitlint/cli",
 		"chalk",
 		"commitizen",
-		"eslint-plugin-prettier",
 		"figlet",
 		"lint-staged",
-		"ts-loader"
+		"ts-loader",
+		"webpack",
+		"webpack-merge"
 	]
 }

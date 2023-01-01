@@ -1,4 +1,4 @@
-import path from 'path';
+import path from 'node:path';
 
 import { Injectable } from '@nestjs/common';
 import fs from 'fs-extra';

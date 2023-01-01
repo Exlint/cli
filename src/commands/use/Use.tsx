@@ -1,5 +1,5 @@
-import crypto from 'crypto';
-import path from 'path';
+import crypto from 'node:crypto';
+import path from 'node:path';
 
 import React from 'react';
 import { render, Text } from 'ink';
@@ -14,7 +14,7 @@ import { ExlintConfigService } from '@/modules/exlint-config/exlint-config.servi
 import { EXLINT_FOLDER_PATH } from '@/models/exlint-folder';
 import { ApiService } from '@/modules/api/api.service';
 import NoInternet from '@/ui/NoInternet';
-import Error from '@/ui/Error/Error';
+import Error from '@/ui/Error';
 import Preparing from '@/ui/Preparing';
 import UseTasks from '@/containers/Use/UseTasks';
 import { intersection } from '@/utils/intersection';
