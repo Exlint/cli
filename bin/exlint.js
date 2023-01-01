@@ -1,11 +1,11 @@
 #!/usr/bin/env node
 
-const path = require('path');
-const os = require('os');
+const path = require('node:path');
+const os = require('node:os');
 
 const fs = require('fs-extra');
 
-// to use V8's code cache to speed up instantiation time
+// To use V8's code cache to speed up instantiation time
 require('v8-compile-cache');
 
 const EXLINT_FOLDER_PATH = path.join(os.homedir(), '.exlint');
