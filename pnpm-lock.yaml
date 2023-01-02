@@ -34,7 +34,7 @@ specifiers:
   express: 4.18.2
   figlet: 1.5.2
   fs-extra: 11.1.0
-  husky: 8.0.1
+  husky: 8.0.2
   ink: 3.2.0
   ink-spinner: 4.0.3
   ink-task-list: 2.0.0
@@ -104,7 +104,7 @@ devDependencies:
   eslint-plugin-react: 7.31.11_eslint@8.26.0
   eslint-plugin-unused-imports: 2.0.0_6r3xdzcxornz44qxq7pviwvbfa
   figlet: 1.5.2
-  husky: 8.0.1
+  husky: 8.0.2
   lint-staged: 13.0.3
   npm-run-all: 4.1.5
   open-cli: 7.1.0
@@ -5054,8 +5054,8 @@ packages:
     engines: {node: '>=12.20.0'}
     dev: true
 
-  /husky/8.0.1:
-    resolution: {integrity: sha512-xs7/chUH/CKdOCs7Zy0Aev9e/dKOMZf3K1Az1nar3tzlv0jfqnYtu235bstsWTmXOR0EfINrPa97yy4Lz6RiKw==}
+  /husky/8.0.2:
+    resolution: {integrity: sha512-Tkv80jtvbnkK3mYWxPZePGFpQ/tT3HNSs/sasF9P2YfkMezDl3ON37YN6jUUI4eTg5LcyVynlb6r4eyvOmspvg==}
     engines: {node: '>=14'}
     hasBin: true
     dev: true
