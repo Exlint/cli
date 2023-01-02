@@ -33,7 +33,7 @@ specifiers:
   eslint-plugin-unused-imports: 2.0.0
   express: 4.18.2
   figlet: 1.5.2
-  fs-extra: 10.1.0
+  fs-extra: 11.1.0
   husky: 8.0.1
   ink: 3.2.0
   ink-spinner: 4.0.3
@@ -64,7 +64,7 @@ dependencies:
   cli-spinners: 2.7.0
   envinfo: 7.8.1
   express: 4.18.2
-  fs-extra: 10.1.0
+  fs-extra: 11.1.0
   ink: 3.2.0_kzbn2opkn2327fwg5yzwzya5o4
   ink-spinner: 4.0.3_ink@3.2.0+react@18.2.0
   ink-task-list: 2.0.0_ink@3.2.0+react@18.2.0
@@ -4648,6 +4648,16 @@ packages:
       graceful-fs: 4.2.10
       jsonfile: 6.1.0
       universalify: 2.0.0
+    dev: true
+
+  /fs-extra/11.1.0:
+    resolution: {integrity: sha512-0rcTq621PD5jM/e0a3EJoGC/1TC5ZBCERW82LQuwfGnCa1V8w7dpYH1yNu+SLb6E5dkeCBzKEyLGlFrnr+dUyw==}
+    engines: {node: '>=14.14'}
+    dependencies:
+      graceful-fs: 4.2.10
+      jsonfile: 6.1.0
+      universalify: 2.0.0
+    dev: false
 
   /fs-extra/9.1.0:
     resolution: {integrity: sha512-hcg3ZmepS30/7BSFqRvoo3DOMQu7IjqxO5nCDt+zM9XWjb33Wg7ziNT+Qvqbuc3+gWpzO02JubVyk2G4Zvo1OQ==}
