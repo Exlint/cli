@@ -22,7 +22,7 @@ specifiers:
   cli-spinners: 2.7.0
   commitizen: 4.2.6
   cross-env: 7.0.3
-  cz-vinyl: 1.5.0
+  cz-vinyl: 1.6.2
   depcheck: 1.4.3
   envinfo: 7.8.1
   eslint: 8.26.0
@@ -95,7 +95,7 @@ devDependencies:
   '@typescript-eslint/parser': 5.41.0_wyqvi574yv7oiwfeinomdzmc3m
   commitizen: 4.2.6
   cross-env: 7.0.3
-  cz-vinyl: 1.5.0_wwsmkokka4prbxaa6a6ljikhim
+  cz-vinyl: 1.6.2_wwsmkokka4prbxaa6a6ljikhim
   depcheck: 1.4.3
   eslint: 8.26.0
   eslint-config-prettier: 8.5.0_eslint@8.26.0
@@ -3474,8 +3474,8 @@ packages:
       - '@swc/wasm'
     dev: true
 
-  /cz-vinyl/1.5.0_wwsmkokka4prbxaa6a6ljikhim:
-    resolution: {integrity: sha512-8T3yCU0SZL+cGsCQ4V8/WfkpH3e9SkS05NwQuC8YK2iWEGpqjLeZcB6UmQve0OBBq6y2IqTYRNELmCtL+OskPw==}
+  /cz-vinyl/1.6.2_wwsmkokka4prbxaa6a6ljikhim:
+    resolution: {integrity: sha512-fg/BKTF4Ky8n7GfZAdRjCVtjAnOXlFzVAJHA97RByBPOBCf0ATGhVdDi6nP6XI/W1NzdoHTOdgV+lWEJ3iVW2Q==}
     engines: {node: '>= 12'}
     peerDependencies:
       '@types/node': 17.0.33
