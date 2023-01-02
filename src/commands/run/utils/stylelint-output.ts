@@ -23,6 +23,7 @@ export const getStylelintOutput = async (projectId: string, withFix: boolean) =>
 	}
 
 	const libraryPatternPath = path.join(projectPath, '.exlint-stylelint-pattern');
+	const libraryIgnorePath = path.join(projectPath, '.stylelintignore');
 	const isLibraryConfigured = await fs.pathExists(libraryConfigPath);
 
 	if (isLibraryConfigured) {
@@ -34,6 +35,8 @@ export const getStylelintOutput = async (projectId: string, withFix: boolean) =>
 			'--config',
 			libraryConfigPath,
 			libraryPattern,
+			'--ignore-path',
+			libraryIgnorePath,
 			...(withFix ? ['--fix'] : []),
 		]);
 

@@ -16,7 +16,6 @@
 		".cz.json": "jinja",
 		"*.routes.ts": "routing",
 		"tsconfig.doc.json": "tsconfig",
-		"tsconfig.paths.json": "tsconfig",
 		"tsconfig.tsbuildinfo": "tsconfig",
 		".compodocrc.json": "mjml",
 		"*.strategy.ts": "nest-gateway"
@@ -29,5 +28,7 @@
 		"queries": "shader",
 		"secrets": "keys",
 		"user": "client"
-	}
+	},
+	"material-icon-theme.activeIconPack": "nest",
+	"task.allowAutomaticTasks": "on"
 }

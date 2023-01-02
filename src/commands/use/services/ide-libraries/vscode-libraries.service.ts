@@ -28,9 +28,6 @@ export class VsCodeLibrariesService extends IdeLibrares {
 		const projectFiles = await fs.readdir(projectPath);
 		const libraries = policies.map((policy) => policy.library.toLowerCase());
 
-		const stylelintIgnoreList =
-			policies.find((policy) => policy.library === 'Stylelint')?.ignoredList ?? [];
-
 		const config = {
 			...currentVsCodeSettingsContent,
 			...(libraries.includes('eslint') && {
@@ -53,9 +50,14 @@ export class VsCodeLibrariesService extends IdeLibrares {
 			}),
 			...(libraries.includes('stylelint') && {
 				'stylelint.enable': true,
-				'stylelint.configFile': path.join(projectPath, '.stylelintrc.json'),
+				'stylelint.configFile': path.join(projectPath, findConfigFileName(projectFiles, 'stylelint')),
 				'stylelint.stylelintPath': path.join(EXLINT_FOLDER_PATH, 'node_modules', 'stylelint'),
-				'stylelint.configOverrides': { ignoreFiles: stylelintIgnoreList },
+				/**
+				 * * VSCode Stylelint extension has issues with repsecting ".stylelintignore" file:
+				 * * https://stackoverflow.com/questions/42070748/vs-code-style-lint-ignore-directories
+				 * * Currently, there is no way to make the Stylelint VSCode extension respect any ignore files,
+				 * * unless it is in the root project: https://github.com/stylelint/vscode-stylelint/issues/408
+				 */
 			}),
 		};
 

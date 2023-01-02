@@ -20,12 +20,7 @@ export const setConfigLibrary = async (projectId: string, policy: IPolicyServer)
 	const ignoreFilePath = path.join(EXLINT_FOLDER_PATH, projectId, ignoreFileName);
 	const writePromises = [fs.outputFile(configFilePath, configurationData)];
 
-	/**
-	 * * VSCode Stylelint extension has issues with repsecting ".stylelintignore" file:
-	 * * https://stackoverflow.com/questions/42070748/vs-code-style-lint-ignore-directories
-	 * * Currently, we respect the ignore list (for live linting support) via per editor configuration
-	 */
-	if (libraryName !== 'depcheck' && libraryName !== 'stylelint') {
+	if (libraryName !== 'depcheck') {
 		writePromises.push(fs.outputFile(ignoreFilePath, policy.ignoredList.join(os.EOL)));
 	}
 
