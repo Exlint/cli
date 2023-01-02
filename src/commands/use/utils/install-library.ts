@@ -14,7 +14,7 @@ export const installLibraries = async (libraryNames: string[]) => {
 		libName.toLowerCase() === 'inflint' ? '@exlint.io/inflint' : libName.toLowerCase(),
 	);
 
-	if (libraryNames.includes('eslint') && libraryNames.includes('prettier')) {
+	if (transformedLibraryNames.includes('eslint') && transformedLibraryNames.includes('prettier')) {
 		transformedLibraryNames.push('eslint-config-prettier');
 	}
 
