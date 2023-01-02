@@ -63,16 +63,16 @@
 		"@exlint.io/inflint": "1.2.9",
 		"@nestjs/cli": "9.1.5",
 		"@types/envinfo": "7.8.1",
-		"@types/express": "4.17.14",
+		"@types/express": "4.17.15",
 		"@types/fs-extra": "9.0.13",
-		"@types/inquirer": "9.0.2",
+		"@types/inquirer": "9.0.3",
 		"@types/is-ci": "3.0.0",
 		"@types/node": "16.18.2",
-		"@types/react": "18.0.24",
+		"@types/react": "18.0.26",
 		"@types/xml2js": "0.4.11",
 		"@typescript-eslint/eslint-plugin": "5.41.0",
 		"@typescript-eslint/parser": "5.41.0",
-		"commitizen": "4.2.5",
+		"commitizen": "4.2.6",
 		"cross-env": "7.0.3",
 		"cz-vinyl": "1.5.0",
 		"depcheck": "1.4.3",
@@ -80,7 +80,7 @@
 		"eslint-config-prettier": "8.5.0",
 		"eslint-plugin-import": "2.26.0",
 		"eslint-plugin-node": "11.1.0",
-		"eslint-plugin-react": "7.31.10",
+		"eslint-plugin-react": "7.31.11",
 		"eslint-plugin-unused-imports": "2.0.0",
 		"figlet": "1.5.2",
 		"husky": "8.0.1",
@@ -94,6 +94,6 @@
 		"webpack-merge": "5.8.0"
 	},
 	"peerDependencies": {
-		"@types/inquirer": "9.0.2"
+		"@types/inquirer": "9.0.3"
 	}
 }
