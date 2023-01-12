@@ -4,7 +4,7 @@ const { merge } = require('webpack-merge');
 
 const isDev = process.env.NODE_ENV === 'development' && !isCI;
 const cliApiDomain = isDev ? 'localhost' : 'cli-api.exlint.io';
-const cliApiUrl = isDev ? `http://${cliApiDomain}:4000` : `https://www.${cliApiDomain}`;
+const cliApiUrl = isDev ? `http://${cliApiDomain}:4000` : `https://www.${cliApiDomain}:3000`;
 const dashboardUrl = isDev ? 'http://localhost:8080' : 'https://www.app.exlint.io';
 
 const configuration = (options) =>
