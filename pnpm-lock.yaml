@@ -4,7 +4,7 @@ specifiers:
   '@commitlint/cli': 17.3.0
   '@compodoc/compodoc': 1.1.19
   '@exlint.io/inflint': 1.2.9
-  '@nestjs/cli': 9.1.7
+  '@nestjs/cli': 9.1.8
   '@nestjs/common': ^9.0.0
   '@nestjs/core': ^9.0.0
   '@types/envinfo': 7.8.1
@@ -82,7 +82,7 @@ devDependencies:
   '@commitlint/cli': 17.3.0
   '@compodoc/compodoc': 1.1.19
   '@exlint.io/inflint': 1.2.9_vqcafhj4xvr2nzknlrdklk55zm
-  '@nestjs/cli': 9.1.7
+  '@nestjs/cli': 9.1.8
   '@types/envinfo': 7.8.1
   '@types/express': 4.17.15
   '@types/fs-extra': 9.0.13
@@ -1797,8 +1797,8 @@ packages:
       '@jridgewell/sourcemap-codec': 1.4.13
     dev: true
 
-  /@nestjs/cli/9.1.7:
-    resolution: {integrity: sha512-l0+vWXr571JcQ2LnQU3otxsvF5KUXqcAWCjnjMZH7ALVxcYi7BTif8q9YX0QHUETd9xPbH2YWkqV8SvlwgqEVg==}
+  /@nestjs/cli/9.1.8:
+    resolution: {integrity: sha512-53laCMoPLAkjyz3405FlMSrHnbr3DGeoaQjY963bEroezLlm/qfQhwj6oGJwtgA28eNFgx68mvQV2f1VZNUJtw==}
     engines: {node: '>= 12.9.0'}
     hasBin: true
     dependencies:
@@ -4696,7 +4696,7 @@ packages:
       minimatch: 3.1.2
       node-abort-controller: 3.0.1
       schema-utils: 3.1.1
-      semver: 7.3.7
+      semver: 7.3.8
       tapable: 2.2.1
       typescript: 4.9.4
       webpack: 5.75.0
@@ -6275,7 +6275,7 @@ packages:
     dependencies:
       hosted-git-info: 4.1.0
       is-core-module: 2.9.0
-      semver: 7.3.7
+      semver: 7.3.8
       validate-npm-package-license: 3.0.4
     dev: true
 
@@ -7518,6 +7518,7 @@ packages:
 
   /sourcemap-codec/1.4.8:
     resolution: {integrity: sha512-9NykojV5Uih4lgo5So5dtw+f0JgJX30KCNI8gwhz2J9A15wD0Ml6tjHKwf6fTSa6fAdVBdZeNOs9eJ71qCk8vA==}
+    deprecated: Please use @jridgewell/sourcemap-codec instead
     dev: true
 
   /spdx-correct/3.1.1:
