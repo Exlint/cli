@@ -1,7 +1,7 @@
 lockfileVersion: 5.4
 
 specifiers:
-  '@commitlint/cli': 17.4.0
+  '@commitlint/cli': 17.4.1
   '@compodoc/compodoc': 1.1.19
   '@exlint.io/inflint': 1.2.9
   '@nestjs/cli': 9.1.8
@@ -79,7 +79,7 @@ dependencies:
   xml2js: 0.4.23
 
 devDependencies:
-  '@commitlint/cli': 17.4.0
+  '@commitlint/cli': 17.4.1
   '@compodoc/compodoc': 1.1.19
   '@exlint.io/inflint': 1.2.9_awa2wsr5thmg3i7jqycphctjfq
   '@nestjs/cli': 9.1.8
@@ -1376,8 +1376,8 @@ packages:
     dev: true
     optional: true
 
-  /@commitlint/cli/17.4.0:
-    resolution: {integrity: sha512-SEY4sYe8yVlgxPP7X0wJb96DBAGBPsCsy6QbqJt/UECbIAjDeDV5xXBV4jnS7T/qMC10sk6Ub9kDhEX0VWvblw==}
+  /@commitlint/cli/17.4.1:
+    resolution: {integrity: sha512-W8OJwz+izY+fVwyUt1HveCDmABMZNRVZHSVPw/Bh9Y62tp11SmmQaycgbsYLMiMy7JGn4mAJqEGlSHS9Uti9ZQ==}
     engines: {node: '>=v14'}
     hasBin: true
     dependencies:
