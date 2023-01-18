@@ -64,7 +64,7 @@
 		"@nestjs/cli": "9.1.8",
 		"@types/envinfo": "7.8.1",
 		"@types/express": "4.17.15",
-		"@types/fs-extra": "9.0.13",
+		"@types/fs-extra": "11.0.1",
 		"@types/inquirer": "9.0.3",
 		"@types/is-ci": "3.0.0",
 		"@types/node": "18.11.18",
