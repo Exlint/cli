@@ -22,9 +22,9 @@
 
 <h2 align="center">Exlint CLI</h2>
 
-**👩🏻‍💻 Developement and Code Standard**: Keep your code clean with Exlint over multiple repositories.
+**👩🏻‍💻 Centralized Code Standards**: Keep your code clean and standardized over multiple repositories.
 
-**📦️ Sharable Code Conventions**: Share, use and run your code conventions over any chosen repositories.
+**📦️ Grouped & Sharable Compliances**: Share and run your coding conventions over any repositories.
 
 **🚀 CI Workflow**: Integrate Exlint into your workflow to continuously prevent coding bad practices.
 
@@ -35,6 +35,7 @@
 -   [Getting Started](#getting-started)
 -   [Running from command line](#running-from-command-line)
 -   [CI Workflows](#ci-workflows)
+-   [Privacy](#privacy)
 -   [Support](#support)
 -   [Contributing](#contributing)
 
@@ -44,8 +45,8 @@
 
 ## Getting Started
 
-To use Exlint, you first need to configure an account with groups and policies.
-Please visit [Exlint.io](https://app.exlint.io) before using the CLI.
+To use Exlint, you first need to configure an account with a centralized coding standard, an Exlint Group.
+Please visit [app.exlint.io](https://app.exlint.io) before using the CLI.
 
 We recommend installing Exlint CLI globally using [`npm`](https://npmjs.com):
 
@@ -72,8 +73,8 @@ If you haven't installed Exlint CLI globally, but locally, you can use it in the
 exlint auth
 ```
 
-Exlint requires you to authenticate. This will allow you to use your configured groups and policies in the CLI.
-First you should make sure you have created an account and configured your group.
+Exlint requires you to authenticate. This will allow you to use your configured groups in the CLI.
+First, you should make sure you have created an account and configured your group.
 When running the command, you will be prompted to your browser to authenticate yourself.
 After doing so, you can return back to the CLI and start using Exlint!
 
@@ -83,9 +84,9 @@ After doing so, you can return back to the CLI and start using Exlint!
 exlint use <group_id>
 ```
 
-When you want to use a group you have created in the dashboard, you copy its identifier and use it with the `use` command.
+When you want to use a group you have created in the dashboard, you copy its unique identifier and use it with the `use` command.
 Exlint will adjust your IDE (if using VSCode or Webstorm), install required extensions and libraries.
-You can easily switch group by using the command again!
+You can easily switch groups by using the command again!
 
 ### Run Command
 
@@ -94,17 +95,21 @@ exlint run [options]
 ```
 
 After running the `use` command, you can run your group over your code to get CLI results.
-Exlint will run your configured libraries against your code and report upon success or failure run.
-If your code fails to match the configured code standard, Exlint will report the issues in the CLI.
+Exlint will run your configured libraries against your code and report upon success or failure runs.
+If your code fails to match the configured code standards, Exlint will report the issues in the CLI.
 
 #### Options
 
 You can also run the command with `--fix` or `-f` option.
-Providinig this option will make Exlint to try automatically fix your code issues.
+Providinig this option will make Exlint try to automatically fix your code issues.
 
 ## CI Workflows
 
-You can run Exlint also in CI. If you want to integrate an Exlint step in your workflow, you can use the [GitHub Action](https://github.com/Exlint/github-action)
+You can run your centralized Exlint group also in CI. If you want to integrate an Exlint step in your workflow, you can use the [GitHub Action](https://github.com/Exlint/github-action)
+
+## Privacy
+**Exlint does not and will not, in any way, view / copy / obtain access or intrude user code.** Our CLI is 100% open source and will stay this way.
+Open source libraries should stay open source, and not used as a means to an end of obscuring privacy.
 
 ## Support
 
