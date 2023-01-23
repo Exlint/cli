@@ -27,7 +27,7 @@ specifiers:
   envinfo: 7.8.1
   eslint: 8.32.0
   eslint-config-prettier: 8.6.0
-  eslint-plugin-import: 2.27.4
+  eslint-plugin-import: 2.27.5
   eslint-plugin-node: 11.1.0
   eslint-plugin-react: 7.32.1
   eslint-plugin-unused-imports: 2.0.0
@@ -99,7 +99,7 @@ devDependencies:
   depcheck: 1.4.3
   eslint: 8.32.0
   eslint-config-prettier: 8.6.0_eslint@8.32.0
-  eslint-plugin-import: 2.27.4_d7sd2krenkbelnt3n7nqqoxduu
+  eslint-plugin-import: 2.27.5_d7sd2krenkbelnt3n7nqqoxduu
   eslint-plugin-node: 11.1.0_eslint@8.32.0
   eslint-plugin-react: 7.32.1_eslint@8.32.0
   eslint-plugin-unused-imports: 2.0.0_rtxmtarm6rlrmwvbk6jvtkpvgi
@@ -4025,8 +4025,8 @@ packages:
       regexpp: 3.2.0
     dev: true
 
-  /eslint-plugin-import/2.27.4_d7sd2krenkbelnt3n7nqqoxduu:
-    resolution: {integrity: sha512-Z1jVt1EGKia1X9CnBCkpAOhWy8FgQ7OmJ/IblEkT82yrFU/xJaxwujaTzLWqigewwynRQ9mmHfX9MtAfhxm0sA==}
+  /eslint-plugin-import/2.27.5_d7sd2krenkbelnt3n7nqqoxduu:
+    resolution: {integrity: sha512-LmEt3GVofgiGuiE+ORpnvP+kAm3h6MLZJ4Q5HCyHADofsb4VzXFsRiWj3c0OFiV+3DWFh0qg3v9gcPlfc3zRow==}
     engines: {node: '>=4'}
     peerDependencies:
       '@typescript-eslint/parser': '*'
