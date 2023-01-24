@@ -13,13 +13,13 @@ jobs:
 
         uses: ./.github/workflows/pnpm-caching.yaml
         with:
-            runner: self-hosted
+            runner: ubuntu-latest
 
     test_depcheck:
         needs: call_pnpm_caching_workflow
         name: Testing Depcheck
 
-        runs-on: self-hosted
+        runs-on: ubuntu-latest
         steps:
             - name: Setup Node environment
               uses: Exlint/node-environment@v1.1.0
@@ -35,7 +35,7 @@ jobs:
         needs: call_pnpm_caching_workflow
         name: Testing Inflint
 
-        runs-on: self-hosted
+        runs-on: ubuntu-latest
         steps:
             - name: Setup Node environment
               uses: Exlint/node-environment@v1.1.0
@@ -51,7 +51,7 @@ jobs:
         needs: call_pnpm_caching_workflow
         name: Testing TypeScript
 
-        runs-on: self-hosted
+        runs-on: ubuntu-latest
         steps:
             - name: Setup Node environment
               uses: Exlint/node-environment@v1.1.0
@@ -67,7 +67,7 @@ jobs:
         needs: call_pnpm_caching_workflow
         name: Testing Prettier
 
-        runs-on: self-hosted
+        runs-on: ubuntu-latest
         steps:
             - name: Setup Node environment
               uses: Exlint/node-environment@v1.1.0
@@ -83,7 +83,7 @@ jobs:
         needs: call_pnpm_caching_workflow
         name: Testing ESLint
 
-        runs-on: self-hosted
+        runs-on: ubuntu-latest
         steps:
             - name: Setup Node environment
               uses: Exlint/node-environment@v1.1.0
@@ -99,7 +99,7 @@ jobs:
         needs: call_pnpm_caching_workflow
         name: Testing build
 
-        runs-on: self-hosted
+        runs-on: ubuntu-latest
         steps:
             - name: Setup Node environment
               uses: Exlint/node-environment@v1.1.0

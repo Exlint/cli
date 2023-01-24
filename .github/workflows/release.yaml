@@ -10,7 +10,7 @@ jobs:
         permissions:
             contents: write
 
-        runs-on: self-hosted
+        runs-on: ubuntu-latest
         steps:
             - name: Setup Node environment
               uses: Exlint/node-environment@v1.1.0
