@@ -108,7 +108,8 @@ Providinig this option will make Exlint try to automatically fix your code issue
 You can run your centralized Exlint group also in CI. If you want to integrate an Exlint step in your workflow, you can use the [GitHub Action](https://github.com/Exlint/github-action)
 
 ## Privacy
-**Exlint does not and will not, in any way, view / copy / obtain access or intrude user code.** Our CLI is 100% open source and will stay this way.
+
+Exlint does not and will not, in any way, view / copy / obtain access or intrude user code. Our CLI is 100% open source and will stay this way.
 Open source libraries should stay open source, and not used as a means to an end of obscuring privacy.
 
 ## Support
