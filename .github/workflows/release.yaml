@@ -12,8 +12,16 @@ jobs:
 
         runs-on: self-hosted
         steps:
-            - name: Checkout
-              uses: actions/checkout@v3
+            - name: Setup Node environment
+              uses: Exlint/node-environment@v1.1.0
+              with:
+                  should-cache: false
+                  node-version: 18.13.0
+                  package-manager: pnpm
+                  package-manager-version: 7.25.0
+
+            - name: Build dist folder
+              run: pnpm dist
 
             - name: Semantic Release
               uses: cycjimmy/semantic-release-action@v2
@@ -25,3 +33,4 @@ jobs:
                       @semantic-release/npm
               env:
                   GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
+                  NPM_TOKEN: ${{ secrets.NPM_TOKEN }}

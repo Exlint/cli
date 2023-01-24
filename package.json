@@ -1,9 +1,17 @@
 {
 	"name": "@exlint/cli",
 	"version": "0.0.1",
-	"description": "Exlint",
-	"author": "Exlint <dev@exlint.io> (https://www.exlint.io)",
-	"license": "MIT",
+	"author": "Exlint <dev@exlint.io> (https://exlint.io)",
+	"description": "Exlint CLI - Centralize coding standards across repositories in seconds.",
+	"keywords": [
+		"linter",
+		"best-practices",
+		"centralized",
+		"code-quality",
+		"code-analysis-tool",
+		"coding-standards"
+	],
+	"license": "Apache-2.0",
 	"homepage": "https://github.com/Exlint/cli#readme",
 	"bugs": {
 		"url": "https://github.com/Exlint/cli/issues"
@@ -19,6 +27,9 @@
 	],
 	"bin": {
 		"exlint": "./bin/exlint.js"
+	},
+	"publishConfig": {
+		"access": "public"
 	},
 	"scripts": {
 		"husky:install": "husky install",
