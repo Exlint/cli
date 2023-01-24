@@ -21,7 +21,7 @@ jobs:
                   package-manager-version: 7.25.0
 
             - name: Build dist folder
-              run: pnpm dist
+              run: pnpm build
 
             - name: Semantic Release
               uses: cycjimmy/semantic-release-action@v2
