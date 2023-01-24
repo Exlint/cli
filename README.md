@@ -28,7 +28,7 @@
 
 **🚀 CI Workflow**: Integrate Exlint into your workflow to continuously prevent coding bad practices.
 
-<p align="right"><em>See more on <a href="https://exlint.io">exlint.io</a></em></p>
+<p align="right"><em>See more on <a href="https://app.exlint.io">app.exlint.io</a></em></p>
 
 ## Table of Contents
 
