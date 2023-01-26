@@ -1,6 +1,6 @@
 <p align="center">
 	<a href="https://github.com/Exlint/cli">
-    	<img src="https://img.shields.io/github/workflow/status/Exlint/cli/Integration" alt="build status">
+    	<img src="https://img.shields.io/github/actions/workflow/status/Exlint/cli/integrate.yaml" alt="build status">
   	</a>
 	<a href="https://www.npmjs.com/package/@exlint.io/cli">
     	<img src="https://img.shields.io/npm/dw/@exlint.io/cli" alt="npm downloads">
