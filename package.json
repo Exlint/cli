@@ -1,6 +1,6 @@
 {
 	"name": "@exlint.io/cli",
-	"version": "1.0.1",
+	"version": "1.0.2",
 	"author": "Exlint <dev@exlint.io> (https://exlint.io)",
 	"description": "Exlint CLI - Centralize coding standards across repositories in seconds.",
 	"keywords": [
@@ -79,7 +79,7 @@
 		"@types/inquirer": "9.0.3",
 		"@types/is-ci": "3.0.0",
 		"@types/node": "18.11.18",
-		"@types/react": "18.0.26",
+		"@types/react": "18.0.27",
 		"@types/xml2js": "0.4.11",
 		"@typescript-eslint/eslint-plugin": "5.48.2",
 		"@typescript-eslint/parser": "5.48.2",

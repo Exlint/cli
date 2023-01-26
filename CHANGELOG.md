@@ -1,3 +1,10 @@
+## [1.0.2](https://github.com/Exlint/cli/compare/v1.0.1...v1.0.2) (2023-01-26)
+
+
+### Bug Fixes
+
+* 🐞 exit with an error when get errors from libraries ([fd8b2c7](https://github.com/Exlint/cli/commit/fd8b2c75638ea15e07fd1bb4bc9df1ddf882deca))
+
 ## [1.0.1](https://github.com/Exlint/cli/compare/v1.0.0...v1.0.1) (2023-01-24)
 
 
