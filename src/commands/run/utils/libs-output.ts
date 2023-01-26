@@ -26,5 +26,8 @@ export const getLibsOutput = async (projectId: string, withFix: boolean) => {
 		`${messageIcon} Exlint ran ${indicatingMessage}`,
 	);
 
-	return [...librariesOutput, footerMessage].join('\n\n');
+	return {
+		message: [...librariesOutput, footerMessage].join('\n\n'),
+		success: isSuccessful,
+	};
 };

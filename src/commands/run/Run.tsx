@@ -56,15 +56,17 @@ export class RunCommand extends CommandRunner {
 				process.exit(1);
 			}
 
-			const libsRunOutputs = await getLibsOutput(projectId, options.fix);
+			const libsRunOutputsExecution = await getLibsOutput(projectId, options.fix);
 
 			render(
 				<Text>
 					<Newline />
-					{libsRunOutputs}
+					{libsRunOutputsExecution.message}
 					<Newline />
 				</Text>,
 			);
+
+			process.exit(libsRunOutputsExecution.success ? 0 : 1);
 		} catch {
 			render(<Error message="Failed to run Exlint, please try again." />);
 
