@@ -9,7 +9,7 @@
     	<img src="https://img.shields.io/npm/l/@exlint.io/cli" alt="npm license">
   	</a>
 	<a href="https://github.com/Exlint/cli">
-    	<img src="https://img.shields.io/npm/v/@exlint.io/cli" alt="npm version">
+    	<img src="https://img.shields.io/npm/v/@exlint.io/cli?label=version" alt="version">
   	</a>
 </p>
 
