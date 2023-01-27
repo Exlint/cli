@@ -19,4 +19,4 @@ function onFatalError() {
 process.on('uncaughtException', onFatalError);
 process.on('unhandledRejection', onFatalError);
 
-require('../dist/main');
+require('../bundle/index');

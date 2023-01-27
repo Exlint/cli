@@ -2,3 +2,5 @@ node_modules
 tsconfig.tsbuildinfo
 dist
 .compodoc
+build
+bundle
