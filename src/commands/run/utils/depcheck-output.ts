@@ -1,7 +1,6 @@
 import path from 'node:path';
 
 import fs from 'fs-extra';
-import chalk from 'chalk';
 
 import { EXLINT_FOLDER_PATH } from '@/models/exlint-folder';
 import { findConfigFileName } from '@/utils/config-file-name';
@@ -16,27 +15,19 @@ export const getDepcheckOutput = async (projectId: string) => {
 	try {
 		libraryConfigPath = path.join(projectPath, findConfigFileName(projectFolderFiles, 'depcheck'));
 	} catch {
-		return {
-			output: '',
-			success: true,
-		};
+		return null;
 	}
 
 	const isDepcheckConfigured = await fs.pathExists(libraryConfigPath);
 
-	if (isDepcheckConfigured) {
-		const depcheckRunOutput = await spawnLib('depcheck', ['--config', libraryConfigPath]);
-
-		return {
-			output: `${chalk[depcheckRunOutput.success ? 'greenBright' : 'red'].bold(
-				'--- Depcheck output ---',
-			)}\n\n${depcheckRunOutput.output}`,
-			success: depcheckRunOutput.success,
-		};
+	if (!isDepcheckConfigured) {
+		return null;
 	}
 
+	const depcheckRunOutput = await spawnLib('depcheck', ['--config', libraryConfigPath]);
+
 	return {
-		output: '',
-		success: true,
+		...depcheckRunOutput,
+		name: 'Depcheck',
 	};
 };

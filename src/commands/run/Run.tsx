@@ -1,6 +1,7 @@
 import { Command, CommandRunner, Option } from 'nest-commander';
-import { Newline, render, Text } from 'ink';
+import { Box, Newline, render, Text } from 'ink';
 import React from 'react';
+import Divider from 'ink-divider';
 
 import { ConnectionService } from '@/modules/connection/connection.service';
 import { ExlintConfigService } from '@/modules/exlint-config/exlint-config.service';
@@ -57,16 +58,38 @@ export class RunCommand extends CommandRunner {
 			}
 
 			const libsRunOutputsExecution = await getLibsOutput(projectId, options.fix);
+			const wasSuccessful = libsRunOutputsExecution.every((item) => item.success);
 
 			render(
-				<Text>
+				<Box marginTop={1} flexDirection="column">
+					{libsRunOutputsExecution.map((outputItem) => (
+						<Box key={outputItem.name} flexDirection="column" marginBottom={1}>
+							<Divider
+								title={outputItem.name}
+								titleColor={outputItem.success ? 'greenBright' : 'redBright'}
+								width={65}
+							/>
+							<Box marginTop={1} width={65} paddingX={2}>
+								<Text>{outputItem.output}</Text>
+							</Box>
+						</Box>
+					))}
+					<Divider width={65} />
 					<Newline />
-					{libsRunOutputsExecution.message}
+					{wasSuccessful ? (
+						<Text bold color="greenBright">
+							✔ Exlint completed successfully!
+						</Text>
+					) : (
+						<Text bold color="redBright">
+							✖ Exlint completed with failures
+						</Text>
+					)}
 					<Newline />
-				</Text>,
+				</Box>,
 			);
 
-			process.exit(libsRunOutputsExecution.success ? 0 : 1);
+			process.exit(wasSuccessful ? 0 : 1);
 		} catch {
 			render(<Error message="Failed to run Exlint, please try again." />);
 

@@ -1,7 +1,6 @@
 import path from 'node:path';
 
 import fs from 'fs-extra';
-import chalk from 'chalk';
 
 import { EXLINT_FOLDER_PATH } from '@/models/exlint-folder';
 import { findConfigFileName } from '@/utils/config-file-name';
@@ -16,10 +15,7 @@ export const getEslintOutput = async (projectId: string, withFix: boolean) => {
 	try {
 		libraryConfigPath = path.join(projectPath, findConfigFileName(projectFolderFiles, 'eslint'));
 	} catch {
-		return {
-			output: '',
-			success: true,
-		};
+		return null;
 	}
 
 	const libraryPatternPath = path.join(projectPath, '.exlint-eslint-pattern');
@@ -27,10 +23,7 @@ export const getEslintOutput = async (projectId: string, withFix: boolean) => {
 	const isLibraryConfigured = await fs.pathExists(libraryConfigPath);
 
 	if (!isLibraryConfigured) {
-		return {
-			output: '',
-			success: true,
-		};
+		return null;
 	}
 
 	const libraryPattern = await fs.readFile(libraryPatternPath, { encoding: 'utf-8' }).catch(() => '**/*');
@@ -45,9 +38,7 @@ export const getEslintOutput = async (projectId: string, withFix: boolean) => {
 	]);
 
 	return {
-		output: `${chalk[libraryRunOutput.success ? 'greenBright' : 'red'].bold(
-			'--- ESLint output ---',
-		)}\n\n${libraryRunOutput.output}`,
-		success: libraryRunOutput.success,
+		...libraryRunOutput,
+		name: 'ESLint',
 	};
 };

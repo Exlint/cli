@@ -10,6 +10,7 @@ specifiers:
   '@types/envinfo': 7.8.1
   '@types/express': 4.17.15
   '@types/fs-extra': 11.0.1
+  '@types/ink-divider': 2.0.2
   '@types/inquirer': 9.0.3
   '@types/is-ci': 3.0.0
   '@types/node': 18.11.18
@@ -36,6 +37,7 @@ specifiers:
   fs-extra: 11.1.0
   husky: 8.0.3
   ink: 3.2.0
+  ink-divider: 3.0.0
   ink-spinner: 4.0.3
   ink-task-list: 2.0.0
   is-ci: 3.0.1
@@ -66,6 +68,7 @@ dependencies:
   express: 4.18.2
   fs-extra: 11.1.0
   ink: 3.2.0_3stiutgnnbnfnf3uowm5cip22i
+  ink-divider: 3.0.0_ink@3.2.0+react@18.2.0
   ink-spinner: 4.0.3_ink@3.2.0+react@18.2.0
   ink-task-list: 2.0.0_ink@3.2.0+react@18.2.0
   is-ci: 3.0.1
@@ -86,6 +89,7 @@ devDependencies:
   '@types/envinfo': 7.8.1
   '@types/express': 4.17.15
   '@types/fs-extra': 11.0.1
+  '@types/ink-divider': 2.0.2
   '@types/inquirer': 9.0.3
   '@types/is-ci': 3.0.0
   '@types/node': 18.11.18
@@ -2014,6 +2018,12 @@ packages:
     dependencies:
       '@types/jsonfile': 6.1.1
       '@types/node': 18.11.18
+    dev: true
+
+  /@types/ink-divider/2.0.2:
+    resolution: {integrity: sha512-gY4kKSh1dNrZ++GQXW2KfMVexQfUsvE/LdUy7le5FSSeSemwk+u+ztHd+SMzfEjEHcCqpmRIQqKSrFOXLYCLHA==}
+    dependencies:
+      '@types/react': 18.0.27
     dev: true
 
   /@types/inquirer/9.0.3:
@@ -5130,6 +5140,19 @@ packages:
     resolution: {integrity: sha512-JV/yugV2uzW5iMRSiZAyDtQd+nxtUnjeLt0acNdw98kKLrvuRVyB80tsREOE7yvGVgalhZ6RNXCmEHkUKBKxew==}
     dev: true
 
+  /ink-divider/3.0.0_ink@3.2.0+react@18.2.0:
+    resolution: {integrity: sha512-Mqb9WArtEZCtXw622aHhJqPK157QNc+8ssl9/RvAZlS6nZRCKyW4mYOYCudQh6dSuFGt9eG5yaqT1mJaGmwu+w==}
+    engines: {node: '>=6'}
+    peerDependencies:
+      ink: '>=3.0.0'
+      react: '>=16.8.0'
+    dependencies:
+      ink: 3.2.0_3stiutgnnbnfnf3uowm5cip22i
+      prop-types: 15.8.1
+      react: 18.2.0
+      string-width: 4.2.3
+    dev: false
+
   /ink-spinner/4.0.3_ink@3.2.0+react@18.2.0:
     resolution: {integrity: sha512-uJ4nbH00MM9fjTJ5xdw0zzvtXMkeGb0WV6dzSWvFv2/+ks6FIhpkt+Ge/eLdh0Ah6Vjw5pLMyNfoHQpRDRVFbQ==}
     engines: {node: '>=10'}
@@ -6739,7 +6762,6 @@ packages:
       loose-envify: 1.4.0
       object-assign: 4.1.1
       react-is: 16.13.1
-    dev: true
 
   /proxy-addr/2.0.7:
     resolution: {integrity: sha512-llQsMLSUDUPT44jdrU/O37qlnifitDP+ZwrmmZcoSKyLKvtZxpyV0n2/bD/N4tBAAZ/gJEdZU7KMraoK1+XYAg==}
@@ -6840,7 +6862,6 @@ packages:
 
   /react-is/16.13.1:
     resolution: {integrity: sha512-24e6ynE2H+OKt4kqsOvNd8kBpV65zoxbA4BVsEOB3ARVWQki/DHzaUoC5KuON/BiccDaCCTZBuOcfZs70kR8bQ==}
-    dev: true
 
   /react-reconciler/0.26.2_react@18.2.0:
     resolution: {integrity: sha512-nK6kgY28HwrMNwDnMui3dvm3rCFjZrcGiuwLc5COUipBK5hWHLOxMJhSnSomirqWwjPBJKV1QcbkI0VJr7Gl1Q==}
