@@ -1,4 +1,4 @@
 {
-	"targets": ["node16"],
+	"targets": ["latest"],
 	"outputPath": "./build"
 }
