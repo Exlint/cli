@@ -1,18 +1,15 @@
 <p align="center">
 	<a href="https://github.com/Exlint/cli">
-    	<img src="https://img.shields.io/github/actions/workflow/status/Exlint/cli/integrate.yaml" alt="build status">
+    	<img src="https://img.shields.io/github/actions/workflow/status/Exlint/cli/integrate.yaml?label=CI&logo=GitHub" alt="CI status">
   	</a>
 	<a href="https://www.npmjs.com/package/@exlint.io/cli">
-    	<img src="https://img.shields.io/npm/dw/@exlint.io/cli" alt="npm downloads">
+    	<img src="https://img.shields.io/npm/dm/@exlint.io/cli?logo=NPM" alt="npm downloads">
   	</a>
 	<a href="https://github.com/Exlint/cli">
     	<img src="https://img.shields.io/npm/l/@exlint.io/cli" alt="npm license">
   	</a>
 	<a href="https://github.com/Exlint/cli">
     	<img src="https://img.shields.io/npm/v/@exlint.io/cli" alt="npm version">
-  	</a>
-	<a href="https://github.com/Exlint/cli">
-    	<img src="https://img.shields.io/github/commit-activity/m/Exlint/cli" alt="commits">
   	</a>
 </p>
 
