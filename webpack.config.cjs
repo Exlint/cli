@@ -7,18 +7,22 @@ const cliApiDomain = isDev ? 'localhost' : 'cli-api.exlint.io';
 const cliApiUrl = isDev ? `http://${cliApiDomain}:4000` : `https://${cliApiDomain}`;
 const dashboardUrl = isDev ? 'http://localhost:8080' : 'https://app.exlint.io';
 
-const configuration = (options) =>
-	merge(options, {
-		plugins: [
-			new webpack.DefinePlugin({
-				__CLI_API_DOMAIN__: JSON.stringify(cliApiDomain),
-				__CLI_API_URL__: JSON.stringify(cliApiUrl),
-				__DASHBOARD_URL__: JSON.stringify(dashboardUrl),
-			}),
-		],
-		experiments: {
-			topLevelAwait: true,
-		},
-	});
+/**
+ * @type { import('webpack').Configuration }
+ */
+const configuration = {
+	plugins: [
+		new webpack.DefinePlugin({
+			__CLI_API_DOMAIN__: JSON.stringify(cliApiDomain),
+			__CLI_API_URL__: JSON.stringify(cliApiUrl),
+			__DASHBOARD_URL__: JSON.stringify(dashboardUrl),
+		}),
+	],
+	experiments: {
+		topLevelAwait: true,
+	},
+};
 
-module.exports = configuration;
+const mergedConfiguration = (options) => merge(options, configuration);
+
+module.exports = mergedConfiguration;
