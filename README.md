@@ -17,7 +17,7 @@
 
 <p align="center"><img src="./assets/brand.png" width="80%"/></p>
 
-<h2 align="center">Exlint CLI</h2>
+<h2 align="center">Exlint CLI Beta</h2>
 
 **👩🏻‍💻 Centralized Code Standards**: Keep your code clean and standardized over multiple repositories.
 
@@ -26,6 +26,9 @@
 **🚀 CI Workflow**: Integrate Exlint into your workflow to continuously prevent coding bad practices.
 
 <p align="right"><em>See more on <a href="https://app.exlint.io">app.exlint.io</a></em></p>
+
+<p align="right"><em>Exlint is in open beta and still under development! Help us by giving feedback and contributing.</em></p>
+
 
 ## Table of Contents
 
@@ -43,7 +46,7 @@
 ## Getting Started
 
 To use Exlint, you first need to configure an account with a centralized coding standard, an Exlint Group.
-Please visit [app.exlint.io](https://app.exlint.io) before using the CLI.
+Please visit [app.exlint.io](https://app.exlint.io) before using the CLI. 
 
 We recommend installing Exlint CLI globally using [`npm`](https://npmjs.com):
 
