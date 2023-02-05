@@ -1,3 +1,10 @@
+# [1.1.0](https://github.com/Exlint/cli/compare/v1.0.2...v1.1.0) (2023-02-05)
+
+
+### Features
+
+* 🔥 use group ID for project folder instead of random ([76fad04](https://github.com/Exlint/cli/commit/76fad0454102ec95f3ae907562729d5c45fb270e))
+
 ## [1.0.2](https://github.com/Exlint/cli/compare/v1.0.1...v1.0.2) (2023-01-26)
 
 
