@@ -49,15 +49,15 @@ export class RunCommand extends CommandRunner {
 		try {
 			await this.exlintConfigService.init();
 
-			const projectId = this.exlintConfigService.getValue('projectId');
+			const groupId = this.exlintConfigService.getValue('groupId');
 
-			if (!projectId) {
+			if (!groupId) {
 				render(<Error message="Run 'exlint use' first" />);
 
 				process.exit(1);
 			}
 
-			const libsRunOutputsExecution = await getLibsOutput(projectId, options.fix);
+			const libsRunOutputsExecution = await getLibsOutput(groupId, options.fix);
 			const wasSuccessful = libsRunOutputsExecution.every((item) => item.success);
 
 			render(

@@ -1,1 +1,1 @@
-export type ICodeType = 'JSON' | 'YAML' | 'JS';
+export type ICodeType = 'JSON' | 'YAML' | 'JS' | null;
