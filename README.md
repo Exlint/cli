@@ -29,7 +29,6 @@
 
 <p align="right"><em>Exlint is in open beta and still under development! Help us by giving feedback and contributing.</em></p>
 
-
 ## Table of Contents
 
 -   [Getting Started](#getting-started)
@@ -46,7 +45,7 @@
 ## Getting Started
 
 To use Exlint, you first need to configure an account with a centralized coding standard, an Exlint Group.
-Please visit [app.exlint.io](https://app.exlint.io) before using the CLI. 
+Please visit [app.exlint.io](https://app.exlint.io) before using the CLI.
 
 We recommend installing Exlint CLI globally using [`npm`](https://npmjs.com):
 
@@ -105,7 +104,7 @@ Providinig this option will make Exlint try to automatically fix your code issue
 
 ## CI Workflows
 
-You can run your centralized Exlint group also in CI. If you want to integrate an Exlint step in your workflow, you can use the [GitHub Action](https://github.com/Exlint/github-action)
+You can run your centralized Exlint group also in CI. If you want to integrate an Exlint step in your workflow, you can use the [GitHub Action](https://github.com/Exlint/actions)
 
 ## Privacy
 
@@ -115,7 +114,6 @@ Open source libraries should stay open source, and not used as a means to an end
 ## Support
 
 Currently we offer support through Discussions and Issues, but you can always reach out on contact@exlint.io.
-You can also feel free to join the discussions and ask questions in our [Discord Server](https://discord.com/invite/sqtbwvgzek).
 
 ## Contributing
 
