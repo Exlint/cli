@@ -1,3 +1,3 @@
 export interface IExlintConfig {
-	readonly projectId?: string;
+	readonly groupId?: string;
 }

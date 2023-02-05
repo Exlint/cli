@@ -15,7 +15,7 @@ import NoInternet from '@/ui/NoInternet';
 import PendingAuth from '@/containers/Auth/PendingAuth';
 
 import type { IRedirectParams } from './interfaces/redirect-token';
-import { AUTHENTICATION_TIMEOUT } from './models/auth-timeout';
+import { AUTHENTICATION_TIMEOUT } from './constants/auth-timeout';
 
 @Command({ name: 'auth', description: 'Authenticate Exlint CLI with an Exlint account' })
 export class AuthCommand extends CommandRunner {

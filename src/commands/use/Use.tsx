@@ -1,4 +1,3 @@
-import crypto from 'node:crypto';
 import path from 'node:path';
 
 import React from 'react';
@@ -101,8 +100,7 @@ export class UseCommand extends CommandRunner {
 
 			await this.exlintConfigService.init();
 
-			const projectId = this.exlintConfigService.getValue('projectId') ?? crypto.randomUUID();
-			const projectFolderPath = path.join(EXLINT_FOLDER_PATH, projectId);
+			const projectFolderPath = path.join(EXLINT_FOLDER_PATH, groupId);
 
 			const shouldAdjustToIde =
 				!isCI &&
@@ -111,7 +109,7 @@ export class UseCommand extends CommandRunner {
 			const [shouldAdjustToVsCode, shouldAdjustToWebstorm] = await Promise.all([
 				shouldAdjustToIde && isVsCodeInstalled(),
 				shouldAdjustToIde && isWebstormInstalled(),
-				this.exlintConfigService.setValues({ projectId }),
+				this.exlintConfigService.setValues({ groupId }),
 				// Note that "emptyDir" - "If the directory does not exist, it is created."
 				fs.emptyDir(projectFolderPath),
 			]);
@@ -141,7 +139,7 @@ export class UseCommand extends CommandRunner {
 					render(<UseTasks tasks={tasks} />);
 				});
 
-			const setConfigLibrariesPromises = groupData.map((policy) => setConfigLibrary(projectId, policy));
+			const setConfigLibrariesPromises = groupData.map((policy) => setConfigLibrary(groupId, policy));
 
 			const setConfigLibrariesPromise = Promise.all(setConfigLibrariesPromises)
 				.then(() => {
@@ -175,7 +173,7 @@ export class UseCommand extends CommandRunner {
 							render(<UseTasks tasks={tasks} />);
 						}),
 					this.vsCodeLibrariesService
-						.adjustLocal(projectId, groupData)
+						.adjustLocal(groupId, groupData)
 						.then(() => {
 							tasks[ADJUST_VSCODE_EXTENSIONS] = 'success';
 						})
@@ -193,7 +191,7 @@ export class UseCommand extends CommandRunner {
 
 				editorsPromises.push(
 					this.webstormLibrariesService
-						.adjustLocal(projectId, groupData)
+						.adjustLocal(groupId, groupData)
 						.then(() => {
 							tasks[ADJUST_WEBSTORM_PLUGINS] = 'success';
 						})

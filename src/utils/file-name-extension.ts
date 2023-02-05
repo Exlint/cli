@@ -5,5 +5,5 @@ export const getFileNameExtension = (isFormConfiguration: boolean, codeType: ICo
 		return 'json';
 	}
 
-	return codeType.toLowerCase();
+	return codeType?.toLowerCase() || 'json';
 };

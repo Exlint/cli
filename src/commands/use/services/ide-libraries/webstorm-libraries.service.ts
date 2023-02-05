@@ -14,7 +14,7 @@ import IdeLibrares from './ide-libraries';
 
 @Injectable()
 export class WebstormLibrariesService extends IdeLibrares {
-	public async adjustLocal(projectId: string, policies: IPolicyServer[]) {
+	public async adjustLocal(groupId: string, policies: IPolicyServer[]) {
 		const ideaFolderPath = path.join(process.cwd(), '.idea');
 		const workspaceXmlFilePath = path.join(ideaFolderPath, 'workspace.xml');
 		const workspaceContent = await fs.readFile(workspaceXmlFilePath, 'utf-8').catch(() => '');
@@ -59,7 +59,7 @@ export class WebstormLibrariesService extends IdeLibrares {
 
 		workspacePropertiesObject.keyToString['EXLINT_PLACEHOLDER'] = '<EXLINT_PLACEHOLDER>';
 
-		const projectPath = path.join(EXLINT_FOLDER_PATH, projectId);
+		const projectPath = path.join(EXLINT_FOLDER_PATH, groupId);
 		const writePluginsConfigurationsPromises = [];
 		let shouldOverridePlugins = false;
 		const libraries = policies.map((policy) => policy.library.toLowerCase());

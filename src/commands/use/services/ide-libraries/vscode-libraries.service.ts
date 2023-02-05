@@ -17,8 +17,8 @@ const asyncExecFile = util.promisify(execFile);
 
 @Injectable()
 export class VsCodeLibrariesService extends IdeLibrares {
-	public async adjustLocal(projectId: string, policies: IPolicyServer[]) {
-		const projectPath = path.join(EXLINT_FOLDER_PATH, projectId);
+	public async adjustLocal(groupId: string, policies: IPolicyServer[]) {
+		const projectPath = path.join(EXLINT_FOLDER_PATH, groupId);
 		const vsCodeSettingsFilePath = path.join(process.cwd(), '.vscode', 'settings.json');
 
 		const currentVsCodeSettingsContent: JSON = await fs
