@@ -1,3 +1,10 @@
+## [1.1.1](https://github.com/Exlint/cli/compare/v1.1.0...v1.1.1) (2023-02-06)
+
+
+### Bug Fixes
+
+* 🐞 use spawn with fix ([8bd4250](https://github.com/Exlint/cli/commit/8bd42504c62e8287188c8c00236d6dbc77cee9b3))
+
 # [1.1.0](https://github.com/Exlint/cli/compare/v1.0.2...v1.1.0) (2023-02-05)
 
 
