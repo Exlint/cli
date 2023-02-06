@@ -1,3 +1,10 @@
+## [1.1.2](https://github.com/Exlint/cli/compare/v1.1.1...v1.1.2) (2023-02-06)
+
+
+### Bug Fixes
+
+* 🐞 use "shell" in exec file command ([3b3f954](https://github.com/Exlint/cli/commit/3b3f95438998eef4d9dc0a35fc7051ac79ec5da6))
+
 ## [1.1.1](https://github.com/Exlint/cli/compare/v1.1.0...v1.1.1) (2023-02-06)
 
 
