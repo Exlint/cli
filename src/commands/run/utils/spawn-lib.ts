@@ -9,6 +9,7 @@ export const spawnLib = async (libraryName: string, args: string[]) => {
 		const spawner = spawn('npx', [libraryName, ...args, '--color'], {
 			cwd: process.cwd(),
 			windowsHide: true,
+			shell: true,
 		});
 
 		spawner.stdout?.on('data', (data) => {
