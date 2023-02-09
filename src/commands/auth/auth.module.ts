@@ -1,6 +1,8 @@
 import { Module } from '@nestjs/common';
 
-import { AuthCommand } from './Auth';
+import LoggerService from '@/services/logger/logger.service';
 
-@Module({ providers: [AuthCommand] })
-export class AuthModule {}
+import { AuthCommand } from './auth.command';
+
+@Module({ providers: [AuthCommand, LoggerService] })
+export class AuthCommandModule {}

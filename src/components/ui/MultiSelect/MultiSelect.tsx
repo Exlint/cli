@@ -1,12 +1,13 @@
-import React, { useEffect, useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import { useStdin } from 'ink';
 
-import type { ISelectItem, ISelectItemSelection } from './interfaces/select-item';
+import type { ISelectItem } from './interfaces/select-item';
 import { ARROW_DOWN, ARROW_UP, ENTER, SPACE } from './constants/input';
 
 import MultiSelectView from './MultiSelect.view';
 
 interface IProps {
+	readonly label: JSX.Element;
 	readonly items: ISelectItem[];
 	readonly onSubmit: (selectedItems: string[]) => void;
 }
@@ -14,81 +15,43 @@ interface IProps {
 const MultiSelect: React.FC<IProps> = (props: React.PropsWithChildren<IProps>) => {
 	const { stdin, setRawMode } = useStdin();
 
-	const [itemsSelectionState, setItemsSelectionState] = useState<ISelectItemSelection[]>(
-		props.items.map((item, index) => ({ ...item, selected: false, isHighlighted: index === 0 })),
+	const [highlightedItemIndexState, setHighlightedItemIndexState] = useState<number>(0);
+	const [selectedValuesState, setSelectedValuesState] = useState<string[]>([]);
+
+	const stdinInputHandler = useCallback(
+		(data: Buffer) => {
+			const rawData = data.toString();
+
+			if (rawData === ARROW_DOWN) {
+				setHighlightedItemIndexState((prev) => (prev === props.items.length - 1 ? 0 : prev + 1));
+			}
+
+			if (rawData === ARROW_UP) {
+				setHighlightedItemIndexState((prev) => (prev === 0 ? props.items.length - 1 : prev - 1));
+			}
+
+			if (rawData === SPACE) {
+				setSelectedValuesState((prev) => {
+					const highlightedItemValue = props.items[highlightedItemIndexState]!.value;
+					const index = prev.findIndex((item) => item === highlightedItemValue);
+					const newSelectedValues = [...prev];
+
+					if (index === -1) {
+						newSelectedValues.push(highlightedItemValue);
+					} else {
+						newSelectedValues.splice(index, 1);
+					}
+
+					return newSelectedValues;
+				});
+			}
+
+			if (rawData === ENTER) {
+				props.onSubmit(selectedValuesState);
+			}
+		},
+		[highlightedItemIndexState, selectedValuesState],
 	);
-
-	const stdinInputHandler = (data: unknown) => {
-		const rawData = String(data);
-
-		if (rawData === ARROW_DOWN) {
-			setItemsSelectionState((prev) => {
-				const highlightedIndex = prev.findIndex((item) => item.isHighlighted);
-
-				if (highlightedIndex === -1) {
-					return prev;
-				}
-
-				const clonedPrev = structuredClone(prev);
-
-				clonedPrev[highlightedIndex]!.isHighlighted = false;
-
-				if (highlightedIndex === prev.length - 1) {
-					clonedPrev[0]!.isHighlighted = true;
-				} else {
-					clonedPrev[highlightedIndex + 1]!.isHighlighted = true;
-				}
-
-				return clonedPrev;
-			});
-		}
-
-		if (rawData === ARROW_UP) {
-			setItemsSelectionState((prev) => {
-				const highlightedIndex = prev.findIndex((item) => item.isHighlighted);
-
-				if (highlightedIndex === -1) {
-					return prev;
-				}
-
-				const clonedPrev = structuredClone(prev);
-
-				clonedPrev[highlightedIndex]!.isHighlighted = false;
-
-				if (highlightedIndex === 0) {
-					clonedPrev[prev.length - 1]!.isHighlighted = true;
-				} else {
-					clonedPrev[highlightedIndex - 1]!.isHighlighted = true;
-				}
-
-				return clonedPrev;
-			});
-		}
-
-		if (rawData === SPACE) {
-			setItemsSelectionState((prev) => {
-				const highlightedIndex = prev.findIndex((item) => item.isHighlighted);
-
-				if (highlightedIndex === -1) {
-					return prev;
-				}
-
-				const clonedPrev = structuredClone(prev);
-
-				clonedPrev[highlightedIndex]!.selected = !prev[highlightedIndex]!.selected;
-
-				return clonedPrev;
-			});
-		}
-
-		if (rawData === ENTER) {
-			const selectedItemsValues = itemsSelectionState
-				.filter((item) => item.selected)
-				.map((item) => item.value);
-
-			props.onSubmit(selectedItemsValues);
-		}
-	};
 
 	useEffect(() => {
 		setRawMode(true);
@@ -98,9 +61,16 @@ const MultiSelect: React.FC<IProps> = (props: React.PropsWithChildren<IProps>) =
 			stdin?.removeListener('data', stdinInputHandler);
 			setRawMode(false);
 		};
-	}, []);
+	}, [stdinInputHandler]);
 
-	return <MultiSelectView itemsSelection={itemsSelectionState} />;
+	return (
+		<MultiSelectView
+			label={props.label}
+			items={props.items}
+			highlightedItemIndex={highlightedItemIndexState}
+			selectedValues={selectedValuesState}
+		/>
+	);
 };
 
 export default MultiSelect;

@@ -1,6 +1,6 @@
 import { spawn } from 'node:child_process';
 
-import { ISpawnResult } from '../interfaces/spawn-result';
+import type { ISpawnResult } from '../interfaces/spawn-result';
 
 export const spawnLib = async (libraryName: string, args: string[]) => {
 	const commandOutput = await new Promise<ISpawnResult>((resolve) => {

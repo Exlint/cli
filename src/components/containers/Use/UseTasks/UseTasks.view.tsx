@@ -2,7 +2,7 @@ import React from 'react';
 import spinners from 'cli-spinners';
 import { Task, TaskList } from 'ink-task-list';
 
-import { IUseTasks } from '@/interfaces/use-tasks';
+import type { IUseTasks } from '@/interfaces/use-tasks';
 
 interface IProps {
 	readonly tasks: IUseTasks;

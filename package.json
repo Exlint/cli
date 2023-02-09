@@ -40,7 +40,7 @@
 		"build": "nest build",
 		"build:dev": "cross-env NODE_ENV=development nest build",
 		"compodoc": "compodoc && open-cli ./documentation/index.html",
-		"lint": "eslint -c ./.eslintrc.cjs \"**/*.{ts,js,cjs}\" --fix",
+		"lint": "eslint -c ./.eslintrc.cjs \"**/*.{ts,js,cjs}\"",
 		"type-check": "tsc --project ./tsconfig.json",
 		"inflint": "inflint -c ./inflint.config.ts",
 		"depcheck": "depcheck --config ./.depcheckrc.json",
@@ -66,8 +66,7 @@
 		"react": "18.2.0",
 		"reflect-metadata": "^0.1.13",
 		"rxjs": "7.8.0",
-		"v8-compile-cache": "2.3.0",
-		"xml2js": "0.4.23"
+		"v8-compile-cache": "2.3.0"
 	},
 	"devDependencies": {
 		"@commitlint/cli": "17.4.2",
@@ -82,7 +81,6 @@
 		"@types/is-ci": "3.0.0",
 		"@types/node": "18.11.18",
 		"@types/react": "18.0.27",
-		"@types/xml2js": "0.4.11",
 		"@typescript-eslint/eslint-plugin": "5.49.0",
 		"@typescript-eslint/parser": "5.49.0",
 		"commitizen": "4.3.0",

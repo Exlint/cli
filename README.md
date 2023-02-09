@@ -84,7 +84,7 @@ exlint use <group_id>
 ```
 
 When you want to use a group you have created in the dashboard, you copy its unique identifier and use it with the `use` command.
-Exlint will adjust your IDE (if using VSCode or Webstorm), install required extensions and libraries.
+Exlint will adjust your IDE (if using VSCode), install required extensions and libraries.
 You can easily switch groups by using the command again!
 
 ### Run Command

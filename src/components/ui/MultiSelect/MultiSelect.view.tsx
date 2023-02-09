@@ -1,24 +1,29 @@
 import { Box, Text } from 'ink';
 import React from 'react';
 
-import type { ISelectItemSelection } from './interfaces/select-item';
+import type { ISelectItem } from './interfaces/select-item';
 
 interface IProps {
-	readonly itemsSelection: ISelectItemSelection[];
+	readonly label: JSX.Element;
+	readonly items: ISelectItem[];
+	readonly highlightedItemIndex: number;
+	readonly selectedValues: ISelectItem['value'][];
 }
 
 const MultiSelectView: React.FC<IProps> = (props: React.PropsWithChildren<IProps>) => {
 	return (
-		<Box display="flex" flexDirection="column">
-			{props.itemsSelection.map((item) => (
+		<Box display="flex" flexDirection="column" marginTop={1}>
+			{props.label}
+
+			{props.items.map((item, index) => (
 				<Box key={item.value} display="flex" flexDirection="row">
-					<Text color="blue">{item.isHighlighted ? '❯' : ' '}</Text>
+					<Text color="white">{index === props.highlightedItemIndex ? '❯' : ' '}</Text>
 					<Text color="magenta">
 						&nbsp;
-						{item.selected ? '◉' : '◯'}
+						{props.selectedValues.includes(item.value) ? '◉' : '◯'}
 						&nbsp;
 					</Text>
-					<Text color="white" bold={item.selected}>
+					<Text color={props.selectedValues.includes(item.value) ? 'white' : 'gray'}>
 						{item.label}
 					</Text>
 				</Box>

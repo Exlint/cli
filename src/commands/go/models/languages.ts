@@ -1,22 +1,22 @@
 export const languagesItems = [
 	{
-		label: '🔥 JavaScript',
+		label: 'JavaScript',
 		value: 'JavaScript',
 	},
 	{
-		label: '💻 TypeScript',
+		label: 'TypeScript',
 		value: 'TypeScript',
 	},
 	{
-		label: '🐍 Python',
+		label: 'Python',
 		value: 'Python',
 	},
 	{
-		label: '🎨 CSS & HTML',
+		label: 'CSS & HTML',
 		value: 'CSS & HTML',
 	},
 	{
-		label: '⚙ Golang',
+		label: 'Golang',
 		value: 'Golang',
 	},
 ];

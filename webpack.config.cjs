@@ -2,6 +2,8 @@ const webpack = require('webpack');
 const isCI = require('is-ci');
 const { merge } = require('webpack-merge');
 
+const { version } = require('./package.json');
+
 const isDev = process.env.NODE_ENV === 'development' && !isCI;
 const cliApiDomain = isDev ? 'localhost' : 'cli-api.exlint.io';
 const cliApiUrl = isDev ? `http://${cliApiDomain}:4000` : `https://${cliApiDomain}`;
@@ -16,6 +18,7 @@ const configuration = {
 			__CLI_API_DOMAIN__: JSON.stringify(cliApiDomain),
 			__CLI_API_URL__: JSON.stringify(cliApiUrl),
 			__DASHBOARD_URL__: JSON.stringify(dashboardUrl),
+			__VERSION__: JSON.stringify(version),
 		}),
 	],
 	experiments: {
