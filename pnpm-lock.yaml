@@ -8,7 +8,7 @@ specifiers:
   '@nestjs/common': ^9.0.0
   '@nestjs/core': ^9.0.0
   '@types/envinfo': 7.8.1
-  '@types/express': 4.17.16
+  '@types/express': 4.17.17
   '@types/fs-extra': 11.0.1
   '@types/ink-divider': 2.0.2
   '@types/inquirer': 9.0.3
@@ -87,7 +87,7 @@ devDependencies:
   '@exlint.io/inflint': 1.2.9_bdgp3l2zgaopogaavxusmetvge
   '@nestjs/cli': 9.2.0
   '@types/envinfo': 7.8.1
-  '@types/express': 4.17.16
+  '@types/express': 4.17.17
   '@types/fs-extra': 11.0.1
   '@types/ink-divider': 2.0.2
   '@types/inquirer': 9.0.3
@@ -1996,19 +1996,19 @@ packages:
     resolution: {integrity: sha512-CuPgU6f3eT/XgKKPqKd/gLZV1Xmvf1a2R5POBOGQa6uv82xpls89HU5zKeVoyR8XzHd1RGNOlQlvUe3CFkjWNQ==}
     dev: true
 
-  /@types/express-serve-static-core/4.17.32:
-    resolution: {integrity: sha512-aI5h/VOkxOF2Z1saPy0Zsxs5avets/iaiAJYznQFm5By/pamU31xWKL//epiF4OfUA2qTOc9PV6tCUjhO8wlZA==}
+  /@types/express-serve-static-core/4.17.33:
+    resolution: {integrity: sha512-TPBqmR/HRYI3eC2E5hmiivIzv+bidAfXofM+sbonAGvyDhySGw9/PQZFt2BLOrjUUR++4eJVpx6KnLQK1Fk9tA==}
     dependencies:
       '@types/node': 18.11.18
       '@types/qs': 6.9.7
       '@types/range-parser': 1.2.4
     dev: true
 
-  /@types/express/4.17.16:
-    resolution: {integrity: sha512-LkKpqRZ7zqXJuvoELakaFYuETHjZkSol8EV6cNnyishutDBCCdv6+dsKPbKkCcIk57qRphOLY5sEgClw1bO3gA==}
+  /@types/express/4.17.17:
+    resolution: {integrity: sha512-Q4FmmuLGBG58btUnfS1c1r/NQdlp3DMfGDGig8WhfpA2YRUtEkxAjkZb0yvplJGYdF1fsQ81iMDcH24sSCNC/Q==}
     dependencies:
       '@types/body-parser': 1.19.2
-      '@types/express-serve-static-core': 4.17.32
+      '@types/express-serve-static-core': 4.17.33
       '@types/qs': 6.9.7
       '@types/serve-static': 1.13.10
     dev: true
