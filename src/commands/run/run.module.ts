@@ -1,10 +1,10 @@
 import { Module } from '@nestjs/common';
 
+import { RunModule } from '@/modules/run/run.module';
 import LoggerService from '@/services/logger/logger.service';
 import { ApiService } from '@/services/api/api.service';
-import { ExlintConfigService } from '@/services/exlint-config/exlint-config.service';
 
 import { RunCommand } from './run.command';
 
-@Module({ providers: [RunCommand, LoggerService, ApiService, ExlintConfigService] })
+@Module({ imports: [RunModule], providers: [RunCommand, LoggerService, ApiService] })
 export class RunCommandModule {}

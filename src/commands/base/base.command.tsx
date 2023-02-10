@@ -11,7 +11,7 @@ import type { ICommandOptions } from './interfaces/command-options';
 @Command({
 	name: '-',
 	description: 'Command handler for base CLI',
-	options: { isDefault: true },
+	options: { isDefault: true, hidden: true },
 })
 export class BaseCommand extends CommandRunner {
 	public async run(_: string[], options?: ICommandOptions) {
@@ -44,7 +44,7 @@ export class BaseCommand extends CommandRunner {
 
 	@Option({
 		flags: '-v, --version [version]',
-		description: 'Return version of the CLI',
+		description: 'Return version of the Exlint CLI',
 		required: false,
 	})
 	public version(value: unknown) {

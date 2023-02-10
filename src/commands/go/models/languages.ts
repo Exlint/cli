@@ -4,8 +4,8 @@ export const languagesItems = [
 		value: 'JavaScript',
 	},
 	{
-		label: 'TypeScript',
-		value: 'TypeScript',
+		label: 'React',
+		value: 'React',
 	},
 	{
 		label: 'Python',
