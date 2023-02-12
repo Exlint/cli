@@ -22,7 +22,7 @@ jobs:
         runs-on: ubuntu-latest
         steps:
             - name: Setup Node environment
-              uses: Exlint/node-environment@v1.1.0
+              uses: Exlint/node-environment@v1.2.6
               with:
                   node-version: 18.12.1
                   package-manager: pnpm
@@ -38,7 +38,7 @@ jobs:
         runs-on: ubuntu-latest
         steps:
             - name: Setup Node environment
-              uses: Exlint/node-environment@v1.1.0
+              uses: Exlint/node-environment@v1.2.6
               with:
                   node-version: 18.12.1
                   package-manager: pnpm
@@ -54,7 +54,7 @@ jobs:
         runs-on: ubuntu-latest
         steps:
             - name: Setup Node environment
-              uses: Exlint/node-environment@v1.1.0
+              uses: Exlint/node-environment@v1.2.6
               with:
                   node-version: 18.12.1
                   package-manager: pnpm
@@ -70,7 +70,7 @@ jobs:
         runs-on: ubuntu-latest
         steps:
             - name: Setup Node environment
-              uses: Exlint/node-environment@v1.1.0
+              uses: Exlint/node-environment@v1.2.6
               with:
                   node-version: 18.12.1
                   package-manager: pnpm
@@ -86,7 +86,7 @@ jobs:
         runs-on: ubuntu-latest
         steps:
             - name: Setup Node environment
-              uses: Exlint/node-environment@v1.1.0
+              uses: Exlint/node-environment@v1.2.6
               with:
                   node-version: 18.12.1
                   package-manager: pnpm
@@ -102,7 +102,7 @@ jobs:
         runs-on: ubuntu-latest
         steps:
             - name: Setup Node environment
-              uses: Exlint/node-environment@v1.1.0
+              uses: Exlint/node-environment@v1.2.6
               with:
                   node-version: 18.12.1
                   package-manager: pnpm

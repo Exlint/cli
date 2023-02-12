@@ -13,7 +13,7 @@ jobs:
         runs-on: ubuntu-latest
         steps:
             - name: Setup Node environment
-              uses: Exlint/node-environment@v1.1.0
+              uses: Exlint/node-environment@v1.2.6
               with:
                   should-cache: false
                   node-version: 18.13.0
