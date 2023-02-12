@@ -59,7 +59,7 @@ export class AuthCommand extends CommandRunner {
 	}
 
 	@Option({
-		flags: '--debug [debug]',
+		flags: '--debug',
 		description: 'Extend Exlint output with debug messages',
 		required: false,
 	})

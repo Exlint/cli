@@ -43,7 +43,7 @@ export class BaseCommand extends CommandRunner {
 	}
 
 	@Option({
-		flags: '-v, --version [version]',
+		flags: '-v, --version',
 		description: 'Return version of the Exlint CLI',
 		required: false,
 	})
@@ -52,7 +52,7 @@ export class BaseCommand extends CommandRunner {
 	}
 
 	@Option({
-		flags: '--env-info [envInfo]',
+		flags: '--env-info',
 		description: 'Output execution environment information',
 		required: false,
 	})

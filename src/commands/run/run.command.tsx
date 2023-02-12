@@ -65,7 +65,7 @@ export class RunCommand extends CommandRunner {
 	}
 
 	@Option({
-		flags: '--fix [fix]',
+		flags: '--fix',
 		name: 'fix',
 		description: 'Exlint will try to automatically fix issues if exist',
 		defaultValue: false,
@@ -79,7 +79,7 @@ export class RunCommand extends CommandRunner {
 	}
 
 	@Option({
-		flags: '--debug [debug]',
+		flags: '--debug',
 		name: 'debug',
 		description: 'Extend Exlint output with debug messages',
 		required: false,
