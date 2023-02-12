@@ -7,6 +7,7 @@ import { ARROW_DOWN, ARROW_UP, ENTER, SPACE } from './constants/input';
 import MultiSelectView from './MultiSelect.view';
 
 interface IProps {
+	readonly single: boolean;
 	readonly label: JSX.Element;
 	readonly items: ISelectItem[];
 	readonly onSubmit: (selectedItems: string[]) => void;
@@ -30,7 +31,7 @@ const MultiSelect: React.FC<IProps> = (props: React.PropsWithChildren<IProps>) =
 				setHighlightedItemIndexState((prev) => (prev === 0 ? props.items.length - 1 : prev - 1));
 			}
 
-			if (rawData === SPACE) {
+			if (!props.single && rawData === SPACE) {
 				setSelectedValuesState((prev) => {
 					const highlightedItemValue = props.items[highlightedItemIndexState]!.value;
 					const index = prev.findIndex((item) => item === highlightedItemValue);
@@ -47,7 +48,15 @@ const MultiSelect: React.FC<IProps> = (props: React.PropsWithChildren<IProps>) =
 			}
 
 			if (rawData === ENTER) {
-				props.onSubmit(selectedValuesState);
+				if (!props.single) {
+					props.onSubmit(selectedValuesState);
+
+					return;
+				}
+
+				const selected = props.items[highlightedItemIndexState]!.value;
+
+				props.onSubmit([selected]);
 			}
 		},
 		[highlightedItemIndexState, selectedValuesState],
@@ -65,6 +74,7 @@ const MultiSelect: React.FC<IProps> = (props: React.PropsWithChildren<IProps>) =
 
 	return (
 		<MultiSelectView
+			single={props.single}
 			label={props.label}
 			items={props.items}
 			highlightedItemIndex={highlightedItemIndexState}

@@ -26,7 +26,7 @@ export class RunService {
 		const libsRunOutputsExecution = await getLibsOutput(groupId, withFix);
 		const wasSuccessful = libsRunOutputsExecution.every((item) => item.success);
 
-		render(
+		const jsxOutput = (
 			<Box marginTop={1} flexDirection="column">
 				{libsRunOutputsExecution.map((outputItem) => (
 					<Box key={outputItem.name} flexDirection="column" marginBottom={1}>
@@ -52,9 +52,9 @@ export class RunService {
 					</Text>
 				)}
 				<Newline />
-			</Box>,
+			</Box>
 		);
 
-		return wasSuccessful;
+		return { wasSuccessful, jsxOutput };
 	}
 }

@@ -52,7 +52,9 @@ export class RunCommand extends CommandRunner {
 		}
 
 		try {
-			const wasSuccessful = await this.runService.run(options?.debug ?? false);
+			const { wasSuccessful, jsxOutput } = await this.runService.run(options?.debug ?? false);
+
+			render(jsxOutput);
 
 			process.exit(wasSuccessful ? 0 : 1);
 		} catch {

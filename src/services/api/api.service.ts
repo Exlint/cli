@@ -2,7 +2,11 @@ import { Injectable } from '@nestjs/common';
 import axios, { AxiosError } from 'axios';
 import { Netrc } from 'netrc-parser';
 
-import type { IGetGroupResponseData, IGetRecommendedComplianceResponseData } from './interfaces/responses';
+import type {
+	IGetGroupResponseData,
+	IGetRecommendedComplianceResponseData,
+	IStoreRecommendedComplianceResponseData,
+} from './interfaces/responses';
 import { API_TIMEOUT } from './constants/api-timeout';
 
 @Injectable()
@@ -57,5 +61,17 @@ export class ApiService {
 		} catch {
 			return false;
 		}
+	}
+
+	public async storeRecommendedCompliance(languages: string[]) {
+		const createdComplianceResponse =
+			await this.axiosInstance.post<IStoreRecommendedComplianceResponseData>(
+				'/user/groups/add-recommended',
+				{
+					languages,
+				},
+			);
+
+		return createdComplianceResponse.data;
 	}
 }

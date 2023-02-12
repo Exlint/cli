@@ -4,6 +4,7 @@ import React from 'react';
 import type { ISelectItem } from './interfaces/select-item';
 
 interface IProps {
+	readonly single: boolean;
 	readonly label: JSX.Element;
 	readonly items: ISelectItem[];
 	readonly highlightedItemIndex: number;
@@ -17,15 +18,23 @@ const MultiSelectView: React.FC<IProps> = (props: React.PropsWithChildren<IProps
 
 			{props.items.map((item, index) => (
 				<Box key={item.value} display="flex" flexDirection="row">
-					<Text color="white">{index === props.highlightedItemIndex ? '❯' : ' '}</Text>
-					<Text color="magenta">
-						&nbsp;
-						{props.selectedValues.includes(item.value) ? '◉' : '◯'}
-						&nbsp;
-					</Text>
-					<Text color={props.selectedValues.includes(item.value) ? 'white' : 'gray'}>
-						{item.label}
-					</Text>
+					<Text color="white">{index === props.highlightedItemIndex ? '❯' : ' '}&nbsp;</Text>
+					{!props.single && (
+						<Text color="magenta">
+							{props.selectedValues.includes(item.value) ? '◉' : '◯'}
+							&nbsp;
+						</Text>
+					)}
+
+					{!props.single ? (
+						<Text color={props.selectedValues.includes(item.value) ? 'white' : 'gray'}>
+							{item.label}
+						</Text>
+					) : (
+						<Text color={props.highlightedItemIndex === index ? 'white' : 'gray'}>
+							{item.label}
+						</Text>
+					)}
 				</Box>
 			))}
 		</Box>
