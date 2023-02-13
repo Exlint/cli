@@ -2,7 +2,7 @@ import http from 'node:http';
 import type { AddressInfo } from 'node:net';
 
 import { Injectable } from '@nestjs/common';
-import { Newline, Text, render } from 'ink';
+import { render } from 'ink';
 import React from 'react';
 import express from 'express';
 import open from 'open';
@@ -46,6 +46,8 @@ export class AuthService {
 		const authUrl = `${__DASHBOARD_URL__}/cli-auth?port=${serverPort}`;
 
 		logger.info(`Server is listening on port: "${serverPort}"`);
+
+		console.clear();
 
 		render(<PendingAuth link={authUrl} />);
 
@@ -101,13 +103,5 @@ export class AuthService {
 		};
 
 		await netrc.save();
-
-		render(
-			<Text>
-				<Newline />
-				Your account has been authenticated. Exlint is now ready to use. 🚀🚀
-				<Newline />
-			</Text>,
-		);
 	}
 }

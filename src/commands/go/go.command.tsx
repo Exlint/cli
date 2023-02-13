@@ -1,7 +1,6 @@
 import crypto from 'node:crypto';
 import path from 'node:path';
 
-import chalk from 'chalk';
 import React from 'react';
 import { Text, render, Box, Newline } from 'ink';
 import { Command, CommandRunner, Option } from 'nest-commander';
@@ -71,14 +70,25 @@ export class GoCommand extends CommandRunner {
 			);
 
 			const temporaryGroupFolderPath = path.join(EXLINT_FOLDER_PATH, temporaryGroupId);
-			const newGroupFolderPath = path.join(EXLINT_FOLDER_PATH, storeResponseData.groupId);
+			const newGroupId = storeResponseData.groupId;
+			const newGroupFolderPath = path.join(EXLINT_FOLDER_PATH, newGroupId);
 
 			await Promise.all([
-				this.exlintConfigService.setValues({ groupId: storeResponseData.groupId }),
+				this.exlintConfigService.setValues({ groupId: newGroupId }),
 				fs.move(temporaryGroupFolderPath, newGroupFolderPath, { overwrite: true }),
 			]);
 
-			process.stdout.write(chalk.green.bold('🚀 Group successfully added to your account!\n'));
+			const vsCodeSettingsFilePath = path.join(process.cwd(), '.vscode', 'settings.json');
+			const settingsData = await fs.readFile(vsCodeSettingsFilePath, 'utf-8');
+			const newSettingsData = settingsData.replaceAll(temporaryGroupId, newGroupId);
+
+			await fs.writeFile(vsCodeSettingsFilePath, newSettingsData);
+
+			render(
+				<Text color="green" bold>
+					🚀 Group successfully added to your account!
+				</Text>,
+			);
 
 			process.exit(0);
 		} catch (e) {
@@ -160,7 +170,7 @@ export class GoCommand extends CommandRunner {
 		const temporaryComplianceId = `tmp-${crypto.randomUUID()}`;
 
 		try {
-			await this.useService.use(temporaryComplianceId, complianceData);
+			await this.useService.use(this.debugMode, temporaryComplianceId, complianceData);
 
 			const [runResult, isAuthenticated] = await Promise.all([
 				this.runService.run(false),

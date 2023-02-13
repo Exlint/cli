@@ -28,11 +28,13 @@ export const getPrettierOutput = async (projectId: string, withFix: boolean) => 
 	}
 
 	const libraryPattern = await fs.readFile(libraryPatternPath, { encoding: 'utf-8' }).catch(() => '**/*');
+	const splittedLibraryPattern = libraryPattern.split('\n');
+	const finalLibraryPattern = splittedLibraryPattern.map((pattern) => JSON.stringify(pattern)).join(' ');
 
 	const libraryRunOutput = await spawnLib('prettier', [
 		'--config',
 		libraryConfigPath,
-		libraryPattern,
+		finalLibraryPattern,
 		'--check',
 		'--ignore-unknown',
 		'--ignore-path',

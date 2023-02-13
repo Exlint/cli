@@ -29,7 +29,8 @@ export class UseCommand extends CommandRunner {
 	}
 
 	public async run([groupId]: [string], options?: ICommandOptions) {
-		const logger = this.loggerService.getLogger(options?.debug ?? false);
+		const withDebug = options?.debug ?? false;
+		const logger = this.loggerService.getLogger(withDebug);
 
 		logger.info('Start group usage process');
 
@@ -72,7 +73,7 @@ export class UseCommand extends CommandRunner {
 				process.exit(0);
 			}
 
-			await this.useService.use(groupId, groupData);
+			await this.useService.use(withDebug, groupId, groupData);
 
 			process.exit(0);
 		} catch (e) {

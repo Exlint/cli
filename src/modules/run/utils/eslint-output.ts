@@ -27,11 +27,13 @@ export const getEslintOutput = async (projectId: string, withFix: boolean) => {
 	}
 
 	const libraryPattern = await fs.readFile(libraryPatternPath, { encoding: 'utf-8' }).catch(() => '**/*');
+	const splittedLibraryPattern = libraryPattern.split('\n');
+	const finalLibraryPattern = splittedLibraryPattern.map((pattern) => JSON.stringify(pattern)).join(' ');
 
 	const libraryRunOutput = await spawnLib('eslint', [
 		'--config',
 		libraryConfigPath,
-		libraryPattern,
+		finalLibraryPattern,
 		'--ignore-path',
 		libraryIgnorePath,
 		...(withFix ? ['--fix'] : []),

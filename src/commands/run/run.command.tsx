@@ -52,7 +52,7 @@ export class RunCommand extends CommandRunner {
 		}
 
 		try {
-			const { wasSuccessful, jsxOutput } = await this.runService.run(options?.debug ?? false);
+			const { wasSuccessful, jsxOutput } = await this.runService.run(options?.fix ?? false);
 
 			render(jsxOutput);
 
@@ -68,7 +68,7 @@ export class RunCommand extends CommandRunner {
 		flags: '--fix',
 		name: 'fix',
 		description: 'Exlint will try to automatically fix issues if exist',
-		defaultValue: false,
+		required: false,
 	})
 	public fix(value: unknown) {
 		if (typeof value !== 'boolean') {

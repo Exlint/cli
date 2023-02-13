@@ -43,7 +43,7 @@ module.exports = {
 		'no-labels': 'error',
 		'no-inline-comments': 'error',
 		'eqeqeq': 'error',
-		'no-console': 'error',
+		'no-console': ['error', { allow: ['clear'] }],
 		'no-eval': 'error',
 		'no-implicit-globals': 'error',
 		'no-useless-call': 'error',
@@ -126,6 +126,7 @@ module.exports = {
 		'@typescript-eslint/no-non-null-assertion': 'off',
 		'@typescript-eslint/no-use-before-define': ['error'],
 		'@typescript-eslint/consistent-type-imports': ['error'],
+		'@typescript-eslint/await-thenable': 'error',
 
 		'react/jsx-fragments': 'error',
 		'react/jsx-wrap-multilines': [

@@ -18,6 +18,10 @@ export const installLibraries = async (libraryNames: string[]) => {
 		transformedLibraryNames.push('eslint-config-prettier');
 	}
 
+	if (transformedLibraryNames.includes('stylelint')) {
+		transformedLibraryNames.push('stylelint-config-standard-scss', 'stylelint-config-prettier-scss');
+	}
+
 	const npmInfo = await envinfo.helpers.getnpmInfo();
 
 	if (!npmInfo[2]) {
