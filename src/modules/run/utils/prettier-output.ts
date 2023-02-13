@@ -32,6 +32,7 @@ export const getPrettierOutput = async (projectId: string, withFix: boolean) => 
 	const finalLibraryPattern = splittedLibraryPattern.map((pattern) => JSON.stringify(pattern)).join(' ');
 
 	const libraryRunOutput = await spawnLib('prettier', [
+		'--no-error-on-unmatched-pattern',
 		'--config',
 		libraryConfigPath,
 		finalLibraryPattern,

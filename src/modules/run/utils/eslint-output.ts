@@ -31,6 +31,7 @@ export const getEslintOutput = async (projectId: string, withFix: boolean) => {
 	const finalLibraryPattern = splittedLibraryPattern.map((pattern) => JSON.stringify(pattern)).join(' ');
 
 	const libraryRunOutput = await spawnLib('eslint', [
+		'--no-error-on-unmatched-pattern',
 		'--config',
 		libraryConfigPath,
 		finalLibraryPattern,

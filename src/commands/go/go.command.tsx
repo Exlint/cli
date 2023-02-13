@@ -136,12 +136,19 @@ export class GoCommand extends CommandRunner {
 			);
 
 			const temporaryGroupFolderPath = path.join(EXLINT_FOLDER_PATH, temporaryGroupId);
-			const newGroupFolderPath = path.join(EXLINT_FOLDER_PATH, storeResponseData.groupId);
+			const newGroupId = storeResponseData.groupId;
+			const newGroupFolderPath = path.join(EXLINT_FOLDER_PATH, newGroupId);
 
 			await Promise.all([
-				this.exlintConfigService.setValues({ groupId: storeResponseData.groupId }),
+				this.exlintConfigService.setValues({ groupId: newGroupId }),
 				fs.move(temporaryGroupFolderPath, newGroupFolderPath, { overwrite: true }),
 			]);
+
+			const vsCodeSettingsFilePath = path.join(process.cwd(), '.vscode', 'settings.json');
+			const settingsData = await fs.readFile(vsCodeSettingsFilePath, 'utf-8');
+			const newSettingsData = settingsData.replaceAll(temporaryGroupId, newGroupId);
+
+			await fs.writeFile(vsCodeSettingsFilePath, newSettingsData);
 
 			render(
 				<Text>
