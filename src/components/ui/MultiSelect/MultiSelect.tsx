@@ -24,10 +24,12 @@ const MultiSelect: React.FC<IProps> = (props: React.PropsWithChildren<IProps>) =
 			const rawData = data.toString();
 
 			if (rawData === ARROW_DOWN) {
+				process.stdout.cursorTo(process.stdout.rows);
 				setHighlightedItemIndexState((prev) => (prev === props.items.length - 1 ? 0 : prev + 1));
 			}
 
 			if (rawData === ARROW_UP) {
+				process.stdout.cursorTo(process.stdout.rows);
 				setHighlightedItemIndexState((prev) => (prev === 0 ? props.items.length - 1 : prev - 1));
 			}
 
@@ -48,6 +50,8 @@ const MultiSelect: React.FC<IProps> = (props: React.PropsWithChildren<IProps>) =
 			}
 
 			if (rawData === ENTER) {
+				process.stdout.cursorTo(process.stdout.rows);
+
 				if (!props.single) {
 					props.onSubmit(selectedValuesState);
 
