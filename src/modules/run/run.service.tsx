@@ -12,13 +12,13 @@ import { getLibsOutput } from './utils/libs-output';
 export class RunService {
 	constructor(private readonly exlintConfigService: ExlintConfigService) {}
 
-	public async run(withFix: boolean) {
+	public async run(withFix: boolean, withDebug: boolean) {
 		await this.exlintConfigService.init();
 
 		const groupId = this.exlintConfigService.getValue('groupId');
 
 		if (!groupId) {
-			render(<Error message="Missing group ID in project" />);
+			render(<Error message="Missing group ID in project" />, { debug: withDebug });
 
 			process.exit(1);
 		}

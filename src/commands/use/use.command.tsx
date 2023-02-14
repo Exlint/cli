@@ -39,14 +39,14 @@ export class UseCommand extends CommandRunner {
 		logger.info(`Got connectivity status with value: "${hasConn}"`);
 
 		if (!hasConnection) {
-			render(<NoInternet />);
+			render(<NoInternet />, { debug: withDebug });
 
 			process.exit(1);
 		}
 
 		logger.info(`Connection successful. Start command with group ID: "${groupId}"`);
 
-		render(<Preparing />);
+		render(<Preparing debugMode={withDebug} />, { debug: withDebug });
 
 		try {
 			/**
@@ -55,7 +55,7 @@ export class UseCommand extends CommandRunner {
 			 */
 			const groupData = await this.apiService.getGroupData(groupId).catch((e: AxiosError) => {
 				if (e.code === '401') {
-					render(<Error message="Please authenticate" />);
+					render(<Error message="Please authenticate" />, { debug: withDebug });
 
 					process.exit(1);
 				}
@@ -68,6 +68,7 @@ export class UseCommand extends CommandRunner {
 					<Text bold color="magenta">
 						No policies were configured in this group.
 					</Text>,
+					{ debug: withDebug },
 				);
 
 				process.exit(0);
@@ -81,7 +82,7 @@ export class UseCommand extends CommandRunner {
 				`Failed to complete authentication process with an error: ${JSON.stringify(e, null, 2)}`,
 			);
 
-			render(<Error message="Failed to run Exlint, please try again." />);
+			render(<Error message="Failed to run Exlint, please try again." />, { debug: withDebug });
 
 			process.exit(1);
 		}

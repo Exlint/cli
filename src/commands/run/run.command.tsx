@@ -27,7 +27,8 @@ export class RunCommand extends CommandRunner {
 	}
 
 	public async run(_: string[], options: ICommandOptions) {
-		const logger = this.loggerService.getLogger(options?.debug ?? false);
+		const debugMode = options?.debug ?? false;
+		const logger = this.loggerService.getLogger(debugMode);
 
 		logger.info('Start run process');
 
@@ -36,29 +37,31 @@ export class RunCommand extends CommandRunner {
 		logger.info(`Got connectivity status with value: "${hasConn}"`);
 
 		if (!hasConn) {
-			render(<NoInternet />);
+			render(<NoInternet />, { debug: debugMode });
 
 			process.exit(1);
 		}
 
-		render(<Preparing />);
+		render(<Preparing debugMode={debugMode} />, { debug: debugMode });
 
 		const hadValidToken = await this.apiService.hasValidToken();
 
 		if (!hadValidToken) {
-			render(<InvalidToken />);
+			render(<InvalidToken />, { debug: debugMode });
 
 			process.exit(1);
 		}
 
 		try {
-			const { wasSuccessful, jsxOutput } = await this.runService.run(options?.fix ?? false);
+			const { wasSuccessful, jsxOutput } = await this.runService.run(options?.fix ?? false, debugMode);
 
-			render(jsxOutput);
+			render(jsxOutput, { debug: debugMode });
 
 			process.exit(wasSuccessful ? 0 : 1);
-		} catch {
-			render(<Error message="Failed to run Exlint, please try again." />);
+		} catch (e) {
+			logger.error(`Failed to run Exlint "run" command with an error: ${JSON.stringify(e, null, 2)}`);
+
+			render(<Error message="Failed to run Exlint, please try again." />, { debug: debugMode });
 
 			process.exit(1);
 		}

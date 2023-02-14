@@ -19,7 +19,9 @@ export const adjustLocalVsCode = async (
 	const projectPath = path.join(EXLINT_FOLDER_PATH, groupId);
 	const vsCodeSettingsFilePath = path.join(process.cwd(), '.vscode', 'settings.json');
 
-	const currentVsCodeSettingsContent: JSON = await fs.readJson(vsCodeSettingsFilePath).catch(() => ({}));
+	const currentVsCodeSettingsContent: Record<string, unknown> = await fs
+		.readJson(vsCodeSettingsFilePath)
+		.catch(() => ({}));
 
 	const projectFiles = await fs.readdir(projectPath);
 	const libraries = policies.map((policy) => policy.library.toLowerCase());

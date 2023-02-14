@@ -25,7 +25,7 @@ export const getInflintOutput = async (projectId: string) => {
 		return null;
 	}
 
-	const libraryRunOutput = await spawnLib('@exlint.io/inflint', [
+	const libraryRunOutput = await spawnLib('inflint', [
 		'--config',
 		libraryConfigPath,
 		'--ignore-path',

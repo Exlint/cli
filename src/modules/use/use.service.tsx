@@ -16,9 +16,11 @@ import { ensureRequiredSoftware, isVsCodeInstalled } from '@/helpers/required-so
 import type { IUseTasks } from '@/interfaces/use-tasks';
 import type { IPolicyServer, IRecommendedPolicyServer } from '@/interfaces/policy';
 import LoggerService from '@/services/logger/logger.service';
+import { clearPreData } from '@/utils/clear-pre-data';
 
 import {
 	ADJUST_VSCODE_EXTENSIONS,
+	CLEAR_PRE_DATA,
 	CREATE_CONFIGS_FILES,
 	DOWNLOADING_VSCODE_EXTENSIONS,
 	INSTALLING_REQUIRED_PACKAGES,
@@ -52,7 +54,7 @@ export class UseService {
 		const isSoftwareInstalled = await ensureRequiredSoftware();
 
 		if (!isSoftwareInstalled) {
-			render(<Error message="Node.js and NPM must be installed" />);
+			render(<Error message="Node.js and NPM must be installed" />, { debug: withDebug });
 
 			process.exit(1);
 		}
@@ -76,13 +78,14 @@ export class UseService {
 		const tasks: IUseTasks = {
 			[INSTALLING_REQUIRED_PACKAGES]: 'loading',
 			[CREATE_CONFIGS_FILES]: 'loading',
+			[CLEAR_PRE_DATA]: 'loading',
 			...(shouldAdjustToVsCode && {
 				[DOWNLOADING_VSCODE_EXTENSIONS]: 'pending',
 				[ADJUST_VSCODE_EXTENSIONS]: 'pending',
 			}),
 		};
 
-		render(<UseTasks tasks={tasks} />);
+		render(<UseTasks tasks={tasks} />, { debug: withDebug });
 
 		const downloadLibrariesPromise = installLibraries(requiredLibraries)
 			.then(() => {
@@ -94,7 +97,7 @@ export class UseService {
 				tasks[INSTALLING_REQUIRED_PACKAGES] = 'error';
 			})
 			.finally(() => {
-				render(<UseTasks tasks={tasks} />);
+				render(<UseTasks tasks={tasks} />, { debug: withDebug });
 			});
 
 		const setConfigLibrariesPromises = groupData.map((policy) => setConfigLibrary(groupId, policy));
@@ -109,10 +112,25 @@ export class UseService {
 				tasks[CREATE_CONFIGS_FILES] = 'error';
 			})
 			.finally(() => {
-				render(<UseTasks tasks={tasks} />);
+				render(<UseTasks tasks={tasks} />, { debug: withDebug });
 			});
 
-		await Promise.all([downloadLibrariesPromise, setConfigLibrariesPromise]);
+		const clearPreDataPromise = clearPreData(groupId)
+			.then(() => {
+				tasks[CLEAR_PRE_DATA] = 'success';
+			})
+			.catch((e) => {
+				logger.error(
+					`Failed to clear pre-existing data with an error: ${JSON.stringify(e, null, 2)}`,
+				);
+
+				tasks[CLEAR_PRE_DATA] = 'error';
+			})
+			.finally(() => {
+				render(<UseTasks tasks={tasks} />, { debug: withDebug });
+			});
+
+		await Promise.all([downloadLibrariesPromise, setConfigLibrariesPromise, clearPreDataPromise]);
 
 		if (shouldAdjustToVsCode) {
 			tasks[DOWNLOADING_VSCODE_EXTENSIONS] = 'loading';
@@ -135,7 +153,7 @@ export class UseService {
 						tasks[DOWNLOADING_VSCODE_EXTENSIONS] = 'error';
 					})
 					.finally(() => {
-						render(<UseTasks tasks={tasks} />);
+						render(<UseTasks tasks={tasks} />, { debug: withDebug });
 					}),
 				adjustLocalVsCode(groupId, groupData)
 					.then(() => {
@@ -153,7 +171,7 @@ export class UseService {
 						tasks[ADJUST_VSCODE_EXTENSIONS] = 'error';
 					})
 					.finally(() => {
-						render(<UseTasks tasks={tasks} />);
+						render(<UseTasks tasks={tasks} />, { debug: withDebug });
 					}),
 			]);
 		}

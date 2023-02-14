@@ -49,7 +49,7 @@ export class AuthService {
 
 		console.clear();
 
-		render(<PendingAuth link={authUrl} />);
+		render(<PendingAuth debugMode={withDebug} link={authUrl} />, { debug: withDebug });
 
 		await open(authUrl);
 
@@ -57,7 +57,7 @@ export class AuthService {
 			const authenticationTimeout = setTimeout(() => {
 				temporaryServer.close();
 
-				render(<Error message="Authentication expired, please try again" />);
+				render(<Error message="Authentication expired, please try again" />, { debug: withDebug });
 
 				process.exit(1);
 			}, AUTHENTICATION_TIMEOUT);
@@ -70,7 +70,7 @@ export class AuthService {
 				if (!token || !email) {
 					logger.error('Invalid authentication');
 
-					render(<Error />);
+					render(<Error />, { debug: withDebug });
 
 					res.status(400).send();
 

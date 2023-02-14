@@ -3,6 +3,7 @@ import { Newline, Text } from 'ink';
 import Spinner from 'ink-spinner';
 
 interface IProps {
+	readonly debugMode: boolean;
 	readonly link: string;
 }
 
@@ -23,7 +24,7 @@ const PendingAuthView: React.FC<IProps> = (props: React.PropsWithChildren<IProps
 			<Text>{props.link}</Text>
 			<Newline />
 			<Newline />
-			<Spinner type="earth" />
+			{!props.debugMode && <Spinner type="earth" />}
 			&nbsp;
 			<Text>Waiting...</Text>
 		</Text>

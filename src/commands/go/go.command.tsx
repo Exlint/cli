@@ -60,6 +60,7 @@ export class GoCommand extends CommandRunner {
 
 				render(
 					<Error message="Failed to store recommended group in your account. Please try again." />,
+					{ debug: this.debugMode },
 				);
 
 				process.exit(1);
@@ -88,6 +89,7 @@ export class GoCommand extends CommandRunner {
 				<Text color="green" bold>
 					🚀 Group successfully added to your account!
 				</Text>,
+				{ debug: this.debugMode },
 			);
 
 			process.exit(0);
@@ -100,7 +102,9 @@ export class GoCommand extends CommandRunner {
 				)}`,
 			);
 
-			render(<Error message="Failed to store recommended group in your account. Please try again." />);
+			render(<Error message="Failed to store recommended group in your account. Please try again." />, {
+				debug: this.debugMode,
+			});
 
 			process.exit(1);
 		}
@@ -126,6 +130,7 @@ export class GoCommand extends CommandRunner {
 
 				render(
 					<Error message="Failed to store recommended group in your account. Please try again." />,
+					{ debug: this.debugMode },
 				);
 
 				process.exit(1);
@@ -157,6 +162,7 @@ export class GoCommand extends CommandRunner {
 					<Text color="magenta">Exlint</Text> is now ready to use with your new group. 🚀🚀
 					<Newline />
 				</Text>,
+				{ debug: this.debugMode },
 			);
 
 			await open(`${__DASHBOARD_URL__}/group-center/${storeResponseData.groupId}`);
@@ -167,7 +173,7 @@ export class GoCommand extends CommandRunner {
 				`Failed to complete authentication process with an error: ${JSON.stringify(e, null, 2)}`,
 			);
 
-			render(<Error message="Failed to authenticate, please try again." />);
+			render(<Error message="Failed to authenticate, please try again." />, { debug: this.debugMode });
 
 			process.exit(1);
 		}
@@ -180,7 +186,7 @@ export class GoCommand extends CommandRunner {
 			await this.useService.use(this.debugMode, temporaryComplianceId, complianceData);
 
 			const [runResult, isAuthenticated] = await Promise.all([
-				this.runService.run(false),
+				this.runService.run(false, this.debugMode),
 				this.isAuthenticatedPromise ?? false,
 			]);
 
@@ -221,9 +227,10 @@ export class GoCommand extends CommandRunner {
 						/>
 					)}
 				</Box>,
+				{ debug: this.debugMode },
 			);
 		} catch (e) {
-			render(<Error message="Failed to run Exlint, please try again." />);
+			render(<Error message="Failed to run Exlint, please try again." />, { debug: this.debugMode });
 
 			process.exit(1);
 		}
@@ -231,7 +238,7 @@ export class GoCommand extends CommandRunner {
 
 	private async onSubmitLanguages(languages: string[]) {
 		if (languages.length === 0) {
-			render(<Text color="magenta">No languages were chosen</Text>);
+			render(<Text color="magenta">No languages were chosen</Text>, { debug: this.debugMode });
 
 			process.exit(0);
 		}
@@ -242,7 +249,7 @@ export class GoCommand extends CommandRunner {
 
 		logger.info(`Start Go command process with selected languages: "${languages}"`);
 
-		render(<Preparing />);
+		render(<Preparing debugMode={this.debugMode} />, { debug: this.debugMode });
 
 		try {
 			const complianceData = await this.apiService.getComplianceData(languages);
@@ -251,7 +258,9 @@ export class GoCommand extends CommandRunner {
 		} catch (e) {
 			logger.error(`Failed to reach Exlint API with an error: ${JSON.stringify(e, null, 2)}`);
 
-			render(<Error message="Failed to reach Exlint API, please try again." />);
+			render(<Error message="Failed to reach Exlint API, please try again." />, {
+				debug: this.debugMode,
+			});
 
 			process.exit(1);
 		}
@@ -269,7 +278,7 @@ export class GoCommand extends CommandRunner {
 		logger.info(`Got connectivity status with value: "${hasConn}"`);
 
 		if (!hasConnection) {
-			render(<NoInternet />);
+			render(<NoInternet />, { debug: this.debugMode });
 
 			process.exit(1);
 		}
@@ -295,6 +304,7 @@ export class GoCommand extends CommandRunner {
 				items={languagesItems}
 				onSubmit={(items) => this.onSubmitLanguages(items)}
 			/>,
+			{ debug: this.debugMode },
 		);
 	}
 

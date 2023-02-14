@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { IUseTasks } from '@/interfaces/use-tasks';
+import type { IUseTasks } from '@/interfaces/use-tasks';
 
 import UseTasksView from './UseTasks.view';
 

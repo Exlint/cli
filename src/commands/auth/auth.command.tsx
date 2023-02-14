@@ -27,7 +27,7 @@ export class AuthCommand extends CommandRunner {
 		logger.info(`Got connectivity status with value: "${hasConn}"`);
 
 		if (!hasConn) {
-			render(<NoInternet />);
+			render(<NoInternet />, { debug: withDebug });
 
 			process.exit(1);
 		}
@@ -44,6 +44,7 @@ export class AuthCommand extends CommandRunner {
 					<Text color="magenta">Exlint</Text> is now ready to use. 🚀🚀
 					<Newline />
 				</Text>,
+				{ debug: withDebug },
 			);
 
 			process.exit(0);
@@ -52,7 +53,7 @@ export class AuthCommand extends CommandRunner {
 				`Failed to complete authentication process with an error: ${JSON.stringify(e, null, 2)}`,
 			);
 
-			render(<Error message="Failed to authenticate, please try again." />);
+			render(<Error message="Failed to authenticate, please try again." />, { debug: withDebug });
 
 			process.exit(1);
 		}
