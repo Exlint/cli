@@ -1,3 +1,10 @@
+# [1.2.0](https://github.com/Exlint/cli/compare/v1.1.2...v1.2.0) (2023-02-14)
+
+
+### Features
+
+* 🔥 support go command ([cf058ba](https://github.com/Exlint/cli/commit/cf058ba89977ed20cc40b15dc350fef167c7d2d5))
+
 ## [1.1.2](https://github.com/Exlint/cli/compare/v1.1.1...v1.1.2) (2023-02-06)
 
 
