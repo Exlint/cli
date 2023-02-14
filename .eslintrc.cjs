@@ -21,7 +21,7 @@ module.exports = {
 	},
 	plugins: ['@typescript-eslint', 'unused-imports', 'import', 'node', 'react'],
 	rules: {
-		'max-lines': ['error', { max: 250, skipBlankLines: true, skipComments: true }],
+		'max-lines': ['error', { max: 300, skipBlankLines: true, skipComments: true }],
 		'indent': ['error', 'tab', { SwitchCase: 1 }],
 		'quotes': ['error', 'single', { avoidEscape: true }],
 		'semi': ['error', 'always'],
@@ -43,7 +43,7 @@ module.exports = {
 		'no-labels': 'error',
 		'no-inline-comments': 'error',
 		'eqeqeq': 'error',
-		'no-console': 'error',
+		'no-console': ['error', { allow: ['clear'] }],
 		'no-eval': 'error',
 		'no-implicit-globals': 'error',
 		'no-useless-call': 'error',
@@ -125,6 +125,8 @@ module.exports = {
 		'@typescript-eslint/no-require-imports': ['error'],
 		'@typescript-eslint/no-non-null-assertion': 'off',
 		'@typescript-eslint/no-use-before-define': ['error'],
+		'@typescript-eslint/consistent-type-imports': ['error'],
+		'@typescript-eslint/await-thenable': 'error',
 
 		'react/jsx-fragments': 'error',
 		'react/jsx-wrap-multilines': [
@@ -144,7 +146,6 @@ module.exports = {
 		'react/jsx-props-no-spreading': ['error', { exceptions: ['Component'] }],
 		'react/jsx-props-no-multi-spaces': 'error',
 		'react/jsx-pascal-case': 'error',
-		'react/jsx-one-expression-per-line': ['error', { allow: 'single-child' }],
 		'react/jsx-no-useless-fragment': 'error',
 		'react/jsx-no-script-url': 'error',
 		'react/jsx-indent-props': ['error', 'tab'],
@@ -237,7 +238,7 @@ module.exports = {
 			},
 		},
 		{
-			files: ['./scripts/onboarding.cjs'],
+			files: ['./scripts/onboarding.cjs', './src/services/logger/**/*'],
 			rules: {
 				'no-console': 'off',
 			},

@@ -1,4 +1,4 @@
-import { Config } from 'cz-vinyl';
+import type { Config } from 'cz-vinyl';
 
 const czvinylConfig: Config = {
 	headerFormat: '{type}: {emoji} {subject}',

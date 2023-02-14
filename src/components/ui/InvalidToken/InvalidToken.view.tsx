@@ -6,7 +6,7 @@ interface IProps {}
 const InvalidTokenView: React.FC<IProps> = () => {
 	return (
 		<Text color="red" bold>
-			Anauthorized. Please run &quot;exlint auth&quot;
+			Unauthorized. Please run &quot;exlint auth&quot;
 		</Text>
 	);
 };

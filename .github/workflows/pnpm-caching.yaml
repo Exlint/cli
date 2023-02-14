@@ -16,7 +16,7 @@ jobs:
         runs-on: ${{ inputs.runner }}
         steps:
             - name: Setup Node environment
-              uses: Exlint/node-environment@v1.2.1
+              uses: Exlint/node-environment@v1.2.6
               with:
                   node-version: 18.12.1
                   package-manager: pnpm

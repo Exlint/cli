@@ -2,6 +2,8 @@
 	"compilerOptions": {
 		"paths": {
 			"@/modules/*": ["src/modules/*"],
+			"@/services/*": ["src/services/*"],
+			"@/helpers/*": ["src/helpers/*"],
 			"@/ui/*": ["src/components/ui/*"],
 			"@/containers/*": ["src/components/containers/*"],
 			"@/interfaces/*": ["src/interfaces/*"],
