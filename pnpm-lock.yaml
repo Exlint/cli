@@ -18,7 +18,7 @@ specifiers:
   '@types/xml2js': 0.4.11
   '@typescript-eslint/eslint-plugin': 5.51.0
   '@typescript-eslint/parser': 5.51.0
-  axios: 0.27.2
+  axios: 1.3.2
   chalk: 4.1.2
   cli-spinners: 2.7.0
   commitizen: 4.3.0
@@ -61,7 +61,7 @@ specifiers:
 dependencies:
   '@nestjs/common': 9.0.1_mnr6j2del53muneqly5h4y27ai
   '@nestjs/core': 9.0.1_hjzatzbs637e3l6u4y4h2pkv3a
-  axios: 0.27.2
+  axios: 1.3.2
   chalk: 4.1.2
   cli-spinners: 2.7.0
   envinfo: 7.8.1
@@ -2747,11 +2747,12 @@ packages:
     engines: {node: '>= 0.4'}
     dev: true
 
-  /axios/0.27.2:
-    resolution: {integrity: sha512-t+yRIyySRTp/wua5xEr+z1q60QmLq8ABsS5O9Me1AsE5dfKqgnCFzwiCZZ/cGNd1lq4/7akDWMxdhVlucjmnOQ==}
+  /axios/1.3.2:
+    resolution: {integrity: sha512-1M3O703bYqYuPhbHeya5bnhpYVsDDRyQSabNja04mZtboLNSuZ4YrltestrLXfHgmzua4TpUqRiVKbiQuo2epw==}
     dependencies:
       follow-redirects: 1.15.1
       form-data: 4.0.0
+      proxy-from-env: 1.1.0
     transitivePeerDependencies:
       - debug
     dev: false
@@ -6795,6 +6796,10 @@ packages:
     dependencies:
       forwarded: 0.2.0
       ipaddr.js: 1.9.1
+    dev: false
+
+  /proxy-from-env/1.1.0:
+    resolution: {integrity: sha512-D+zkORCbA9f1tdWRK0RaCR3GPv50cMxcrz4X8k5LTSUD1Dkw47mKJEZQNunItRTkWwgtaUSo1RVFRIG9ZXiFYg==}
     dev: false
 
   /proxy-middleware/0.15.0:
