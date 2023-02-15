@@ -22,5 +22,8 @@
 		"*.service.tsx": "nest-service"
 	},
 	"material-icon-theme.activeIconPack": "nest",
-	"task.allowAutomaticTasks": "on"
+	"task.allowAutomaticTasks": "on",
+	"[properties]": {
+		"editor.defaultFormatter": "foxundermoon.shell-format"
+	}
 }
