@@ -2,6 +2,7 @@
 	"name": "@exlint.io/cli",
 	"version": "0.0.0-beta.0",
 	"author": "Exlint <dev@exlint.io> (https://exlint.io)",
+	"homepage": "https://github.com/Exlint/cli#readme",
 	"description": "Exlint CLI - Centralize coding standards across repositories in seconds.",
 	"keywords": [
 		"linter",
@@ -12,7 +13,6 @@
 		"coding-standards"
 	],
 	"license": "Apache-2.0",
-	"homepage": "https://github.com/Exlint/cli#readme",
 	"bugs": {
 		"url": "https://github.com/Exlint/cli/issues"
 	},
