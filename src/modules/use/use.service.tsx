@@ -76,9 +76,9 @@ export class UseService {
 		]);
 
 		const tasks: IUseTasks = {
+			[CLEAR_PRE_DATA]: 'loading',
 			[INSTALLING_REQUIRED_PACKAGES]: 'loading',
 			[CREATE_CONFIGS_FILES]: 'loading',
-			[CLEAR_PRE_DATA]: 'loading',
 			...(shouldAdjustToVsCode && {
 				[DOWNLOADING_VSCODE_EXTENSIONS]: 'pending',
 				[ADJUST_VSCODE_EXTENSIONS]: 'pending',
@@ -86,6 +86,21 @@ export class UseService {
 		};
 
 		render(<UseTasks tasks={tasks} />, { debug: withDebug });
+
+		const clearPreDataPromise = clearPreData(groupId)
+			.then(() => {
+				tasks[CLEAR_PRE_DATA] = 'success';
+			})
+			.catch((e) => {
+				logger.error(
+					`Failed to clear pre-existing data with an error: ${JSON.stringify(e, null, 2)}`,
+				);
+
+				tasks[CLEAR_PRE_DATA] = 'error';
+			})
+			.finally(() => {
+				render(<UseTasks tasks={tasks} />, { debug: withDebug });
+			});
 
 		const downloadLibrariesPromise = installLibraries(requiredLibraries)
 			.then(() => {
@@ -115,22 +130,7 @@ export class UseService {
 				render(<UseTasks tasks={tasks} />, { debug: withDebug });
 			});
 
-		const clearPreDataPromise = clearPreData(groupId)
-			.then(() => {
-				tasks[CLEAR_PRE_DATA] = 'success';
-			})
-			.catch((e) => {
-				logger.error(
-					`Failed to clear pre-existing data with an error: ${JSON.stringify(e, null, 2)}`,
-				);
-
-				tasks[CLEAR_PRE_DATA] = 'error';
-			})
-			.finally(() => {
-				render(<UseTasks tasks={tasks} />, { debug: withDebug });
-			});
-
-		await Promise.all([downloadLibrariesPromise, setConfigLibrariesPromise, clearPreDataPromise]);
+		await Promise.all([clearPreDataPromise, downloadLibrariesPromise, setConfigLibrariesPromise]);
 
 		if (shouldAdjustToVsCode) {
 			tasks[DOWNLOADING_VSCODE_EXTENSIONS] = 'loading';
