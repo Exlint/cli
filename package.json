@@ -29,8 +29,7 @@
 		"exlint": "./bin/exlint.js"
 	},
 	"publishConfig": {
-		"access": "public",
-		"tag": "beta"
+		"access": "public"
 	},
 	"scripts": {
 		"prepublishOnly": "nest build",
