@@ -1,3 +1,10 @@
+## [1.2.3](https://github.com/Exlint/cli/compare/v1.2.2...v1.2.3) (2023-02-15)
+
+
+### Bug Fixes
+
+* 🐞 fix version ([7c4b09c](https://github.com/Exlint/cli/commit/7c4b09c7d90b2151c85a5b2b9ede9ee3d78e3472))
+
 ## [1.2.2](https://github.com/Exlint/cli/compare/v1.2.1...v1.2.2) (2023-02-15)
 
 
