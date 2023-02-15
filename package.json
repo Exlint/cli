@@ -32,6 +32,7 @@
 		"access": "public"
 	},
 	"scripts": {
+		"prepublishOnly": "nest build",
 		"husky:install": "husky install",
 		"git:config": "git config --local include.path ../.gitconfig",
 		"setdev": "run-p husky:install git:config",
