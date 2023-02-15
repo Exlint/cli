@@ -1,6 +1,6 @@
 {
 	"name": "@exlint.io/cli",
-	"version": "1.3.0",
+	"version": "1.0.0",
 	"author": "Exlint <dev@exlint.io> (https://exlint.io)",
 	"homepage": "https://github.com/Exlint/cli#readme",
 	"description": "Exlint CLI - Centralize coding standards across repositories in seconds.",
