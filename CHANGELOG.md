@@ -1,3 +1,11 @@
+## [1.2.1](https://github.com/Exlint/cli/compare/v1.2.0...v1.2.1) (2023-02-15)
+
+
+### Bug Fixes
+
+* 🐞 fix VSCode installation detection in macOS ([a24e92a](https://github.com/Exlint/cli/commit/a24e92a499831ea7b9ed3578201004d393cb5191))
+* 🐞 set empty package.json in .exlint home folder ([d0e1ff0](https://github.com/Exlint/cli/commit/d0e1ff09f47ce7f8af4fcfd72e0925692a0d143b))
+
 # [1.2.0](https://github.com/Exlint/cli/compare/v1.1.2...v1.2.0) (2023-02-14)
 
 
