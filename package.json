@@ -1,6 +1,6 @@
 {
 	"name": "@exlint.io/cli",
-	"version": "1.2.1",
+	"version": "0.0.0-beta.0",
 	"author": "Exlint <dev@exlint.io> (https://exlint.io)",
 	"description": "Exlint CLI - Centralize coding standards across repositories in seconds.",
 	"keywords": [
@@ -29,7 +29,8 @@
 		"exlint": "./bin/exlint.js"
 	},
 	"publishConfig": {
-		"access": "public"
+		"access": "public",
+		"tag": "beta"
 	},
 	"scripts": {
 		"prepublishOnly": "nest build",
