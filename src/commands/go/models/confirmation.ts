@@ -11,7 +11,7 @@ export const confirmationItems = [
 
 export const userCreationConfirmationItems = [
 	{
-		label: 'Create a user and customize this group',
+		label: 'Create a user and customize this compliance',
 		value: 'Yes',
 	},
 	{

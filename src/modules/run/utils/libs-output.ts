@@ -9,13 +9,13 @@ interface IRelevantResult extends ISpawnResult {
 	readonly name: string;
 }
 
-export const getLibsOutput = async (groupId: string, withFix: boolean) => {
+export const getLibsOutput = async (complianceId: string, withFix: boolean) => {
 	const librariesResult = await Promise.all([
-		getDepcheckOutput(groupId),
-		getPrettierOutput(groupId, withFix),
-		getInflintOutput(groupId),
-		getEslintOutput(groupId, withFix),
-		getStylelintOutput(groupId, withFix),
+		getDepcheckOutput(complianceId),
+		getPrettierOutput(complianceId, withFix),
+		getInflintOutput(complianceId),
+		getEslintOutput(complianceId, withFix),
+		getStylelintOutput(complianceId, withFix),
 	]);
 
 	const relevantLibrariesResult = librariesResult.filter(Boolean) as IRelevantResult[];

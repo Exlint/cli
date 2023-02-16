@@ -15,9 +15,9 @@ import type { ICommandOptions } from './interfaces/command-options';
 
 @Command({
 	name: 'use',
-	description: 'Apply a group to the project',
-	arguments: '<group_id>',
-	argsDescription: { group_id: 'The identifer of the group to use' },
+	description: 'Apply a compliance to the project',
+	arguments: '<compliance_id>',
+	argsDescription: { compliance_id: 'The identifer of the compliance to use' },
 })
 export class UseCommand extends CommandRunner {
 	constructor(
@@ -28,11 +28,11 @@ export class UseCommand extends CommandRunner {
 		super();
 	}
 
-	public async run([groupId]: [string], options?: ICommandOptions) {
+	public async run([complianceId]: [string], options?: ICommandOptions) {
 		const withDebug = options?.debug ?? false;
 		const logger = this.loggerService.getLogger(withDebug);
 
-		logger.info('Start group usage process');
+		logger.info('Start compliance usage process');
 
 		const hasConn = await hasConnection();
 
@@ -44,29 +44,31 @@ export class UseCommand extends CommandRunner {
 			process.exit(1);
 		}
 
-		logger.info(`Connection successful. Start command with group ID: "${groupId}"`);
+		logger.info(`Connection successful. Start command with compliance ID: "${complianceId}"`);
 
 		render(<Preparing debugMode={withDebug} />, { debug: withDebug });
 
 		try {
 			/**
-			 * First, try to fetch the group data.
+			 * First, try to fetch the compliance data.
 			 * If it failed, probably user's token is invalid
 			 */
-			const groupData = await this.apiService.getGroupData(groupId).catch((e: AxiosError) => {
-				if (e.code === '401') {
-					render(<Error message="Please authenticate" />, { debug: withDebug });
+			const complianceData = await this.apiService
+				.getComplianceData(complianceId)
+				.catch((e: AxiosError) => {
+					if (e.code === '401') {
+						render(<Error message="Please authenticate" />, { debug: withDebug });
 
-					process.exit(1);
-				}
+						process.exit(1);
+					}
 
-				throw e;
-			});
+					throw e;
+				});
 
-			if (groupData.length === 0) {
+			if (complianceData.length === 0) {
 				render(
 					<Text bold color="magenta">
-						No policies were configured in this group.
+						No policies were configured in this compliance.
 					</Text>,
 					{ debug: withDebug },
 				);
@@ -74,7 +76,7 @@ export class UseCommand extends CommandRunner {
 				process.exit(0);
 			}
 
-			await this.useService.use(withDebug, groupId, groupData);
+			await this.useService.use(withDebug, complianceId, complianceData);
 
 			process.exit(0);
 		} catch (e) {

@@ -3,7 +3,7 @@ import axios, { AxiosError } from 'axios';
 import { Netrc } from 'netrc-parser';
 
 import type {
-	IGetGroupResponseData,
+	IGetComplianceResponseData,
 	IGetRecommendedComplianceResponseData,
 	IStoreRecommendedComplianceResponseData,
 } from './interfaces/responses';
@@ -35,18 +35,18 @@ export class ApiService {
 		);
 	}
 
-	public async getGroupData(groupId: string) {
-		const groupDataResponse = await this.axiosInstance.get<IGetGroupResponseData>(
-			`/user/groups/${groupId}`,
+	public async getComplianceData(complianceId: string) {
+		const complianceDataResponse = await this.axiosInstance.get<IGetComplianceResponseData>(
+			`/user/compliances/${complianceId}`,
 		);
 
-		return groupDataResponse.data;
+		return complianceDataResponse.data;
 	}
 
-	public async getComplianceData(languages: string[]) {
+	public async getRecommendedComplianceData(languages: string[]) {
 		const complianceDataResponse =
 			await this.unauthorizedAxiosInstance.post<IGetRecommendedComplianceResponseData>(
-				'/user/groups/recommended',
+				'/user/compliances/recommended',
 				{ languages },
 			);
 
@@ -66,7 +66,7 @@ export class ApiService {
 	public async storeRecommendedCompliance(languages: string[]) {
 		const createdComplianceResponse =
 			await this.axiosInstance.post<IStoreRecommendedComplianceResponseData>(
-				'/user/groups/add-recommended',
+				'/user/compliances/add-recommended',
 				{
 					languages,
 				},

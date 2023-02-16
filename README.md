@@ -64,7 +64,7 @@ exlint go
 
 Get started quickly with Exlint using our `go` command.
 
-Exlint will create a recommended multi-policy compliance based on your project language, and will run the group linting result on your terminal.
+Exlint will create a recommended multi-policy compliance based on your project language, and will run the compliance linting result on your terminal.
 
 You can then easily create an account and customize the recommended compliance as you wish (or start from scratch).
 

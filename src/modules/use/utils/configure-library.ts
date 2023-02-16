@@ -8,7 +8,10 @@ import type { IPolicyServer, IRecommendedPolicyServer } from '@/interfaces/polic
 import { getFileNameExtension } from '@/utils/file-name-extension';
 import type { ICodeType } from '@/interfaces/code-type';
 
-export const setConfigLibrary = async (groupId: string, policy: IPolicyServer | IRecommendedPolicyServer) => {
+export const setConfigLibrary = async (
+	complianceId: string,
+	policy: IPolicyServer | IRecommendedPolicyServer,
+) => {
 	let codeType: ICodeType;
 	let isFormConfiguration: boolean;
 	let configurationData: string;
@@ -30,8 +33,8 @@ export const setConfigLibrary = async (groupId: string, policy: IPolicyServer | 
 	const libraryName = policy.library.toLowerCase();
 	const configurationFileName = `.${libraryName}rc.${fileNameExtension}`;
 	const ignoreFileName = `.${libraryName}ignore`;
-	const configFilePath = path.join(EXLINT_FOLDER_PATH, groupId, configurationFileName);
-	const ignoreFilePath = path.join(EXLINT_FOLDER_PATH, groupId, ignoreFileName);
+	const configFilePath = path.join(EXLINT_FOLDER_PATH, complianceId, configurationFileName);
+	const ignoreFilePath = path.join(EXLINT_FOLDER_PATH, complianceId, ignoreFileName);
 	const writePromises = [fs.outputFile(configFilePath, configurationData)];
 
 	if (libraryName !== 'depcheck') {
@@ -41,7 +44,7 @@ export const setConfigLibrary = async (groupId: string, policy: IPolicyServer | 
 	if (policy.lintedList.length > 0) {
 		const libraryFilesPatternFilePath = path.join(
 			EXLINT_FOLDER_PATH,
-			groupId,
+			complianceId,
 			`.exlint-${libraryName}-pattern`,
 		);
 
