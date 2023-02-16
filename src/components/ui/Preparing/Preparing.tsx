@@ -2,10 +2,12 @@ import React from 'react';
 
 import PreparingView from './Preparing.view';
 
-interface IProps {}
+interface IProps {
+	readonly debugMode: boolean;
+}
 
-const Preparing: React.FC<IProps> = () => {
-	return <PreparingView />;
+const Preparing: React.FC<IProps> = (props: React.PropsWithChildren<IProps>) => {
+	return <PreparingView debugMode={props.debugMode} />;
 };
 
 export default Preparing;

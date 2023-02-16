@@ -14,3 +14,10 @@ export interface IPolicyServer {
 		readonly configuration: JsonValue;
 	}[];
 }
+
+export interface IRecommendedPolicyServer {
+	readonly library: string;
+	readonly configuration: JsonValue;
+	readonly lintedList: string[];
+	readonly ignoredList: string[];
+}

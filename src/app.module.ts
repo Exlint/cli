@@ -1,22 +1,12 @@
 import { Module } from '@nestjs/common';
 
-import { AuthModule } from './commands/auth/auth.module';
-import { RunModule } from './commands/run/run.module';
-import { UseModule } from './commands/use/use.module';
-import { ApiModule } from './modules/api/api.module';
-import { ConfigModule } from './modules/config/config.module';
-import { ConnectionModule } from './modules/connection/connection.module';
-import { ExlintConfigModule } from './modules/exlint-config/exlint-config.module';
+import { BaseCommandModule } from './commands/base/base.module';
+import { AuthCommandModule } from './commands/auth/auth.module';
+import { UseCommandModule } from './commands/use/use.module';
+import { RunCommandModule } from './commands/run/run.module';
+import { GoCommandModule } from './commands/go/go.module';
 
 @Module({
-	imports: [
-		ConfigModule,
-		ConnectionModule,
-		ApiModule,
-		ExlintConfigModule,
-		UseModule,
-		AuthModule,
-		RunModule,
-	],
+	imports: [BaseCommandModule, AuthCommandModule, UseCommandModule, RunCommandModule, GoCommandModule],
 })
 export class AppModule {}

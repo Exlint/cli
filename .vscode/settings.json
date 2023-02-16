@@ -14,21 +14,16 @@
 		"czvinyl.config.ts": "ocaml",
 		".depcheckrc.json": "parcel",
 		".cz.json": "jinja",
-		"*.routes.ts": "routing",
 		"tsconfig.doc.json": "tsconfig",
+		"tsconfig.paths.json": "tsconfig",
 		"tsconfig.tsbuildinfo": "tsconfig",
 		".compodocrc.json": "mjml",
-		"*.strategy.ts": "nest-gateway"
-	},
-	"material-icon-theme.folders.associations": {
-		".volumes": "database",
-		"decorators": "meta",
-		"interceptors": "connection",
-		"strategies": "mappings",
-		"queries": "shader",
-		"secrets": "keys",
-		"user": "client"
+		"*.command.tsx": "nest-controller",
+		"*.service.tsx": "nest-service"
 	},
 	"material-icon-theme.activeIconPack": "nest",
-	"task.allowAutomaticTasks": "on"
+	"task.allowAutomaticTasks": "on",
+	"[properties]": {
+		"editor.defaultFormatter": "foxundermoon.shell-format"
+	}
 }

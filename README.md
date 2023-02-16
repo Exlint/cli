@@ -44,9 +44,6 @@
 
 ## Getting Started
 
-To use Exlint, you first need to configure an account with a centralized coding standard, an Exlint Group.
-Please visit [app.exlint.io](https://app.exlint.io) before using the CLI.
-
 We recommend installing Exlint CLI globally using [`npm`](https://npmjs.com):
 
 ```bash
@@ -58,6 +55,18 @@ You can also install it locally:
 ```bash
 npm install --save-dev @exlint.io/cli
 ```
+
+### 🚀 Go Command
+
+```bash
+exlint go
+```
+
+Get started quickly with Exlint using our `go` command.
+
+Exlint will create a recommended multi-policy compliance based on your project language, and will run the group linting result on your terminal.
+
+You can then easily create an account and customize the recommended compliance as you wish (or start from scratch).
 
 ## Running from command line
 

@@ -1,8 +1,9 @@
 import { Module } from '@nestjs/common';
 
-import { VsCodeLibrariesService } from './services/ide-libraries/vscode-libraries.service';
-import { WebstormLibrariesService } from './services/ide-libraries/webstorm-libraries.service';
-import { UseCommand } from './Use';
+import { UseModule } from '@/modules/use/use.module';
+import LoggerService from '@/services/logger/logger.service';
+import { ApiService } from '@/services/api/api.service';
+import { UseCommand } from './use.command';
 
-@Module({ providers: [UseCommand, VsCodeLibrariesService, WebstormLibrariesService] })
-export class UseModule {}
+@Module({ imports: [UseModule], providers: [UseCommand, LoggerService, ApiService] })
+export class UseCommandModule {}
