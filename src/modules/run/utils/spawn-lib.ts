@@ -1,5 +1,5 @@
 import { spawn } from 'node:child_process';
-import path from 'path';
+import path from 'node:path';
 
 import { EXLINT_FOLDER_PATH } from '@/models/exlint-folder';
 
