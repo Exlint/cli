@@ -38,12 +38,12 @@ export class UseService {
 
 	public async use(
 		withDebug: boolean,
-		groupId: string,
-		groupData: IPolicyServer[] | IRecommendedPolicyServer[],
+		complianceId: string,
+		complianceData: IPolicyServer[] | IRecommendedPolicyServer[],
 	) {
 		const logger = this.loggerService.getLogger(withDebug);
 
-		const requiredLibraries = groupData.map((policy) => policy.library);
+		const requiredLibraries = complianceData.map((policy) => policy.library);
 
 		logger.info(`Exlint is going to install libraries for: "${requiredLibraries.toString()}"`);
 
@@ -61,7 +61,7 @@ export class UseService {
 
 		await this.exlintConfigService.init();
 
-		const projectFolderPath = path.join(EXLINT_FOLDER_PATH, groupId);
+		const projectFolderPath = path.join(EXLINT_FOLDER_PATH, complianceId);
 
 		logger.info(`Exlint projecrt folder path for this repository is: "${projectFolderPath}"`);
 
@@ -70,7 +70,7 @@ export class UseService {
 
 		const [shouldAdjustToVsCode] = await Promise.all([
 			shouldAdjustToIde && isVsCodeInstalled(),
-			this.exlintConfigService.setValues({ groupId }),
+			this.exlintConfigService.setValues({ complianceId }),
 			// Note that "emptyDir" - "If the directory does not exist, it is created."
 			fs.emptyDir(projectFolderPath),
 		]);
@@ -87,7 +87,7 @@ export class UseService {
 
 		render(<UseTasks tasks={tasks} />, { debug: withDebug });
 
-		const clearPreDataPromise = clearPreData(groupId)
+		const clearPreDataPromise = clearPreData(complianceId)
 			.then(() => {
 				tasks[CLEAR_PRE_DATA] = 'success';
 			})
@@ -115,7 +115,9 @@ export class UseService {
 				render(<UseTasks tasks={tasks} />, { debug: withDebug });
 			});
 
-		const setConfigLibrariesPromises = groupData.map((policy) => setConfigLibrary(groupId, policy));
+		const setConfigLibrariesPromises = complianceData.map((policy) =>
+			setConfigLibrary(complianceId, policy),
+		);
 
 		const setConfigLibrariesPromise = Promise.all(setConfigLibrariesPromises)
 			.then(() => {
@@ -155,7 +157,7 @@ export class UseService {
 					.finally(() => {
 						render(<UseTasks tasks={tasks} />, { debug: withDebug });
 					}),
-				adjustLocalVsCode(groupId, groupData)
+				adjustLocalVsCode(complianceId, complianceData)
 					.then(() => {
 						tasks[ADJUST_VSCODE_EXTENSIONS] = 'success';
 					})

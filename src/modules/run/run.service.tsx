@@ -15,15 +15,15 @@ export class RunService {
 	public async run(withFix: boolean, withDebug: boolean) {
 		await this.exlintConfigService.init();
 
-		const groupId = this.exlintConfigService.getValue('groupId');
+		const complianceId = this.exlintConfigService.getValue('complianceId');
 
-		if (!groupId) {
-			render(<Error message="Missing group ID in project" />, { debug: withDebug });
+		if (!complianceId) {
+			render(<Error message="Missing compliance ID in project" />, { debug: withDebug });
 
 			process.exit(1);
 		}
 
-		const libsRunOutputsExecution = await getLibsOutput(groupId, withFix);
+		const libsRunOutputsExecution = await getLibsOutput(complianceId, withFix);
 		const wasSuccessful = libsRunOutputsExecution.every((item) => item.success);
 
 		const jsxOutput = (

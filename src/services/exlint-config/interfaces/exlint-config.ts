@@ -1,3 +1,3 @@
 export interface IExlintConfig {
-	readonly groupId?: string;
+	readonly complianceId?: string;
 }

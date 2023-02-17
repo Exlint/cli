@@ -15,7 +15,7 @@ import type { ICommandOptions } from './interfaces/command-options';
 
 @Command({
 	name: 'run',
-	description: 'Run a group policies over your project',
+	description: 'Run a compliance policies over your project',
 })
 export class RunCommand extends CommandRunner {
 	constructor(

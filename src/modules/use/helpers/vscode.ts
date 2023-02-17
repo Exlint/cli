@@ -13,10 +13,10 @@ import { vsCodeExtensions } from '@/models/vscode-extensions';
 const asyncExecFile = util.promisify(execFile);
 
 export const adjustLocalVsCode = async (
-	groupId: string,
+	complianceId: string,
 	policies: IPolicyServer[] | IRecommendedPolicyServer[],
 ) => {
-	const projectPath = path.join(EXLINT_FOLDER_PATH, groupId);
+	const projectPath = path.join(EXLINT_FOLDER_PATH, complianceId);
 	const vsCodeSettingsFilePath = path.join(process.cwd(), '.vscode', 'settings.json');
 
 	const currentVsCodeSettingsContent: Record<string, unknown> = await fs

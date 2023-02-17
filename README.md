@@ -64,7 +64,7 @@ exlint go
 
 Get started quickly with Exlint using our `go` command.
 
-Exlint will create a recommended multi-policy compliance based on your project language, and will run the group linting result on your terminal.
+Exlint will create a recommended multi-policy compliance based on your project language, and will run the compliance linting result on your terminal.
 
 You can then easily create an account and customize the recommended compliance as you wish (or start from scratch).
 
@@ -81,20 +81,20 @@ If you haven't installed Exlint CLI globally, but locally, you can use it in the
 exlint auth
 ```
 
-Exlint requires you to authenticate. This will allow you to use your configured groups in the CLI.
-First, you should make sure you have created an account and configured your group.
+Exlint requires you to authenticate. This will allow you to use your configured compliances in the CLI.
+First, you should make sure you have created an account and configured your compliance.
 When running the command, you will be prompted to your browser to authenticate yourself.
 After doing so, you can return back to the CLI and start using Exlint!
 
 ### Use Command
 
 ```bash
-exlint use <group_id>
+exlint use <compliance_id>
 ```
 
-When you want to use a group you have created in the dashboard, you copy its unique identifier and use it with the `use` command.
-Exlint will adjust your IDE (if using VSCode), install required extensions and libraries.
-You can easily switch groups by using the command again!
+When you want to use a compliance you have created in the dashboard, you copy its unique identifier and use it with the `use` command.
+Exlint will adjust your IDE (if using VSCode or Webstorm), install required extensions and libraries.
+You can easily switch compliances by using the command again!
 
 ### Run Command
 
@@ -102,7 +102,7 @@ You can easily switch groups by using the command again!
 exlint run [options]
 ```
 
-After running the `use` command, you can run your group over your code to get CLI results.
+After running the `use` command, you can run your compliance over your code to get CLI results.
 Exlint will run your configured libraries against your code and report upon success or failure runs.
 If your code fails to match the configured code standards, Exlint will report the issues in the CLI.
 
@@ -113,7 +113,7 @@ Providinig this option will make Exlint try to automatically fix your code issue
 
 ## CI Workflows
 
-You can run your centralized Exlint group also in CI. If you want to integrate an Exlint step in your workflow, you can use the [GitHub Action](https://github.com/Exlint/actions)
+You can run your centralized Exlint compliance also in CI. If you want to integrate an Exlint step in your workflow, you can use the [GitHub Action](https://github.com/Exlint/actions)
 
 ## Privacy
 

@@ -32,11 +32,11 @@ const cleanVscodeSettings = (settings: Record<string, unknown>) => {
 	});
 };
 
-const clearTemporaryGroups = async (groupId: string) => {
+const clearTemporaryCompliances = async (complianceId: string) => {
 	const candidateDirectories = await fs.readdir(EXLINT_FOLDER_PATH);
 
 	const matchingDirectories = candidateDirectories.filter(
-		(item) => item.startsWith('tmp-') && item !== groupId,
+		(item) => item.startsWith('tmp-') && item !== complianceId,
 	);
 
 	await Promise.all(
@@ -60,6 +60,6 @@ const resetVscodeSettings = async () => {
 	}
 };
 
-export const clearPreData = async (groupId: string) => {
-	await Promise.all([resetVscodeSettings(), clearTemporaryGroups(groupId)]);
+export const clearPreData = async (complianceId: string) => {
+	await Promise.all([resetVscodeSettings(), clearTemporaryCompliances(complianceId)]);
 };

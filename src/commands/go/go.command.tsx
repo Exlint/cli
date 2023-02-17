@@ -51,15 +51,15 @@ export class GoCommand extends CommandRunner {
 
 		try {
 			await this.exlintConfigService.init();
-			const temporaryGroupId = this.exlintConfigService.getValue('groupId');
+			const temporaryComplianceId = this.exlintConfigService.getValue('complianceId');
 
-			if (!temporaryGroupId) {
+			if (!temporaryComplianceId) {
 				logger.error(
-					'Failed to store recommended group in account because could not get the temporary group ID',
+					'Failed to store recommended compliance in account because could not get the temporary compliance ID',
 				);
 
 				render(
-					<Error message="Failed to store recommended group in your account. Please try again." />,
+					<Error message="Failed to store recommended compliance in your account. Please try again." />,
 					{ debug: this.debugMode },
 				);
 
@@ -70,24 +70,24 @@ export class GoCommand extends CommandRunner {
 				this.selectedLanguages!,
 			);
 
-			const temporaryGroupFolderPath = path.join(EXLINT_FOLDER_PATH, temporaryGroupId);
-			const newGroupId = storeResponseData.groupId;
-			const newGroupFolderPath = path.join(EXLINT_FOLDER_PATH, newGroupId);
+			const temporaryComplianceFolderPath = path.join(EXLINT_FOLDER_PATH, temporaryComplianceId);
+			const newComplianceId = storeResponseData.complianceId;
+			const newComplianceFolderPath = path.join(EXLINT_FOLDER_PATH, newComplianceId);
 
 			await Promise.all([
-				this.exlintConfigService.setValues({ groupId: newGroupId }),
-				fs.move(temporaryGroupFolderPath, newGroupFolderPath, { overwrite: true }),
+				this.exlintConfigService.setValues({ complianceId: newComplianceId }),
+				fs.move(temporaryComplianceFolderPath, newComplianceFolderPath, { overwrite: true }),
 			]);
 
 			const vsCodeSettingsFilePath = path.join(process.cwd(), '.vscode', 'settings.json');
 			const settingsData = await fs.readFile(vsCodeSettingsFilePath, 'utf-8');
-			const newSettingsData = settingsData.replaceAll(temporaryGroupId, newGroupId);
+			const newSettingsData = settingsData.replaceAll(temporaryComplianceId, newComplianceId);
 
 			await fs.writeFile(vsCodeSettingsFilePath, newSettingsData);
 
 			render(
 				<Text color="green" bold>
-					🚀 Group successfully added to your account!
+					🚀 Compliance successfully added to your account!
 				</Text>,
 				{ debug: this.debugMode },
 			);
@@ -95,16 +95,19 @@ export class GoCommand extends CommandRunner {
 			process.exit(0);
 		} catch (e) {
 			logger.error(
-				`Failed to store recommended group in the account with an error: ${JSON.stringify(
+				`Failed to store recommended compliance in the account with an error: ${JSON.stringify(
 					e,
 					null,
 					2,
 				)}`,
 			);
 
-			render(<Error message="Failed to store recommended group in your account. Please try again." />, {
-				debug: this.debugMode,
-			});
+			render(
+				<Error message="Failed to store recommended compliance in your account. Please try again." />,
+				{
+					debug: this.debugMode,
+				},
+			);
 
 			process.exit(1);
 		}
@@ -121,15 +124,15 @@ export class GoCommand extends CommandRunner {
 			await this.authService.auth(this.debugMode);
 
 			await this.exlintConfigService.init();
-			const temporaryGroupId = this.exlintConfigService.getValue('groupId');
+			const temporaryComplianceId = this.exlintConfigService.getValue('complianceId');
 
-			if (!temporaryGroupId) {
+			if (!temporaryComplianceId) {
 				logger.error(
-					'Failed to store recommended group in account because could not get the temporary group ID',
+					'Failed to store recommended compliance in account because could not get the temporary compliance ID',
 				);
 
 				render(
-					<Error message="Failed to store recommended group in your account. Please try again." />,
+					<Error message="Failed to store recommended compliance in your account. Please try again." />,
 					{ debug: this.debugMode },
 				);
 
@@ -140,18 +143,18 @@ export class GoCommand extends CommandRunner {
 				this.selectedLanguages!,
 			);
 
-			const temporaryGroupFolderPath = path.join(EXLINT_FOLDER_PATH, temporaryGroupId);
-			const newGroupId = storeResponseData.groupId;
-			const newGroupFolderPath = path.join(EXLINT_FOLDER_PATH, newGroupId);
+			const temporaryComplianceFolderPath = path.join(EXLINT_FOLDER_PATH, temporaryComplianceId);
+			const newComplianceId = storeResponseData.complianceId;
+			const newComplianceFolderPath = path.join(EXLINT_FOLDER_PATH, newComplianceId);
 
 			await Promise.all([
-				this.exlintConfigService.setValues({ groupId: newGroupId }),
-				fs.move(temporaryGroupFolderPath, newGroupFolderPath, { overwrite: true }),
+				this.exlintConfigService.setValues({ complianceId: newComplianceId }),
+				fs.move(temporaryComplianceFolderPath, newComplianceFolderPath, { overwrite: true }),
 			]);
 
 			const vsCodeSettingsFilePath = path.join(process.cwd(), '.vscode', 'settings.json');
 			const settingsData = await fs.readFile(vsCodeSettingsFilePath, 'utf-8');
-			const newSettingsData = settingsData.replaceAll(temporaryGroupId, newGroupId);
+			const newSettingsData = settingsData.replaceAll(temporaryComplianceId, newComplianceId);
 
 			await fs.writeFile(vsCodeSettingsFilePath, newSettingsData);
 
@@ -159,13 +162,13 @@ export class GoCommand extends CommandRunner {
 				<Text>
 					<Newline />
 					Your account has been authenticated.&nbsp;
-					<Text color="magenta">Exlint</Text> is now ready to use with your new group. 🚀🚀
+					<Text color="magenta">Exlint</Text> is now ready to use with your new compliance. 🚀🚀
 					<Newline />
 				</Text>,
 				{ debug: this.debugMode },
 			);
 
-			await open(`${__DASHBOARD_URL__}/group-center/${storeResponseData.groupId}`);
+			await open(`${__DASHBOARD_URL__}/compliance-center/${storeResponseData.complianceId}`);
 
 			process.exit(0);
 		} catch (e) {
@@ -252,7 +255,7 @@ export class GoCommand extends CommandRunner {
 		render(<Preparing debugMode={this.debugMode} />, { debug: this.debugMode });
 
 		try {
-			const complianceData = await this.apiService.getComplianceData(languages);
+			const complianceData = await this.apiService.getRecommendedComplianceData(languages);
 
 			await this.applyCompliance(complianceData);
 		} catch (e) {
