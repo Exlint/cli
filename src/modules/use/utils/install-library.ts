@@ -28,7 +28,7 @@ export const installLibraries = async (libraryNames: string[]) => {
 		throw new Error('Could not find NPM');
 	}
 
-	await asyncExecFile(npmInfo[2], ['i', '-D', ...transformedLibraryNames], {
+	await asyncExecFile(`"${npmInfo[2]}"`, ['i', '-D', ...transformedLibraryNames], {
 		cwd: EXLINT_FOLDER_PATH,
 		timeout: INSTALLATION_TIMEOUT,
 		shell: true,
