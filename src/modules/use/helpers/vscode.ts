@@ -1,6 +1,6 @@
 import path from 'node:path';
 import util from 'node:util';
-import { execFile } from 'node:child_process';
+import { execFile, spawn } from 'node:child_process';
 
 import fs from 'fs-extra';
 import envinfo from 'envinfo';
@@ -72,6 +72,7 @@ export const installExtensions = async (libraries: string[]) => {
 		.flat();
 
 	let vsCodeCliCommandPath = 'code';
+	let cwd = process.cwd();
 
 	if (process.platform === 'darwin') {
 		const vsCodeFolderOutput = await asyncExecFile('/usr/bin/mdfind', [
@@ -82,21 +83,35 @@ export const installExtensions = async (libraries: string[]) => {
 			throw new Error('Failed to get VSCode path');
 		}
 
-		vsCodeCliCommandPath = path.join(
+		cwd = path.join(
 			path.resolve(vsCodeFolderOutput.stdout.trim()),
 			'Contents',
 			'Resources',
 			'app',
 			'bin',
-			'code',
 		);
 	} else {
 		const vsCodeData = await envinfo.helpers.getVSCodeInfo();
 
 		if (vsCodeData[2]) {
-			vsCodeCliCommandPath = vsCodeData[2];
+			cwd = path.dirname(vsCodeData[2]);
+			vsCodeCliCommandPath = path.basename(vsCodeData[2]);
 		}
 	}
 
-	await asyncExecFile(vsCodeCliCommandPath, [...extensionsCmdArgs, '--force'].flat());
+	await new Promise<void>((resolve, reject) => {
+		const spawner = spawn(vsCodeCliCommandPath, [...extensionsCmdArgs, '--force'].flat(), {
+			cwd,
+			windowsHide: true,
+			shell: true,
+		});
+
+		spawner.on('close', (exitCode: number) => {
+			if (exitCode === 0) {
+				return resolve();
+			}
+
+			reject();
+		});
+	});
 };
