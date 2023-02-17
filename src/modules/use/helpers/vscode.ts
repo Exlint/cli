@@ -94,7 +94,7 @@ export const installExtensions = async (libraries: string[]) => {
 		const vsCodeData = await envinfo.helpers.getVSCodeInfo();
 
 		if (vsCodeData[2]) {
-			vsCodeCliCommandPath = `"${vsCodeData[2]}"`;
+			vsCodeCliCommandPath = vsCodeData[2];
 		}
 	}
 
