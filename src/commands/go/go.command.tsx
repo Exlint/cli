@@ -183,6 +183,7 @@ export class GoCommand extends CommandRunner {
 	}
 
 	private async applyCompliance(complianceData: IRecommendedPolicyServer[]) {
+		const logger = this.loggerService.getLogger(this.debugMode);
 		const temporaryComplianceId = `tmp-${crypto.randomUUID()}`;
 
 		try {
@@ -233,6 +234,8 @@ export class GoCommand extends CommandRunner {
 				{ debug: this.debugMode },
 			);
 		} catch (e) {
+			logger.error(`Failed to run "Go" command with an error: ${JSON.stringify(e, null, 2)}`);
+
 			render(<Error message="Failed to run Exlint, please try again." />, { debug: this.debugMode });
 
 			process.exit(1);
