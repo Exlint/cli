@@ -83,6 +83,8 @@ export const installExtensions = async (libraries: string[]) => {
 			throw new Error('Failed to get VSCode path');
 		}
 
+		vsCodeCliCommandPath = './code';
+
 		cwd = path.join(
 			path.resolve(vsCodeFolderOutput.stdout.trim()),
 			'Contents',
@@ -100,10 +102,16 @@ export const installExtensions = async (libraries: string[]) => {
 	}
 
 	await new Promise<void>((resolve, reject) => {
+		let output = '';
+
 		const spawner = spawn(vsCodeCliCommandPath, [...extensionsCmdArgs, '--force'].flat(), {
 			cwd,
 			windowsHide: true,
 			shell: true,
+		});
+
+		spawner.stderr?.on('data', (data) => {
+			output += data;
 		});
 
 		spawner.on('close', (exitCode: number) => {
@@ -111,7 +119,7 @@ export const installExtensions = async (libraries: string[]) => {
 				return resolve();
 			}
 
-			reject();
+			reject(output);
 		});
 	});
 };
