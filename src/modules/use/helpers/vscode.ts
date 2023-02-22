@@ -102,7 +102,7 @@ export const installExtensions = async (libraries: string[]) => {
 	}
 
 	await new Promise<void>((resolve, reject) => {
-		let output = '';
+		let errorOutput = '';
 
 		const spawner = spawn(vsCodeCliCommandPath, [...extensionsCmdArgs, '--force'].flat(), {
 			cwd,
@@ -111,7 +111,7 @@ export const installExtensions = async (libraries: string[]) => {
 		});
 
 		spawner.stderr?.on('data', (data) => {
-			output += data;
+			errorOutput += data;
 		});
 
 		spawner.on('close', (exitCode: number) => {
@@ -119,7 +119,7 @@ export const installExtensions = async (libraries: string[]) => {
 				return resolve();
 			}
 
-			reject(output);
+			reject(errorOutput);
 		});
 	});
 };
