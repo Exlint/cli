@@ -1,3 +1,10 @@
+## [1.3.3](https://github.com/Exlint/cli/compare/v1.3.2...v1.3.3) (2023-02-22)
+
+
+### Bug Fixes
+
+* 🐞 fix VSCode spawn path in darwin ([ad921b1](https://github.com/Exlint/cli/commit/ad921b13bcbeab8ba07a7ec0e39e7e8900c5d939))
+
 ## [1.3.2](https://github.com/Exlint/cli/compare/v1.3.1...v1.3.2) (2023-02-17)
 
 
