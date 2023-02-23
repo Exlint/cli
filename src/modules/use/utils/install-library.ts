@@ -1,8 +1,6 @@
 import { execFile } from 'node:child_process';
 import util from 'node:util';
 
-import envinfo from 'envinfo';
-
 import { EXLINT_FOLDER_PATH } from '@/models/exlint-folder';
 
 import { INSTALLATION_TIMEOUT } from '../models/install-library';
@@ -22,13 +20,7 @@ export const installLibraries = async (libraryNames: string[]) => {
 		transformedLibraryNames.push('stylelint-config-standard-scss');
 	}
 
-	const npmInfo = await envinfo.helpers.getnpmInfo();
-
-	if (!npmInfo[2]) {
-		throw new Error('Could not find NPM');
-	}
-
-	await asyncExecFile(`"${npmInfo[2]}"`, ['i', '-D', ...transformedLibraryNames], {
+	await asyncExecFile('npm', ['i', '-D', ...transformedLibraryNames], {
 		cwd: EXLINT_FOLDER_PATH,
 		timeout: INSTALLATION_TIMEOUT,
 		shell: true,
