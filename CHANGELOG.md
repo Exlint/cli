@@ -1,3 +1,10 @@
+## [1.3.4](https://github.com/Exlint/cli/compare/v1.3.3...v1.3.4) (2023-02-26)
+
+
+### Bug Fixes
+
+* 🐞 change code and npm cli paths ([8a13532](https://github.com/Exlint/cli/commit/8a1353258518320ee0aa6305b0cd57f7a2e635d6))
+
 ## [1.3.3](https://github.com/Exlint/cli/compare/v1.3.2...v1.3.3) (2023-02-22)
 
 
