@@ -3,7 +3,6 @@ import util from 'node:util';
 import { execFile, spawn } from 'node:child_process';
 
 import fs from 'fs-extra';
-import envinfo from 'envinfo';
 
 import { EXLINT_FOLDER_PATH } from '@/models/exlint-folder';
 import type { IPolicyServer, IRecommendedPolicyServer } from '@/interfaces/policy';
@@ -92,13 +91,6 @@ export const installExtensions = async (libraries: string[]) => {
 			'app',
 			'bin',
 		);
-	} else {
-		const vsCodeData = await envinfo.helpers.getVSCodeInfo();
-
-		if (vsCodeData[2]) {
-			cwd = path.dirname(vsCodeData[2]);
-			vsCodeCliCommandPath = path.basename(vsCodeData[2]);
-		}
 	}
 
 	await new Promise<void>((resolve, reject) => {
