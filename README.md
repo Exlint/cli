@@ -14,11 +14,14 @@
 </p>
 
 <p align="center">
-	<a href="https://docs.exlint.io">
-    	<img src="https://img.shields.io/badge/Documentations-purple?style=flat-square&logoColor=white&logo=gitbook" alt="npm license">
-  	</a>
 	<a href="https://docs.exlint.io/#quickstart">
     	<img src="https://img.shields.io/badge/Quick_Start-blue?style=flat-square&logoColor=white&logo=DocuSign" alt="version">
+  	</a>
+		<a href="https://docs.exlint.io">
+    	<img src="https://img.shields.io/badge/Documentations-purple?style=flat-square&logoColor=white&logo=gitbook" alt="npm license">
+  	</a>
+		<a href="https://join.slack.com/t/exlint-io/shared_invite/zt-1ombwjchz-iKziYNc~eZuNUy2gH68N1w">
+    	<img src="https://img.shields.io/badge/Slack-yellow?style=flat-square&logoColor=white&logo=slack" alt="version">
   	</a>
 </p>
 
