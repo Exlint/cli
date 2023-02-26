@@ -13,6 +13,15 @@
   	</a>
 </p>
 
+<p align="center">
+	<a href="https://docs.exlint.io">
+    	<img src="https://img.shields.io/badge/Documentations-purple?style=flat-square&logoColor=white&logo=gitbook" alt="npm license">
+  	</a>
+	<a href="https://docs.exlint.io/#quickstart">
+    	<img src="https://img.shields.io/badge/Quick_Start-blue?style=flat-square&logoColor=white&logo=DocuSign" alt="version">
+  	</a>
+</p>
+
 <p>&nbsp;</p>
 
 <p align="center"><img src="./assets/brand.png" width="80%"/></p>
