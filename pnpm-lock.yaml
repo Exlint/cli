@@ -44,7 +44,7 @@ specifiers:
   nest-commander: 3.5.0
   netrc-parser: 3.1.6
   npm-run-all: 4.1.5
-  open: 8.4.1
+  open: 8.4.2
   open-cli: 7.1.0
   prettier: 2.8.4
   react: 18.2.0
@@ -72,7 +72,7 @@ dependencies:
   is-ci: 3.0.1
   nest-commander: 3.5.0_ax7huhcwyj2o6winpteascyxce
   netrc-parser: 3.1.6
-  open: 8.4.1
+  open: 8.4.2
   react: 18.2.0
   reflect-metadata: 0.1.13
   rxjs: 7.8.0
@@ -6448,7 +6448,7 @@ packages:
       file-type: 18.0.0
       get-stdin: 9.0.0
       meow: 10.1.5
-      open: 8.4.1
+      open: 8.4.2
       tempy: 3.0.0
     dev: true
 
@@ -6461,8 +6461,8 @@ packages:
       is-wsl: 2.2.0
     dev: true
 
-  /open/8.4.1:
-    resolution: {integrity: sha512-/4b7qZNhv6Uhd7jjnREh1NjnPxlTq+XNWPG88Ydkj5AILcA5m3ajvcg57pB24EQjKv0dK62XnDqk9c/hkIG5Kg==}
+  /open/8.4.2:
+    resolution: {integrity: sha512-7x81NCL719oNbsq/3mh+hVrAWmFuEYUqrq/Iw3kUzH8ReypT9QQ0BLoJS7/G9k6N81XjW4qHWtjWwe/9eLy1EQ==}
     engines: {node: '>=12'}
     dependencies:
       define-lazy-prop: 2.0.0
