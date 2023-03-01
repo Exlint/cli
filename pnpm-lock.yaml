@@ -17,7 +17,7 @@ specifiers:
   '@types/react': 18.0.28
   '@typescript-eslint/eslint-plugin': 5.53.0
   '@typescript-eslint/parser': 5.53.0
-  axios: 1.3.3
+  axios: 1.3.4
   chalk: 4.1.2
   cli-spinners: 2.7.0
   commitizen: 4.3.0
@@ -59,7 +59,7 @@ specifiers:
 dependencies:
   '@nestjs/common': 9.0.1_mnr6j2del53muneqly5h4y27ai
   '@nestjs/core': 9.0.1_hjzatzbs637e3l6u4y4h2pkv3a
-  axios: 1.3.3
+  axios: 1.3.4
   chalk: 4.1.2
   cli-spinners: 2.7.0
   envinfo: 7.8.1
@@ -2737,8 +2737,8 @@ packages:
     engines: {node: '>= 0.4'}
     dev: true
 
-  /axios/1.3.3:
-    resolution: {integrity: sha512-eYq77dYIFS77AQlhzEL937yUBSepBfPIe8FcgEDN35vMNZKMrs81pgnyrQpwfy4NF4b4XWX1Zgx7yX+25w8QJA==}
+  /axios/1.3.4:
+    resolution: {integrity: sha512-toYm+Bsyl6VC5wSkfkbbNB6ROv7KY93PEBBL6xyDczaIHasAiv4wPqQ/c4RjoQzipxRD2W5g21cOqQulZ7rHwQ==}
     dependencies:
       follow-redirects: 1.15.1
       form-data: 4.0.0
