@@ -41,7 +41,7 @@ specifiers:
   ink-task-list: 2.0.0
   is-ci: 3.0.1
   lint-staged: 13.1.2
-  nest-commander: 3.5.0
+  nest-commander: 3.6.0
   netrc-parser: 3.1.6
   npm-run-all: 4.1.5
   open: 8.4.2
@@ -70,7 +70,7 @@ dependencies:
   ink-spinner: 4.0.3_ink@3.2.0+react@18.2.0
   ink-task-list: 2.0.0_ink@3.2.0+react@18.2.0
   is-ci: 3.0.1
-  nest-commander: 3.5.0_ax7huhcwyj2o6winpteascyxce
+  nest-commander: 3.6.0_ax7huhcwyj2o6winpteascyxce
   netrc-parser: 3.1.6
   open: 8.4.2
   react: 18.2.0
@@ -1457,8 +1457,8 @@ packages:
       '@commitlint/types': 17.4.4
       '@types/node': 18.14.2
       chalk: 4.1.2
-      cosmiconfig: 8.0.0
-      cosmiconfig-typescript-loader: 4.0.0_i42d2i5alxef7om37ei26cnfyy
+      cosmiconfig: 8.1.0
+      cosmiconfig-typescript-loader: 4.0.0_bw56cmlows5ih7tlomcdjhdala
       lodash.isplainobject: 4.0.6
       lodash.merge: 4.6.2
       lodash.uniq: 4.5.0
@@ -3374,7 +3374,7 @@ packages:
       - '@swc/wasm'
     dev: true
 
-  /cosmiconfig-typescript-loader/4.0.0_i42d2i5alxef7om37ei26cnfyy:
+  /cosmiconfig-typescript-loader/4.0.0_bw56cmlows5ih7tlomcdjhdala:
     resolution: {integrity: sha512-cVpucSc2Tf+VPwCCR7SZzmQTQkPbkk4O01yXsYqXBIbjE1bhwqSyAgYQkRK1un4i0OPziTleqFhdkmOc4RQ/9g==}
     engines: {node: '>=12', npm: '>=6'}
     peerDependencies:
@@ -3384,7 +3384,7 @@ packages:
       typescript: '>=3'
     dependencies:
       '@types/node': 18.14.2
-      cosmiconfig: 8.0.0
+      cosmiconfig: 8.1.0
       ts-node: 10.8.1_ellgaeuoqnti3hful2ny2iugba
       typescript: 4.9.5
     dev: true
@@ -3400,8 +3400,8 @@ packages:
       yaml: 1.10.2
     dev: true
 
-  /cosmiconfig/8.0.0:
-    resolution: {integrity: sha512-da1EafcpH6b/TD8vDRaWV7xFINlHlF6zKsGwS1TsuVJTZRkquaS5HTMq7uq6h31619QjbsYl21gVDOm32KM1vQ==}
+  /cosmiconfig/8.1.0:
+    resolution: {integrity: sha512-0tLZ9URlPGU7JsKq0DQOQ3FoRsYX8xDZ7xMiATQfaiGMz7EHowNkbU9u1coAOmnh9p/1ySpm0RB3JNWRXM5GCg==}
     engines: {node: '>=14'}
     dependencies:
       import-fresh: 3.3.0
@@ -6203,8 +6203,8 @@ packages:
     resolution: {integrity: sha512-Yd3UES5mWCSqR+qNT93S3UoYUkqAZ9lLg8a7g9rimsWmYGK8cVToA4/sF3RrshdyV3sAGMXVUmpMYOw+dLpOuw==}
     dev: true
 
-  /nest-commander/3.5.0_ax7huhcwyj2o6winpteascyxce:
-    resolution: {integrity: sha512-8GbQkk2RqXJnCezXVdsNcDrJZw2uyXn+QOI/keX3lPcujzMu22n+fwfVqkxn18nV5WsIY6gPQ18cQQlKvo9F3A==}
+  /nest-commander/3.6.0_ax7huhcwyj2o6winpteascyxce:
+    resolution: {integrity: sha512-29zw3fbI37l5gccxpahE1lfo0f1F2fG2lz0ElKFCsuto502SKFAL/Bn5SBVBxBv19Hf4TrGCpyNZW4zzFWTKPg==}
     peerDependencies:
       '@nestjs/common': ^8.0.0 || ^9.0.0
       '@nestjs/core': ^8.0.0 || ^9.0.0
@@ -6217,7 +6217,7 @@ packages:
       '@nestjs/core': 9.0.1_hjzatzbs637e3l6u4y4h2pkv3a
       '@types/inquirer': 9.0.3
       commander: 10.0.0
-      cosmiconfig: 8.0.0
+      cosmiconfig: 8.1.0
       inquirer: 8.2.4
       reflect-metadata: 0.1.13
       rxjs: 7.8.0
