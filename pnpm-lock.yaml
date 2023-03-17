@@ -40,7 +40,7 @@ specifiers:
   ink-spinner: 4.0.3
   ink-task-list: 2.0.0
   is-ci: 3.0.1
-  lint-staged: 13.1.4
+  lint-staged: 13.2.0
   nest-commander: 3.6.1
   netrc-parser: 3.1.6
   npm-run-all: 4.1.5
@@ -105,7 +105,7 @@ devDependencies:
   eslint-plugin-unused-imports: 2.0.0_vkrezerrv4xnu4uoc4gpfx7tv4
   figlet: 1.5.2
   husky: 8.0.3
-  lint-staged: 13.1.4
+  lint-staged: 13.2.0
   npm-run-all: 4.1.5
   open-cli: 7.1.0
   prettier: 2.8.4
@@ -3555,19 +3555,6 @@ packages:
       ms: 2.1.2
     dev: true
 
-  /debug/4.3.4_supports-color@9.3.1:
-    resolution: {integrity: sha512-PRWFHuSU3eDtQJPvnNY7Jcket1j0t5OuOsFzPPzsekD52Zl8qUfFIPEiswXqIvHWGVHOgX+7G/vCNNhehwxfkQ==}
-    engines: {node: '>=6.0'}
-    peerDependencies:
-      supports-color: '*'
-    peerDependenciesMeta:
-      supports-color:
-        optional: true
-    dependencies:
-      ms: 2.1.2
-      supports-color: 9.3.1
-    dev: true
-
   /decache/4.6.1:
     resolution: {integrity: sha512-ohApBM8u9ygepJCjgBrEZSSxPjc0T/PJkD+uNyxXPkqudyUpdXpwJYp0VISm2WrPVzASU6DZyIi6BWdyw7uJ2Q==}
     dependencies:
@@ -5768,15 +5755,15 @@ packages:
   /lines-and-columns/1.2.4:
     resolution: {integrity: sha512-7ylylesZQ/PV29jhEDl3Ufjo6ZX7gCqJr5F7PKrqc93v7fzSymt1BpwEU8nAUXs8qzzvqhbjhK5QZg6Mt/HkBg==}
 
-  /lint-staged/13.1.4:
-    resolution: {integrity: sha512-pJRmnRA4I4Rcc1k9GZIh9LQJlolCVDHqtJpIgPY7t99XY3uXXmUeDfhRLELYLgUFJPmEsWevTqarex9acSfx2A==}
+  /lint-staged/13.2.0:
+    resolution: {integrity: sha512-GbyK5iWinax5Dfw5obm2g2ccUiZXNGtAS4mCbJ0Lv4rq6iEtfBSjOYdcbOtAIFtM114t0vdpViDDetjVTSd8Vw==}
     engines: {node: ^14.13.1 || >=16.0.0}
     hasBin: true
     dependencies:
       chalk: 5.2.0
       cli-truncate: 3.1.0
       commander: 10.0.0
-      debug: 4.3.4_supports-color@9.3.1
+      debug: 4.3.4
       execa: 7.1.0
       lilconfig: 2.1.0
       listr2: 5.0.8
@@ -5785,10 +5772,10 @@ packages:
       object-inspect: 1.12.3
       pidtree: 0.6.0
       string-argv: 0.3.1
-      supports-color: 9.3.1
       yaml: 2.2.1
     transitivePeerDependencies:
       - enquirer
+      - supports-color
     dev: true
 
   /listr2/5.0.8:
@@ -7783,11 +7770,6 @@ packages:
     engines: {node: '>=10'}
     dependencies:
       has-flag: 4.0.0
-    dev: true
-
-  /supports-color/9.3.1:
-    resolution: {integrity: sha512-knBY82pjmnIzK3NifMo3RxEIRD9E0kIzV4BKcyTZ9+9kWgLMxd4PrsTSMoFQUabgRBbF8KOLRDCyKgNV+iK44Q==}
-    engines: {node: '>=12'}
     dev: true
 
   /supports-preserve-symlinks-flag/1.0.0:
