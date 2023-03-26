@@ -1,6 +1,6 @@
 import os from 'node:os';
 
-import { Command, CommandRunner, Option } from 'nest-commander';
+import { CommandRunner, Option, RootCommand } from 'nest-commander';
 import React from 'react';
 import { render, Text, Box } from 'ink';
 
@@ -8,10 +8,8 @@ import { getNodeJsVersion, getNpmVersion } from '@/helpers/required-software';
 
 import type { ICommandOptions } from './interfaces/command-options';
 
-@Command({
-	name: '-',
+@RootCommand({
 	description: 'Command handler for base CLI',
-	options: { isDefault: true, hidden: true },
 })
 export class BaseCommand extends CommandRunner {
 	public async run(_: string[], options?: ICommandOptions) {
