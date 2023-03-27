@@ -127,6 +127,10 @@ module.exports = {
 		'@typescript-eslint/no-use-before-define': ['error'],
 		'@typescript-eslint/consistent-type-imports': ['error'],
 		'@typescript-eslint/await-thenable': 'error',
+		'@typescript-eslint/explicit-member-accessibility': [
+			'error',
+			{ accessbility: 'explicit', overrides: { constructors: 'off' } },
+		],
 
 		'react/jsx-fragments': 'error',
 		'react/jsx-wrap-multilines': [
