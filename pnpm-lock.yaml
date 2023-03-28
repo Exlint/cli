@@ -33,7 +33,7 @@ specifiers:
   eslint-plugin-unused-imports: 2.0.0
   express: 4.18.2
   figlet: 1.5.2
-  fs-extra: 11.1.0
+  fs-extra: 11.1.1
   husky: 8.0.3
   ink: 3.2.0
   ink-divider: 3.0.0
@@ -64,7 +64,7 @@ dependencies:
   cli-spinners: 2.7.0
   envinfo: 7.8.1
   express: 4.18.2
-  fs-extra: 11.1.0
+  fs-extra: 11.1.1
   ink: 3.2.0_pmekkgnqduwlme35zpnqhenc34
   ink-divider: 3.0.0_ink@3.2.0+react@18.2.0
   ink-spinner: 4.0.3_ink@3.2.0+react@18.2.0
@@ -1490,7 +1490,7 @@ packages:
     dependencies:
       '@commitlint/top-level': 17.4.0
       '@commitlint/types': 17.4.4
-      fs-extra: 11.1.0
+      fs-extra: 11.1.1
       git-raw-commits: 2.0.11
       minimist: 1.2.7
     dev: true
@@ -4709,6 +4709,15 @@ packages:
 
   /fs-extra/11.1.0:
     resolution: {integrity: sha512-0rcTq621PD5jM/e0a3EJoGC/1TC5ZBCERW82LQuwfGnCa1V8w7dpYH1yNu+SLb6E5dkeCBzKEyLGlFrnr+dUyw==}
+    engines: {node: '>=14.14'}
+    dependencies:
+      graceful-fs: 4.2.10
+      jsonfile: 6.1.0
+      universalify: 2.0.0
+    dev: true
+
+  /fs-extra/11.1.1:
+    resolution: {integrity: sha512-MGIE4HOvQCeUCzmlHs0vXpih4ysz4wg9qiSAu6cd42lVwPbTM1TjV7RusoyQqMmk/95gdQZX72u+YW+c3eEpFQ==}
     engines: {node: '>=14.14'}
     dependencies:
       graceful-fs: 4.2.10
