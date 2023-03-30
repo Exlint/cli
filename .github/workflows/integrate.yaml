@@ -8,16 +8,8 @@ permissions:
     contents: read
 
 jobs:
-    call_pnpm_caching_workflow:
-        name: Set pnpm caching
-
-        uses: ./.github/workflows/pnpm-caching.yaml
-        with:
-            runner: ubuntu-latest
-
-    test_depcheck:
-        needs: call_pnpm_caching_workflow
-        name: Testing Depcheck
+    depcheck:
+        name: Depcheck
 
         runs-on: ubuntu-latest
         steps:
@@ -31,9 +23,8 @@ jobs:
             - name: Test Depcheck
               run: pnpm depcheck
 
-    test_inflint:
-        needs: call_pnpm_caching_workflow
-        name: Testing Inflint
+    inflint:
+        name: Inflint
 
         runs-on: ubuntu-latest
         steps:
@@ -47,9 +38,8 @@ jobs:
             - name: Test Inflint
               run: pnpm inflint
 
-    test_typescript:
-        needs: call_pnpm_caching_workflow
-        name: Testing TypeScript
+    typescript:
+        name: TypeScript
 
         runs-on: ubuntu-latest
         steps:
@@ -63,9 +53,8 @@ jobs:
             - name: Test TypeScript
               run: pnpm type-check
 
-    test_prettier:
-        needs: call_pnpm_caching_workflow
-        name: Testing Prettier
+    prettier:
+        name: Prettier
 
         runs-on: ubuntu-latest
         steps:
@@ -79,9 +68,8 @@ jobs:
             - name: Test Prettier
               run: pnpm prettier
 
-    test_eslint:
-        needs: call_pnpm_caching_workflow
-        name: Testing ESLint
+    eslint:
+        name: ESLint
 
         runs-on: ubuntu-latest
         steps:
@@ -95,9 +83,8 @@ jobs:
             - name: Test ESLint
               run: pnpm lint
 
-    test_build:
-        needs: call_pnpm_caching_workflow
-        name: Testing build
+    build:
+        name: Build
 
         runs-on: ubuntu-latest
         steps:
