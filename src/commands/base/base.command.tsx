@@ -8,9 +8,7 @@ import { getNodeJsVersion, getNpmVersion } from '@/helpers/required-software';
 
 import type { ICommandOptions } from './interfaces/command-options';
 
-@RootCommand({
-	description: 'Command handler for base CLI',
-})
+@RootCommand({})
 export class BaseCommand extends CommandRunner {
 	public async run(_: string[], options?: ICommandOptions) {
 		if (options?.version) {
