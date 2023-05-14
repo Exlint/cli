@@ -32,7 +32,7 @@ specifiers:
   eslint-plugin-react: 7.32.2
   eslint-plugin-unused-imports: 2.0.0
   express: 4.18.2
-  figlet: 1.5.2
+  figlet: 1.6.0
   fs-extra: 11.1.1
   husky: 8.0.3
   ink: 3.2.0
@@ -103,7 +103,7 @@ devDependencies:
   eslint-plugin-node: 11.1.0_eslint@8.40.0
   eslint-plugin-react: 7.32.2_eslint@8.40.0
   eslint-plugin-unused-imports: 2.0.0_zbdl5dxhh5hq44amyxynnvaatm
-  figlet: 1.5.2
+  figlet: 1.6.0
   husky: 8.0.3
   lint-staged: 13.2.2
   npm-run-all: 4.1.5
@@ -4621,9 +4621,10 @@ packages:
       websocket-driver: 0.7.4
     dev: true
 
-  /figlet/1.5.2:
-    resolution: {integrity: sha512-WOn21V8AhyE1QqVfPIVxe3tupJacq1xGkPTB4iagT6o+P2cAgEOOwIxMftr4+ZCTI6d551ij9j61DFr0nsP2uQ==}
+  /figlet/1.6.0:
+    resolution: {integrity: sha512-31EQGhCEITv6+hi2ORRPyn3bulaV9Fl4xOdR169cBzH/n1UqcxsiSB/noo6SJdD7Kfb1Ljit+IgR1USvF/XbdA==}
     engines: {node: '>= 0.4.0'}
+    hasBin: true
     dev: true
 
   /figures/2.0.0:
