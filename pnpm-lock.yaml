@@ -53,7 +53,7 @@ specifiers:
   ts-loader: 9.4.2
   typescript: 5.0.4
   v8-compile-cache: 2.3.0
-  webpack: 5.82.0
+  webpack: 5.82.1
   webpack-merge: 5.8.0
 
 dependencies:
@@ -109,9 +109,9 @@ devDependencies:
   npm-run-all: 4.1.5
   open-cli: 7.2.0_typescript@5.0.4
   prettier: 2.8.8
-  ts-loader: 9.4.2_qlgbngis46ecdgixpmddx7o4hq
+  ts-loader: 9.4.2_b73sldshwrlnhikvubwhfqvrfa
   typescript: 5.0.4
-  webpack: 5.82.0
+  webpack: 5.82.1
   webpack-merge: 5.8.0
 
 packages:
@@ -8025,7 +8025,7 @@ packages:
       webpack: 5.80.0
     dev: true
 
-  /terser-webpack-plugin/5.3.7_webpack@5.82.0:
+  /terser-webpack-plugin/5.3.7_webpack@5.82.1:
     resolution: {integrity: sha512-AfKwIktyP7Cu50xNjXF/6Qb5lBNzYaWpU6YfoX3uZicTx0zTy0stDDCsvjDapKsSDvOeWo5MEq4TmdBy2cNoHw==}
     engines: {node: '>= 10.13.0'}
     peerDependencies:
@@ -8046,7 +8046,7 @@ packages:
       schema-utils: 3.1.2
       serialize-javascript: 6.0.1
       terser: 5.16.8
-      webpack: 5.82.0
+      webpack: 5.82.1
     dev: true
 
   /terser/5.16.8:
@@ -8152,7 +8152,7 @@ packages:
     engines: {node: '>=12'}
     dev: true
 
-  /ts-loader/9.4.2_qlgbngis46ecdgixpmddx7o4hq:
+  /ts-loader/9.4.2_b73sldshwrlnhikvubwhfqvrfa:
     resolution: {integrity: sha512-OmlC4WVmFv5I0PpaxYb+qGeGOdm5giHU7HwDDUjw59emP2UYMHy9fFSDcYgSNoH8sXcj4hGCSEhlDZ9ULeDraA==}
     engines: {node: '>=12.0.0'}
     peerDependencies:
@@ -8164,7 +8164,7 @@ packages:
       micromatch: 4.0.5
       semver: 7.3.8
       typescript: 5.0.4
-      webpack: 5.82.0
+      webpack: 5.82.1
     dev: true
 
   /ts-morph/13.0.3:
@@ -8563,8 +8563,8 @@ packages:
       - uglify-js
     dev: true
 
-  /webpack/5.82.0:
-    resolution: {integrity: sha512-iGNA2fHhnDcV1bONdUu554eZx+XeldsaeQ8T67H6KKHl2nUSwX8Zm7cmzOA46ox/X1ARxf7Bjv8wQ/HsB5fxBg==}
+  /webpack/5.82.1:
+    resolution: {integrity: sha512-C6uiGQJ+Gt4RyHXXYt+v9f+SN1v83x68URwgxNQ98cvH8kxiuywWGP4XeNZ1paOzZ63aY3cTciCEQJNFUljlLw==}
     engines: {node: '>=10.13.0'}
     hasBin: true
     peerDependencies:
@@ -8594,7 +8594,7 @@ packages:
       neo-async: 2.6.2
       schema-utils: 3.1.2
       tapable: 2.2.1
-      terser-webpack-plugin: 5.3.7_webpack@5.82.0
+      terser-webpack-plugin: 5.3.7_webpack@5.82.1
       watchpack: 2.4.0
       webpack-sources: 3.2.3
     transitivePeerDependencies:
