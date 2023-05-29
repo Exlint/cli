@@ -54,7 +54,7 @@ specifiers:
   typescript: 5.0.4
   v8-compile-cache: 2.3.0
   webpack: 5.83.1
-  webpack-merge: 5.8.0
+  webpack-merge: 5.9.0
 
 dependencies:
   '@nestjs/common': 9.3.12_atc7tu2sld2m3nk4hmwkqn6qde
@@ -112,7 +112,7 @@ devDependencies:
   ts-loader: 9.4.2_pncfgyi2nqfmp2wps6k44wzdnu
   typescript: 5.0.4
   webpack: 5.83.1
-  webpack-merge: 5.8.0
+  webpack-merge: 5.9.0
 
 packages:
 
@@ -8504,8 +8504,8 @@ packages:
     resolution: {integrity: sha512-2JAn3z8AR6rjK8Sm8orRC0h/bcl/DqL7tRPdGZ4I1CjdF+EaMLmYxBHyXuKL849eucPFhvBoxMsflfOb8kxaeQ==}
     dev: false
 
-  /webpack-merge/5.8.0:
-    resolution: {integrity: sha512-/SaI7xY0831XwP6kzuwhKWVKDP9t1QY1h65lAFLbZqMPIuYcD9QAW4u9STIbU9kaJbPBB/geU/gLr1wDjOhQ+Q==}
+  /webpack-merge/5.9.0:
+    resolution: {integrity: sha512-6NbRQw4+Sy50vYNTw7EyOn41OZItPiXB8GNv3INSoe3PSFaHJEz3SHTrYVaRm2LilNGnFUzh0FAwqPEmU/CwDg==}
     engines: {node: '>=10.0.0'}
     dependencies:
       clone-deep: 4.0.1
