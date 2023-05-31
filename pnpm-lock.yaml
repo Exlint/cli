@@ -2,7 +2,7 @@ lockfileVersion: 5.4
 
 specifiers:
   '@commitlint/cli': 17.6.3
-  '@compodoc/compodoc': 1.1.20
+  '@compodoc/compodoc': 1.1.21
   '@exlint.io/inflint': 1.2.10
   '@nestjs/cli': 9.5.0
   '@nestjs/common': ^9.0.0
@@ -80,7 +80,7 @@ dependencies:
 
 devDependencies:
   '@commitlint/cli': 17.6.3
-  '@compodoc/compodoc': 1.1.20
+  '@compodoc/compodoc': 1.1.21
   '@exlint.io/inflint': 1.2.10_52yckoyfxd2burhhl4vw6exk7a
   '@nestjs/cli': 9.5.0
   '@types/envinfo': 7.8.1
@@ -283,25 +283,6 @@ packages:
       semver: 6.3.0
     dev: true
 
-  /@babel/helper-create-class-features-plugin/7.21.0_@babel+core@7.22.1:
-    resolution: {integrity: sha512-Q8wNiMIdwsv5la5SPxNYzzkPnjgC0Sy0i7jLkVOCdllu/xcVNkr3TeZzbHBJrj+XXRqzX5uCyCoV9eu6xUG7KQ==}
-    engines: {node: '>=6.9.0'}
-    peerDependencies:
-      '@babel/core': ^7.0.0
-    dependencies:
-      '@babel/core': 7.22.1
-      '@babel/helper-annotate-as-pure': 7.18.6
-      '@babel/helper-environment-visitor': 7.22.1
-      '@babel/helper-function-name': 7.21.0
-      '@babel/helper-member-expression-to-functions': 7.21.0
-      '@babel/helper-optimise-call-expression': 7.18.6
-      '@babel/helper-replace-supers': 7.20.7
-      '@babel/helper-skip-transparent-expression-wrappers': 7.20.0
-      '@babel/helper-split-export-declaration': 7.18.6
-    transitivePeerDependencies:
-      - supports-color
-    dev: true
-
   /@babel/helper-create-class-features-plugin/7.22.1_@babel+core@7.22.1:
     resolution: {integrity: sha512-SowrZ9BWzYFgzUMwUmowbPSGu6CXL5MSuuCkG3bejahSpSymioPmuLdhPxNOc9MjuNGjy7M/HaXvJ8G82Lywlw==}
     engines: {node: '>=6.9.0'}
@@ -320,17 +301,6 @@ packages:
       semver: 6.3.0
     transitivePeerDependencies:
       - supports-color
-    dev: true
-
-  /@babel/helper-create-regexp-features-plugin/7.21.0_@babel+core@7.22.1:
-    resolution: {integrity: sha512-N+LaFW/auRSWdx7SHD/HiARwXQju1vXTW4fKr4u5SgBUTm51OKEjKgj+cs00ggW3kEvNqwErnlwuq7Y3xBe4eg==}
-    engines: {node: '>=6.9.0'}
-    peerDependencies:
-      '@babel/core': ^7.0.0
-    dependencies:
-      '@babel/core': 7.22.1
-      '@babel/helper-annotate-as-pure': 7.18.6
-      regexpu-core: 5.3.2
     dev: true
 
   /@babel/helper-create-regexp-features-plugin/7.22.1_@babel+core@7.22.1:
@@ -388,13 +358,6 @@ packages:
       '@babel/types': 7.22.4
     dev: true
 
-  /@babel/helper-member-expression-to-functions/7.21.0:
-    resolution: {integrity: sha512-Muu8cdZwNN6mRRNG6lAYErJ5X3bRevgYR2O8wN0yn7jJSnGDu6eG59RfT29JHxGUovyfrh6Pj0XzmR7drNVL3Q==}
-    engines: {node: '>=6.9.0'}
-    dependencies:
-      '@babel/types': 7.22.4
-    dev: true
-
   /@babel/helper-member-expression-to-functions/7.22.3:
     resolution: {integrity: sha512-Gl7sK04b/2WOb6OPVeNy9eFKeD3L6++CzL3ykPOWqTn08xgYYK0wz4TUh2feIImDXxcVW3/9WQ1NMKY66/jfZA==}
     engines: {node: '>=6.9.0'}
@@ -447,20 +410,6 @@ packages:
       '@babel/helper-annotate-as-pure': 7.18.6
       '@babel/helper-environment-visitor': 7.22.1
       '@babel/helper-wrap-function': 7.20.5
-      '@babel/types': 7.22.4
-    transitivePeerDependencies:
-      - supports-color
-    dev: true
-
-  /@babel/helper-replace-supers/7.20.7:
-    resolution: {integrity: sha512-vujDMtB6LVfNW13jhlCrp48QNslK6JXi7lQG736HVbHz/mbf4Dc7tIRh1Xf5C0rF7BP8iiSxGMCmY6Ci1ven3A==}
-    engines: {node: '>=6.9.0'}
-    dependencies:
-      '@babel/helper-environment-visitor': 7.22.1
-      '@babel/helper-member-expression-to-functions': 7.22.3
-      '@babel/helper-optimise-call-expression': 7.18.6
-      '@babel/template': 7.21.9
-      '@babel/traverse': 7.22.4
       '@babel/types': 7.22.4
     transitivePeerDependencies:
       - supports-color
@@ -592,7 +541,7 @@ packages:
     dependencies:
       '@babel/core': 7.22.1
       '@babel/helper-annotate-as-pure': 7.18.6
-      '@babel/helper-create-class-features-plugin': 7.21.0_@babel+core@7.22.1
+      '@babel/helper-create-class-features-plugin': 7.22.1_@babel+core@7.22.1
       '@babel/helper-plugin-utils': 7.21.5
       '@babel/plugin-syntax-private-property-in-object': 7.14.5_@babel+core@7.22.1
     transitivePeerDependencies:
@@ -775,7 +724,7 @@ packages:
       '@babel/core': ^7.0.0
     dependencies:
       '@babel/core': 7.22.1
-      '@babel/helper-create-regexp-features-plugin': 7.21.0_@babel+core@7.22.1
+      '@babel/helper-create-regexp-features-plugin': 7.22.1_@babel+core@7.22.1
       '@babel/helper-plugin-utils': 7.21.5
     dev: true
 
@@ -878,7 +827,7 @@ packages:
       '@babel/helper-function-name': 7.21.0
       '@babel/helper-optimise-call-expression': 7.18.6
       '@babel/helper-plugin-utils': 7.21.5
-      '@babel/helper-replace-supers': 7.20.7
+      '@babel/helper-replace-supers': 7.22.1
       '@babel/helper-split-export-declaration': 7.18.6
       globals: 11.12.0
     transitivePeerDependencies:
@@ -913,7 +862,7 @@ packages:
       '@babel/core': ^7.0.0-0
     dependencies:
       '@babel/core': 7.22.1
-      '@babel/helper-create-regexp-features-plugin': 7.21.0_@babel+core@7.22.1
+      '@babel/helper-create-regexp-features-plugin': 7.22.1_@babel+core@7.22.1
       '@babel/helper-plugin-utils': 7.21.5
     dev: true
 
@@ -1144,7 +1093,7 @@ packages:
     dependencies:
       '@babel/core': 7.22.1
       '@babel/helper-plugin-utils': 7.21.5
-      '@babel/helper-replace-supers': 7.20.7
+      '@babel/helper-replace-supers': 7.22.1
     transitivePeerDependencies:
       - supports-color
     dev: true
@@ -1672,8 +1621,8 @@ packages:
       chalk: 4.1.2
     dev: true
 
-  /@compodoc/compodoc/1.1.20:
-    resolution: {integrity: sha512-MLp8E65lQgmksH8vnN3BcUuck/ESFHH5mTahLerO8oageabhbVHAev4YFyRGemGqd1GDMjx0LQLyFbVNae1nkQ==}
+  /@compodoc/compodoc/1.1.21:
+    resolution: {integrity: sha512-/FDlwRgKzmkGuorDnURuCzoGY6rZ0KY7Mj5/PwnEjMs0y1CRRPHBJC9I0yVIjn8j8gxVy8PPc6dna0lY1MWwhg==}
     engines: {node: '>= 14.0.0'}
     hasBin: true
     requiresBuild: true
@@ -1703,7 +1652,7 @@ packages:
       loglevel: 1.8.1
       loglevel-plugin-prefix: 0.8.4
       lunr: 2.3.9
-      marked: 5.0.3
+      marked: 4.3.0
       minimist: 1.2.8
       opencollective-postinstall: 2.0.3
       os-name: 4.0.1
@@ -6222,9 +6171,9 @@ packages:
     resolution: {integrity: sha512-C0X0KQmGm3N2ftbTGBhSyuydQ+vV1LC3f3zPvT3RXHXNZrvfPZcoXp/N5DOa8vedX/rTMm2CjTtivFg2STJMRQ==}
     dev: true
 
-  /marked/5.0.3:
-    resolution: {integrity: sha512-KUONa43Uk74uUNWMxh6lfaNYmSAsRMiDAaX8QBCCRVXzEufR0zX6T33vrGbvTnQLL02ungDM3KSzZtO+chJaHg==}
-    engines: {node: '>= 18'}
+  /marked/4.3.0:
+    resolution: {integrity: sha512-PRsaiG84bK+AMvxziE/lCFss8juXjNaWzVbN5tXAm4XjeaS9NAHhop+PjQxz2A9h8Q4M/xGmzP8vqNwy6JeK0A==}
+    engines: {node: '>= 12'}
     hasBin: true
     dev: true
 
