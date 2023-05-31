@@ -53,7 +53,7 @@ specifiers:
   ts-loader: 9.4.3
   typescript: 5.0.4
   v8-compile-cache: 2.3.0
-  webpack: 5.83.1
+  webpack: 5.84.0
   webpack-merge: 5.9.0
 
 dependencies:
@@ -109,9 +109,9 @@ devDependencies:
   npm-run-all: 4.1.5
   open-cli: 7.2.0_typescript@5.0.4
   prettier: 2.8.8
-  ts-loader: 9.4.3_pncfgyi2nqfmp2wps6k44wzdnu
+  ts-loader: 9.4.3_bcvrlgvso5vl4d3xvflvqmvniu
   typescript: 5.0.4
-  webpack: 5.83.1
+  webpack: 5.84.0
   webpack-merge: 5.9.0
 
 packages:
@@ -2549,8 +2549,8 @@ packages:
       mime-types: 2.1.35
       negotiator: 0.6.3
 
-  /acorn-import-assertions/1.8.0_acorn@8.8.2:
-    resolution: {integrity: sha512-m7VZ3jwz4eK6A4Vtt8Ew1/mNbP24u0FhdyfA7fSvnJR6LMdfOYnmuIrrJAgrYfYJ10F/otaHTtrtrtmHdMNzEw==}
+  /acorn-import-assertions/1.9.0_acorn@8.8.2:
+    resolution: {integrity: sha512-cmMwop9x+8KFhxvKrKfPYmN6/pKTYYHBqLa0DfvVZcKMJWNyWLnaqND7dx/qn66R7ewM1UX5XMaDVP5wlVTaVA==}
     peerDependencies:
       acorn: ^8
     dependencies:
@@ -3952,6 +3952,14 @@ packages:
 
   /enhanced-resolve/5.14.0:
     resolution: {integrity: sha512-+DCows0XNwLDcUhbFJPdlQEVnT2zXlCv7hPxemTz86/O+B/hCQ+mb7ydkPKiflpVraqLPCAfu7lDy+hBXueojw==}
+    engines: {node: '>=10.13.0'}
+    dependencies:
+      graceful-fs: 4.2.11
+      tapable: 2.2.1
+    dev: true
+
+  /enhanced-resolve/5.14.1:
+    resolution: {integrity: sha512-Vklwq2vDKtl0y/vtwjSesgJ5MYS7Etuk5txS8VdKL4AOS1aUlD96zqIfsOSLQsdv3xgMRbtkWM8eG9XDfKUPow==}
     engines: {node: '>=10.13.0'}
     dependencies:
       graceful-fs: 4.2.11
@@ -8091,7 +8099,7 @@ packages:
       webpack: 5.82.1
     dev: true
 
-  /terser-webpack-plugin/5.3.7_webpack@5.83.1:
+  /terser-webpack-plugin/5.3.7_webpack@5.84.0:
     resolution: {integrity: sha512-AfKwIktyP7Cu50xNjXF/6Qb5lBNzYaWpU6YfoX3uZicTx0zTy0stDDCsvjDapKsSDvOeWo5MEq4TmdBy2cNoHw==}
     engines: {node: '>= 10.13.0'}
     peerDependencies:
@@ -8112,7 +8120,7 @@ packages:
       schema-utils: 3.1.2
       serialize-javascript: 6.0.1
       terser: 5.16.8
-      webpack: 5.83.1
+      webpack: 5.84.0
     dev: true
 
   /terser/5.16.8:
@@ -8213,7 +8221,7 @@ packages:
     engines: {node: '>=12'}
     dev: true
 
-  /ts-loader/9.4.3_pncfgyi2nqfmp2wps6k44wzdnu:
+  /ts-loader/9.4.3_bcvrlgvso5vl4d3xvflvqmvniu:
     resolution: {integrity: sha512-n3hBnm6ozJYzwiwt5YRiJZkzktftRpMiBApHaJPoWLA+qetQBAXkHqCLM6nwSdRDimqVtA5ocIkcTRLMTt7yzA==}
     engines: {node: '>=12.0.0'}
     peerDependencies:
@@ -8225,7 +8233,7 @@ packages:
       micromatch: 4.0.5
       semver: 7.5.1
       typescript: 5.0.4
-      webpack: 5.83.1
+      webpack: 5.84.0
     dev: true
 
   /ts-morph/18.0.0:
@@ -8271,7 +8279,7 @@ packages:
     engines: {node: '>=10.13.0'}
     dependencies:
       chalk: 4.1.2
-      enhanced-resolve: 5.14.0
+      enhanced-resolve: 5.14.1
       tsconfig-paths: 4.2.0
     dev: true
 
@@ -8600,10 +8608,10 @@ packages:
       '@webassemblyjs/wasm-edit': 1.11.6
       '@webassemblyjs/wasm-parser': 1.11.6
       acorn: 8.8.2
-      acorn-import-assertions: 1.8.0_acorn@8.8.2
+      acorn-import-assertions: 1.9.0_acorn@8.8.2
       browserslist: 4.21.5
       chrome-trace-event: 1.0.3
-      enhanced-resolve: 5.14.0
+      enhanced-resolve: 5.14.1
       es-module-lexer: 1.2.1
       eslint-scope: 5.1.1
       events: 3.3.0
@@ -8624,8 +8632,8 @@ packages:
       - uglify-js
     dev: true
 
-  /webpack/5.83.1:
-    resolution: {integrity: sha512-TNsG9jDScbNuB+Lb/3+vYolPplCS3bbEaJf+Bj0Gw4DhP3ioAflBb1flcRt9zsWITyvOhM96wMQNRWlSX52DgA==}
+  /webpack/5.84.0:
+    resolution: {integrity: sha512-XezNK3kwJq6IyeoZmZ1uEqQs+42nTqIi4jYM/YjLwaJedUC1N3bwnCC0+UcnHJPfqWX0kGrQnMIvZZyWYaIZrA==}
     engines: {node: '>=10.13.0'}
     hasBin: true
     peerDependencies:
@@ -8640,10 +8648,10 @@ packages:
       '@webassemblyjs/wasm-edit': 1.11.6
       '@webassemblyjs/wasm-parser': 1.11.6
       acorn: 8.8.2
-      acorn-import-assertions: 1.8.0_acorn@8.8.2
+      acorn-import-assertions: 1.9.0_acorn@8.8.2
       browserslist: 4.21.5
       chrome-trace-event: 1.0.3
-      enhanced-resolve: 5.14.0
+      enhanced-resolve: 5.14.1
       es-module-lexer: 1.2.1
       eslint-scope: 5.1.1
       events: 3.3.0
@@ -8655,7 +8663,7 @@ packages:
       neo-async: 2.6.2
       schema-utils: 3.1.2
       tapable: 2.2.1
-      terser-webpack-plugin: 5.3.7_webpack@5.83.1
+      terser-webpack-plugin: 5.3.7_webpack@5.84.0
       watchpack: 2.4.0
       webpack-sources: 3.2.3
     transitivePeerDependencies:
