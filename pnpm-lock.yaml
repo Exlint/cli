@@ -22,7 +22,7 @@ specifiers:
   cli-spinners: 2.9.0
   commitizen: 4.3.0
   cross-env: 7.0.3
-  cz-vinyl: 1.6.2
+  cz-vinyl: 2.3.0
   depcheck: 1.4.3
   envinfo: 7.8.1
   eslint: 8.42.0
@@ -95,7 +95,7 @@ devDependencies:
   '@typescript-eslint/parser': 5.59.9_tizxnkcvjrb4cldxgwq5h3lj5u
   commitizen: 4.3.0
   cross-env: 7.0.3
-  cz-vinyl: 1.6.2_sz2hep2ld4tbz4lvm5u3llauiu
+  cz-vinyl: 2.3.0_sz2hep2ld4tbz4lvm5u3llauiu
   depcheck: 1.4.3
   eslint: 8.42.0
   eslint-config-prettier: 8.8.0_eslint@8.42.0
@@ -2832,7 +2832,6 @@ packages:
 
   /asynckit/0.4.0:
     resolution: {integrity: sha512-Oei9OH4tRh0YqU3GxhX79dM/mwVgvbZJaSNaRk+bshkj0S5cfHcgYakreBjrHwatXKbz+IoIdYLxrKim2MjW0Q==}
-    dev: false
 
   /at-least-node/1.0.0:
     resolution: {integrity: sha512-+q/t7Ekv1EDY2l6Gda6LLiX14rU9TV20Wa3ofeQmwPFZbOMo9DXrLbOjFaaclkXKWidIaopwAObQDqwWtGUjqg==}
@@ -2847,6 +2846,14 @@ packages:
   /available-typed-arrays/1.0.5:
     resolution: {integrity: sha512-DMD0KiN46eipeziST1LPP/STfDU0sufISXmjSgvVsoU2tqxctQeASejWcfNtxYKqETM1UxQ8sp2OrSBWpHY6sw==}
     engines: {node: '>= 0.4'}
+    dev: true
+
+  /axios/0.26.1:
+    resolution: {integrity: sha512-fPwcX4EvnSHuInCMItEhAGnaSEXRBjtzh9fOtsE6E1G6p7vl7edEeZe11QHf18+6+9gR5PbKV/sGKNaD8YaMeA==}
+    dependencies:
+      follow-redirects: 1.15.2
+    transitivePeerDependencies:
+      - debug
     dev: true
 
   /axios/1.4.0:
@@ -3329,7 +3336,6 @@ packages:
     engines: {node: '>= 0.8'}
     dependencies:
       delayed-stream: 1.0.0
-    dev: false
 
   /commander/10.0.0:
     resolution: {integrity: sha512-zS5PnTI22FIRM6ylNW8G4Ap0IEOyk62fhLSD0+uHRT9McRCLGpkVNvao4bjimpK/GShynyQkFFxHhwMcETmduA==}
@@ -3499,6 +3505,22 @@ packages:
       - '@swc/wasm'
     dev: true
 
+  /cosmiconfig-typescript-loader/2.0.2_sz2hep2ld4tbz4lvm5u3llauiu:
+    resolution: {integrity: sha512-KmE+bMjWMXJbkWCeY4FJX/npHuZPNr9XF9q9CIQ/bpFwi1qHfCmSiKarrCcRa0LO4fWjk93pVoeRtJAkTGcYNw==}
+    engines: {node: '>=12', npm: '>=6'}
+    peerDependencies:
+      '@types/node': '*'
+      typescript: '>=3'
+    dependencies:
+      '@types/node': 18.16.16
+      cosmiconfig: 7.1.0
+      ts-node: 10.9.1_sz2hep2ld4tbz4lvm5u3llauiu
+      typescript: 5.1.3
+    transitivePeerDependencies:
+      - '@swc/core'
+      - '@swc/wasm'
+    dev: true
+
   /cosmiconfig-typescript-loader/4.3.0_jklypctdahtcfnnyjb34deblwa:
     resolution: {integrity: sha512-NTxV1MFfZDLPiBMjxbHRwSh5LaLcPMwNdCutmnHJCKoVnlvldPWlllonKwrsRJ5pYZBIBGRWWU2tfvzxgeSW5Q==}
     engines: {node: '>=12', npm: '>=6'}
@@ -3622,25 +3644,25 @@ packages:
       - '@swc/wasm'
     dev: true
 
-  /cz-vinyl/1.6.2_sz2hep2ld4tbz4lvm5u3llauiu:
-    resolution: {integrity: sha512-fg/BKTF4Ky8n7GfZAdRjCVtjAnOXlFzVAJHA97RByBPOBCf0ATGhVdDi6nP6XI/W1NzdoHTOdgV+lWEJ3iVW2Q==}
-    engines: {node: '>= 12'}
-    peerDependencies:
-      '@types/node': 17.0.33
-      vite: 2.9.9
+  /cz-vinyl/2.3.0_sz2hep2ld4tbz4lvm5u3llauiu:
+    resolution: {integrity: sha512-m2lsAoW51sskaJlppn1iEWjMZdourRqeRSWLcARPr0iM6uSMgECzofnDF5/cD1fhVxjfQHPz9f5J4Yww7ExXcA==}
+    engines: {node: '>=14.16'}
     dependencies:
-      '@types/node': 18.16.16
-      cosmiconfig: 7.0.1
-      cosmiconfig-typescript-loader: 2.0.1_sz2hep2ld4tbz4lvm5u3llauiu
+      cosmiconfig: 8.1.3
+      cosmiconfig-typescript-loader: 2.0.2_sz2hep2ld4tbz4lvm5u3llauiu
       fuse.js: 6.6.2
-      inquirer: 8.2.4
-      inquirer-autocomplete-prompt: 2.0.0_inquirer@8.2.4
+      inquirer-autocomplete-prompt: 2.0.0
       inquirer-maxlength-input-prompt: 1.0.2
+      openai: 3.2.1
       string-template: 1.0.0
       word-wrap: 1.2.3
+      zod: 3.21.4
     transitivePeerDependencies:
       - '@swc/core'
       - '@swc/wasm'
+      - '@types/node'
+      - debug
+      - inquirer
       - typescript
     dev: true
 
@@ -3783,7 +3805,6 @@ packages:
   /delayed-stream/1.0.0:
     resolution: {integrity: sha512-ZySD7Nf91aLB0RxL4KGrKHBXl7Eds1DAmEdcoVawXnLD7SDhpNgtuII2aAkg7a7QS41jxPSZ17p4VdGnMHk3MQ==}
     engines: {node: '>=0.4.0'}
-    dev: false
 
   /depcheck/1.4.3:
     resolution: {integrity: sha512-vy8xe1tlLFu7t4jFyoirMmOR7x7N601ubU9Gkifyr9z8rjBFtEdWHDBMqXyk6OkK+94NXutzddVXJuo0JlUQKQ==}
@@ -4795,7 +4816,6 @@ packages:
     peerDependenciesMeta:
       debug:
         optional: true
-    dev: false
 
   /for-each/0.3.3:
     resolution: {integrity: sha512-jqYfLp7mo9vIyQf8ykW2v7A+2N4QjeCeI5+Dz9XraiO1ign81wjiH7Fb9vSOWvQfNtmSa4H2RoQTrrXivdUZmw==}
@@ -4841,7 +4861,6 @@ packages:
       asynckit: 0.4.0
       combined-stream: 1.0.8
       mime-types: 2.1.35
-    dev: false
 
   /forwarded/0.2.0:
     resolution: {integrity: sha512-buRG0fpBtRHSTCOASe6hD258tEubFoRLb4ZNA6NxMVHNw2gOcwHo9wyablzMzOA5z9xA9L1KNjk/Nt6MT9aYow==}
@@ -5420,7 +5439,7 @@ packages:
       - utf-8-validate
     dev: false
 
-  /inquirer-autocomplete-prompt/2.0.0_inquirer@8.2.4:
+  /inquirer-autocomplete-prompt/2.0.0:
     resolution: {integrity: sha512-c2LljLP3ewVJe4AUZzKdA6oWjqhpy5pfsisHAjh7mP3WUQ/O02x5OLMMqcLOYuRHx6i2hlVSIhUv0xYGyFxFYA==}
     engines: {node: '>=12'}
     peerDependencies:
@@ -5428,7 +5447,6 @@ packages:
     dependencies:
       ansi-escapes: 4.3.2
       figures: 3.2.0
-      inquirer: 8.2.4
       picocolors: 1.0.0
       run-async: 2.4.1
       rxjs: 7.8.1
@@ -6713,6 +6731,15 @@ packages:
       define-lazy-prop: 3.0.0
       is-inside-container: 1.0.0
       is-wsl: 2.2.0
+    dev: true
+
+  /openai/3.2.1:
+    resolution: {integrity: sha512-762C9BNlJPbjjlWZi4WYK9iM2tAVAv0uUp1UmI34vb0CN5T2mjB/qM6RYBmNKMh/dN9fC+bxqPwWJZUTWW052A==}
+    dependencies:
+      axios: 0.26.1
+      form-data: 4.0.0
+    transitivePeerDependencies:
+      - debug
     dev: true
 
   /opencollective-postinstall/2.0.3:
@@ -8894,3 +8921,7 @@ packages:
     dependencies:
       '@types/yoga-layout': 1.9.2
     dev: false
+
+  /zod/3.21.4:
+    resolution: {integrity: sha512-m46AKbrzKVzOzs/DZgVnG5H55N1sv1M8qZU3A8RIKbs3mrACDNeIOeilDymVb2HdmP8uwshOCF4uJ8uM9rCqJw==}
+    dev: true
