@@ -7,6 +7,8 @@
 		"lint-staged",
 		"ts-loader",
 		"webpack",
-		"webpack-merge"
+		"webpack-merge",
+		"cz-vinyl",
+		"@exlint.io/inflint"
 	]
 }

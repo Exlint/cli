@@ -7,7 +7,6 @@
 			"automerge": true
 		}
 	],
-	"ignoreDeps": ["chalk"],
 	"commitMessageAction": "🤖 Update",
 	"stabilityDays": 7
 }

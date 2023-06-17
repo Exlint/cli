@@ -7,17 +7,7 @@
 	"files.associations": {
 		"commit-msg": "shellscript"
 	},
-	// Copy all below to your user settings to get nice visual
 	"material-icon-theme.files.associations": {
-		".inflintignore": "crystal",
-		"inflint.config.ts": "crystal",
-		"czvinyl.config.ts": "ocaml",
-		".depcheckrc.json": "parcel",
-		".cz.json": "jinja",
-		"tsconfig.doc.json": "tsconfig",
-		"tsconfig.paths.json": "tsconfig",
-		"tsconfig.tsbuildinfo": "tsconfig",
-		".compodocrc.json": "mjml",
 		"*.command.tsx": "nest-controller",
 		"*.service.tsx": "nest-service"
 	},
