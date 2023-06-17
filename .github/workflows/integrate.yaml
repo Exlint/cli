@@ -18,7 +18,7 @@ jobs:
               with:
                   node-version: 18.12.1
                   package-manager: pnpm
-                  package-manager-version: 7.19.0
+                  package-manager-version: 8.5.0
 
             - name: Test Depcheck
               run: pnpm depcheck
@@ -33,7 +33,7 @@ jobs:
               with:
                   node-version: 18.12.1
                   package-manager: pnpm
-                  package-manager-version: 7.19.0
+                  package-manager-version: 8.5.0
 
             - name: Test Inflint
               run: pnpm inflint
@@ -48,7 +48,7 @@ jobs:
               with:
                   node-version: 18.12.1
                   package-manager: pnpm
-                  package-manager-version: 7.19.0
+                  package-manager-version: 8.5.0
 
             - name: Test TypeScript
               run: pnpm type-check
@@ -63,7 +63,7 @@ jobs:
               with:
                   node-version: 18.12.1
                   package-manager: pnpm
-                  package-manager-version: 7.19.0
+                  package-manager-version: 8.5.0
 
             - name: Test Prettier
               run: pnpm prettier
@@ -78,7 +78,7 @@ jobs:
               with:
                   node-version: 18.12.1
                   package-manager: pnpm
-                  package-manager-version: 7.19.0
+                  package-manager-version: 8.5.0
 
             - name: Test ESLint
               run: pnpm lint
@@ -93,7 +93,7 @@ jobs:
               with:
                   node-version: 18.12.1
                   package-manager: pnpm
-                  package-manager-version: 7.19.0
+                  package-manager-version: 8.5.0
 
             - name: Test build
               run: pnpm build
