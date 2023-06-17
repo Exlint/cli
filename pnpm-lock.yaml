@@ -15,8 +15,8 @@ dependencies:
     specifier: 1.4.0
     version: 1.4.0
   chalk:
-    specifier: 4.1.2
-    version: 4.1.2
+    specifier: 5.2.0
+    version: 5.2.0
   cli-spinners:
     specifier: 2.9.0
     version: 2.9.0
@@ -3134,7 +3134,6 @@ packages:
   /chalk@5.2.0:
     resolution: {integrity: sha512-ree3Gqw/nazQAPuJJEy+avdl7QfZMcUvmHIKgEZkGL+xOBzRvup5Hxo6LHuMceSxOabuJLJm5Yp/92R9eMmMvA==}
     engines: {node: ^12.17.0 || ^14.13 || >=16.0.0}
-    dev: true
 
   /chardet@0.4.2:
     resolution: {integrity: sha512-j/Toj7f1z98Hh2cYo2BVr85EpIRWqUi7rtRSGxh/cqUjqrnJe9l9UE7IUGd2vQ2p+kSHLkSzObQPZPLUC6TQwg==}
