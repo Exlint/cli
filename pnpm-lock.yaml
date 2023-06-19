@@ -36,8 +36,8 @@ dependencies:
     specifier: 3.0.0
     version: 3.0.0(ink@4.2.0)(react@18.2.0)
   ink-spinner:
-    specifier: 4.0.3
-    version: 4.0.3(ink@4.2.0)(react@18.2.0)
+    specifier: 5.0.0
+    version: 5.0.0(ink@4.2.0)(react@18.2.0)
   ink-task-list:
     specifier: 2.0.0
     version: 2.0.0(ink@4.2.0)(react@18.2.0)
@@ -5352,12 +5352,12 @@ packages:
       string-width: 4.2.3
     dev: false
 
-  /ink-spinner@4.0.3(ink@4.2.0)(react@18.2.0):
-    resolution: {integrity: sha512-uJ4nbH00MM9fjTJ5xdw0zzvtXMkeGb0WV6dzSWvFv2/+ks6FIhpkt+Ge/eLdh0Ah6Vjw5pLMyNfoHQpRDRVFbQ==}
-    engines: {node: '>=10'}
+  /ink-spinner@5.0.0(ink@4.2.0)(react@18.2.0):
+    resolution: {integrity: sha512-EYEasbEjkqLGyPOUc8hBJZNuC5GvXGMLu0w5gdTNskPc7Izc5vO3tdQEYnzvshucyGCBXc86ig0ujXPMWaQCdA==}
+    engines: {node: '>=14.16'}
     peerDependencies:
-      ink: '>=3.0.5'
-      react: '>=16.8.2'
+      ink: '>=4.0.0'
+      react: '>=18.0.0'
     dependencies:
       cli-spinners: 2.9.0
       ink: 4.2.0(@types/react@18.2.11)(react@18.2.0)
