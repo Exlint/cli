@@ -17,7 +17,7 @@ module.exports = {
 		project: './tsconfig.eslint.json',
 		tsconfigRootDir: __dirname,
 		sourceType: 'module',
-		extraFileExtensions: ['.cjs'],
+		extraFileExtensions: ['.mjs'],
 	},
 	plugins: ['@typescript-eslint', 'unused-imports', 'import', 'node', 'react'],
 	rules: {
@@ -242,7 +242,7 @@ module.exports = {
 			},
 		},
 		{
-			files: ['./scripts/onboarding.cjs', './src/services/logger/**/*'],
+			files: ['./scripts/onboarding.mjs', './src/services/logger/**/*'],
 			rules: {
 				'no-console': 'off',
 			},
