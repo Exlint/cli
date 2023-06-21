@@ -37,7 +37,7 @@
 		"husky:install": "husky install",
 		"git:config": "git config --local include.path ../.gitconfig",
 		"setdev": "run-p husky:install git:config",
-		"onboarding": "node ./scripts/onboarding.cjs",
+		"onboarding": "node ./scripts/onboarding.mjs",
 		"prepare": "is-ci || run-s setdev onboarding",
 		"build": "nest build",
 		"build:dev": "cross-env NODE_ENV=development nest build",
