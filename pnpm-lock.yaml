@@ -77,8 +77,8 @@ devDependencies:
     specifier: 2.0.0
     version: 2.0.0
   '@nestjs/cli':
-    specifier: 10.0.2
-    version: 10.0.2
+    specifier: 10.0.3
+    version: 10.0.3
   '@types/envinfo':
     specifier: 7.8.1
     version: 7.8.1
@@ -1893,8 +1893,8 @@ packages:
     engines: {node: '>=8'}
     dev: false
 
-  /@nestjs/cli@10.0.2:
-    resolution: {integrity: sha512-zM21oq+RL5tZu4zByIXlv+RAqE/SujGJVF+p1oDZkpSzbRD3Nn3iElYDQLNnFLwFBbVhUUdN9s5BxJhFrFJD3g==}
+  /@nestjs/cli@10.0.3:
+    resolution: {integrity: sha512-mmcc8NmYdMVwOkXkK9FZofk+dXYWYAEBIP9AOnI5/+idhPLLkjBUFdT5iP55hTE3NZ6OUGIBrteBe5iJEqyqRw==}
     engines: {node: '>= 16'}
     hasBin: true
     peerDependencies:
