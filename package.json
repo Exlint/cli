@@ -62,7 +62,7 @@
 		"ink-spinner": "5.0.0",
 		"ink-task-list": "2.0.0",
 		"is-ci": "3.0.1",
-		"nest-commander": "3.9.0",
+		"nest-commander": "3.10.0",
 		"netrc-parser": "3.1.6",
 		"open": "9.1.0",
 		"react": "18.2.0",
