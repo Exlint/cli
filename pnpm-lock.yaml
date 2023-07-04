@@ -21,8 +21,8 @@ dependencies:
     specifier: 2.9.0
     version: 2.9.0
   envinfo:
-    specifier: 7.9.0
-    version: 7.9.0
+    specifier: 7.10.0
+    version: 7.10.0
   express:
     specifier: 4.18.2
     version: 4.18.2
@@ -3982,8 +3982,8 @@ packages:
     engines: {node: '>=0.12'}
     dev: true
 
-  /envinfo@7.9.0:
-    resolution: {integrity: sha512-RODB4txU+xImYDemN5DqaKC0CHk05XSVkOX4pq0hK26Qx+1LChkuOyUDlGEjYb3ACr0n9qBhFjg37hQuJvpkRQ==}
+  /envinfo@7.10.0:
+    resolution: {integrity: sha512-ZtUjZO6l5mwTHvc1L9+1q5p/R3wTopcfqMW8r5t8SJSKqeVI/LtajORwRFEKpEFuekjD0VBjwu1HMxL4UalIRw==}
     engines: {node: '>=4'}
     hasBin: true
     dev: false
