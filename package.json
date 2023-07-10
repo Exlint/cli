@@ -74,7 +74,7 @@
 		"@commitlint/cli": "17.6.6",
 		"@compodoc/compodoc": "1.1.21",
 		"@exlint.io/inflint": "2.0.0",
-		"@nestjs/cli": "10.1.0",
+		"@nestjs/cli": "10.1.1",
 		"@types/envinfo": "7.8.1",
 		"@types/express": "4.17.17",
 		"@types/fs-extra": "11.0.1",
