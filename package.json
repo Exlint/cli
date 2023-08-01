@@ -81,7 +81,7 @@
 		"@types/ink-divider": "2.0.2",
 		"@types/inquirer": "9.0.3",
 		"@types/is-ci": "3.0.0",
-		"@types/node": "18.17.0",
+		"@types/node": "18.17.1",
 		"@types/react": "18.2.16",
 		"@typescript-eslint/eslint-plugin": "5.62.0",
 		"@typescript-eslint/parser": "5.62.0",
