@@ -31,7 +31,7 @@ dependencies:
     version: 11.1.1
   ink:
     specifier: 4.3.0
-    version: 4.3.0(@types/react@18.2.17)(react@18.2.0)
+    version: 4.3.0(@types/react@18.2.18)(react@18.2.0)
   ink-divider:
     specifier: 3.0.0
     version: 3.0.0(ink@4.3.0)(react@18.2.0)
@@ -101,8 +101,8 @@ devDependencies:
     specifier: 18.17.1
     version: 18.17.1
   '@types/react':
-    specifier: 18.2.17
-    version: 18.2.17
+    specifier: 18.2.18
+    version: 18.2.18
   '@typescript-eslint/eslint-plugin':
     specifier: 5.62.0
     version: 5.62.0(@typescript-eslint/parser@5.62.0)(eslint@8.46.0)(typescript@5.1.6)
@@ -2180,7 +2180,7 @@ packages:
   /@types/ink-divider@2.0.2:
     resolution: {integrity: sha512-gY4kKSh1dNrZ++GQXW2KfMVexQfUsvE/LdUy7le5FSSeSemwk+u+ztHd+SMzfEjEHcCqpmRIQqKSrFOXLYCLHA==}
     dependencies:
-      '@types/react': 18.2.17
+      '@types/react': 18.2.18
     dev: true
 
   /@types/inquirer@9.0.3:
@@ -2247,8 +2247,8 @@ packages:
     resolution: {integrity: sha512-EEhsLsD6UsDM1yFhAvy0Cjr6VwmpMWqFBCb9w07wVugF7w9nfajxLuVmngTIpgS6svCnm6Vaw+MZhoDCKnOfsw==}
     dev: true
 
-  /@types/react@18.2.17:
-    resolution: {integrity: sha512-u+e7OlgPPh+aryjOm5UJMX32OvB2E3QASOAqVMY6Ahs90djagxwv2ya0IctglNbNTexC12qCSMZG47KPfy1hAA==}
+  /@types/react@18.2.18:
+    resolution: {integrity: sha512-da4NTSeBv/P34xoZPhtcLkmZuJ+oYaCxHmyHzwaDQo9RQPBeXV+06gEk2FpqEcsX9XrnNLvRpVh6bdavDSjtiQ==}
     dependencies:
       '@types/prop-types': 15.7.5
       '@types/scheduler': 0.16.3
@@ -5420,7 +5420,7 @@ packages:
       ink: '>=3.0.0'
       react: '>=16.8.0'
     dependencies:
-      ink: 4.3.0(@types/react@18.2.17)(react@18.2.0)
+      ink: 4.3.0(@types/react@18.2.18)(react@18.2.0)
       prop-types: 15.8.1
       react: 18.2.0
       string-width: 4.2.3
@@ -5434,7 +5434,7 @@ packages:
       react: '>=18.0.0'
     dependencies:
       cli-spinners: 2.9.0
-      ink: 4.3.0(@types/react@18.2.17)(react@18.2.0)
+      ink: 4.3.0(@types/react@18.2.18)(react@18.2.0)
       react: 18.2.0
     dev: false
 
@@ -5444,11 +5444,11 @@ packages:
       ink: '>=3.0.0'
       react: '>=16.8.0'
     dependencies:
-      ink: 4.3.0(@types/react@18.2.17)(react@18.2.0)
+      ink: 4.3.0(@types/react@18.2.18)(react@18.2.0)
       react: 18.2.0
     dev: false
 
-  /ink@4.3.0(@types/react@18.2.17)(react@18.2.0):
+  /ink@4.3.0(@types/react@18.2.18)(react@18.2.0):
     resolution: {integrity: sha512-c+/4o5/VdAy3jGU7Q+HB/tU0smIFEcpOJbP53WVL+pjcy1uBpPg0OmC7QVsTrAFwwIlGBxi9VOde6FiW83j1YA==}
     engines: {node: '>=14.16'}
     peerDependencies:
@@ -5462,7 +5462,7 @@ packages:
         optional: true
     dependencies:
       '@alcalzone/ansi-tokenize': 0.1.1
-      '@types/react': 18.2.17
+      '@types/react': 18.2.18
       ansi-escapes: 6.2.0
       auto-bind: 5.0.1
       chalk: 5.3.0
