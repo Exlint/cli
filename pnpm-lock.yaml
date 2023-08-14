@@ -30,17 +30,17 @@ dependencies:
     specifier: 11.1.1
     version: 11.1.1
   ink:
-    specifier: 4.3.0
-    version: 4.3.0(@types/react@18.2.18)(react@18.2.0)
+    specifier: 4.3.1
+    version: 4.3.1(@types/react@18.2.18)(react@18.2.0)
   ink-divider:
     specifier: 3.0.0
-    version: 3.0.0(ink@4.3.0)(react@18.2.0)
+    version: 3.0.0(ink@4.3.1)(react@18.2.0)
   ink-spinner:
     specifier: 5.0.0
-    version: 5.0.0(ink@4.3.0)(react@18.2.0)
+    version: 5.0.0(ink@4.3.1)(react@18.2.0)
   ink-task-list:
     specifier: 2.0.0
-    version: 2.0.0(ink@4.3.0)(react@18.2.0)
+    version: 2.0.0(ink@4.3.1)(react@18.2.0)
   is-ci:
     specifier: 3.0.1
     version: 3.0.1
@@ -181,9 +181,9 @@ packages:
     resolution: {integrity: sha512-KI2nVf9JdwWCXqK6RVf+9/096G7VWN4Z84mnynlyZKao2xQENW8WNEjLmvdlxS5X8PNWXFC1zqwm7tveOXw/4A==}
     dev: true
 
-  /@alcalzone/ansi-tokenize@0.1.1:
-    resolution: {integrity: sha512-0ePcNHsuFOdSZRTkcp6rD/EF6Ls4f2OzBBwXltsk8hHadr6PPKiL/obFrMwoff+twCTdNuvSKywGGPLD2OXV6A==}
-    engines: {node: '>=16'}
+  /@alcalzone/ansi-tokenize@0.1.2:
+    resolution: {integrity: sha512-/9Wcb0XV6jhvbn0UsL0CPBYKRWjSN0Er2vrrhFDNy0IMIvZ7pWBLwOZbFKTlyYCr1Q+UBXb1hWM4czT2FOfT+A==}
+    engines: {node: '>=14.13.1'}
     dependencies:
       ansi-styles: 6.2.1
       is-fullwidth-code-point: 4.0.0
@@ -5413,20 +5413,20 @@ packages:
     resolution: {integrity: sha512-JV/yugV2uzW5iMRSiZAyDtQd+nxtUnjeLt0acNdw98kKLrvuRVyB80tsREOE7yvGVgalhZ6RNXCmEHkUKBKxew==}
     dev: true
 
-  /ink-divider@3.0.0(ink@4.3.0)(react@18.2.0):
+  /ink-divider@3.0.0(ink@4.3.1)(react@18.2.0):
     resolution: {integrity: sha512-Mqb9WArtEZCtXw622aHhJqPK157QNc+8ssl9/RvAZlS6nZRCKyW4mYOYCudQh6dSuFGt9eG5yaqT1mJaGmwu+w==}
     engines: {node: '>=6'}
     peerDependencies:
       ink: '>=3.0.0'
       react: '>=16.8.0'
     dependencies:
-      ink: 4.3.0(@types/react@18.2.18)(react@18.2.0)
+      ink: 4.3.1(@types/react@18.2.18)(react@18.2.0)
       prop-types: 15.8.1
       react: 18.2.0
       string-width: 4.2.3
     dev: false
 
-  /ink-spinner@5.0.0(ink@4.3.0)(react@18.2.0):
+  /ink-spinner@5.0.0(ink@4.3.1)(react@18.2.0):
     resolution: {integrity: sha512-EYEasbEjkqLGyPOUc8hBJZNuC5GvXGMLu0w5gdTNskPc7Izc5vO3tdQEYnzvshucyGCBXc86ig0ujXPMWaQCdA==}
     engines: {node: '>=14.16'}
     peerDependencies:
@@ -5434,22 +5434,22 @@ packages:
       react: '>=18.0.0'
     dependencies:
       cli-spinners: 2.9.0
-      ink: 4.3.0(@types/react@18.2.18)(react@18.2.0)
+      ink: 4.3.1(@types/react@18.2.18)(react@18.2.0)
       react: 18.2.0
     dev: false
 
-  /ink-task-list@2.0.0(ink@4.3.0)(react@18.2.0):
+  /ink-task-list@2.0.0(ink@4.3.1)(react@18.2.0):
     resolution: {integrity: sha512-+WadfalLGUrYT/5D4cHeShN73t5urEsI5VOwFYw3qNWdOL+GQVTLbTS0tCZkzIcBcL+dfZcQAtuoW56ZBZV+Bg==}
     peerDependencies:
       ink: '>=3.0.0'
       react: '>=16.8.0'
     dependencies:
-      ink: 4.3.0(@types/react@18.2.18)(react@18.2.0)
+      ink: 4.3.1(@types/react@18.2.18)(react@18.2.0)
       react: 18.2.0
     dev: false
 
-  /ink@4.3.0(@types/react@18.2.18)(react@18.2.0):
-    resolution: {integrity: sha512-c+/4o5/VdAy3jGU7Q+HB/tU0smIFEcpOJbP53WVL+pjcy1uBpPg0OmC7QVsTrAFwwIlGBxi9VOde6FiW83j1YA==}
+  /ink@4.3.1(@types/react@18.2.18)(react@18.2.0):
+    resolution: {integrity: sha512-XlH5AiZRLIC4cF+eMgZLsB/feHCDT7lUtHXK4pe8ULGrC6mNosrYidzJr8CRY0P+hK7UmZ1rLO+ufdox53+NQg==}
     engines: {node: '>=14.16'}
     peerDependencies:
       '@types/react': '>=18.0.0'
@@ -5461,7 +5461,7 @@ packages:
       react-devtools-core:
         optional: true
     dependencies:
-      '@alcalzone/ansi-tokenize': 0.1.1
+      '@alcalzone/ansi-tokenize': 0.1.2
       '@types/react': 18.2.18
       ansi-escapes: 6.2.0
       auto-bind: 5.0.1
