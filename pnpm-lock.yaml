@@ -18,8 +18,8 @@ dependencies:
     specifier: 5.3.0
     version: 5.3.0
   cli-spinners:
-    specifier: 2.9.0
-    version: 2.9.0
+    specifier: 2.9.1
+    version: 2.9.1
   envinfo:
     specifier: 7.10.0
     version: 7.10.0
@@ -3300,8 +3300,8 @@ packages:
     dependencies:
       restore-cursor: 4.0.0
 
-  /cli-spinners@2.9.0:
-    resolution: {integrity: sha512-4/aL9X3Wh0yiMQlE+eeRhWP6vclO3QRtw1JHKIT0FFUs5FjpFmESqtMvYZ0+lbzBw900b95mS0hohy+qn2VK/g==}
+  /cli-spinners@2.9.1:
+    resolution: {integrity: sha512-jHgecW0pxkonBJdrKsqxgRX9AcG+u/5k0Q7WPDfi8AogLAdwxEkyYYNWwZ5GvVFoFx2uiY1eNcSK00fh+1+FyQ==}
     engines: {node: '>=6'}
 
   /cli-table3@0.6.3:
@@ -5520,7 +5520,7 @@ packages:
       ink: '>=4.0.0'
       react: '>=18.0.0'
     dependencies:
-      cli-spinners: 2.9.0
+      cli-spinners: 2.9.1
       ink: 4.4.1(@types/react@18.2.21)(react@18.2.0)
       react: 18.2.0
     dev: false
@@ -6982,7 +6982,7 @@ packages:
       bl: 4.1.0
       chalk: 4.1.2
       cli-cursor: 3.1.0
-      cli-spinners: 2.9.0
+      cli-spinners: 2.9.1
       is-interactive: 1.0.0
       is-unicode-supported: 0.1.0
       log-symbols: 4.1.0
