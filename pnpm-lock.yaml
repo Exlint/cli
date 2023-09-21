@@ -86,8 +86,8 @@ devDependencies:
     specifier: 4.17.17
     version: 4.17.17
   '@types/fs-extra':
-    specifier: 11.0.1
-    version: 11.0.1
+    specifier: 11.0.2
+    version: 11.0.2
   '@types/ink-divider':
     specifier: 2.0.2
     version: 2.0.2
@@ -2176,8 +2176,8 @@ packages:
       '@types/serve-static': 1.15.1
     dev: true
 
-  /@types/fs-extra@11.0.1:
-    resolution: {integrity: sha512-MxObHvNl4A69ofaTRU8DFqvgzzv8s9yRtaPPm5gud9HDNvpB3GPQFvNuTWAI59B9huVGV5jXYJwbCsmBsOGYWA==}
+  /@types/fs-extra@11.0.2:
+    resolution: {integrity: sha512-c0hrgAOVYr21EX8J0jBMXGLMgJqVf/v6yxi0dLaJboW9aQPh16Id+z6w2Tx1hm+piJOLv8xPfVKZCLfjPw/IMQ==}
     dependencies:
       '@types/jsonfile': 6.1.1
       '@types/node': 18.17.15
