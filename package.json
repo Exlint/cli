@@ -82,7 +82,7 @@
 		"@types/inquirer": "9.0.4",
 		"@types/is-ci": "3.0.1",
 		"@types/node": "18.18.4",
-		"@types/react": "18.2.25",
+		"@types/react": "18.2.27",
 		"@typescript-eslint/eslint-plugin": "5.62.0",
 		"@typescript-eslint/parser": "5.62.0",
 		"commitizen": "4.3.0",
