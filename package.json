@@ -103,7 +103,7 @@
 		"prettier": "2.8.8",
 		"ts-loader": "9.5.0",
 		"typescript": "5.2.2",
-		"webpack": "5.88.2",
+		"webpack": "5.89.0",
 		"webpack-merge": "5.9.0"
 	},
 	"peerDependencies": {
