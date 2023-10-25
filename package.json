@@ -72,7 +72,7 @@
 	},
 	"devDependencies": {
 		"@commitlint/cli": "17.8.0",
-		"@compodoc/compodoc": "1.1.21",
+		"@compodoc/compodoc": "1.1.22",
 		"@exlint.io/inflint": "2.0.0",
 		"@nestjs/cli": "10.1.18",
 		"@types/envinfo": "7.8.2",
