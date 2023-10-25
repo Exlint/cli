@@ -80,8 +80,8 @@ devDependencies:
     specifier: 10.1.18
     version: 10.1.18
   '@types/envinfo':
-    specifier: 7.8.1
-    version: 7.8.1
+    specifier: 7.8.2
+    version: 7.8.2
   '@types/express':
     specifier: 4.17.19
     version: 4.17.19
@@ -2240,8 +2240,8 @@ packages:
       '@types/node': 18.18.5
     dev: true
 
-  /@types/envinfo@7.8.1:
-    resolution: {integrity: sha512-pTyshpmGxqB9lRwG75v2YR0oqKYpCrklOYlZWQ88z/JB0fimT8EVmYekuIwpU3IxPZDHSXCqXKzkCrtAcKY25g==}
+  /@types/envinfo@7.8.2:
+    resolution: {integrity: sha512-+EN0gwh9Ux20cLgh2N1lyZ2ufu0tL/KTtfin6omrtU1etKR5EggK1DUIpxIRlQT2/rQHFMbsh7ppc7MfZ5iVfw==}
     dev: true
 
   /@types/eslint-scope@3.7.4:
