@@ -80,7 +80,7 @@
 		"@types/fs-extra": "11.0.4",
 		"@types/ink-divider": "2.0.4",
 		"@types/inquirer": "9.0.7",
-		"@types/is-ci": "3.0.3",
+		"@types/is-ci": "3.0.4",
 		"@types/node": "18.18.8",
 		"@types/react": "18.2.36",
 		"@typescript-eslint/eslint-plugin": "5.62.0",

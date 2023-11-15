@@ -95,8 +95,8 @@ devDependencies:
     specifier: 9.0.7
     version: 9.0.7
   '@types/is-ci':
-    specifier: 3.0.3
-    version: 3.0.3
+    specifier: 3.0.4
+    version: 3.0.4
   '@types/node':
     specifier: 18.18.8
     version: 18.18.8
@@ -2291,8 +2291,8 @@ packages:
       '@types/through': 0.0.30
       rxjs: 7.8.1
 
-  /@types/is-ci@3.0.3:
-    resolution: {integrity: sha512-FdHbjLiN2e8fk9QYQyVYZrK8svUDJpxSaSWLUga8EZS1RGAvvrqM9zbVARBtQuYPeLgnJxM2xloOswPwj1o2cQ==}
+  /@types/is-ci@3.0.4:
+    resolution: {integrity: sha512-AkCYCmwlXeuH89DagDCzvCAyltI2v9lh3U3DqSg/GrBYoReAaWwxfXCqMx9UV5MajLZ4ZFwZzV4cABGIxk2XRw==}
     dependencies:
       ci-info: 3.8.0
     dev: true
