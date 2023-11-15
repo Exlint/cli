@@ -46,7 +46,7 @@ dependencies:
     version: 3.0.1
   nest-commander:
     specifier: 3.12.0
-    version: 3.12.0(@nestjs/common@10.0.0)(@nestjs/core@10.0.0)(@types/inquirer@9.0.6)
+    version: 3.12.0(@nestjs/common@10.0.0)(@nestjs/core@10.0.0)(@types/inquirer@9.0.7)
   netrc-parser:
     specifier: 3.1.6
     version: 3.1.6
@@ -92,8 +92,8 @@ devDependencies:
     specifier: 2.0.4
     version: 2.0.4
   '@types/inquirer':
-    specifier: 9.0.6
-    version: 9.0.6
+    specifier: 9.0.7
+    version: 9.0.7
   '@types/is-ci':
     specifier: 3.0.3
     version: 3.0.3
@@ -2285,8 +2285,8 @@ packages:
       '@types/react': 18.2.36
     dev: true
 
-  /@types/inquirer@9.0.6:
-    resolution: {integrity: sha512-1Go1AAP/yOy3Pth5Xf1DC3nfZ03cJLCPx6E2YnSN/5I3w1jHBVH4170DkZ+JxfmA7c9kL9+bf9z3FRGa4kNAqg==}
+  /@types/inquirer@9.0.7:
+    resolution: {integrity: sha512-Q0zyBupO6NxGRZut/JdmqYKOnN95Eg5V8Csg3PGKkP+FnvsUZx1jAyK7fztIszxxMuoBA6E3KXWvdZVXIpx60g==}
     dependencies:
       '@types/through': 0.0.30
       rxjs: 7.8.1
@@ -6822,7 +6822,7 @@ packages:
     resolution: {integrity: sha512-Yd3UES5mWCSqR+qNT93S3UoYUkqAZ9lLg8a7g9rimsWmYGK8cVToA4/sF3RrshdyV3sAGMXVUmpMYOw+dLpOuw==}
     dev: true
 
-  /nest-commander@3.12.0(@nestjs/common@10.0.0)(@nestjs/core@10.0.0)(@types/inquirer@9.0.6):
+  /nest-commander@3.12.0(@nestjs/common@10.0.0)(@nestjs/core@10.0.0)(@types/inquirer@9.0.7):
     resolution: {integrity: sha512-6ncAT13l7lH9Hya3GKKOIG+ltRD7b4idTlbuNXaCsm2IJIuuVxnx35UxiogJPz+GarE437H3I+GJXzehBnDQqg==}
     peerDependencies:
       '@nestjs/common': ^8.0.0 || ^9.0.0 || ^10.0.0
@@ -6833,7 +6833,7 @@ packages:
       '@golevelup/nestjs-discovery': 4.0.0(@nestjs/common@10.0.0)(@nestjs/core@10.0.0)
       '@nestjs/common': 10.0.0(reflect-metadata@0.1.13)(rxjs@7.8.1)
       '@nestjs/core': 10.0.0(@nestjs/common@10.0.0)(reflect-metadata@0.1.13)(rxjs@7.8.1)
-      '@types/inquirer': 9.0.6
+      '@types/inquirer': 9.0.7
       commander: 11.0.0
       cosmiconfig: 8.2.0
       inquirer: 8.2.5
