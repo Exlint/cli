@@ -89,8 +89,8 @@ devDependencies:
     specifier: 11.0.4
     version: 11.0.4
   '@types/ink-divider':
-    specifier: 2.0.3
-    version: 2.0.3
+    specifier: 2.0.4
+    version: 2.0.4
   '@types/inquirer':
     specifier: 9.0.6
     version: 9.0.6
@@ -2279,8 +2279,8 @@ packages:
       '@types/node': 18.18.8
     dev: true
 
-  /@types/ink-divider@2.0.3:
-    resolution: {integrity: sha512-vI3F1MwZRRsPeP6At6RmxP3cBkwp1I5HwFiA8qRC0LXgPbn/XW1058vez+nxP17SJ1trLvU0O3ByH1iULacUWw==}
+  /@types/ink-divider@2.0.4:
+    resolution: {integrity: sha512-9edcdEh7JMnkI0CZ4mI8xZ4Gc9cQO3v5+7peJvamWcvJVZKHzmEGorWdgeIu4o86QnwRP3k4Uipnxgh9ljx3iQ==}
     dependencies:
       '@types/react': 18.2.36
     dev: true
