@@ -74,8 +74,8 @@ devDependencies:
     specifier: 1.1.22
     version: 1.1.22(typescript@5.2.2)
   '@exlint.io/inflint':
-    specifier: 2.0.1
-    version: 2.0.1
+    specifier: 2.0.2
+    version: 2.0.2
   '@nestjs/cli':
     specifier: 10.2.1
     version: 10.2.1
@@ -1875,8 +1875,8 @@ packages:
     engines: {node: ^12.22.0 || ^14.17.0 || >=16.0.0}
     dev: true
 
-  /@exlint.io/inflint@2.0.1:
-    resolution: {integrity: sha512-PuIIosegrJIQEso0uJhtON75zLv6BhSkjlNcTHvtNdWb4nkVqqPeCGDj7mLgpx98Q2L/4NAQr3Cpgk0rOfZDXQ==}
+  /@exlint.io/inflint@2.0.2:
+    resolution: {integrity: sha512-5MmhXn/fKKkRngEHWBfD0uSmLBw7WnqqHUv7xQJSz/ORUe23+Pg/HMeX03V57yPHAuY8esinG0Ul9S9WK+EBaw==}
     engines: {node: '>=14.16'}
     hasBin: true
     dependencies:
