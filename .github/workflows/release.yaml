@@ -21,7 +21,7 @@ jobs:
                   package-manager-version: 7.25.0
 
             - name: Semantic Release
-              uses: cycjimmy/semantic-release-action@v3.4.2
+              uses: cycjimmy/semantic-release-action@v4.0.0
               with:
                   extra_plugins: |
                       @semantic-release/changelog
