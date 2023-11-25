@@ -155,8 +155,8 @@ devDependencies:
     specifier: 7.2.0
     version: 7.2.0
   prettier:
-    specifier: 2.8.8
-    version: 2.8.8
+    specifier: 3.1.0
+    version: 3.1.0
   ts-loader:
     specifier: 9.5.0
     version: 9.5.0(typescript@5.2.2)(webpack@5.89.0)
@@ -7540,6 +7540,13 @@ packages:
     resolution: {integrity: sha512-tdN8qQGvNjw4CHbY+XXk0JgCXn9QiF21a55rBe5LJAU+kDyC4WQn4+awm2Xfk2lQMk5fKup9XgzTZtGkjBdP9Q==}
     engines: {node: '>=10.13.0'}
     hasBin: true
+    dev: false
+
+  /prettier@3.1.0:
+    resolution: {integrity: sha512-TQLvXjq5IAibjh8EpBIkNKxO749UEWABoiIZehEPiY4GNpVdhaFKqSTu+QrlU6D2dPAfubRmtJTi4K4YkQ5eXw==}
+    engines: {node: '>=14'}
+    hasBin: true
+    dev: true
 
   /process-nextick-args@2.0.1:
     resolution: {integrity: sha512-3ouUOpQhtgrbOa17J7+uxOTpITYWaGP7/AhoR3+A+/1e9skrzelGi/dXzEYyvbxubEF6Wn2ypscTKiKJFFn1ag==}
