@@ -68,8 +68,8 @@ dependencies:
 
 devDependencies:
   '@commitlint/cli':
-    specifier: 18.4.2
-    version: 18.4.2(typescript@5.3.2)
+    specifier: 18.4.3
+    version: 18.4.3(typescript@5.3.2)
   '@compodoc/compodoc':
     specifier: 1.1.22
     version: 1.1.22(typescript@5.3.2)
@@ -1576,8 +1576,8 @@ packages:
     dev: true
     optional: true
 
-  /@commitlint/cli@18.4.2(typescript@5.3.2):
-    resolution: {integrity: sha512-dDfb2+wzeQe6ogdHNHOy0J0nraok+La0BoxamNMhBOng9/5GoESPDmKUJ1Lt1oivh5MfIgZh0Vm6f0rxkB8CoA==}
+  /@commitlint/cli@18.4.3(typescript@5.3.2):
+    resolution: {integrity: sha512-zop98yfB3A6NveYAZ3P1Mb6bIXuCeWgnUfVNkH4yhIMQpQfzFwseadazOuSn0OOfTt0lWuFauehpm9GcqM5lww==}
     engines: {node: '>=v18'}
     hasBin: true
     dependencies:
@@ -7845,7 +7845,7 @@ packages:
     resolution: {integrity: sha512-Sb+mjNHOULsBv818T40qSPeRiuWLyaGMa5ewydRLFimneixmVy2zdivRl+AF6jaYPC8ERxGDmFSiqui6SfPd+g==}
     hasBin: true
     dependencies:
-      is-core-module: 2.13.0
+      is-core-module: 2.13.1
       path-parse: 1.0.7
       supports-preserve-symlinks-flag: 1.0.0
     dev: true
@@ -7854,7 +7854,7 @@ packages:
     resolution: {integrity: sha512-P8ur/gp/AmbEzjr729bZnLjXK5Z+4P0zhIJgBgzqRih7hL7BOukHGtSTA3ACMY467GRFz3duQsi0bDZdR7DKdw==}
     hasBin: true
     dependencies:
-      is-core-module: 2.13.0
+      is-core-module: 2.13.1
       path-parse: 1.0.7
       supports-preserve-symlinks-flag: 1.0.0
     dev: true
