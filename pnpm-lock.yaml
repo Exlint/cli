@@ -116,8 +116,8 @@ devDependencies:
     specifier: 7.0.3
     version: 7.0.3
   cz-vinyl:
-    specifier: 2.4.1
-    version: 2.4.1(@types/node@20.9.4)(inquirer@8.2.6)(typescript@5.3.2)
+    specifier: 2.4.2
+    version: 2.4.2(@types/node@20.9.4)(inquirer@8.2.6)(typescript@5.3.2)
   depcheck:
     specifier: 1.4.7
     version: 1.4.7
@@ -3871,15 +3871,15 @@ packages:
       conventional-commit-types: 3.0.0
       lodash.map: 4.6.0
       longest: 2.0.1
-      word-wrap: 1.2.3
+      word-wrap: 1.2.5
     optionalDependencies:
       '@commitlint/load': 18.4.3(typescript@5.3.2)
     transitivePeerDependencies:
       - typescript
     dev: true
 
-  /cz-vinyl@2.4.1(@types/node@20.9.4)(inquirer@8.2.6)(typescript@5.3.2):
-    resolution: {integrity: sha512-vrZhOIiFKylP6ZJmDI6bJ18bGwsHH8FQfq/06MzLTlcmJSS3tUBIAUdma1LhCdbL2y3t/exlNTrA3TdkzG3cXg==}
+  /cz-vinyl@2.4.2(@types/node@20.9.4)(inquirer@8.2.6)(typescript@5.3.2):
+    resolution: {integrity: sha512-/q6emzC2XpzCepFZoqMNfTLlNtW2CtzLzsPid/3Kon0Fg8vVmYdRaWkWlEyAyL9d4Dp+1np3t6dJfiV6E3571w==}
     engines: {node: '>=14.16'}
     dependencies:
       cosmiconfig: 8.3.6(typescript@5.3.2)
@@ -9255,11 +9255,6 @@ packages:
     engines: {node: '>=10'}
     dependencies:
       execa: 4.1.0
-    dev: true
-
-  /word-wrap@1.2.3:
-    resolution: {integrity: sha512-Hz/mrNwitNRh/HUAtM/VT/5VH+ygD6DV7mYKZAtHOrbs8U7lvPS6xf7EJKMF0uW1KJCl0H701g3ZGus+muE5vQ==}
-    engines: {node: '>=0.10.0'}
     dev: true
 
   /word-wrap@1.2.5:
