@@ -116,8 +116,8 @@ devDependencies:
     specifier: 7.0.3
     version: 7.0.3
   cz-vinyl:
-    specifier: 2.4.2
-    version: 2.4.2(@types/node@20.9.5)(inquirer@8.2.6)(typescript@5.3.2)
+    specifier: 2.4.3
+    version: 2.4.3(@types/node@20.9.5)(inquirer@8.2.6)(typescript@5.3.2)
   depcheck:
     specifier: 1.4.7
     version: 1.4.7
@@ -3878,8 +3878,8 @@ packages:
       - typescript
     dev: true
 
-  /cz-vinyl@2.4.2(@types/node@20.9.5)(inquirer@8.2.6)(typescript@5.3.2):
-    resolution: {integrity: sha512-/q6emzC2XpzCepFZoqMNfTLlNtW2CtzLzsPid/3Kon0Fg8vVmYdRaWkWlEyAyL9d4Dp+1np3t6dJfiV6E3571w==}
+  /cz-vinyl@2.4.3(@types/node@20.9.5)(inquirer@8.2.6)(typescript@5.3.2):
+    resolution: {integrity: sha512-Rncx5HvJnwumgDuxPbGtbtkXMVsLTs6TrHR6DJi/EAZZoGUoUHcGPlm5DMGaCpM4/2hlkqtsWHspuqHk06C5OA==}
     engines: {node: '>=14.16'}
     dependencies:
       cosmiconfig: 8.3.6(typescript@5.3.2)
