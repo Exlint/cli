@@ -116,8 +116,8 @@ devDependencies:
     specifier: 7.0.3
     version: 7.0.3
   cz-vinyl:
-    specifier: 2.4.3
-    version: 2.4.3(@types/node@20.10.0)(inquirer@8.2.6)(typescript@5.3.2)
+    specifier: 2.5.0
+    version: 2.5.0(@types/node@20.10.0)(inquirer@8.2.6)(typescript@5.3.2)
   depcheck:
     specifier: 1.4.7
     version: 1.4.7
@@ -3737,7 +3737,7 @@ packages:
       typescript: 5.3.2
     dev: true
 
-  /cosmiconfig-typescript-loader@5.0.0(@types/node@20.10.0)(cosmiconfig@8.3.6)(typescript@5.3.2):
+  /cosmiconfig-typescript-loader@5.0.0(@types/node@20.10.0)(cosmiconfig@9.0.0)(typescript@5.3.2):
     resolution: {integrity: sha512-+8cK7jRAReYkMwMiG+bxhcNKiHJDM6bR9FD/nGBXOWdMLuYawjF5cGrtLilJ+LGd3ZjCXnJjR5DkfWPoIVlqJA==}
     engines: {node: '>=v16'}
     peerDependencies:
@@ -3746,7 +3746,7 @@ packages:
       typescript: '>=4'
     dependencies:
       '@types/node': 20.10.0
-      cosmiconfig: 8.3.6(typescript@5.3.2)
+      cosmiconfig: 9.0.0(typescript@5.3.2)
       jiti: 1.21.0
       typescript: 5.3.2
     dev: true
@@ -3802,6 +3802,22 @@ packages:
       parse-json: 5.2.0
       path-type: 4.0.0
       typescript: 5.3.2
+
+  /cosmiconfig@9.0.0(typescript@5.3.2):
+    resolution: {integrity: sha512-itvL5h8RETACmOTFc4UfIyB2RfEHi71Ax6E/PivVxq9NseKbOWpeyHEOIbmAw1rs8Ak0VursQNww7lf7YtUwzg==}
+    engines: {node: '>=14'}
+    peerDependencies:
+      typescript: '>=4.9.5'
+    peerDependenciesMeta:
+      typescript:
+        optional: true
+    dependencies:
+      env-paths: 2.2.1
+      import-fresh: 3.3.0
+      js-yaml: 4.1.0
+      parse-json: 5.2.0
+      typescript: 5.3.2
+    dev: true
 
   /cross-env@7.0.3:
     resolution: {integrity: sha512-+/HKd6EgcQCJGh2PSjZuUitQBQynKor4wrFbRg4DtAgS1aWO+gU52xpH7M9ScGgXSYmAVS9bIJ8EzuaGw0oNAw==}
@@ -3878,16 +3894,16 @@ packages:
       - typescript
     dev: true
 
-  /cz-vinyl@2.4.3(@types/node@20.10.0)(inquirer@8.2.6)(typescript@5.3.2):
-    resolution: {integrity: sha512-Rncx5HvJnwumgDuxPbGtbtkXMVsLTs6TrHR6DJi/EAZZoGUoUHcGPlm5DMGaCpM4/2hlkqtsWHspuqHk06C5OA==}
+  /cz-vinyl@2.5.0(@types/node@20.10.0)(inquirer@8.2.6)(typescript@5.3.2):
+    resolution: {integrity: sha512-fBqe4TX+fwx0XJ0CmSTumYBOvlz2mDYj2M/pvXr1BNGegjJPZvcX7vyVUo8/zgb2PI35ZIQekYdVS1itF+mh3Q==}
     engines: {node: '>=14.16'}
     dependencies:
-      cosmiconfig: 8.3.6(typescript@5.3.2)
-      cosmiconfig-typescript-loader: 5.0.0(@types/node@20.10.0)(cosmiconfig@8.3.6)(typescript@5.3.2)
+      cosmiconfig: 9.0.0(typescript@5.3.2)
+      cosmiconfig-typescript-loader: 5.0.0(@types/node@20.10.0)(cosmiconfig@9.0.0)(typescript@5.3.2)
       fuse.js: 7.0.0
       inquirer-autocomplete-prompt: 2.0.1(inquirer@8.2.6)
       inquirer-maxlength-input-prompt: 1.0.2
-      openai: 4.15.0
+      openai: 4.20.0
       string-template: 1.0.0
       word-wrap: 1.2.5
       zod: 3.22.4
@@ -4216,6 +4232,11 @@ packages:
   /entities@4.5.0:
     resolution: {integrity: sha512-V0hjH4dGPh9Ao5p0MoRY6BVqtwCjhz6vI5LT8AJ55H+4g9/4vbHx1I54fS0XuclLhDHArPQCiMjDxjaL8fPxhw==}
     engines: {node: '>=0.12'}
+    dev: true
+
+  /env-paths@2.2.1:
+    resolution: {integrity: sha512-+h1lkLKhZMTYjog1VEpJNG7NZJWcuc2DDk/qsqSTRRCOXiLjeQ1d1/udrUGhqMxUgAlwKNZ0cf2uqan5GLuS2A==}
+    engines: {node: '>=6'}
     dev: true
 
   /envinfo@7.11.0:
@@ -7210,8 +7231,8 @@ packages:
       is-inside-container: 1.0.0
       is-wsl: 2.2.0
 
-  /openai@4.15.0:
-    resolution: {integrity: sha512-LPNgtG9gxRphH+7AUM5Q/dS/iWuM0UOKf+723e2kvyENNVMjYFrnQjCdcb2nNJY7+ao+J2jP/PfsXBLN8Si7iA==}
+  /openai@4.20.0:
+    resolution: {integrity: sha512-VbAYerNZFfIIeESS+OL9vgDkK8Mnri55n+jN0UN/HZeuM0ghGh6nDN6UGRZxslNgyJ7XmY/Ca9DO4YYyvrszGA==}
     hasBin: true
     dependencies:
       '@types/node': 18.18.13
