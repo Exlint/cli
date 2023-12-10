@@ -116,10 +116,6 @@ You can run your centralized Exlint compliance also in CI. If you want to integr
 Exlint does not and will not, in any way, view / copy / obtain access or intrude user code. Our CLI is 100% open source and will stay this way.
 Open source libraries should stay open source, and not used as a means to an end of obscuring privacy.
 
-## Support
-
-Currently we offer support through Discussions and Issues, but you can always reach out on contact@exlint.io.
-
 ## Contributing
 
 Development of Exlint CLI happens in the open on GitHub, and we are grateful to the community for contributing bugfixes and improvements.
