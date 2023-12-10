@@ -17,7 +17,7 @@
 
 <p align="center"><img src="./assets/brand.png" width="80%"/></p>
 
-<h2 align="center">Exlint CLI Open Beta</h2>
+<h2 align="center">Exlint CLI (Not Maintained)</h2>
 
 **👩🏻‍💻 Centralized Code Standards**: Keep your code clean and standardized over multiple repositories.
 
