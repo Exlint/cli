@@ -13,18 +13,6 @@
   	</a>
 </p>
 
-<p align="center">
-	<a href="https://docs.exlint.io/#quickstart">
-    	<img src="https://img.shields.io/badge/Quick_Start-blue?style=flat&logoColor=white&logo=DocuSign" alt="version">
-  	</a>
-		<a href="https://docs.exlint.io">
-    	<img src="https://img.shields.io/badge/Documentations-purple?style=flat&logoColor=white&logo=gitbook" alt="npm license">
-  	</a>
-		<a href="https://join.slack.com/t/exlint-io/shared_invite/zt-1ombwjchz-iKziYNc~eZuNUy2gH68N1w">
-    	<img src="https://img.shields.io/badge/Slack-yellow?style=flat&logoColor=white&logo=slack" alt="version">
-  	</a>
-</p>
-
 <p>&nbsp;</p>
 
 <p align="center"><img src="./assets/brand.png" width="80%"/></p>
@@ -36,10 +24,6 @@
 **📦️ Grouped & Sharable Compliances**: Share and run your coding conventions over any repositories.
 
 **🚀 CI Workflow**: Integrate Exlint into your workflow to continuously prevent coding bad practices.
-
-<p align="right"><em>See more on <a href="https://exlint.io">exlint.io</a></em></p>
-
-<p align="right"><em>Exlint is in open beta and still under development! Help us by giving feedback and contributing.</em></p>
 
 ## Table of Contents
 
