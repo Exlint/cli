@@ -66,7 +66,7 @@
 		"netrc-parser": "3.1.6",
 		"open": "9.1.0",
 		"react": "18.2.0",
-		"reflect-metadata": "^0.1.13",
+		"reflect-metadata": "^0.2.0",
 		"rxjs": "7.8.1",
 		"v8-compile-cache": "2.4.0"
 	},
