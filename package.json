@@ -71,7 +71,7 @@
 		"v8-compile-cache": "2.4.0"
 	},
 	"devDependencies": {
-		"@commitlint/cli": "18.4.4",
+		"@commitlint/cli": "18.5.0",
 		"@compodoc/compodoc": "1.1.23",
 		"@exlint.io/inflint": "2.0.2",
 		"@nestjs/cli": "10.3.0",
