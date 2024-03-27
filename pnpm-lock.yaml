@@ -74,8 +74,8 @@ devDependencies:
     specifier: 1.1.23
     version: 1.1.23(typescript@5.4.3)
   '@exlint.io/inflint':
-    specifier: 2.0.2
-    version: 2.0.2
+    specifier: 2.1.1
+    version: 2.1.1(@types/node@20.11.30)(typescript@5.4.3)
   '@nestjs/cli':
     specifier: 10.3.2
     version: 10.3.2
@@ -1928,18 +1928,22 @@ packages:
     engines: {node: ^12.22.0 || ^14.17.0 || >=16.0.0}
     dev: true
 
-  /@exlint.io/inflint@2.0.2:
-    resolution: {integrity: sha512-5MmhXn/fKKkRngEHWBfD0uSmLBw7WnqqHUv7xQJSz/ORUe23+Pg/HMeX03V57yPHAuY8esinG0Ul9S9WK+EBaw==}
+  /@exlint.io/inflint@2.1.1(@types/node@20.11.30)(typescript@5.4.3):
+    resolution: {integrity: sha512-sWgdh7iv2CR8EuqirZbtndooLPjIysOyZ0ojpK3F9o3hnceCVi8JDxYBHveZPXiBol5ivccH8KyoXO6empktmw==}
     engines: {node: '>=14.16'}
     hasBin: true
     dependencies:
       '@expo/spawn-async': 1.7.2
       chalk: 5.3.0
-      cosmiconfig: 8.1.3
+      cosmiconfig: 8.3.6(typescript@5.4.3)
+      cosmiconfig-typescript-loader: 5.0.0(@types/node@20.11.30)(cosmiconfig@8.3.6)(typescript@5.4.3)
       fast-glob: 3.3.1
       micromatch: 4.0.5
       minimist: 1.2.8
       v8-compile-cache: 2.4.0
+    transitivePeerDependencies:
+      - '@types/node'
+      - typescript
     dev: true
 
   /@expo/spawn-async@1.7.2:
@@ -3908,16 +3912,6 @@ packages:
       yaml: 1.10.2
     dev: true
 
-  /cosmiconfig@8.1.3:
-    resolution: {integrity: sha512-/UkO2JKI18b5jVMJUp0lvKFMpa/Gye+ZgZjKD+DGEN9y7NRcf/nK1A0sp67ONmKtnDCNMS44E6jrk0Yc3bDuUw==}
-    engines: {node: '>=14'}
-    dependencies:
-      import-fresh: 3.3.0
-      js-yaml: 4.1.0
-      parse-json: 5.2.0
-      path-type: 4.0.0
-    dev: true
-
   /cosmiconfig@8.3.6(typescript@5.3.3):
     resolution: {integrity: sha512-kcZ6+W5QzcJ3P1Mt+83OUv/oHFqZHIx8DuxG6eZ5RGMERoLqp4BuGjhHLYGK+Kf5XVkQvqBSmAy/nGWN3qDgEA==}
     engines: {node: '>=14'}
@@ -5652,7 +5646,7 @@ packages:
     dependencies:
       array-union: 2.1.0
       dir-glob: 3.0.1
-      fast-glob: 3.3.1
+      fast-glob: 3.3.2
       ignore: 5.2.4
       merge2: 1.4.1
       slash: 3.0.0
