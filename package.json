@@ -65,7 +65,7 @@
 		"nest-commander": "3.13.0",
 		"netrc-parser": "3.1.6",
 		"open": "9.1.0",
-		"react": "18.2.0",
+		"react": "18.3.1",
 		"reflect-metadata": "^0.2.0",
 		"rxjs": "7.8.1",
 		"v8-compile-cache": "2.4.0"
@@ -82,7 +82,7 @@
 		"@types/inquirer": "9.0.7",
 		"@types/is-ci": "3.0.4",
 		"@types/node": "20.12.8",
-		"@types/react": "18.2.74",
+		"@types/react": "18.3.1",
 		"@typescript-eslint/eslint-plugin": "5.62.0",
 		"@typescript-eslint/parser": "5.62.0",
 		"commitizen": "4.3.0",
