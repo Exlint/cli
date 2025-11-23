@@ -67,7 +67,7 @@
 		"open": "9.1.0",
 		"react": "18.3.1",
 		"reflect-metadata": "^0.2.0",
-		"rxjs": "7.8.1",
+		"rxjs": "7.8.2",
 		"v8-compile-cache": "2.4.0"
 	},
 	"devDependencies": {
