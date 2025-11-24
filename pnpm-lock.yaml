@@ -21,8 +21,8 @@ dependencies:
     specifier: 2.9.2
     version: 2.9.2
   envinfo:
-    specifier: 7.13.0
-    version: 7.13.0
+    specifier: 7.20.0
+    version: 7.20.0
   express:
     specifier: 4.20.0
     version: 4.20.0
@@ -80,8 +80,8 @@ devDependencies:
     specifier: 10.3.2
     version: 10.3.2
   '@types/envinfo':
-    specifier: 7.8.3
-    version: 7.8.3
+    specifier: 7.8.4
+    version: 7.8.4
   '@types/express':
     specifier: 4.17.21
     version: 4.17.21
@@ -2246,8 +2246,8 @@ packages:
     dev: true
     optional: true
 
-  /@types/envinfo@7.8.3:
-    resolution: {integrity: sha512-qzV1XMjmzgmndci6L5HlzExf4w9A5jQPNpW/t4sSljErKbS8y6231ToHO9ir2Xjf+2zG1C540+Wmh0zpUsGu0A==}
+  /@types/envinfo@7.8.4:
+    resolution: {integrity: sha512-K5WaRgSlqjc408IyPbxOFnz7rVG9E8ELhj7XR3Ncui15EgeyIXTcCfmwrRnU4uEOCJQhzZRAQurYznEEc1dD2g==}
     dev: true
 
   /@types/eslint-scope@3.7.4:
@@ -4307,8 +4307,8 @@ packages:
     engines: {node: '>=6'}
     dev: true
 
-  /envinfo@7.13.0:
-    resolution: {integrity: sha512-cvcaMr7KqXVh4nyzGTVqTum+gAiL265x5jUWQIDLq//zOGbW+gSW/C+OWLleY/rs9Qole6AZLMXPbtIFQbqu+Q==}
+  /envinfo@7.20.0:
+    resolution: {integrity: sha512-+zUomDcLXsVkQ37vUqWBvQwLaLlj8eZPSi61llaEFAVBY5mhcXdaSw1pSJVl4yTYD5g/gEfpNl28YYk4IPvrrg==}
     engines: {node: '>=4'}
     hasBin: true
     dev: false
