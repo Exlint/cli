@@ -93,7 +93,7 @@
 		"eslint-config-prettier": "9.1.2",
 		"eslint-plugin-import": "2.32.0",
 		"eslint-plugin-node": "11.1.0",
-		"eslint-plugin-react": "7.34.1",
+		"eslint-plugin-react": "7.37.5",
 		"eslint-plugin-unused-imports": "3.2.0",
 		"figlet": "1.7.0",
 		"husky": "8.0.3",
