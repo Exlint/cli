@@ -18,8 +18,8 @@ dependencies:
     specifier: 5.6.2
     version: 5.6.2
   cli-spinners:
-    specifier: 2.9.2
-    version: 2.9.2
+    specifier: 3.3.0
+    version: 3.3.0
   envinfo:
     specifier: 7.20.0
     version: 7.20.0
@@ -117,7 +117,7 @@ devDependencies:
     version: 7.0.3
   cz-vinyl:
     specifier: 2.5.4
-    version: 2.5.4(@types/node@20.12.8)(inquirer@8.2.6)(typescript@5.4.5)
+    version: 2.5.4(@types/node@20.12.8)(inquirer@8.2.7)(typescript@5.4.5)
   depcheck:
     specifier: 1.4.7
     version: 1.4.7
@@ -1949,7 +1949,6 @@ packages:
       '@types/node': 20.12.8
       chardet: 2.1.1
       iconv-lite: 0.7.0
-    dev: false
 
   /@isaacs/balanced-match@4.0.1:
     resolution: {integrity: sha512-yzMTt9lEb8Gv7zRioUilSglI0c0smZ9k5D65677DLWLtWJaXIS3CqcGyUFByYKlnUj6TkjLVs54fBl6+TiGQDQ==}
@@ -3441,7 +3440,6 @@ packages:
 
   /chardet@2.1.1:
     resolution: {integrity: sha512-PsezH1rqdV9VvyNhxxOW32/d75r01NY7TQCmOqomRo15ZSOKbpTFVsfjghxo6JloQUCGnH4k1LGu0R4yCLlWQQ==}
-    dev: false
 
   /cheerio-select@2.1.0:
     resolution: {integrity: sha512-9v9kG0LvzrlcungtnJtpGNxY+fzECQKhK4EGJX2vByejiMX84MFNQw4UxPJl3bFbTMw+Dfs37XaIkCwTZfLh4g==}
@@ -3537,6 +3535,11 @@ packages:
   /cli-spinners@2.9.2:
     resolution: {integrity: sha512-ywqV+5MmyL4E7ybXgKys4DugZbX0FC6LnwrhjuykIjnK9k8OQacQ7axGKnjDXWNhns0xot3bZI5h55H8yo9cJg==}
     engines: {node: '>=6'}
+
+  /cli-spinners@3.3.0:
+    resolution: {integrity: sha512-/+40ljC3ONVnYIttjMWrlL51nItDAbBrq2upN8BPyvGU/2n5Oxw3tbNwORCaNuNqLJnxGqOfjUuhsv7l5Q4IsQ==}
+    engines: {node: '>=18.20'}
+    dev: false
 
   /cli-table3@0.6.3:
     resolution: {integrity: sha512-w5Jac5SykAeZJKntOxJCrm63Eg5/4dhMWIcuTbo9rpE+brgaSZo0RuNJZeOyMgsUdhDeojvgyQLmjI+K50ZGyg==}
@@ -4004,14 +4007,14 @@ packages:
       - typescript
     dev: true
 
-  /cz-vinyl@2.5.4(@types/node@20.12.8)(inquirer@8.2.6)(typescript@5.4.5):
+  /cz-vinyl@2.5.4(@types/node@20.12.8)(inquirer@8.2.7)(typescript@5.4.5):
     resolution: {integrity: sha512-XyAnDZx654hbUuUka+kuhOG0PztGgcRsPxaUzVHis3kGTvsuLgr3/efPhKyzDXR4r+J7ZVEgEwm5C24HKTRIwA==}
     engines: {node: '>=14.16'}
     dependencies:
       cosmiconfig: 9.0.0(typescript@5.4.5)
       cosmiconfig-typescript-loader: 5.0.0(@types/node@20.12.8)(cosmiconfig@9.0.0)(typescript@5.4.5)
       fuse.js: 7.0.0
-      inquirer-autocomplete-prompt: 2.0.1(inquirer@8.2.6)
+      inquirer-autocomplete-prompt: 2.0.1(inquirer@8.2.7)
       inquirer-maxlength-input-prompt: 1.0.2
       openai: 4.65.0(zod@3.23.8)
       string-template: 1.0.0
@@ -6104,7 +6107,7 @@ packages:
       - utf-8-validate
     dev: false
 
-  /inquirer-autocomplete-prompt@2.0.1(inquirer@8.2.6):
+  /inquirer-autocomplete-prompt@2.0.1(inquirer@8.2.7):
     resolution: {integrity: sha512-jUHrH0btO7j5r8DTQgANf2CBkTZChoVySD8zF/wp5fZCOLIuUbleXhf4ZY5jNBOc1owA3gdfWtfZuppfYBhcUg==}
     engines: {node: '>=12'}
     peerDependencies:
@@ -6112,7 +6115,7 @@ packages:
     dependencies:
       ansi-escapes: 4.3.2
       figures: 3.2.0
-      inquirer: 8.2.6
+      inquirer: 8.2.7(@types/node@20.12.8)
       picocolors: 1.1.1
       run-async: 2.4.1
       rxjs: 7.8.2
@@ -6211,7 +6214,6 @@ packages:
       wrap-ansi: 6.2.0
     transitivePeerDependencies:
       - '@types/node'
-    dev: false
 
   /inquirer@9.2.12:
     resolution: {integrity: sha512-mg3Fh9g2zfuVWJn6lhST0O7x4n03k7G8Tx5nvikJkbq8/CK47WDVm+UznF0G6s5Zi0KcyUisr6DU8T67N5U+1Q==}
