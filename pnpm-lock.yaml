@@ -155,8 +155,8 @@ devDependencies:
     specifier: 7.2.0
     version: 7.2.0
   prettier:
-    specifier: 3.2.5
-    version: 3.2.5
+    specifier: 3.8.1
+    version: 3.8.1
   ts-loader:
     specifier: 9.5.4
     version: 9.5.4(typescript@5.4.5)(webpack@5.104.1)
@@ -1901,7 +1901,7 @@ packages:
       commander: ^11.1.0
     dependencies:
       commander: 11.1.0
-      prettier: 3.2.5
+      prettier: 3.8.1
     dev: false
 
   /@golevelup/nestjs-discovery@5.0.0(@nestjs/common@10.4.16)(@nestjs/core@10.3.8):
@@ -8192,8 +8192,8 @@ packages:
     engines: {node: '>= 0.8.0'}
     dev: true
 
-  /prettier@3.2.5:
-    resolution: {integrity: sha512-3/GWa9aOC0YeD7LUfvOG2NiDyhOWRvt1k+rcKhOuYnMY24iiCphgneUfJDyFXd6rZCAnuLBv6UeAULtrhT/F4A==}
+  /prettier@3.8.1:
+    resolution: {integrity: sha512-UOnG6LftzbdaHZcKoPFtOcCKztrQ57WkHDeRD9t/PTQtmT0NHSeWWepj6pS0z/N7+08BHFDQVUrfmfMRcZwbMg==}
     engines: {node: '>=14'}
     hasBin: true
 
