@@ -18,8 +18,8 @@ dependencies:
     specifier: 5.6.2
     version: 5.6.2
   cli-spinners:
-    specifier: 2.9.2
-    version: 2.9.2
+    specifier: 3.4.0
+    version: 3.4.0
   envinfo:
     specifier: 7.21.0
     version: 7.21.0
@@ -3634,7 +3634,6 @@ packages:
   /cli-spinners@3.4.0:
     resolution: {integrity: sha512-bXfOC4QcT1tKXGorxL3wbJm6XJPDqEnij2gQ2m7ESQuE+/z9YFIWnl/5RpTiKWbMq3EVKR4fRLJGn6DVfu0mpw==}
     engines: {node: '>=18.20'}
-    dev: true
 
   /cli-table3@0.6.5:
     resolution: {integrity: sha512-+W/5efTR7y5HRD7gACw9yQjqMVvEMLBHmboM/kPWam+H+Hmyrgjh6YncVKK122YZkXrLudzTuAukUw9FnMf7IQ==}
