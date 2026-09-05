@@ -18,4 +18,4 @@ jobs:
             - name: Remove TSConfig file
               run: rm -rf ./tsconfig.json
 
-            - uses: wagoid/commitlint-github-action@v5
+            - uses: wagoid/commitlint-github-action@v6
